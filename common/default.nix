@@ -1,14 +1,26 @@
-rec {
+let fromGitHub = pkgs: config: name:
+        with config; pkgs.fetchFromGitHub {
+            inherit owner repo sha256 name;
+            rev = commit;
+            fetchSubmodules = true;
+        };
+
+in rec {
 
     config = import ../config.nix;
 
-    pkgs =
-        let nixpkgsPath = with config.nixpkgs;
+    thirdParty = {
+        nixpkgs = with config.nixpkgs;
             builtins.fetchTarball {
                 url = "https://github.com/${owner}/${repo}/tarball/${commit}";
                 inherit sha256;
             };
-        in import nixpkgsPath {};
+        qmk = fromGitHub pkgs config.qmk "qmk-src";
+        kaleidoscope = fromGitHub pkgs config.kaleidoscope "kaleidoscope-src";
+        model01 = fromGitHub pkgs config.model01 "model01-src";
+    };
+
+    pkgs = import thirdParty.nixpkgs {};
 
     keymapPath = keymapsPath: keymapName:
         let readKeymaps = builtins.readDir keymapsPath;

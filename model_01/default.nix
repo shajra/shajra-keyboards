@@ -10,15 +10,9 @@ let
 
     scriptSuffix = if factory then "factory" else "custom-${keymap}";
 
-    fetch = args: with args; pkgs.fetchFromGitHub {
-        inherit owner repo sha256;
-        rev = commit;
-        fetchSubmodules = true;
-    };
-
     kaleidoscope = pkgs.stdenv.mkDerivation {
         name = "kaleidoscope-src";
-        src = fetch config.kaleidoscope;
+        src = thirdParty.kaleidoscope;
         buildPhase = ''
             true
         '';
@@ -36,7 +30,7 @@ let
             else "";
         in pkgs.stdenv.mkDerivation {
             name = "model01-${scriptSuffix}-src";
-            src = fetch config.model01;
+            src = thirdParty.model01;
             patchPhase = ''
                 BUILD_INFO="$out"
                 echo "#define BUILD_INFORMATION \"$BUILD_INFO\"" \

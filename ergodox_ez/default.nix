@@ -11,16 +11,9 @@ let
     keymapName = if factory then "default" else keymap;
     scriptSuffix = if factory then "factory" else "custom-${keymap}";
 
-    qmk-factory = with config.qmk; pkgs.fetchFromGitHub {
-        inherit owner repo sha256;
-        rev = commit;
-        fetchSubmodules = true;
-        name = "qmk-${scriptSuffix}-src";
-    };
-
     qmk-custom = pkgs.stdenv.mkDerivation {
         name = "qmk-${scriptSuffix}-src";
-        src = qmk-factory;
+        src = thirdParty.qmk;
         buildPhase = ''
             true
         '';
@@ -33,10 +26,10 @@ let
         '';
     };
 
-    qmk = if factory then qmk-factory else qmk-custom;
+    qmk = if factory then thirdParty.qmk else qmk-custom;
 
     hex =
-        let env = import "${qmk-factory}/shell.nix" { inherit pkgs; };
+        let env = import "${thirdParty.qmk}/shell.nix" { inherit pkgs; };
         in pkgs.stdenv.mkDerivation {
             name = "ergodoxez-${scriptSuffix}-hex";
             buildInputs = env.buildInputs;
