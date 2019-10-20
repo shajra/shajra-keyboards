@@ -74,7 +74,7 @@ KEYMAPS
     , [FUNCTION] = KEYMAP_STACKED
         // left hand
         ( ___,                  Key_F1,        Key_F2,        Key_F3,               Key_F4,                Key_F5,            M(MACRO_VERSION_INFO)
-        , ___,                  LSHIFT(Key_1), LSHIFT(Key_2), Key_LeftCurlyBracket, Key_RightCurlyBracket, Key_Quote,         Key_Home
+        , Key_PcApplication,    LSHIFT(Key_1), LSHIFT(Key_2), Key_LeftCurlyBracket, Key_RightCurlyBracket, Key_Quote,         Key_Home
         , LSHIFT(Key_RightAlt), LSHIFT(Key_6), LSHIFT(Key_4), Key_LeftParen,        Key_RightParen,        LSHIFT(Key_Quote)
         , OSM(RightAlt),        LSHIFT(Key_3), LSHIFT(Key_5), Key_LeftBracket,      Key_RightBracket,      Key_Backtick,      Key_End
         , Key_Delete, Key_Backspace, Key_Tab, Key_Escape
