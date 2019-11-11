@@ -1,12 +1,13 @@
 #!/bin/sh -eu
 
-cd "$(dirname "$0")"
+cd "$(dirname "$0")/.."
 
 nix run \
     --ignore-environment \
     --file nix \
-    shajra-keyboards-flash-scripts.ergodoxez \
+    nix-project-exe \
     --command \
-    flash-ergodoxez \
+    nix-project \
+    --upgrade \
     --nix "$(command -v nix)" \
     "$@"

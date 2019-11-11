@@ -1,18 +1,34 @@
-{ factory ? false
-, keymap  ? (import ../config.nix).default.keymap.model01
+{ arduino
+, bashInteractive
+, coreutils
+, gawk
+, gnugrep
+, gnumake
+, gnused
+, perl
+, stdenv
+, systemd
+, kaleidoscope-factory
+, model01-factory
+, shajra-keyboards-lib
 }:
 
-with (import ../common);
+{ factory ? false
+, keymap  ? (import ./config.nix).default.keymap.model01
+, keymaps ? ../keymaps/model_01
+}:
 
 let
 
-    custom = keymapPath ./keymaps keymap;
+    lib = shajra-keyboards-lib;
+
+    custom = lib.keymapPath keymaps keymap;
 
     scriptSuffix = if factory then "factory" else "custom-${keymap}";
 
-    kaleidoscope = pkgs.stdenv.mkDerivation {
+    kaleidoscope = stdenv.mkDerivation {
         name = "kaleidoscope-src";
-        src = thirdParty.kaleidoscope;
+        src = kaleidoscope-factory;
         buildPhase = ''
             true
         '';
@@ -28,9 +44,9 @@ let
             if ! factory
             then "cp -R ${custom}/. ."
             else "";
-        in pkgs.stdenv.mkDerivation {
+        in stdenv.mkDerivation {
             name = "model01-${scriptSuffix}-src";
-            src = thirdParty.model01;
+            src = model01-factory;
             patchPhase = ''
                 BUILD_INFO="$out"
                 echo "#define BUILD_INFORMATION \"$BUILD_INFO\"" \
@@ -47,13 +63,13 @@ let
             '';
         };
 
-    hex = pkgs.stdenv.mkDerivation {
+    hex = stdenv.mkDerivation {
         name = "model01-${scriptSuffix}-hex";
         src = model01;
         buildPhase = ''
             mkdir "$out"
             SKETCHBOOK_DIR="${kaleidoscope}/arduino" \
-                ARDUINO_PATH="${pkgs.arduino}/share/arduino" \
+                ARDUINO_PATH="${arduino}/share/arduino" \
                 OUTPUT_PATH="$out" \
                 make
         '';
@@ -70,23 +86,24 @@ let
     # that runtime build more hermetic.
     flash =
         let src = model01;
-        in pkgs.writeShellScriptBin "model01-${scriptSuffix}-flash" ''
-            PATH="${pkgs.coreutils}/bin"
-            PATH="${pkgs.gawk}/bin:$PATH"
-            PATH="${pkgs.gnugrep}/bin:$PATH"
-            PATH="${pkgs.gnumake}/bin:$PATH"
-            PATH="${pkgs.gnused}/bin:$PATH"
-            PATH="${pkgs.perl}/bin:$PATH"
-            PATH="${pkgs.systemd}/bin:$PATH"
+        in lib.writeShellChecked "model01-${scriptSuffix}-flash" ''
+            PATH="${bashInteractive}/bin"
+            PATH="${coreutils}/bin:$PATH"
+            PATH="${gawk}/bin:$PATH"
+            PATH="${gnugrep}/bin:$PATH"
+            PATH="${gnumake}/bin:$PATH"
+            PATH="${gnused}/bin:$PATH"
+            PATH="${perl}/bin:$PATH"
+            PATH="${systemd}/bin:$PATH"
             SOURCE="${src}"
             echo
             echo FLASH SOURCE: "$SOURCE"
             echo
-            cd "$SOURCE"
+            cd "$SOURCE" || exit 1
             env -i \
                 PATH="$PATH" \
                 SKETCHBOOK_DIR="${kaleidoscope}/arduino" \
-                ARDUINO_PATH="${pkgs.arduino}/share/arduino" \
+                ARDUINO_PATH="${arduino}/share/arduino" \
                 make flash
         '';
 

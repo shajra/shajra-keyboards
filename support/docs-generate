@@ -1,0 +1,20 @@
+#!/bin/sh -eu
+
+cd "$(dirname "$0")/.."
+
+nix run \
+    --ignore-environment \
+    --file nix \
+    nix-project-org2gfm \
+    pkgs.bash \
+    pkgs.coreutils \
+    pkgs.gnugrep \
+    pkgs.gnutar \
+    pkgs.gzip \
+    pkgs.procps \
+    --command \
+    org2gfm \
+    --ignore 'setup\.org' \
+    --nix "$(command -v nix)" \
+    --evaluate \
+    "$@"

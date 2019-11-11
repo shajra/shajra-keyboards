@@ -1,11 +1,12 @@
 #!/bin/sh -eu
 
+cd "$(dirname "$0")"
 
-PROJECT_ROOT="$(dirname "$0")"
-RUN_SH="$PROJECT_ROOT/common/run.sh"
-BUILD_NIX="$PROJECT_ROOT/model_01"
-KEYBOARD_ID="model01"
-KEYBOARD_DESC="Keyboardio's Model 01"
-
-
-. "$RUN_SH"
+nix run \
+    --ignore-environment \
+    --file nix \
+    shajra-keyboards-flash-scripts.model01 \
+    --command \
+    flash-model01 \
+    --nix "$(command -v nix)" \
+    "$@"

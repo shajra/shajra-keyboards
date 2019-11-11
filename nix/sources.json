@@ -1,0 +1,78 @@
+{
+    "kaleidoscope": {
+        "branch": "master",
+        "description": "A Kaleidoscope distribution for the Keyboardio Model 01 and other keyboards.",
+        "fetchSubmodules": true,
+        "homepage": "",
+        "name": "kaleidoscope",
+        "owner": "keyboardio",
+        "repo": "Kaleidoscope-Bundle-Keyboardio",
+        "rev": "55065cec598906c3ef336e6cf5e28e0118c4c63f",
+        "sha256": "0wxvhya7jk4gji2f4pl7qsgh2yjjnhrvxk46q1y0a3zf6kvqsq0i",
+        "type": "tarball",
+        "url": "https://github.com/keyboardio/Kaleidoscope-Bundle-Keyboardio/archive/55065cec598906c3ef336e6cf5e28e0118c4c63f.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "model01": {
+        "branch": "master",
+        "description": "The \"standard\" Keyboardio Model 01 Firmware sketch.",
+        "fetchSubmodules": true,
+        "homepage": null,
+        "name": "model01",
+        "owner": "keyboardio",
+        "repo": "Model01-Firmware",
+        "rev": "2f9d140ba94d6c5934ad17eed98654211706c7a7",
+        "sha256": "10wwr58khqf4shbz0lvbcn9fj1myvf371411r1bfl4gk9vn0mdal",
+        "type": "tarball",
+        "url": "https://github.com/keyboardio/Model01-Firmware/archive/2f9d140ba94d6c5934ad17eed98654211706c7a7.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "niv": {
+        "branch": "master",
+        "description": "Easy dependency management for Nix projects",
+        "homepage": "https://github.com/nmattia/niv",
+        "owner": "nmattia",
+        "repo": "niv",
+        "rev": "abd0de3269fd712955d27b70e32921841c7b8bb7",
+        "sha256": "0b38n1ad00s1qqyw3ml3pypf8i1pw4aqw0bpa02qq9iv7sp3x0gz",
+        "type": "tarball",
+        "url": "https://github.com/nmattia/niv/archive/abd0de3269fd712955d27b70e32921841c7b8bb7.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nix-project": {
+        "branch": "master",
+        "description": "Tools to manage a Nix-based project",
+        "homepage": "",
+        "owner": "shajra",
+        "repo": "nix-project",
+        "rev": "2727e8ca27c71de5769e3723b222849c962825d4",
+        "sha256": "110vv63imcyvlg5vry2d21vccgafjx74hqpxsqgdyczd77m772lf",
+        "type": "tarball",
+        "url": "https://github.com/shajra/nix-project/archive/2727e8ca27c71de5769e3723b222849c962825d4.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nixpkgs": {
+        "branch": "nixos-19.09",
+        "description": "A read-only mirror of NixOS/nixpkgs tracking the released channels. Send issues and PRs to",
+        "homepage": "https://github.com/NixOS/nixpkgs",
+        "owner": "NixOS",
+        "repo": "nixpkgs-channels",
+        "rev": "d85e435b7bded2596d7b201bcd938c94d8a921c1",
+        "sha256": "1msjm4kx1z73v444i1iybvmc7z0kfkbn9nzr21rn5yc4ql1jwf99",
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs-channels/archive/d85e435b7bded2596d7b201bcd938c94d8a921c1.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "qmk": {
+        "branch": "master",
+        "description": "Open-source keyboard firmware for Atmel AVR and Arm USB families",
+        "homepage": "https://qmk.fm",
+        "owner": "shajra",
+        "repo": "qmk_firmware",
+        "rev": "b7dcb98b257d68edda4bafa3cf85a8c221559e42",
+        "sha256": "136zva0w62979rmqichmy22hxz6wf2gj57mvl5qvyxc7jnk9d5ja",
+        "type": "tarball",
+        "url": "https://github.com/shajra/qmk_firmware/archive/b7dcb98b257d68edda4bafa3cf85a8c221559e42.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    }
+}

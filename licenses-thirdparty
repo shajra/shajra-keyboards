@@ -1,11 +1,10 @@
 #!/bin/sh -eu
 
-
-PROJECT_ROOT="$(dirname "$0")"
-LICENSE_NIX="$PROJECT_ROOT/common/licenses.nix"
-
+cd "$(dirname "$0")"
 
 nix run \
     --ignore-environment \
-    --file "$LICENSE_NIX" \
-    --command shajra-keyboards-licenses
+    --file nix \
+    shajra-keyboards-licenses \
+    --command \
+    shajra-keyboards-licenses

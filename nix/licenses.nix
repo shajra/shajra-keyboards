@@ -1,10 +1,16 @@
-with (import ./.);
+{ coreutils
+, kaleidoscope-factory
+, model01-factory
+, qmk-factory
+, shajra-keyboards-lib
+}:
 
-pkgs.writeShellScriptBin "shajra-keyboards-licenses"
+
+shajra-keyboards-lib.writeShellChecked "shajra-keyboards-licenses"
 ''
 set -eu
 
-${pkgs.coreutils}/bin/cat - <<EOF
+${coreutils}/bin/cat - <<EOF
 Third Party Licenses for "shajra-keyboards"
 ===========================================
 
@@ -21,15 +27,15 @@ GPLv2):
 
 QMK firmware source for Ergodox EZ (GPLv2, mostly):
 
-    ${thirdParty.qmk}
+    ${qmk-factory}
 
 Kaleidoscope firmware source for Keyboardio keyboards (GPLv3):
 
-    ${thirdParty.kaleidoscope}
+    ${kaleidoscope-factory}
 
 Model 01 firmware specification for Model 01 (GPLv3):
 
-    ${thirdParty.model01}
+    ${model01-factory}
 
 EOF
 ''
