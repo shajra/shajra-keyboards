@@ -175,10 +175,10 @@ void toggleLedsOnSuspendResume(kaleidoscope::plugin::HostPowerManagement::Event 
         case kaleidoscope::plugin::HostPowerManagement::Suspend:
             LEDControl.set_all_leds_to({0, 0, 0});
             LEDControl.syncLeds();
-            LEDControl.paused = true;
+            LEDControl.disable();
             break;
         case kaleidoscope::plugin::HostPowerManagement::Resume:
-            LEDControl.paused = false;
+            LEDControl.enable();
             LEDControl.refreshAll();
             break;
         case kaleidoscope::plugin::HostPowerManagement::Sleep:
