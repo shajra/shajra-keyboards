@@ -181,13 +181,13 @@ Note, the first time you run the commands described below, you'll see Nix doing 
         Flashing Keyboardio's Model 01 (custom "shajra" keymap)
         =======================================================
         
-        FLASH SOURCE: /nix/store/a1vwkigv1his5apdr8k070wdb3l2lxw4-model01-custom-shajra-src
+        FLASH SOURCE: /nix/store/hy23rzgbnpxpdq9izrnbhbxn5b14w9fh-model01-custom-shajra-src
         
-        BOARD_HARDWARE_PATH="/nix/store/136z5dj3nnyn7gf9fx6i7xq4an3v7iz3-kaleidoscope-src/arduino/hardware" /nix/store/136z5dj3nnyn7gf9fx6i7xq4an3v7iz3-kaleidoscope-src/arduino/hardware/keyboardio/avr/libraries/Kaleidoscope/bin//kaleidoscope-builder flash
-        Building ./Model01-Firmware 0.0.0 into /tmp/kaleidoscope-/sketch/7078759-Model01-Firmware.ino/output...
+        BOARD_HARDWARE_PATH="/nix/store/yw3awzchc4p8p7sh04vxh8xhrf9ck5ia-kaleidoscope-src/arduino/hardware" /nix/store/yw3awzchc4p8p7sh04vxh8xhrf9ck5ia-kaleidoscope-src/arduino/hardware/keyboardio/avr/libraries/Kaleidoscope/bin//kaleidoscope-builder flash
+        Building ./Model01-Firmware 0.0.0 into /tmp/kaleidoscope-/sketch/6858457-Model01-Firmware.ino/output...
         - Size: firmware/Model01-Firmware/Model01-Firmware-0.0.0.elf
-          - Program:   25566 bytes (89.2% Full)
-          - Data:       1217 bytes (47.5% Full)
+          - Program:   25654 bytes (89.5% Full)
+          - Data:       1237 bytes (48.3% Full)
         
         To update your keyboard's firmware, hold down the 'Prog' key on your keyboard,
         and then press 'Enter'.
@@ -198,35 +198,37 @@ Note, the first time you run the commands described below, you'll see Nix doing 
 
 This project's scripts won't save off your previous keymap from your keyboard. But we can revert to the keymap that your keyboard shipped with.
 
-This can be done with the `-F=/`&#x2013;factory= switch, which both `./flash-ergodoxez` and `./flash-model01` support. Both scripts have a `-h=/`&#x2013;help= in case you forget your options.
+This can be done with the `-F` / `--factory` switch, which both `./flash-ergodoxez` and `./flash-model01` support. Both scripts have a `-h` / `--help` in case you forget your options.
 
 # Modifying and testing<a id="sec-5"></a>
 
-The provided code is fairly compact. If you look in the <./ergodox_ez/keymaps> and <./model_01/keymaps>, you should find familiar files that you would edit in QMK or Kaleidoscope projects, respectively.
+The provided code is fairly compact. If you look in the `keymaps` directory, you should find familiar files that you would edit in QMK or Kaleidoscope projects, respectively. These keymaps are compiled into the flashing scripts provided with this project.
 
-For both keyboards, The "shajra" keymap is in it's own directory. You can make your own keymaps and put them in a sibling directory with the name of your choice.
+For both keyboards, The "shajra" keymap is in it's own directory. You can make your own keymaps and put them in a sibling directory with the name of your choice, and they'll be compiled in as well.
 
-Then you can use the `-k=/`&#x2013;keymap= switch of either script to load your custom keymap by the name you chose for the keymap in the "keymaps" directory. The scripts should pick up changes, rebuild anything necessary, and flash your keyboard.
+If you don't want to use keymaps compiled into the flashing scripts, you can use another directory of keymaps at runtime with the `-K` / `-keymaps` switch.
 
-Nix will copy your source code into `/nix/store`, and the invocation of both scripts will print out a "FLASH SOURCE:" line indicating the source used for compiling/flashing for your reference. These are the full source trees you'd normally use if following the QMK or Kaleidoscope documentation manually.
+Then you can use the `-k` / `--keymap` switch of either script to load your custom keymap by the name you chose for the keymap in the "keymaps" directory. The scripts should pick up changes, rebuild anything necessary, and flash your keyboard.
+
+The used keymap source code is copied into `/nix/store`, and the invocation of the flashing scripts will print out a "FLASH SOURCE:" line indicating the source used for compiling/flashing for your reference. These are the full source trees you'd normally use if following the QMK or Kaleidoscope documentation manually.
 
 If you want to check that everything builds before flashing your keyboard, you can run a `nix-build` invocation:
 
 ```shell
-nix-build --no-out-link nix/build.nix
+nix-build --no-out-link nix/ci.nix
 ```
 
-    /nix/store/481d4d5x60agv8lwv1hr9z34dhrms2mm-flash-ergodoxez
-    /nix/store/j3zyf464bzdwjjg9kwb6cx0scg59crlg-ergodoxez-custom-shajra-flash
+    /nix/store/9ydrjrs156h7b7zf15rdvqqgq6z4valb-flash-ergodoxez
+    /nix/store/63q8yrd23qhgkkd7vfgbx4q312fgv3i0-ergodoxez-custom-shajra-flash
     /nix/store/l5m5zjwxhqn61g5db8fs9g21r5rrvlik-ergodoxez-custom-shajra-hex
-    /nix/store/f1fqmrqg8bgq09kgrgmdwrr24s7y0kfi-ergodoxez-factory-flash
+    /nix/store/9r01jscnxli1rwbzn1c49njznsa66h7v-ergodoxez-factory-flash
     /nix/store/8dzmmi8iyr8ggh5280nv04ri79dbzhvn-ergodoxez-factory-hex
-    /nix/store/yysrygkp648ds22zfd3y4m727inxaara-flash-model01
-    /nix/store/6bnfip2hainkrqpwc45yj8p20nl5ql31-model01-custom-shajra-flash
-    /nix/store/pgjwvwpqzld59bgs73ibxrkln9rpmf01-model01-custom-shajra-hex
-    /nix/store/wxznpp29ndwrs24flj0i6nmvjqhkcfha-model01-factory-flash
-    /nix/store/q16k8rq7qahsi487aflj2jpbycbybphx-model01-factory-hex
-    /nix/store/k0w0qk6zx3r114jh8gqcl6ngha3wx23p-shajra-keyboards-licenses
+    /nix/store/hqqmynabgmm0wz77fq5fl0qyyrj2rqz3-flash-model01
+    /nix/store/bfz3ph3a5cn93595322lm542drsa31xa-model01-custom-shajra-flash
+    /nix/store/krm1waxx9xm43l9m9sma7q0w3lafb2nd-model01-custom-shajra-hex
+    /nix/store/hgb18q8zmkclncdmzs8kmvs4j5yanbjx-model01-factory-flash
+    /nix/store/cgsxrsxs06ynw9y0ja66lr2mjyk27lcx-model01-factory-hex
+    /nix/store/fa6jglz8d8fd0kzvr3czc9rj995cj61s-shajra-keyboards-licenses
 
 If you run `nix-build` without the `--no-out-link` switch, Nix will leave symlinks behind in your working directory that point to the built artifacts, which Nix always stores in a special `/nix/store` directory. The names of these symlinks are all prefixed with "result".
 
@@ -237,16 +239,16 @@ nix-collect-garbage 2>&1
 ```
 
     finding garbage collector roots...
-    removing stale link from '/nix/var/nix/gcroots/auto/2xm7abjgnmw91d9zqvj73nlrzxcn226p' to '/tmp/nix-build-18339-0/result-6'
-    removing stale link from '/nix/var/nix/gcroots/auto/bpagnhadgj5d85wcjbiglgbzdmj8yf9b' to '/tmp/nix-build-18339-0/result-10'
-    removing stale link from '/nix/var/nix/gcroots/auto/ls8dgffs5qd3pi7icsxf2qpxns4vj4z0' to '/tmp/nix-build-18339-0/result-5'
-    removing stale link from '/nix/var/nix/gcroots/auto/qvv32a2mw6sca7dc6jakhg4b01y84b5k' to '/tmp/nix-build-18339-0/result-9'
+    removing stale link from '/nix/var/nix/gcroots/auto/w5ihmay6mnbji6vlagmc8f7f4495746x' to '/home/tnks/src/shajra/shajra-keyboards/result-8'
+    removing stale link from '/nix/var/nix/gcroots/auto/72fsyc6cqwn47d8wkqrv0hk4zvp44w8x' to '/home/tnks/src/shajra/shajra-keyboards/result-6'
+    removing stale link from '/nix/var/nix/gcroots/auto/ix6mpi0rbh2hgk1695acwi3ky86rgiyl' to '/home/tnks/src/shajra/shajra-keyboards/result-3'
+    removing stale link from '/nix/var/nix/gcroots/auto/h9g56k2cpxkbpdw5pl25yzkas19hnyg4' to '/home/tnks/src/shajra/shajra-keyboards/result-4'
     …
-    deleting '/nix/store/06fbz2jaqyn91z21l2yqgm3p0d4npfxd-source'
+    deleting '/nix/store/ppcfcvy9vw6qv6x5k08aj279yz0xmmqa-ant-contrib-1.0b3-bin.tar.bz2.drv'
     deleting '/nix/store/trash'
     deleting unused links...
     note: currently hard linking saves -0.00 MiB
-    21 store paths deleted, 115.90 MiB freed
+    109 store paths deleted, 989.89 MiB freed
 
 The "result" symlinks generated by `nix-build` keep built artifacts from by garbage collected by `nix-collect-garbage`. Otherwise, these symlink are safe to delete, and [ignored by Git](./.gitignore).
 
