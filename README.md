@@ -184,7 +184,7 @@ Note, the first time you run the commands described below, you'll see Nix doing 
         FLASH SOURCE: /nix/store/hy23rzgbnpxpdq9izrnbhbxn5b14w9fh-model01-custom-shajra-src
         
         BOARD_HARDWARE_PATH="/nix/store/yw3awzchc4p8p7sh04vxh8xhrf9ck5ia-kaleidoscope-src/arduino/hardware" /nix/store/yw3awzchc4p8p7sh04vxh8xhrf9ck5ia-kaleidoscope-src/arduino/hardware/keyboardio/avr/libraries/Kaleidoscope/bin//kaleidoscope-builder flash
-        Building ./Model01-Firmware 0.0.0 into /tmp/kaleidoscope-/sketch/6858457-Model01-Firmware.ino/output...
+        Building ./Model01-Firmware 0.0.0 into /tmp/kaleidoscope-/sketch/8264081-Model01-Firmware.ino/output...
         - Size: firmware/Model01-Firmware/Model01-Firmware-0.0.0.elf
           - Program:   25654 bytes (89.5% Full)
           - Data:       1237 bytes (48.3% Full)
@@ -218,12 +218,12 @@ If you want to check that everything builds before flashing your keyboard, you c
 nix-build --no-out-link nix/ci.nix
 ```
 
-    /nix/store/9ydrjrs156h7b7zf15rdvqqgq6z4valb-flash-ergodoxez
+    /nix/store/xbif0fldkpgkzfzzvjzqplwn8mwgp4gy-flash-ergodoxez
     /nix/store/63q8yrd23qhgkkd7vfgbx4q312fgv3i0-ergodoxez-custom-shajra-flash
     /nix/store/l5m5zjwxhqn61g5db8fs9g21r5rrvlik-ergodoxez-custom-shajra-hex
     /nix/store/9r01jscnxli1rwbzn1c49njznsa66h7v-ergodoxez-factory-flash
     /nix/store/8dzmmi8iyr8ggh5280nv04ri79dbzhvn-ergodoxez-factory-hex
-    /nix/store/hqqmynabgmm0wz77fq5fl0qyyrj2rqz3-flash-model01
+    /nix/store/bzd4xnjmci4hr8zlgi1mvn138smm65dw-flash-model01
     /nix/store/bfz3ph3a5cn93595322lm542drsa31xa-model01-custom-shajra-flash
     /nix/store/krm1waxx9xm43l9m9sma7q0w3lafb2nd-model01-custom-shajra-hex
     /nix/store/hgb18q8zmkclncdmzs8kmvs4j5yanbjx-model01-factory-flash
@@ -244,7 +244,7 @@ nix-collect-garbage 2>&1
     removing stale link from '/nix/var/nix/gcroots/auto/ix6mpi0rbh2hgk1695acwi3ky86rgiyl' to '/home/tnks/src/shajra/shajra-keyboards/result-3'
     removing stale link from '/nix/var/nix/gcroots/auto/h9g56k2cpxkbpdw5pl25yzkas19hnyg4' to '/home/tnks/src/shajra/shajra-keyboards/result-4'
     …
-    deleting '/nix/store/ppcfcvy9vw6qv6x5k08aj279yz0xmmqa-ant-contrib-1.0b3-bin.tar.bz2.drv'
+    deleting '/nix/store/1yvgn4hmfpaclpiqn35j15m51wdmcw9n-jdk-jdk8u222-ga.tar.gz.drv'
     deleting '/nix/store/trash'
     deleting unused links...
     note: currently hard linking saves -0.00 MiB

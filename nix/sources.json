@@ -45,10 +45,10 @@
         "homepage": "",
         "owner": "shajra",
         "repo": "nix-project",
-        "rev": "cba1d56d1e4e0038bf392381c684ca06cf9ff8ad",
-        "sha256": "1dsbj8azfw2glxa5c6yk354373b34i1w6bfi9lw8fszxgbd37dfk",
+        "rev": "4ac18cc384ec0a99d28e66f445a20d85eb17dd3a",
+        "sha256": "12s1qwh949yl3kbkzh51s8dk4n7ll8177iz17amcaw1dlg5c0hjy",
         "type": "tarball",
-        "url": "https://github.com/shajra/nix-project/archive/cba1d56d1e4e0038bf392381c684ca06cf9ff8ad.tar.gz",
+        "url": "https://github.com/shajra/nix-project/archive/4ac18cc384ec0a99d28e66f445a20d85eb17dd3a.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
