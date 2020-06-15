@@ -49,9 +49,10 @@ in rec {
         };
 
     shajra-keyboards-flash-scripts =
-        pkgs.callPackage (import ./flash-scripts.nix) {
-            inherit shajra-keyboards-flash;
-        };
+        pkgs.recurseIntoAttrs (
+            pkgs.callPackage (import ./flash-scripts.nix) {
+                inherit shajra-keyboards-flash;
+            });
 
     shajra-keyboards-licenses =
         pkgs.callPackage (import ./licenses.nix) {

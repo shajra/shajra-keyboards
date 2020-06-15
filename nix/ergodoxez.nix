@@ -18,6 +18,7 @@ let
     custom = lib.keymapPath keymaps keymap;
 
     scriptSuffix = if factory then "factory" else "custom-${keymap}";
+    keymapDesc   = if factory then "factory" else "${keymap} custom";
 
     keymapName = if factory then "default" else keymap;
 
@@ -63,16 +64,18 @@ let
     flash =
         let src = qmk;
             bin = hex;
-        in lib.writeShellChecked "ergodoxez-${scriptSuffix}-flash" ''
-             SOURCE="${src}"
-             BINARY="${bin}"
-             echo
-             echo FLASH SOURCE: "$SOURCE"
-             echo FLASH BINARY: "$BINARY"
-             echo
-             "${teensy-loader-cli}/bin/teensy-loader-cli" \
+        in lib.writeShellChecked "ergodoxez-${scriptSuffix}-flash"
+            "Flash Ergodox EZ (${keymapDesc} keymap)"
+            ''
+            SOURCE="${src}"
+            BINARY="${bin}"
+            echo
+            echo FLASH SOURCE: "$SOURCE"
+            echo FLASH BINARY: "$BINARY"
+            echo
+            "${teensy-loader-cli}/bin/teensy-loader-cli" \
                 -v -w --mcu=atmega32u4 \
                 "$BINARY"
-        '';
+            '';
 
 in { inherit flash hex; }

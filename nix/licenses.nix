@@ -7,6 +7,7 @@
 
 
 shajra-keyboards-lib.writeShellChecked "shajra-keyboards-licenses"
+"License information for shajra-keyboards project"
 ''
 set -eu
 

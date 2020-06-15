@@ -12,6 +12,7 @@ let
 in
 
 shajra-keyboards-lib.writeShellChecked "flash-${keyboard_id}"
+"Flash ${keyboard_desc} Keyboard"
 ''
 set -eu
 

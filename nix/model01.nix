@@ -25,6 +25,7 @@ let
     custom = lib.keymapPath keymaps keymap;
 
     scriptSuffix = if factory then "factory" else "custom-${keymap}";
+    keymapDesc   = if factory then "factory" else "${keymap} custom";
 
     kaleidoscope = stdenv.mkDerivation {
         name = "kaleidoscope-src";
@@ -86,7 +87,9 @@ let
     # that runtime build more hermetic.
     flash =
         let src = model01;
-        in lib.writeShellChecked "model01-${scriptSuffix}-flash" ''
+        in lib.writeShellChecked "model01-${scriptSuffix}-flash"
+            "Flash Keyboard.io Model 01 (${keymapDesc} keymap)"
+            ''
             PATH="${bashInteractive}/bin"
             PATH="${coreutils}/bin:$PATH"
             PATH="${gawk}/bin:$PATH"
@@ -105,6 +108,6 @@ let
                 SKETCHBOOK_DIR="${kaleidoscope}/arduino" \
                 ARDUINO_PATH="${arduino}/share/arduino" \
                 make flash
-        '';
+            '';
 
 in { inherit flash hex; }
