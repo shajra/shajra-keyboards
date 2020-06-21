@@ -17,7 +17,7 @@
 - [License](#sec-7)
 - [Contribution](#sec-8)
 
-[![img](https://img.shields.io/travis/shajra/shajra-keyboards/master.svg?label=master)](https://travis-ci.org/shajra/shajra-keyboards)
+[![img](https://github.com/shajra/shajra-keyboards/workflows/CI/badge.svg)](https://github.com/shajra/shajra-keyboards/actions)
 
 # About the Project<a id="sec-1"></a>
 

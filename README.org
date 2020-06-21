@@ -1,7 +1,7 @@
 #+TITLE: Ergonomic Keyboard "shajra" Mappings (with Nix)
 #+SETUPFILE: doc/links.org
 
-[[https://travis-ci.org/shajra/shajra-keyboards][https://img.shields.io/travis/shajra/shajra-keyboards/master.svg?label=master]]
+[[https://github.com/shajra/shajra-keyboards/actions][https://github.com/shajra/shajra-keyboards/workflows/CI/badge.svg]]
 
 * About the Project
 
