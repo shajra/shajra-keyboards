@@ -1,26 +1,7 @@
 #+TITLE: Ergonomic Keyboard "shajra" Mappings (with Nix)
-#+SETUPFILE: support/setup.org
+#+SETUPFILE: doc/links.org
 
 [[https://travis-ci.org/shajra/shajra-keyboards][https://img.shields.io/travis/shajra/shajra-keyboards/master.svg?label=master]]
-
-* Org-mode Setup                                                   :noexport:
-
-This snippet is just used by Emacs's org-mode to crop down results:
-
-  #+NAME: crop
-  #+BEGIN_SRC emacs-lisp :var text="" :var first-n=5 :var last-n=5 :results silent :exports none
-  (let* ((ls       (split-string text "\n"))
-         (first-ls (mapconcat 'identity (-take first-n ls) "\n"))
-         (last-ls  (mapconcat 'identity (-take-last (+ 1 last-n) ls) "\n")))
-    (concat first-ls "\n…\n" last-ls))
-  #+END_SRC
-
-This puts the build into a consistent-enough state.
-
-  #+BEGIN_SRC shell :results silent :exports none
-   nix-build nix/ci.nix
-   nix-collect-garbage
-  #+END_SRC
 
 * About the Project
 
@@ -31,7 +12,10 @@ This puts the build into a consistent-enough state.
   - [[ergodox-ez][ZSA Technology Labs' Ergodox EZ]], programmed with [[qmk][QMK]] firmware
 
   Beyond the keymap, this project offers some streamlined automation with [[nix][Nix]]
-  that you can use for your own keymap.
+  that you can use for your own keymap. We install Nix, and Nix will download
+  and build everything we need to flash our keyboards. See [[file:doc/nix.org][the provided
+  documentation on Nix]] for more on what Nix is, why we're motivated to use it,
+  and how to get set up with it for this project.
 
   The rest of this document discusses using this automation. To get the most
   out of the keymap itself, you may be interested in the [[file:doc/design.org][design document]]
@@ -59,7 +43,7 @@ This puts the build into a consistent-enough state.
 
   QMK and Kaleidoscope have build complexities and dependencies that can take a
   moment to work through. Nix can automate this hassle away by downloading and
-  setting up all the necessary third-party dependencies in way that
+  setting up all the necessary third-party dependencies in a way that
 
   - is highly reproducible
   - won't conflict with your current system/configuration.
@@ -74,31 +58,13 @@ This puts the build into a consistent-enough state.
 
 *** 1. Install Nix on your GNU/Linux distribution
 
-    #+BEGIN_QUOTE
-    *_NOTE_*: You don't need this step if you're running NixOS, which
-    comes with Nix baked in.
-    #+END_QUOTE
+    #+INCLUDE: "doc/nix.org::*Nix package manager setup" :only-contents t
 
-    #+BEGIN_QUOTE
-    *_NOTE_*: Nix on Macs (nix-darwin) currently won't work with this
-    project and is not supported for Macs.
-    #+END_QUOTE
+*** 2. Set up Cachix
 
-    If you don't already have Nix, the official installation script should work
-    on a variety of GNU/Linux distributions. The easiest way to run this
-    installation script is to execute the following shell command as a user
-    other than root:
+    #+INCLUDE: "doc/nix.org::*Cache setup" :only-contents t
 
-    #+BEGIN_SRC shell :eval no
-      curl https://nixos.org/nix/install | sh
-    #+END_SRC
-
-    This script will download a distribution-independent binary tarball
-    containing Nix and its dependencies, and unpack it in =/nix=.
-
-    If you prefer to install Nix another way, reference the [[nix-install][Nix manual]].
-
-*** 2. Make sure your udev rules are set
+*** 3. Make sure your udev rules are set
 
     To program either keyboard with a new mapping, you need to augment your OS
     configuration with new udev rules.
@@ -107,19 +73,14 @@ This puts the build into a consistent-enough state.
 
     #+BEGIN_EXAMPLE
       # For Teensy/Ergodox
-      ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?",
-      ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_PORT_IGNORE}="1"
-      ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789A]?",
-      ENV{MTP_NO_PROBE}="1" SUBSYSTEMS=="usb", ATTRS{idVendor}=="16c0",
-      ATTRS{idProduct}=="04[789ABCD]?", MODE:="0666" KERNEL=="ttyACM*",
-      ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?", MODE:="0666"
+      ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?", ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_PORT_IGNORE}="1"
+      ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789A]?", ENV{MTP_NO_PROBE}="1"
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789ABCD]?", MODE:="0666"
+      KERNEL=="ttyACM*", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?", MODE:="0666"
 
       # For Kaleidoscope/Keyboardio
-      SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2300",
-      SYMLINK+="model01", ENV{ID_MM_DEVICE_IGNORE}:="1",
-      ENV{ID_MM_CANDIDATE}:="0" SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209",
-      ATTRS{idProduct}=="2301", SYMLINK+="model01",
-      ENV{ID_MM_DEVICE_IGNORE}:="1", ENV{ID_MM_CANDIDATE}:="0"
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2300", SYMLINK+="model01", ENV{ID_MM_DEVICE_IGNORE}:="1", ENV{ID_MM_CANDIDATE}:="0"
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2301", SYMLINK+="model01", ENV{ID_MM_DEVICE_IGNORE}:="1", ENV{ID_MM_CANDIDATE}:="0"
     #+END_EXAMPLE
 
     These settings should correspond to the official documentation:
@@ -138,7 +99,7 @@ This puts the build into a consistent-enough state.
 
     Or just restart the computer.
 
-*** 3. For Kaleidoscope, join the necessary OS group
+*** 4. For Kaleidoscope, join the necessary OS group
 
     #+BEGIN_QUOTE
     */NOTE:/* You don't need this step if you're flashing the Ergodox EZ.
@@ -168,19 +129,19 @@ This puts the build into a consistent-enough state.
 
     You should see memberships in the new group with the =groups= command:
 
-    #+BEGIN_SRC shell :results output :eval no-export :exports both
+    #+BEGIN_SRC shell :results output :exports both
       groups | grep dialout
     #+END_SRC
 
     #+RESULTS:
     : users wheel video dialout docker
 
-*** 4. Unplug and replug your keyboard
+*** 5. Unplug and replug your keyboard
 
     Unplug your keyboard(s) and plug them back in, to make sure everything's
     set to program.
 
-*** 5. Get the code and run it
+*** 6. Get the code and run it
 
     Clone this code base and go into the directory:
 
@@ -205,7 +166,7 @@ This puts the build into a consistent-enough state.
        ./flash-ergodoxez
      #+END_SRC
 
-     #+BEGIN_SRC bash :results output :eval no-export :exports results
+     #+BEGIN_SRC bash :results output :exports results
        head -11 < <(./flash-ergodoxez)
      #+END_SRC
 
@@ -215,11 +176,11 @@ This puts the build into a consistent-enough state.
      Flashing ZSA Technology Lab's Ergodox EZ (custom "shajra" keymap)
      =================================================================
 
-     FLASH SOURCE: /nix/store/z59b5cnpszla6cz69qdh7my75g4wbj50-qmk-custom-shajra-src
-     FLASH BINARY: /nix/store/nf3x5hr5zhkrcxmzara2k8qkkfrcqvr1-ergodoxez-custom-shajra-hex
+     FLASH SOURCE: /nix/store/qw018xvnib0ykhv5j2b861f1j4vhjpxb-qmk-custom-shajra-src
+     FLASH BINARY: /nix/store/2swprqf95yjaqirb72r5ply2a11cfnmn-ergodoxez-custom-shajra-hex
 
      Teensy Loader, Command Line, Version 2.1
-     Read "/nix/store/nf3x5hr5zhkrcxmzara2k8qkkfrcqvr1-ergodoxez-custom-shajra-hex": 26620 bytes, 82.5% usage
+     Read "/nix/store/2swprqf95yjaqirb72r5ply2a11cfnmn-ergodoxez-custom-shajra-hex": 27376 bytes, 84.9% usage
      Waiting for Teensy device...
       (hint: press the reset button)
      #+end_example
@@ -233,7 +194,7 @@ This puts the build into a consistent-enough state.
        ./flash-model01
      #+END_SRC
 
-     #+BEGIN_SRC bash :results output :eval no-export :exports results
+     #+BEGIN_SRC bash :results output :exports results
        head -14 < <(./flash-model01)
      #+END_SRC
 
@@ -243,16 +204,15 @@ This puts the build into a consistent-enough state.
      Flashing Keyboardio's Model 01 (custom "shajra" keymap)
      =======================================================
 
-     FLASH SOURCE: /nix/store/hy23rzgbnpxpdq9izrnbhbxn5b14w9fh-model01-custom-shajra-src
+     FLASH SOURCE: /nix/store/zbq8kccj4jmjllya1wndpjkxwj70v814-model01-custom-shajra-src
 
-     BOARD_HARDWARE_PATH="/nix/store/yw3awzchc4p8p7sh04vxh8xhrf9ck5ia-kaleidoscope-src/arduino/hardware" /nix/store/yw3awzchc4p8p7sh04vxh8xhrf9ck5ia-kaleidoscope-src/arduino/hardware/keyboardio/avr/libraries/Kaleidoscope/bin//kaleidoscope-builder flash
-     Building ./Model01-Firmware 0.0.0 into /tmp/kaleidoscope-/sketch/8264081-Model01-Firmware.ino/output...
-     - Size: firmware/Model01-Firmware/Model01-Firmware-0.0.0.elf
-       - Program:   25654 bytes (89.5% Full)
-       - Data:       1237 bytes (48.3% Full)
+     BOARD_HARDWARE_PATH="/nix/store/yjnifj7vcdqbx7pyj2a98bj87fp7f9wr-kaleidoscope-src/arduino/hardware" /nix/store/yjnifj7vcdqbx7pyj2a98bj87fp7f9wr-kaleidoscope-src/arduino/hardware/keyboardio/avr/libraries/Kaleidoscope/bin//kaleidoscope-builder flash
+     To update your keyboard's firmware, hold down the 'Prog' key on your keyboard.
 
-     To update your keyboard's firmware, hold down the 'Prog' key on your keyboard,
-     and then press 'Enter'.
+     (When the 'Prog' key glows red, you can release it.)
+
+
+     When you're ready to proceed, press 'Enter'.
      #+end_example
 
      The =Prog= key is hardwired to be the top-left-most key of the
@@ -269,91 +229,65 @@ This puts the build into a consistent-enough state.
   =./flash-ergodoxez= and =./flash-model01= support. Both scripts have a
   =-h= / =--help= in case you forget your options.
 
-* Modifying and testing
+* Customization
 
-  The provided code is fairly compact. If you look in the =keymaps= directory,
-  you should find familiar files that you would edit in QMK or Kaleidoscope
-  projects, respectively. These keymaps are compiled into the flashing scripts
-  provided with this project.
+** Customizing Keymaps
 
-  For both keyboards, The "shajra" keymap is in it's own directory. You can
-  make your own keymaps and put them in a sibling directory with the name of
-  your choice, and they'll be compiled in as well.
+   The provided code is fairly compact. If you look in the =keymaps= directory,
+   you should find familiar files that you would edit in QMK or Kaleidoscope
+   projects, respectively. These keymaps are compiled into the flashing scripts
+   provided with this project.
 
-  If you don't want to use keymaps compiled into the flashing scripts, you can
-  use another directory of keymaps at runtime with the =-K= / =-keymaps=
-  switch.
+   For both keyboards, The "shajra" keymap is in it's own directory. You can
+   make your own keymaps and put them in a sibling directory with the name of
+   your choice, and they'll be compiled in as well.
 
-  Then you can use the =-k= / =--keymap= switch of either script to load your
-  custom keymap by the name you chose for the keymap in the "keymaps"
-  directory. The scripts should pick up changes, rebuild anything necessary,
-  and flash your keyboard.
+   If you don't want to use keymaps compiled into the flashing scripts, you can
+   use another directory of keymaps at runtime with the =-K= / =-keymaps=
+   switch.
 
-  The used keymap source code is copied into =/nix/store=, and the invocation
-  of the flashing scripts will print out a "FLASH SOURCE:" line indicating the
-  source used for compiling/flashing for your reference. These are the full
-  source trees you'd normally use if following the QMK or Kaleidoscope
-  documentation manually.
+   Then you can use the =-k= / =--keymap= switch of either script to load your
+   custom keymap by the name you chose for the keymap in the "keymaps"
+   directory. The scripts should pick up changes, rebuild anything necessary,
+   and flash your keyboard.
 
-  If you want to check that everything builds before flashing your keyboard,
-  you can run a =nix-build= invocation:
+   The used keymap source code is copied into =/nix/store=, and the invocation
+   of the flashing scripts will print out a "FLASH SOURCE:" line indicating the
+   source used for compiling/flashing for your reference. These are the full
+   source trees you'd normally use if following the QMK or Kaleidoscope
+   documentation manually.
 
-  #+BEGIN_SRC shell :results output :eval no-export :exports both
-    nix-build --no-out-link nix/ci.nix
-  #+END_SRC
+** Development
 
-  #+RESULTS:
-  #+begin_example
-  /nix/store/xbif0fldkpgkzfzzvjzqplwn8mwgp4gy-flash-ergodoxez
-  /nix/store/63q8yrd23qhgkkd7vfgbx4q312fgv3i0-ergodoxez-custom-shajra-flash
-  /nix/store/l5m5zjwxhqn61g5db8fs9g21r5rrvlik-ergodoxez-custom-shajra-hex
-  /nix/store/9r01jscnxli1rwbzn1c49njznsa66h7v-ergodoxez-factory-flash
-  /nix/store/8dzmmi8iyr8ggh5280nv04ri79dbzhvn-ergodoxez-factory-hex
-  /nix/store/bzd4xnjmci4hr8zlgi1mvn138smm65dw-flash-model01
-  /nix/store/bfz3ph3a5cn93595322lm542drsa31xa-model01-custom-shajra-flash
-  /nix/store/krm1waxx9xm43l9m9sma7q0w3lafb2nd-model01-custom-shajra-hex
-  /nix/store/hgb18q8zmkclncdmzs8kmvs4j5yanbjx-model01-factory-flash
-  /nix/store/cgsxrsxs06ynw9y0ja66lr2mjyk27lcx-model01-factory-hex
-  /nix/store/fa6jglz8d8fd0kzvr3czc9rj995cj61s-shajra-keyboards-licenses
-  #+end_example
+   This project relies heavily on Nix, primarily to help deal with all the
+   complexity of setting up dependencies.
 
-  If you run =nix-build= without the =--no-out-link= switch, Nix will leave
-  symlinks behind in your working directory that point to the built artifacts,
-  which Nix always stores in a special =/nix/store= directory. The names of
-  these symlinks are all prefixed with "result".
+   The [[file:doc/nix.org][provided documentation on Nix]] introduces Nix and how to use it in the
+   context of this project.
 
-  You can garbage collect =/nix/store= by running =nix-collect-garbage=:
+   If you want to check that everything builds before flashing your keyboard,
+   you can build locally everything built by this project's continuous
+   integration:
 
-  #+BEGIN_SRC shell :results silent :exports none
-    nix-collect-garbage
-  #+END_SRC
+   #+BEGIN_SRC shell :results output :exports both
+     nix build --no-link --file nix/ci.nix \
+         && nix path-info --file nix/ci.nix
+   #+END_SRC
 
-  #+BEGIN_SRC shell :results silent :exports none
-    rm result*
-  #+END_SRC
-
-  #+BEGIN_SRC shell :results output :eval no-export :exports both :post crop(text=*this*)
-    nix-collect-garbage 2>&1
-  #+END_SRC
-
-  #+RESULTS:
-  #+begin_example
-  finding garbage collector roots...
-  removing stale link from '/nix/var/nix/gcroots/auto/w5ihmay6mnbji6vlagmc8f7f4495746x' to '/home/tnks/src/shajra/shajra-keyboards/result-8'
-  removing stale link from '/nix/var/nix/gcroots/auto/72fsyc6cqwn47d8wkqrv0hk4zvp44w8x' to '/home/tnks/src/shajra/shajra-keyboards/result-6'
-  removing stale link from '/nix/var/nix/gcroots/auto/ix6mpi0rbh2hgk1695acwi3ky86rgiyl' to '/home/tnks/src/shajra/shajra-keyboards/result-3'
-  removing stale link from '/nix/var/nix/gcroots/auto/h9g56k2cpxkbpdw5pl25yzkas19hnyg4' to '/home/tnks/src/shajra/shajra-keyboards/result-4'
-  …
-  deleting '/nix/store/1yvgn4hmfpaclpiqn35j15m51wdmcw9n-jdk-jdk8u222-ga.tar.gz.drv'
-  deleting '/nix/store/trash'
-  deleting unused links...
-  note: currently hard linking saves -0.00 MiB
-  109 store paths deleted, 989.89 MiB freed
-  #+end_example
-
-  The "result" symlinks generated by =nix-build= keep built artifacts from by
-  garbage collected by =nix-collect-garbage=. Otherwise, these symlink are safe
-  to delete, and [[./.gitignore][ignored by Git]].
+   #+RESULTS:
+   #+begin_example
+   /nix/store/1xxa2qa1ns45ps7qzwhg7l8pivsv25pi-model01-factory-hex
+   /nix/store/34x4fjrn80kqcpjwlh2c5x6hkxis0w97-model01-factory-flash
+   /nix/store/89yn9anpcnwanfxd0brldmxkgd9g7pam-flash-model01
+   /nix/store/9ph65s0sl96fww4jbwvds4bjfky6dw5h-ergodoxez-custom-shajra-hex
+   /nix/store/d7dw6qxv6m7wpx7i0gsvxjcl3ngf27v7-ergodoxez-factory-hex
+   /nix/store/lgcjh9bvlqxmipj3mj1bwfi86zxlsbhj-ergodoxez-custom-shajra-flash
+   /nix/store/pq03fapihc6617whzk9d5qb7x6wnsfgl-model01-custom-shajra-hex
+   /nix/store/q7q42fqz3ia212bxxn04m7smq4fjwc8q-model01-custom-shajra-flash
+   /nix/store/s8kd2a9wbfmdjanpmsifac9xgy08wdia-shajra-keyboards-licenses
+   /nix/store/ssrfwd3bsilzfz5kf15sklpkxcy5m0md-ergodoxez-factory-flash
+   /nix/store/vrg1aavssy8dy3mcinvzgcrsx0n1zfvg-flash-ergodoxez
+   #+end_example
 
 * Release
 

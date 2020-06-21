@@ -4,12 +4,15 @@
     - [Ergodox EZ "shajra" keymap](#sec-2-0-2)
 - [Using these key mappings](#sec-3)
     - [1. Install Nix on your GNU/Linux distribution](#sec-3-0-1)
-    - [2. Make sure your udev rules are set](#sec-3-0-2)
-    - [3. For Kaleidoscope, join the necessary OS group](#sec-3-0-3)
-    - [4. Unplug and replug your keyboard](#sec-3-0-4)
-    - [5. Get the code and run it](#sec-3-0-5)
+    - [2. Set up Cachix](#sec-3-0-2)
+    - [3. Make sure your udev rules are set](#sec-3-0-3)
+    - [4. For Kaleidoscope, join the necessary OS group](#sec-3-0-4)
+    - [5. Unplug and replug your keyboard](#sec-3-0-5)
+    - [6. Get the code and run it](#sec-3-0-6)
 - [Reverting to the factory default mapping](#sec-4)
-- [Modifying and testing](#sec-5)
+- [Customization](#sec-5)
+  - [Customizing Keymaps](#sec-5-1)
+  - [Development](#sec-5-2)
 - [Release](#sec-6)
 - [License](#sec-7)
 - [Contribution](#sec-8)
@@ -23,7 +26,7 @@ This project has the "shajra" keyboard mappings for two ergonomic split keyboard
 -   [Keyboardio's Model 01](https://shop.keyboard.io), programmed with [Kaleidoscope](https://github.com/keyboardio/Kaleidoscope) firmware.
 -   [ZSA Technology Labs' Ergodox EZ](https://ergodox-ez.com), programmed with [QMK](https://docs.qmk.fm) firmware
 
-Beyond the keymap, this project offers some streamlined automation with [Nix](https://nixos.org/nix) that you can use for your own keymap.
+Beyond the keymap, this project offers some streamlined automation with [Nix](https://nixos.org/nix) that you can use for your own keymap. We install Nix, and Nix will download and build everything we need to flash our keyboards. See [the provided documentation on Nix](doc/nix.md) for more on what Nix is, why we're motivated to use it, and how to get set up with it for this project.
 
 The rest of this document discusses using this automation. To get the most out of the keymap itself, you may be interested in the [design document](doc/design.md) explaining the motivation behind the mapping.
 
@@ -43,7 +46,7 @@ The "shajra" keymaps for both keyboards are extremely similar, which works out w
 
 This project only supports a GNU/Linux operating system with the [Nix package manager](https://nixos.org/nix) installed.
 
-QMK and Kaleidoscope have build complexities and dependencies that can take a moment to work through. Nix can automate this hassle away by downloading and setting up all the necessary third-party dependencies in way that
+QMK and Kaleidoscope have build complexities and dependencies that can take a moment to work through. Nix can automate this hassle away by downloading and setting up all the necessary third-party dependencies in a way that
 
 -   is highly reproducible
 -   won't conflict with your current system/configuration.
@@ -54,11 +57,9 @@ The following steps will get your keyboard flashed.
 
 ### 1. Install Nix on your GNU/Linux distribution<a id="sec-3-0-1"></a>
 
-> **<span class="underline">NOTE</span>**: You don't need this step if you're running NixOS, which comes with Nix baked in.
+> **<span class="underline">NOTE:</span>** You don't need this step if you're running NixOS, which comes with Nix baked in.
 
-> **<span class="underline">NOTE</span>**: Nix on Macs (nix-darwin) currently won't work with this project and is not supported for Macs.
-
-If you don't already have Nix, the official installation script should work on a variety of GNU/Linux distributions. The easiest way to run this installation script is to execute the following shell command as a user other than root:
+If you don't already have Nix, the official installation script should work on a variety of UNIX-like operating systems. The easiest way to run this installation script is to execute the following shell command as a user other than root:
 
 ```shell
 curl https://nixos.org/nix/install | sh
@@ -66,28 +67,40 @@ curl https://nixos.org/nix/install | sh
 
 This script will download a distribution-independent binary tarball containing Nix and its dependencies, and unpack it in `/nix`.
 
-If you prefer to install Nix another way, reference the [Nix manual](https://nixos.org/nix/manual/#chap-installation).
+The Nix manual describes [other methods of installing Nix](https://nixos.org/nix/manual/#chap-installation) that may suit you more.
 
-### 2. Make sure your udev rules are set<a id="sec-3-0-2"></a>
+### 2. Set up Cachix<a id="sec-3-0-2"></a>
+
+It's recommended to configure Nix to use shajra.cachix.org as a Nix *substituter*. This project pushes built Nix packages to [Cachix](https://cachix.org) as part of its continuous integration. Once configured, Nix will pull down these pre-built packages instead of building them locally.
+
+You can configure shajra.cachix.org as a substituter with the following command:
+
+```shell
+nix run \
+    --file https://cachix.org/api/v1/install \
+    cachix \
+    --command cachix use shajra
+```
+
+This will perform user-local configuration of Nix at `~/.config/nix/nix.conf`. This configuration will be available immediately, and any subsequent invocation of Nix commands will take advantage of the Cachix cache.
+
+If you're running NixOS, you can configure Cachix globally by running the above command as a root user. The command will then configure `/etc/nixos/cachix/shajra.nix`, and the output will explain how to tie this configuration into your normal NixOS configuration.
+
+### 3. Make sure your udev rules are set<a id="sec-3-0-3"></a>
 
 To program either keyboard with a new mapping, you need to augment your OS configuration with new udev rules.
 
 The following are recommended rules for each keyboard:
 
     # For Teensy/Ergodox
-    ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?",
-    ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_PORT_IGNORE}="1"
-    ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789A]?",
-    ENV{MTP_NO_PROBE}="1" SUBSYSTEMS=="usb", ATTRS{idVendor}=="16c0",
-    ATTRS{idProduct}=="04[789ABCD]?", MODE:="0666" KERNEL=="ttyACM*",
-    ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?", MODE:="0666"
+    ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?", ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_PORT_IGNORE}="1"
+    ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789A]?", ENV{MTP_NO_PROBE}="1"
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789ABCD]?", MODE:="0666"
+    KERNEL=="ttyACM*", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?", MODE:="0666"
     
     # For Kaleidoscope/Keyboardio
-    SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2300",
-    SYMLINK+="model01", ENV{ID_MM_DEVICE_IGNORE}:="1",
-    ENV{ID_MM_CANDIDATE}:="0" SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209",
-    ATTRS{idProduct}=="2301", SYMLINK+="model01",
-    ENV{ID_MM_DEVICE_IGNORE}:="1", ENV{ID_MM_CANDIDATE}:="0"
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2300", SYMLINK+="model01", ENV{ID_MM_DEVICE_IGNORE}:="1", ENV{ID_MM_CANDIDATE}:="0"
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2301", SYMLINK+="model01", ENV{ID_MM_DEVICE_IGNORE}:="1", ENV{ID_MM_CANDIDATE}:="0"
 
 These settings should correspond to the official documentation:
 
@@ -104,7 +117,7 @@ udevadm control --reload-rules udevadm trigger
 
 Or just restart the computer.
 
-### 3. For Kaleidoscope, join the necessary OS group<a id="sec-3-0-3"></a>
+### 4. For Kaleidoscope, join the necessary OS group<a id="sec-3-0-4"></a>
 
 > ***NOTE:*** You don't need this step if you're flashing the Ergodox EZ.
 
@@ -133,11 +146,11 @@ groups | grep dialout
 
     users wheel video dialout docker
 
-### 4. Unplug and replug your keyboard<a id="sec-3-0-4"></a>
+### 5. Unplug and replug your keyboard<a id="sec-3-0-5"></a>
 
 Unplug your keyboard(s) and plug them back in, to make sure everything's set to program.
 
-### 5. Get the code and run it<a id="sec-3-0-5"></a>
+### 6. Get the code and run it<a id="sec-3-0-6"></a>
 
 Clone this code base and go into the directory:
 
@@ -161,11 +174,11 @@ Note, the first time you run the commands described below, you'll see Nix doing 
         Flashing ZSA Technology Lab's Ergodox EZ (custom "shajra" keymap)
         =================================================================
         
-        FLASH SOURCE: /nix/store/z59b5cnpszla6cz69qdh7my75g4wbj50-qmk-custom-shajra-src
-        FLASH BINARY: /nix/store/nf3x5hr5zhkrcxmzara2k8qkkfrcqvr1-ergodoxez-custom-shajra-hex
+        FLASH SOURCE: /nix/store/qw018xvnib0ykhv5j2b861f1j4vhjpxb-qmk-custom-shajra-src
+        FLASH BINARY: /nix/store/2swprqf95yjaqirb72r5ply2a11cfnmn-ergodoxez-custom-shajra-hex
         
         Teensy Loader, Command Line, Version 2.1
-        Read "/nix/store/nf3x5hr5zhkrcxmzara2k8qkkfrcqvr1-ergodoxez-custom-shajra-hex": 26620 bytes, 82.5% usage
+        Read "/nix/store/2swprqf95yjaqirb72r5ply2a11cfnmn-ergodoxez-custom-shajra-hex": 27376 bytes, 84.9% usage
         Waiting for Teensy device...
          (hint: press the reset button)
 
@@ -181,16 +194,15 @@ Note, the first time you run the commands described below, you'll see Nix doing 
         Flashing Keyboardio's Model 01 (custom "shajra" keymap)
         =======================================================
         
-        FLASH SOURCE: /nix/store/hy23rzgbnpxpdq9izrnbhbxn5b14w9fh-model01-custom-shajra-src
+        FLASH SOURCE: /nix/store/zbq8kccj4jmjllya1wndpjkxwj70v814-model01-custom-shajra-src
         
-        BOARD_HARDWARE_PATH="/nix/store/yw3awzchc4p8p7sh04vxh8xhrf9ck5ia-kaleidoscope-src/arduino/hardware" /nix/store/yw3awzchc4p8p7sh04vxh8xhrf9ck5ia-kaleidoscope-src/arduino/hardware/keyboardio/avr/libraries/Kaleidoscope/bin//kaleidoscope-builder flash
-        Building ./Model01-Firmware 0.0.0 into /tmp/kaleidoscope-/sketch/8264081-Model01-Firmware.ino/output...
-        - Size: firmware/Model01-Firmware/Model01-Firmware-0.0.0.elf
-          - Program:   25654 bytes (89.5% Full)
-          - Data:       1237 bytes (48.3% Full)
+        BOARD_HARDWARE_PATH="/nix/store/yjnifj7vcdqbx7pyj2a98bj87fp7f9wr-kaleidoscope-src/arduino/hardware" /nix/store/yjnifj7vcdqbx7pyj2a98bj87fp7f9wr-kaleidoscope-src/arduino/hardware/keyboardio/avr/libraries/Kaleidoscope/bin//kaleidoscope-builder flash
+        To update your keyboard's firmware, hold down the 'Prog' key on your keyboard.
         
-        To update your keyboard's firmware, hold down the 'Prog' key on your keyboard,
-        and then press 'Enter'.
+        (When the 'Prog' key glows red, you can release it.)
+        
+        
+        When you're ready to proceed, press 'Enter'.
     
     The `Prog` key is hardwired to be the top-left-most key of the Keyboardio Model 01, but the `Enter` key can be remapped. If you forget where the `Enter` has been mapped to on your Keyboard, you can hit `Enter` on another connected keyboard.
 
@@ -200,7 +212,9 @@ This project's scripts won't save off your previous keymap from your keyboard. B
 
 This can be done with the `-F` / `--factory` switch, which both `./flash-ergodoxez` and `./flash-model01` support. Both scripts have a `-h` / `--help` in case you forget your options.
 
-# Modifying and testing<a id="sec-5"></a>
+# Customization<a id="sec-5"></a>
+
+## Customizing Keymaps<a id="sec-5-1"></a>
 
 The provided code is fairly compact. If you look in the `keymaps` directory, you should find familiar files that you would edit in QMK or Kaleidoscope projects, respectively. These keymaps are compiled into the flashing scripts provided with this project.
 
@@ -212,45 +226,30 @@ Then you can use the `-k` / `--keymap` switch of either script to load your cust
 
 The used keymap source code is copied into `/nix/store`, and the invocation of the flashing scripts will print out a "FLASH SOURCE:" line indicating the source used for compiling/flashing for your reference. These are the full source trees you'd normally use if following the QMK or Kaleidoscope documentation manually.
 
-If you want to check that everything builds before flashing your keyboard, you can run a `nix-build` invocation:
+## Development<a id="sec-5-2"></a>
+
+This project relies heavily on Nix, primarily to help deal with all the complexity of setting up dependencies.
+
+The [provided documentation on Nix](doc/nix.md) introduces Nix and how to use it in the context of this project.
+
+If you want to check that everything builds before flashing your keyboard, you can build locally everything built by this project's continuous integration:
 
 ```shell
-nix-build --no-out-link nix/ci.nix
+nix build --no-link --file nix/ci.nix \
+    && nix path-info --file nix/ci.nix
 ```
 
-    /nix/store/xbif0fldkpgkzfzzvjzqplwn8mwgp4gy-flash-ergodoxez
-    /nix/store/63q8yrd23qhgkkd7vfgbx4q312fgv3i0-ergodoxez-custom-shajra-flash
-    /nix/store/l5m5zjwxhqn61g5db8fs9g21r5rrvlik-ergodoxez-custom-shajra-hex
-    /nix/store/9r01jscnxli1rwbzn1c49njznsa66h7v-ergodoxez-factory-flash
-    /nix/store/8dzmmi8iyr8ggh5280nv04ri79dbzhvn-ergodoxez-factory-hex
-    /nix/store/bzd4xnjmci4hr8zlgi1mvn138smm65dw-flash-model01
-    /nix/store/bfz3ph3a5cn93595322lm542drsa31xa-model01-custom-shajra-flash
-    /nix/store/krm1waxx9xm43l9m9sma7q0w3lafb2nd-model01-custom-shajra-hex
-    /nix/store/hgb18q8zmkclncdmzs8kmvs4j5yanbjx-model01-factory-flash
-    /nix/store/cgsxrsxs06ynw9y0ja66lr2mjyk27lcx-model01-factory-hex
-    /nix/store/fa6jglz8d8fd0kzvr3czc9rj995cj61s-shajra-keyboards-licenses
-
-If you run `nix-build` without the `--no-out-link` switch, Nix will leave symlinks behind in your working directory that point to the built artifacts, which Nix always stores in a special `/nix/store` directory. The names of these symlinks are all prefixed with "result".
-
-You can garbage collect `/nix/store` by running `nix-collect-garbage`:
-
-```shell
-nix-collect-garbage 2>&1
-```
-
-    finding garbage collector roots...
-    removing stale link from '/nix/var/nix/gcroots/auto/w5ihmay6mnbji6vlagmc8f7f4495746x' to '/home/tnks/src/shajra/shajra-keyboards/result-8'
-    removing stale link from '/nix/var/nix/gcroots/auto/72fsyc6cqwn47d8wkqrv0hk4zvp44w8x' to '/home/tnks/src/shajra/shajra-keyboards/result-6'
-    removing stale link from '/nix/var/nix/gcroots/auto/ix6mpi0rbh2hgk1695acwi3ky86rgiyl' to '/home/tnks/src/shajra/shajra-keyboards/result-3'
-    removing stale link from '/nix/var/nix/gcroots/auto/h9g56k2cpxkbpdw5pl25yzkas19hnyg4' to '/home/tnks/src/shajra/shajra-keyboards/result-4'
-    …
-    deleting '/nix/store/1yvgn4hmfpaclpiqn35j15m51wdmcw9n-jdk-jdk8u222-ga.tar.gz.drv'
-    deleting '/nix/store/trash'
-    deleting unused links...
-    note: currently hard linking saves -0.00 MiB
-    109 store paths deleted, 989.89 MiB freed
-
-The "result" symlinks generated by `nix-build` keep built artifacts from by garbage collected by `nix-collect-garbage`. Otherwise, these symlink are safe to delete, and [ignored by Git](./.gitignore).
+    /nix/store/1xxa2qa1ns45ps7qzwhg7l8pivsv25pi-model01-factory-hex
+    /nix/store/34x4fjrn80kqcpjwlh2c5x6hkxis0w97-model01-factory-flash
+    /nix/store/89yn9anpcnwanfxd0brldmxkgd9g7pam-flash-model01
+    /nix/store/9ph65s0sl96fww4jbwvds4bjfky6dw5h-ergodoxez-custom-shajra-hex
+    /nix/store/d7dw6qxv6m7wpx7i0gsvxjcl3ngf27v7-ergodoxez-factory-hex
+    /nix/store/lgcjh9bvlqxmipj3mj1bwfi86zxlsbhj-ergodoxez-custom-shajra-flash
+    /nix/store/pq03fapihc6617whzk9d5qb7x6wnsfgl-model01-custom-shajra-hex
+    /nix/store/q7q42fqz3ia212bxxn04m7smq4fjwc8q-model01-custom-shajra-flash
+    /nix/store/s8kd2a9wbfmdjanpmsifac9xgy08wdia-shajra-keyboards-licenses
+    /nix/store/ssrfwd3bsilzfz5kf15sklpkxcy5m0md-ergodoxez-factory-flash
+    /nix/store/vrg1aavssy8dy3mcinvzgcrsx0n1zfvg-flash-ergodoxez
 
 # Release<a id="sec-6"></a>
 

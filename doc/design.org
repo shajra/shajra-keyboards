@@ -1,5 +1,5 @@
 #+TITLE: Design of the "shajra" Keymap
-#+SETUPFILE: ../support/setup.org
+#+SETUPFILE: links.org
 
 This document discusses the rationale of the "shajra" keymap for the Ergodox EZ
 and Model 01 keyboards.

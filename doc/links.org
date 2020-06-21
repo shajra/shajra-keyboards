@@ -1,3 +1,4 @@
+#+LINK: cachix https://cachix.org
 #+LINK: ergodox-ez https://ergodox-ez.com
 #+LINK: kaleidoscope https://github.com/keyboardio/Kaleidoscope
 #+LINK: kaleidoscope-install https://github.com/keyboardio/Kaleidoscope/wiki/Install-Arduino-support-on-Linux
