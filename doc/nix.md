@@ -208,8 +208,10 @@ nix-env --query
 To install the `flash-ergodoxez` executable, which is accessed by the "shajra-keyboards-flash-scripts.ergodoxez" in our top-level `default.nix` file, we'd run the following:
 
 ```shell
-nix-env --install --file . --attr shajra-keyboards-flash-scripts.ergodoxez
+nix-env --install --file . --attr shajra-keyboards-flash-scripts.ergodoxez 2>&1
 ```
+
+    installing 'flash-ergodoxez'
 
 We can see this installation by querying what's been installed:
 
@@ -222,8 +224,10 @@ nix-env --query
 And if we want to uninstall a program from our active profile, we do so by its name, in this case "flash-ergodoxez":
 
 ```shell
-nix-env --uninstall flash-ergodoxez
+nix-env --uninstall flash-ergodoxez 2>&1
 ```
+
+    uninstalling 'flash-ergodoxez'
 
 Note that we've installed our package using its attribute name ("shajra-keyboards-flash-scripts.ergodoxez") within the referenced Nix expression. But we uninstall it using the package name ("flash-ergodoxez"), which may or may not be the same as the attribute name. When a package is installed, Nix keeps no reference to the expression that evaluated to the derivation of the installed package. The attribute name is only relevant to this expression. In fact, two different expressions could evaluate to the exact same derivation, but use different attribute names. This is why we uninstall packages by their package name.
 

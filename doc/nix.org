@@ -378,13 +378,16 @@
    following:
 
    #+BEGIN_SRC shell :eval no :noweb yes
-     nix-env --install --file . --attr <<get("package-attr")>>
+     nix-env --install --file . --attr <<get("package-attr")>> 2>&1
    #+END_SRC
 
-   #+BEGIN_SRC shell :dir .. :results output silent :exports none :noweb yes
+   #+BEGIN_SRC shell :dir .. :results output :exports results :noweb yes :post crop(text=*this*, first-n=0, last-n=1)
      mkdir nix-profile
-     nix-env --profile nix-profile/doc --install --file . --attr <<get("package-attr")>>
+     nix-env --profile nix-profile/doc --install --file . --attr <<get("package-attr")>> 2>&1
    #+END_SRC
+
+   #+RESULTS:
+   : installing 'flash-ergodoxez'
 
    We can see this installation by querying what's been installed:
 
@@ -403,13 +406,15 @@
    its name, in this case {{{package-name}}}:
 
    #+BEGIN_SRC shell :eval no :noweb yes
-     nix-env --uninstall <<get("package-name")>>
+     nix-env --uninstall <<get("package-name")>> 2>&1
    #+END_SRC
 
-   #+BEGIN_SRC shell :dir .. :results output silent :exports none :noweb yes
-     mkdir nix-profile
-     nix-env --profile nix-profile/doc --uninstall <<get("package-name")>>
+   #+BEGIN_SRC shell :dir .. :results output :exports results :noweb yes
+     nix-env --profile nix-profile/doc --uninstall <<get("package-name")>> 2>&1
    #+END_SRC
+
+   #+RESULTS:
+   : uninstalling 'flash-ergodoxez'
 
    Note that we've installed our package using its attribute name
    ({{{package-attr}}}) within the referenced Nix expression. But we uninstall
