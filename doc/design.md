@@ -116,13 +116,13 @@ With the Ergodox EZ and Model 01, we get new keys that can get much more utility
 
 In traditional keyboards, commonly pressed keys like `Enter` and `Shift` are pressed by pinky fingers (the hand's weakest), and are not close to home keys. These keys are great candidates to move towards the new thumb/palm home keys made available.
 
-To further capitalize on these thumb/palm keys, We can use QMK's [Mod-Tap](https://docs.qmk.fm/#/feature_advanced_keycodes?id=mod-tap) or Kaleidoscope's [Qukey](https://github.com/keyboardio/Kaleidoscope/blob/master/doc/plugin/Qukeys.md) features to allow each key to share both a modifier and a non-modifier keycode. The modifier is accessed when holding the key, and the non-modifier when tapping the key. In our diagrams, the modifier of a Mod-Tap/Qukey-enhanced key is labeled in its lower-right corner. The key's other labels indicate other keycodes sharing the key.
+To further capitalize on these thumb/palm keys, We can use QMK's [Mod-Tap](https://docs.qmk.fm/#/mod_tap) or Kaleidoscope's [Qukey](https://kaleidoscope.readthedocs.io/en/latest/plugins/Qukeys.html) features to allow each key to share both a modifier and a non-modifier keycode. The modifier is accessed when holding the key, and the non-modifier when tapping the key. In our diagrams, the modifier of a Mod-Tap/Qukey-enhanced key is labeled in its lower-right corner. The key's other labels indicate other keycodes sharing the key.
 
 Mod-Tap/Qukey is not good for every key, though. It can lead to some typos when typing fast, especially with a hint of rollover that can register as an accidental hold. For this reason, it's not good to use it with normal alphanumeric keys. So we won't use Mod-Tap for our core QWERTY keys (the beige keys).
 
 ### Avoid One-Shot Modifiers (OSM)<a id="sec-4-0-3"></a>
 
-Thus far, we've presumed that modifiers need to be oriented such that we can expressively and ergonomically chord them. However, [Kaleidoscope's OneShot plugin](https://github.com/keyboardio/Kaleidoscope/blob/master/doc/plugin/OneShot.md) and [QMK's One-Shot feature](https://docs.qmk.fm/features/feature_advanced_keycodes#one-shot-keys) allow us to use tapping to emulate holding a modifier.
+Thus far, we've presumed that modifiers need to be oriented such that we can expressively and ergonomically chord them. However, [Kaleidoscope's OneShot plugin](https://kaleidoscope.readthedocs.io/en/latest/plugins/OneShot.html) and [QMK's One-Shot feature](https://docs.qmk.fm/#/one_shot_keys) allow us to use tapping to emulate holding a modifier.
 
 Unfortunately, One-Shot is incompatible with Mod-Tap/Qukeys, which we've reasoned above will help us get more keycodes closer to our thumb/palm home keys.
 

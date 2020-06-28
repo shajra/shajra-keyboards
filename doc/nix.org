@@ -277,7 +277,7 @@
    #+END_SRC
 
    #+RESULTS:
-   : /nix/store/nahdkmfnlf96n3xyhkgi99c8q56xyb8s-flash-ergodoxez
+   : /nix/store/nnmmry0a6g2n694928kwgnvccd6k717m-flash-ergodoxez
 
    Following these symlinks, we can see the files the project provides:
 
@@ -304,7 +304,7 @@
    #+END_SRC
 
    #+RESULTS:
-   : /nix/store/nahdkmfnlf96n3xyhkgi99c8q56xyb8s-flash-ergodoxez
+   : /nix/store/nnmmry0a6g2n694928kwgnvccd6k717m-flash-ergodoxez
 
 ** Running commands
 
@@ -381,7 +381,7 @@
      nix-env --install --file . --attr <<get("package-attr")>> 2>&1
    #+END_SRC
 
-   #+BEGIN_SRC shell :dir .. :results output :exports results :noweb yes :post crop(text=*this*, first-n=0, last-n=1)
+   #+BEGIN_SRC shell :dir .. :results output :exports results :noweb yes :post crop(text=*this*, first-n=0, last-n=3)
      mkdir nix-profile
      nix-env --profile nix-profile/doc --install --file . --attr <<get("package-attr")>> 2>&1
    #+END_SRC

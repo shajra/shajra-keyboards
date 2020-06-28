@@ -99,13 +99,16 @@ The following are recommended rules for each keyboard:
     KERNEL=="ttyACM*", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?", MODE:="0666"
     
     # For Kaleidoscope/Keyboardio
-    SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2300", SYMLINK+="model01", ENV{ID_MM_DEVICE_IGNORE}:="1", ENV{ID_MM_CANDIDATE}:="0"
-    SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2301", SYMLINK+="model01", ENV{ID_MM_DEVICE_IGNORE}:="1", ENV{ID_MM_CANDIDATE}:="0"
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2300", SYMLINK+="model01", ENV{ID_MM_DEVICE_IGNORE}:="1", ENV{ID_MM_CANDIDATE}:="0", TAG+="uaccess", TAG+="seat"
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2301", SYMLINK+="model01", ENV{ID_MM_DEVICE_IGNORE}:="1", ENV{ID_MM_CANDIDATE}:="0", TAG+="uaccess", TAG+="seat"
 
-These settings should correspond to the official documentation:
+Note, each rule must be on a single line (even if the line gets long). Udev rules have no syntax to support rules spanning multiple lines.
 
--   [QMK documentation for configuring udev](https://github.com/qmk/qmk_firmware/tree/master/keyboards/ergodox_ez)
--   [Kaleidoscope documentation for configuring udev](https://github.com/keyboardio/Kaleidoscope/wiki/Install-Arduino-support-on-Linux)
+These settings should correspond to the official documentation of tools and libraries used by this project:
+
+-   [QMK documentation for configuring Halfkey bootloader used by the Ergodox EZ](https://docs.qmk.fm/#/flashing?id=halfkay)
+-   [Teensy CLI documentation, used internally for flashing the Ergodox EZ](https://www.pjrc.com/teensy/loader_cli.html)
+-   [Kaleidoscope documentation](https://kaleidoscope.readthedocs.io/en/latest/setup_toolchain.html#a-name-arduino-linux-a-install-arduino-on-linux)
 
 Each distribution is different, but on many GNU/Linux systems, udev rules are put in a file in `/etc/udev/rules.d` with a ".rules" extension.
 
@@ -242,10 +245,10 @@ nix build --no-link --file nix/ci.nix \
     /nix/store/9ph65s0sl96fww4jbwvds4bjfky6dw5h-ergodoxez-custom-shajra-hex
     /nix/store/d7dw6qxv6m7wpx7i0gsvxjcl3ngf27v7-ergodoxez-factory-hex
     /nix/store/dxrd6p1h8dxdyw9bgndzf5kk0j3wnfxl-model01-custom-shajra-flash
-    /nix/store/f7jkwa1kaxvpvwrj02ihgnafdgl9jzvp-flash-model01
     /nix/store/f7nw7fwqnkybx33j5dwb8a099qgicaz4-ergodoxez-factory-flash
     /nix/store/lqzx88k58wzg82gifl9xs85c8k605jna-model01-factory-hex
-    /nix/store/nahdkmfnlf96n3xyhkgi99c8q56xyb8s-flash-ergodoxez
+    /nix/store/n5rkf90ybs2v4sqh5rh66pnv2sk8aqc8-flash-model01
+    /nix/store/nnmmry0a6g2n694928kwgnvccd6k717m-flash-ergodoxez
     /nix/store/rfs9kvgmnmrl7rx4gygc5b1qsyk24b14-model01-factory-flash
     /nix/store/s8kd2a9wbfmdjanpmsifac9xgy08wdia-shajra-keyboards-licenses
     /nix/store/wmk3scljvkhxjzdwfai8za048fd8ysxv-ergodoxez-custom-shajra-flash
