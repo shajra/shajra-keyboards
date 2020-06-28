@@ -150,9 +150,9 @@ The modifiers below have been ordered from most frequently used to least:
 |---------- |---------------------------- |
 | `Shift`    | `⇧`                          |
 | `Function` | `Fn`                         |
-| `GUI`      | `Win`, `Cmd`, `❖`, `⌘`       |
+| `GUI`      | `Win` `Cmd` `❖` `⌘`          |
 | `Ctrl`     | `✲`                          |
-| `Alt`      | `Option`, `⎇`, `⌥`           |
+| `Alt`      | `Option` `⎇` `⌥`             |
 | `Media`    |                              |
 | `Mouse`    |                              |
 | `Alt Gr`   |                              |
@@ -175,17 +175,17 @@ For the most part the modifiers are laid out symmetrically, with one exception. 
 
 ### More on `Alt Gr` and `Compose`<a id="altgr_and_compose"></a>
 
-Historically, some keyboards targetting an international audience provide a [`Alt Graph=/=Alt Gr` modifier](https://en.wikipedia.org/wiki/AltGr_key) where a `Right Alt` key would be (and thus only one `Alt` key on the left side). With this modifier some operating systems would support entry of a variety of currency and language symbols (such as "€" or "ä") beyond those on a standard US/English keyboard.
+Historically, some keyboards targetting an international audience provide a [`Alt Graph` (`Alt Gr`) modifier](https://en.wikipedia.org/wiki/AltGr_key) where a `Right Alt` key would be (and thus only one `Alt` key on the left side). With this modifier some operating systems would support entry of a variety of currency and language symbols (such as "€" or "ä") beyond those on a standard US/English keyboard.
 
-On Macs, both left and right `Option=/=⌥` keys help enter alternate symbols similarly to an `Alt Gr` key. And keyboards that emit the `Alt` keycodes are interpretted by Macs as an `Option` keycodes.
+On Macs, both left and right `Option` (`⌥`) keys help enter alternate symbols similarly to an `Alt Gr` key. And keyboards that emit the `Alt` keycodes are interpretted by Macs as an `Option` keycodes.
 
 On GNU/Linux and Windows, the `Right Alt` keycode can be configured to serve as an `Alt Gr` key, leaving the `Left Alt` available for user/application/OS keybinding.
 
 Under the assumption that the `Right Alt` modifier may be used (as an `Alt Gr` key) differently from the `Left Alt` modifier, the "shajra" keymap puts each on both the right and left sides. This way we can retain the benefits of having the same modifier on both sides as we have for all our other modifiers.
 
-The "shajra" keymap makes this `Alt Gr` keys a One-Shot Modifier (OSM), to make it easier to use. Note that due to limited space on the Model 01, the `Right Alt=/=Alt Gr` keycode is placed in the Function layer. Hopefully as an OSM, this modifier will still be convenient enough, despite being in a Function layer.
+The "shajra" keymap makes this `Alt Gr` keys a One-Shot Modifier (OSM), to make it easier to use. Note that due to limited space on the Model 01, the `Right Alt` (`Alt Gr`) keycode is placed in the Function layer. Hopefully as an OSM, this modifier will still be convenient enough, despite being in a Function layer.
 
-Note that on GNU/Linux, `Shift+Right Alt` is often configured to be a [`Compose=/=⎄` key](https://en.wikipedia.org/wiki/Compose_key), which serves a similar function to an `Alt Gr` key. The major difference is that `Compose` keys are one-shot (tapped, not held) by nature, and therefore not a traditional modifier.
+Note that on GNU/Linux, `Shift+Right Alt` is often configured to be a [`Compose` (`⎄`) key](https://en.wikipedia.org/wiki/Compose_key), which serves a similar function to an `Alt Gr` key. The major difference is that `Compose` keys are one-shot (tapped, not held) by nature, and therefore not a traditional modifier.
 
 Because they are similar in function, the `Alt Gr` and `Compose` keys are placed adjacent to one another in both Model 01 and Ergodox EZ "shajra" keymaps.
 
@@ -203,14 +203,14 @@ The following non-modifier keycodes below have been ordered from most frequently
 | `'`                        |                     | apostrophes common in text, but historically next to `;`   |
 | `Esc`                      | `⎋`                 | essential for Vim-style keybinds                           |
 | `Tab`                      | `↹`                 | very useful for shell/programming tab-complete             |
-| `-=/==`                    |                     | CLI switches, "zoom" keybindings, common in programming    |
-| `Left=/=Right=/=Down=/=Up` | `⬅=/=➡=/=⬇=/=⬆`     | very useful in a variety of contexts                       |
+| `-` `=`                    |                     | CLI switches, "zoom" keybindings, common in programming    |
+| `Left` `Right` `Down` `Up` | `⬅` `➡` `⬇` `⬆`     | very useful in a variety of contexts                       |
 | `` ` ``                    |                     | common in "markdown" languages for verbatim text           |
-| `Page Down=/=Page Up`      | `⇟=/=⇞`             | useful when reading a large page                           |
-| `[=/=]`                    |                     | occurs occasionally when programming                       |
+| `Page Down` `Page Up`      | `⇟` `⇞`             | useful when reading a large page                           |
+| `[` `]`                    |                     | occurs occasionally when programming                       |
 | `\`                        |                     | used for delimiting and more commonly shifted to get a `\` |
-| `Insert=/=Delete`          | `⎀=/=⌦`             | occasionally useful (`Shift-Insert` for pasting)           |
-| `Home=/=End`               | `↖=/=↘`             | useful for navigating text fields                          |
+| `Insert` `Delete`          | `⎀` `⌦`             | occasionally useful (`Shift-Insert` for pasting)           |
+| `Home` `End`               | `↖` `↘`             | useful for navigating text fields                          |
 
 This ordering is subjective to some degree, and certainly context-sensitive. However `Space`, `Backspace`, and `Enter` are obviously used more than the rest.
 
@@ -222,17 +222,17 @@ Also, we've tried to keep naturally paired keys either adjacent, or symmetricall
 
 There's a few ways to lay out keycodes in the Function layer. Here's some reasoning for how the keycodes on the Function layer are mapped in the "shajra" keymap:
 
-| Keycode                      | Notes on placement                                              |
-|---------------------------- |--------------------------------------------------------------- |
-| `!`, `@`, `&`, `*`           | placed a row below their shifted counterparts on the Base layer |
-| `^=/=$`                      | adjacent for their usage within regular expressions             |
-| `#=/=%`                      | adjacent for their usage in Shell parameter substitution        |
-| `Home=/=End`                 | over the Base layer's `Page Up` and `Page Down`                 |
-| `(=/`)=, `[=/=]`, `{=/`}=    | balanced enclosing marks are adjacent                           |
-| `` ` ``, `'`, `"`            | all these quotes are adjacent                                   |
-| `Left=/=Down=/=Up=/=Right`   | placed above `h=/=j=/=k=/=l` for Vim-style navigation           |
-| `~=/=/`                      | adjacent because home directories are prefixed "~/"             |
-| `+`, `_`, `<`, `>`, `?`, `:` | placed such that `Function` is the same as `Shift`              |
+| Keycode                    | Notes on placement                                              |
+|-------------------------- |--------------------------------------------------------------- |
+| `!` `@` `&` `*`            | placed a row below their shifted counterparts on the Base layer |
+| `^` `$`                    | adjacent for their usage within regular expressions             |
+| `#` `%`                    | adjacent for their usage in Shell parameter substitution        |
+| `Home` `End`               | over the Base layer's `Page Up` and `Page Down`                 |
+| `(` `)` `[` `]` `{` `}`    | balanced enclosing marks are adjacent                           |
+| `` ` `` `'` `"`            | all these quotes are adjacent                                   |
+| `Left` `Down` `Up` `Right` | placed above `h`, `j`, `k`, and `l` for Vim-style navigation    |
+| `~` `/`                    | adjacent because home directories are prefixed "~/"             |
+| `+` `_` `<` `>` `?` `:`    | placed such that `Function` is the same as `Shift`              |
 
 Regarding the last item in this table, some keys already exist from our Base layer with shifting, but it's nice to have all our symbols on one layer, so we don't have to toggle between switching between shifting the Base layer and toggling the Function layer (for example, this occurs with programming operators such as `<*>`, and `<$>`).
 
@@ -240,9 +240,9 @@ Regarding the last item in this table, some keys already exist from our Base lay
 
 For different operating systems, we want to have a modifier to set user-specific custom key bindings. We might even want to have similar operations between different operating systems. For instance, we might have user-specific keybindings for window management to have a consistent experience between different operating systems. But we don't want these keybindings to overlap with useful default OS/application-level keybindings.
 
-On Macs, the `Option=/=⌥` key is used less frequently for default OS/application keybindings than `Cmd=/=⌘` or `Ctrl`. So the `Left Alt` keycode is good to use as a user/custom modifier, since it's interpretted as `Left Option` key by Macs.
+On Macs, the `Option` (`⌥`) key is used less frequently for default OS/application keybindings than `Cmd` (`⌘`) or `Ctrl`. So the `Left Alt` keycode is good to use as a user/custom modifier, since it's interpretted as `Left Option` key by Macs.
 
-On GNU/Linux and Windows, the `Super=/=Windows` key is used less frequently for default OS/application keybinding than `Ctrl` or `Alt`. So the `Left GUI` keycode is good to use as a user/custom modifier, since it's interpretted as a `Left Super=/=Left Windows` key. However, Macs interpret this keycode as `Cmd=/=⌘`, which conflicts with very common keybindings (`⌘-c=/=⌘-v` for copy/paste, for instance).
+On GNU/Linux and Windows, the `Super` (`Windows`) key is used less frequently for default OS/application keybinding than `Ctrl` or `Alt`. So the `Left GUI` keycode is good to use as a user/custom modifier, since it's interpretted as a `Left Super` (`Left Windows`) key. However, Macs interpret this keycode as `Cmd` (`⌘`), which conflicts with very common keybindings (`⌘-c` or `⌘-v` for copy/paste, for instance).
 
 If we put our custom keybindings on the `GUI` keycode for GNU/Linux and Windows operating systems, and if we put similar keybindings on the `Alt` keycode for Macs, then it can be useful to swap the locations of these two modifiers when switching between operating systems. This way, similar keybinds retain the same location our on Ergodox EZ and Model 01 keyboards.
 
