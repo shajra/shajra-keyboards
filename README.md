@@ -26,7 +26,7 @@ This project has the "shajra" keyboard mappings for two ergonomic split keyboard
 -   [Keyboardio's Model 01](https://shop.keyboard.io), programmed with [Kaleidoscope](https://github.com/keyboardio/Kaleidoscope) firmware.
 -   [ZSA Technology Labs' Ergodox EZ](https://ergodox-ez.com), programmed with [QMK](https://docs.qmk.fm) firmware
 
-Beyond the keymap, this project offers some streamlined automation with [Nix](https://nixos.org/nix) that you can use for your own keymap. We install Nix, and Nix will download and build everything we need to flash our keyboards. See [the provided documentation on Nix](doc/nix.md) for more on what Nix is, why we're motivated to use it, and how to get set up with it for this project.
+Beyond the keymap, this project offers some streamlined automation with [Nix](https://nixos.org/nix) that you can use for your own keymap. This automation works for GNU/Linux only (sorry, not MacOS or Windows). See [the provided documentation on Nix](doc/nix.md) for more on what Nix is, why we're motivated to use it, and how to get set up with it for this project.
 
 The rest of this document discusses using this automation. To get the most out of the keymap itself, you may be interested in the [design document](doc/design.md) explaining the motivation behind the mapping.
 
@@ -44,7 +44,7 @@ The "shajra" keymaps for both keyboards are extremely similar, which works out w
 
 # Using these key mappings<a id="sec-3"></a>
 
-This project only supports a GNU/Linux operating system with the [Nix package manager](https://nixos.org/nix) installed.
+This project only supports a GNU/Linux operating system (sorry, not MacOS or Windows) with the [Nix package manager](https://nixos.org/nix) installed.
 
 QMK and Kaleidoscope have build complexities and dependencies that can take a moment to work through. Nix can automate this hassle away by downloading and setting up all the necessary third-party dependencies in a way that
 

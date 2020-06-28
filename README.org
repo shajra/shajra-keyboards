@@ -12,10 +12,10 @@
   - [[ergodox-ez][ZSA Technology Labs' Ergodox EZ]], programmed with [[qmk][QMK]] firmware
 
   Beyond the keymap, this project offers some streamlined automation with [[nix][Nix]]
-  that you can use for your own keymap. We install Nix, and Nix will download
-  and build everything we need to flash our keyboards. See [[file:doc/nix.org][the provided
-  documentation on Nix]] for more on what Nix is, why we're motivated to use it,
-  and how to get set up with it for this project.
+  that you can use for your own keymap. This automation works for GNU/Linux
+  only (sorry, not MacOS or Windows). See [[file:doc/nix.org][the provided documentation on Nix]] for
+  more on what Nix is, why we're motivated to use it, and how to get set up
+  with it for this project.
 
   The rest of this document discusses using this automation. To get the most
   out of the keymap itself, you may be interested in the [[file:doc/design.org][design document]]
@@ -38,8 +38,8 @@
 
 * Using these key mappings
 
-  This project only supports a GNU/Linux operating system with the [[nix][Nix package
-  manager]] installed.
+  This project only supports a GNU/Linux operating system (sorry, not MacOS or
+  Windows) with the [[nix][Nix package manager]] installed.
 
   QMK and Kaleidoscope have build complexities and dependencies that can take a
   moment to work through. Nix can automate this hassle away by downloading and
