@@ -13,6 +13,7 @@ let
 
     pkgs = import (import ./sources.nix).nixpkgs {
         config = {};
+        overlays = [];
     };
 
     qmk-factory = fromGitHub pkgs sources.qmk "qmk-src";
