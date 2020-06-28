@@ -239,17 +239,17 @@ nix build --no-link --file nix/ci.nix \
     && nix path-info --file nix/ci.nix
 ```
 
-    /nix/store/1xxa2qa1ns45ps7qzwhg7l8pivsv25pi-model01-factory-hex
-    /nix/store/34x4fjrn80kqcpjwlh2c5x6hkxis0w97-model01-factory-flash
-    /nix/store/89yn9anpcnwanfxd0brldmxkgd9g7pam-flash-model01
     /nix/store/9ph65s0sl96fww4jbwvds4bjfky6dw5h-ergodoxez-custom-shajra-hex
     /nix/store/d7dw6qxv6m7wpx7i0gsvxjcl3ngf27v7-ergodoxez-factory-hex
-    /nix/store/lgcjh9bvlqxmipj3mj1bwfi86zxlsbhj-ergodoxez-custom-shajra-flash
-    /nix/store/pq03fapihc6617whzk9d5qb7x6wnsfgl-model01-custom-shajra-hex
-    /nix/store/q7q42fqz3ia212bxxn04m7smq4fjwc8q-model01-custom-shajra-flash
+    /nix/store/dxrd6p1h8dxdyw9bgndzf5kk0j3wnfxl-model01-custom-shajra-flash
+    /nix/store/f7nw7fwqnkybx33j5dwb8a099qgicaz4-ergodoxez-factory-flash
+    /nix/store/h663yclm1j3kls98n7qijvj50zwashbx-flash-ergodoxez
+    /nix/store/lqzx88k58wzg82gifl9xs85c8k605jna-model01-factory-hex
+    /nix/store/rfs9kvgmnmrl7rx4gygc5b1qsyk24b14-model01-factory-flash
+    /nix/store/s08n48v72pdg9sh0njv4n4qwa636r5y3-flash-model01
     /nix/store/s8kd2a9wbfmdjanpmsifac9xgy08wdia-shajra-keyboards-licenses
-    /nix/store/ssrfwd3bsilzfz5kf15sklpkxcy5m0md-ergodoxez-factory-flash
-    /nix/store/vrg1aavssy8dy3mcinvzgcrsx0n1zfvg-flash-ergodoxez
+    /nix/store/wmk3scljvkhxjzdwfai8za048fd8ysxv-ergodoxez-custom-shajra-flash
+    /nix/store/znksmyvc4n8z5kfdj1wmaqib4ljqddvh-model01-custom-shajra-hex
 
 # Release<a id="sec-6"></a>
 
