@@ -35,11 +35,11 @@ DESCRIPTION:
 
 OPTIONS:
 
-    -h, --help           print this help message
-    -k, --keymap KEYMAP  flash KEYMAP mapping
-    -K, --keymaps DIR    get keymap from keymaps directory
-    -F, --factory        flash factory default mapping
-    -N, --nix            filepath of 'nix' executable to use
+    -h --help           print this help message
+    -k --keymap KEYMAP  flash KEYMAP mapping
+    -K --keymaps DIR    get keymap from keymaps directory
+    -F --factory        flash factory default mapping
+    -N --nix            filepath of 'nix' executable to use
 
     If neither -k nor -F provided, flashes the "${defaults.keymap}" mapping.
     If multiple -k switches used, then last one wins.
