@@ -20,6 +20,7 @@ set -eu
 FACTORY=false
 KEYMAP="${defaults.keymap}"
 KEYMAPS_DIR="${defaults.keymaps}"
+NIX_EXE="$(command -v nix || true)"
 
 
 . "${shajra-keyboards-lib.lib-sh}/bin/lib.sh"
