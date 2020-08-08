@@ -59,7 +59,6 @@ let
             '';
             installPhase = ''
                 cp -rL . "$out"
-                ls -la "$out"
                 cat $out/src/*
             '';
         };
