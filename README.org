@@ -181,11 +181,11 @@
      Flashing ZSA Technology Lab's Ergodox EZ (custom "shajra" keymap)
      =================================================================
 
-     FLASH SOURCE: /nix/store/qw018xvnib0ykhv5j2b861f1j4vhjpxb-qmk-custom-shajra-src
-     FLASH BINARY: /nix/store/2swprqf95yjaqirb72r5ply2a11cfnmn-ergodoxez-custom-shajra-hex
+     FLASH SOURCE: /nix/store/kjyp1fa4apnkxk464fndn2p4g7yfkjl4-qmk-custom-shajra-src
+     FLASH BINARY: /nix/store/qrls0a00bs4cr5gp5lkqi630jsrrhp6p-ergodoxez-custom-shajra-hex
 
      Teensy Loader, Command Line, Version 2.1
-     Read "/nix/store/2swprqf95yjaqirb72r5ply2a11cfnmn-ergodoxez-custom-shajra-hex": 27376 bytes, 84.9% usage
+     Read "/nix/store/qrls0a00bs4cr5gp5lkqi630jsrrhp6p-ergodoxez-custom-shajra-hex": 27376 bytes, 84.9% usage
      Waiting for Teensy device...
       (hint: press the reset button)
      #+end_example
@@ -209,9 +209,9 @@
      Flashing Keyboardio's Model 01 (custom "shajra" keymap)
      =======================================================
 
-     FLASH SOURCE: /nix/store/zbq8kccj4jmjllya1wndpjkxwj70v814-model01-custom-shajra-src
+     FLASH SOURCE: /nix/store/5ynaqxlwf7bag3c1ljzw0gkzfk03yvbd-model01-custom-shajra-src
 
-     BOARD_HARDWARE_PATH="/nix/store/yjnifj7vcdqbx7pyj2a98bj87fp7f9wr-kaleidoscope-src/arduino/hardware" /nix/store/yjnifj7vcdqbx7pyj2a98bj87fp7f9wr-kaleidoscope-src/arduino/hardware/keyboardio/avr/libraries/Kaleidoscope/bin//kaleidoscope-builder flash
+     BOARD_HARDWARE_PATH="/nix/store/i4g5v7lgvy498rk2pdynrwblm3snh81w-kaleidoscope-src/arduino/hardware" /nix/store/i4g5v7lgvy498rk2pdynrwblm3snh81w-kaleidoscope-src/arduino/hardware/keyboardio/avr/libraries/Kaleidoscope/bin//kaleidoscope-builder flash
      To update your keyboard's firmware, hold down the 'Prog' key on your keyboard.
 
      (When the 'Prog' key glows red, you can release it.)
@@ -281,17 +281,17 @@
 
    #+RESULTS:
    #+begin_example
-   /nix/store/7nblf0q5g079bv2mqshkzprlwspjh100-flash-model01
-   /nix/store/9ph65s0sl96fww4jbwvds4bjfky6dw5h-ergodoxez-custom-shajra-hex
-   /nix/store/d7dw6qxv6m7wpx7i0gsvxjcl3ngf27v7-ergodoxez-factory-hex
-   /nix/store/dxrd6p1h8dxdyw9bgndzf5kk0j3wnfxl-model01-custom-shajra-flash
-   /nix/store/f7nw7fwqnkybx33j5dwb8a099qgicaz4-ergodoxez-factory-flash
-   /nix/store/lqzx88k58wzg82gifl9xs85c8k605jna-model01-factory-hex
-   /nix/store/rfs9kvgmnmrl7rx4gygc5b1qsyk24b14-model01-factory-flash
-   /nix/store/s8kd2a9wbfmdjanpmsifac9xgy08wdia-shajra-keyboards-licenses
-   /nix/store/wmk3scljvkhxjzdwfai8za048fd8ysxv-ergodoxez-custom-shajra-flash
-   /nix/store/yfvm5a6k01vlw954r096iz5fji93nwmg-flash-ergodoxez
-   /nix/store/znksmyvc4n8z5kfdj1wmaqib4ljqddvh-model01-custom-shajra-hex
+   /nix/store/0bv43cxmyk8r4rdda2k33szjd0bjbs81-model01-factory-hex
+   /nix/store/2xs9s19iyqvjbpihd4zrr9abqr0zh183-shajra-keyboards-licenses
+   /nix/store/7a8z5gjq6a0lk8w396sqd9rb937yr93j-flash-model01
+   /nix/store/8vni88vcn55vi2kpgy2942jwjvv7zaky-model01-factory-flash
+   /nix/store/ahnp5bcasdrsbi66pqf04dnk6s4aji1a-ergodoxez-factory-flash
+   /nix/store/khp6kfz82xky1gzw267j9zq51ajbz4wz-ergodoxez-factory-hex
+   /nix/store/paw6kxmcqhv3axz6x9rdw948ksis5rlv-ergodoxez-custom-shajra-flash
+   /nix/store/qd9jzdi6jdmq1fggbwamwd5xf385wy08-ergodoxez-custom-shajra-hex
+   /nix/store/v9wvxg6j8p4lj0cl56k4rdb65r5n887h-flash-ergodoxez
+   /nix/store/wszgnjsps8cmj1g598rw1rkdsb0p0chf-model01-custom-shajra-hex
+   /nix/store/xczql0rxs23vsv2xphz4h61x2v9p26kh-model01-custom-shajra-flash
    #+end_example
 
 * Release

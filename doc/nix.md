@@ -89,14 +89,16 @@ Once you learn the Nix language, you can read these files to see what kind of va
 nix search --file default.nix --no-cache
 ```
 
+    * nix-project-lib.lib-sh (lib.sh)
+      Common shell functions
+    
     * shajra-keyboards-flash-scripts.ergodoxez (flash-ergodoxez)
       Flash ZSA Technology Lab's Ergodox EZ Keyboard
     
     * shajra-keyboards-flash-scripts.model01 (flash-model01)
       Flash Keyboardio's Model 01 Keyboard
     
-    * shajra-keyboards-licenses (shajra-keyboards-licenses)
-      License information for shajra-keyboards project
+    …
 
 If you don't get the results above, see the [section on understanding derivations](#nix-drv) for an explanation of the likely problem and a workaround.
 
@@ -137,7 +139,7 @@ After a successful call of `nix build`, you'll see some symlinks for each packag
 readlink result*
 ```
 
-    /nix/store/yfvm5a6k01vlw954r096iz5fji93nwmg-flash-ergodoxez
+    /nix/store/v9wvxg6j8p4lj0cl56k4rdb65r5n887h-flash-ergodoxez
 
 Following these symlinks, we can see the files the project provides:
 
@@ -159,7 +161,7 @@ It's common to configure these "result" symlinks as ignored in source control to
 nix path-info --file . shajra-keyboards-flash-scripts.ergodoxez
 ```
 
-    /nix/store/yfvm5a6k01vlw954r096iz5fji93nwmg-flash-ergodoxez
+    /nix/store/v9wvxg6j8p4lj0cl56k4rdb65r5n887h-flash-ergodoxez
 
 ## Running commands<a id="sec-4-3"></a>
 

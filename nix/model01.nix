@@ -30,6 +30,10 @@ let
     kaleidoscope = stdenv.mkDerivation {
         name = "kaleidoscope-src";
         src = kaleidoscope-factory;
+        patchPhase = ''
+            substituteInPlace avr/platform.txt \
+                --replace "-Wimplicit-fallthrough=3" ""
+        '';
         buildPhase = ''
             true
         '';

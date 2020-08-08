@@ -204,15 +204,18 @@
    #+END_SRC
 
    #+RESULTS:
-   : * shajra-keyboards-flash-scripts.ergodoxez (flash-ergodoxez)
-   :   Flash ZSA Technology Lab's Ergodox EZ Keyboard
-   : 
-   : * shajra-keyboards-flash-scripts.model01 (flash-model01)
-   :   Flash Keyboardio's Model 01 Keyboard
-   : 
-   : * shajra-keyboards-licenses (shajra-keyboards-licenses)
-   :   License information for shajra-keyboards project
-   : 
+   #+begin_example
+   ,* nix-project-lib.lib-sh (lib.sh)
+     Common shell functions
+
+   ,* shajra-keyboards-flash-scripts.ergodoxez (flash-ergodoxez)
+     Flash ZSA Technology Lab's Ergodox EZ Keyboard
+
+   ,* shajra-keyboards-flash-scripts.model01 (flash-model01)
+     Flash Keyboardio's Model 01 Keyboard
+
+   …
+   #+end_example
 
    If you don't get the results above, see the [[#nix-drv][section on understanding
    derivations]] for an explanation of the likely problem and a workaround.
@@ -277,7 +280,7 @@
    #+END_SRC
 
    #+RESULTS:
-   : /nix/store/yfvm5a6k01vlw954r096iz5fji93nwmg-flash-ergodoxez
+   : /nix/store/v9wvxg6j8p4lj0cl56k4rdb65r5n887h-flash-ergodoxez
 
    Following these symlinks, we can see the files the project provides:
 
@@ -304,7 +307,7 @@
    #+END_SRC
 
    #+RESULTS:
-   : /nix/store/yfvm5a6k01vlw954r096iz5fji93nwmg-flash-ergodoxez
+   : /nix/store/v9wvxg6j8p4lj0cl56k4rdb65r5n887h-flash-ergodoxez
 
 ** Running commands
 
