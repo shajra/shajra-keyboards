@@ -211,7 +211,7 @@
 
      FLASH SOURCE: /nix/store/5ynaqxlwf7bag3c1ljzw0gkzfk03yvbd-model01-custom-shajra-src
 
-     BOARD_HARDWARE_PATH="/nix/store/i4g5v7lgvy498rk2pdynrwblm3snh81w-kaleidoscope-src/arduino/hardware" /nix/store/i4g5v7lgvy498rk2pdynrwblm3snh81w-kaleidoscope-src/arduino/hardware/keyboardio/avr/libraries/Kaleidoscope/bin//kaleidoscope-builder flash
+     BOARD_HARDWARE_PATH="/nix/store/6i93w0s48p5wgq76zyw5kqg77clrs5m5-kaleidoscope-src/arduino/hardware" /nix/store/6i93w0s48p5wgq76zyw5kqg77clrs5m5-kaleidoscope-src/arduino/hardware/keyboardio/avr/libraries/Kaleidoscope/bin//kaleidoscope-builder flash
      To update your keyboard's firmware, hold down the 'Prog' key on your keyboard.
 
      (When the 'Prog' key glows red, you can release it.)
@@ -281,17 +281,17 @@
 
    #+RESULTS:
    #+begin_example
-   /nix/store/0bv43cxmyk8r4rdda2k33szjd0bjbs81-model01-factory-hex
-   /nix/store/2xs9s19iyqvjbpihd4zrr9abqr0zh183-shajra-keyboards-licenses
-   /nix/store/7a8z5gjq6a0lk8w396sqd9rb937yr93j-flash-model01
-   /nix/store/8vni88vcn55vi2kpgy2942jwjvv7zaky-model01-factory-flash
+   /nix/store/8nfpv5sfg44qvcxbrdmpwvv3vgz5f5r5-model01-factory-hex
+   /nix/store/8qgg8vibvns23m3rrk23j1z2lfgxfz30-model01-custom-shajra-flash
    /nix/store/ahnp5bcasdrsbi66pqf04dnk6s4aji1a-ergodoxez-factory-flash
+   /nix/store/b0pwwvbqp79c1q70g05llqhcf3fwp3y9-shajra-keyboards-licenses
+   /nix/store/fri5c1j40blyc3mr3869k4krn6pfkx4n-flash-ergodoxez
+   /nix/store/i99jv7g7m8jaqn1f7vrbf2nv00iyb6r6-flash-model01
+   /nix/store/kf5dpxhy8cz6axmwhzp6vc46d6k5yhfc-model01-factory-flash
    /nix/store/khp6kfz82xky1gzw267j9zq51ajbz4wz-ergodoxez-factory-hex
    /nix/store/paw6kxmcqhv3axz6x9rdw948ksis5rlv-ergodoxez-custom-shajra-flash
    /nix/store/qd9jzdi6jdmq1fggbwamwd5xf385wy08-ergodoxez-custom-shajra-hex
-   /nix/store/v9wvxg6j8p4lj0cl56k4rdb65r5n887h-flash-ergodoxez
-   /nix/store/wszgnjsps8cmj1g598rw1rkdsb0p0chf-model01-custom-shajra-hex
-   /nix/store/xczql0rxs23vsv2xphz4h61x2v9p26kh-model01-custom-shajra-flash
+   /nix/store/xpxfal6zj8fx6fapcqdkzbnfm0fgkhcg-model01-custom-shajra-hex
    #+end_example
 
 * Release

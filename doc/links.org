@@ -1,5 +1,6 @@
 #+LINK: cachix https://cachix.org
 #+LINK: ergodox-ez https://ergodox-ez.com
+#+LINK: github-actions https://github.com/shajra/shajra-keyboards/actions
 #+LINK: kaleidoscope https://github.com/keyboardio/Kaleidoscope
 #+LINK: kaleidoscope-oneshot https://kaleidoscope.readthedocs.io/en/latest/plugins/OneShot.html
 #+LINK: kaleidoscope-qukey https://kaleidoscope.readthedocs.io/en/latest/plugins/Qukeys.html
@@ -9,7 +10,12 @@
 #+LINK: key-compose https://en.wikipedia.org/wiki/Compose_key
 #+LINK: niv https://github.com/nmattia/niv
 #+LINK: nix https://nixos.org/nix
+#+LINK: nix-env https://nixos.org/nix/manual/#sec-nix-env
+#+LINK: nix-expr https://nixos.org/nix/manual/#ch-expression-language
 #+LINK: nix-install https://nixos.org/nix/manual/#chap-installation
+#+LINK: nix-learn https://nixos.org/learn.html
+#+LINK: nix-tutorial https://github.com/shajra/example-nix/tree/master/tutorials/0-nix-intro
+#+LINK: nixpkgs https://github.com/NixOS/nixpkgs
 #+LINK: qmk https://docs.qmk.fm
 #+LINK: qmk-modtap https://docs.qmk.fm/#/mod_tap
 #+LINK: qmk-oneshot https://docs.qmk.fm/#/one_shot_keys
