@@ -242,12 +242,12 @@ nix build --no-link --file nix/ci.nix \
     && nix path-info --file nix/ci.nix
 ```
 
+    /nix/store/38pd8hyajqmf9h509r5vccxcsj19irif-flash-model01
     /nix/store/8nfpv5sfg44qvcxbrdmpwvv3vgz5f5r5-model01-factory-hex
     /nix/store/8qgg8vibvns23m3rrk23j1z2lfgxfz30-model01-custom-shajra-flash
     /nix/store/ahnp5bcasdrsbi66pqf04dnk6s4aji1a-ergodoxez-factory-flash
     /nix/store/b0pwwvbqp79c1q70g05llqhcf3fwp3y9-shajra-keyboards-licenses
-    /nix/store/fri5c1j40blyc3mr3869k4krn6pfkx4n-flash-ergodoxez
-    /nix/store/i99jv7g7m8jaqn1f7vrbf2nv00iyb6r6-flash-model01
+    /nix/store/k44f007j7256mkl092s61jydi6pm7qbr-flash-ergodoxez
     /nix/store/kf5dpxhy8cz6axmwhzp6vc46d6k5yhfc-model01-factory-flash
     /nix/store/khp6kfz82xky1gzw267j9zq51ajbz4wz-ergodoxez-factory-hex
     /nix/store/paw6kxmcqhv3axz6x9rdw948ksis5rlv-ergodoxez-custom-shajra-flash

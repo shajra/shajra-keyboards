@@ -11,9 +11,19 @@ let
 
     nix-project-all = import (import ./sources.nix).nix-project;
 
+    overlay = self: super: {
+        nix-project-lib = nix-project-all.nix-project-lib;
+        inherit
+        kaleidoscope-factory
+        model01-factory
+        qmk-factory
+        shajra-keyboards-flash
+        shajra-keyboards-lib;
+    };
+
     pkgs = import (import ./sources.nix).nixpkgs {
         config = {};
-        overlays = [];
+        overlays = [overlay];
     };
 
     qmk-factory = fromGitHub pkgs sources.qmk "qmk-src";
@@ -23,47 +33,26 @@ let
 
     model01-factory = fromGitHub pkgs sources.model01 "model01-src";
 
-    shajra-keyboards-lib = pkgs.callPackage (import ./lib.nix) {
-        nix-project-lib = nix-project-all.nix-project-lib;
-    };
+    shajra-keyboards-lib = pkgs.callPackage (import ./lib.nix) {};
+
+    shajra-keyboards-flash =
+        pkgs.callPackage (import ./flash.nix) {};
 
 in rec {
 
     shajra-keyboards-ergodoxez =
-        pkgs.callPackage (import ./ergodoxez.nix) {
-            inherit
-            qmk-factory
-            shajra-keyboards-lib;
-        };
+        pkgs.callPackage (import ./ergodoxez.nix) {};
 
     shajra-keyboards-model01 =
-        pkgs.callPackage (import ./model01.nix) {
-            inherit
-            kaleidoscope-factory
-            model01-factory
-            shajra-keyboards-lib;
-        };
-
-    shajra-keyboards-flash =
-        pkgs.callPackage (import ./flash.nix) {
-            inherit shajra-keyboards-lib;
-        };
+        pkgs.callPackage (import ./model01.nix) {};
 
     shajra-keyboards-flash-scripts =
         pkgs.recurseIntoAttrs (
-            pkgs.callPackage (import ./flash-scripts.nix) {
-                inherit shajra-keyboards-flash;
-            });
+            pkgs.callPackage (import ./flash-scripts.nix) {});
 
     shajra-keyboards-licenses =
-        pkgs.callPackage (import ./licenses.nix) {
-            inherit
-            kaleidoscope-factory
-            model01-factory
-            qmk-factory
-            shajra-keyboards-lib;
-        };
+        pkgs.callPackage (import ./licenses.nix) {};
 
-    inherit pkgs;
+    inherit pkgs shajra-keyboards-flash;
 
 } // nix-project-all
