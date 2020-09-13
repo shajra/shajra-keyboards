@@ -1,6 +1,6 @@
 let
 
-    fromGitHub = pkgs: source: name:
+    fromGitHub = source: name:
         with source; pkgs.fetchFromGitHub {
             inherit owner repo rev sha256 name;
             fetchSubmodules = true;
@@ -26,12 +26,12 @@ let
         overlays = [overlay];
     };
 
-    qmk-factory = fromGitHub pkgs sources.qmk "qmk-src";
+    qmk-factory = fromGitHub sources.qmk "qmk-src";
 
     kaleidoscope-factory =
-        fromGitHub pkgs sources.kaleidoscope "kaleidoscope-src";
+        fromGitHub sources.kaleidoscope "kaleidoscope-src";
 
-    model01-factory = fromGitHub pkgs sources.model01 "model01-src";
+    model01-factory = fromGitHub sources.model01 "model01-src";
 
     shajra-keyboards-lib = pkgs.callPackage (import ./lib.nix) {};
 
