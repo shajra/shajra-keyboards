@@ -121,7 +121,12 @@ In the remainder of this document, we'll use `.` instead of `default.nix` since 
 
 ## Building Nix expressions<a id="sec-4-2"></a>
 
-From our execution of `nix search` above we can see that a package named "flash-ergodoxez" can be accessed with the "shajra-keyboards-flash-scripts.ergodoxez" attribute path in the Nix expression in the project root's `default.nix`.
+The following result is returned by our prior execution of `nix search --no-cache --file .`:
+
+    * shajra-keyboards-flash-scripts.ergodoxez (flash-ergodoxez)
+      Flash ZSA Technology Lab's Ergodox EZ Keyboard
+
+We can see that a package named "flash-ergodoxez" can be accessed with the "shajra-keyboards-flash-scripts.ergodoxez" attribute path in the Nix expression in the project root's `default.nix`. This package provides the executable `flash-ergodoxez`.
 
 We can build this package with `nix build` from the project root:
 
@@ -139,7 +144,7 @@ After a successful call of `nix build`, you'll see some symlinks for each packag
 readlink result*
 ```
 
-    /nix/store/k44f007j7256mkl092s61jydi6pm7qbr-flash-ergodoxez
+    /nix/store/y1jn5zli4waqpkrgn65yhzhbr5k3ia7q-flash-ergodoxez
 
 Following these symlinks, we can see the files the project provides:
 
@@ -161,7 +166,7 @@ It's common to configure these "result" symlinks as ignored in source control to
 nix path-info --file . shajra-keyboards-flash-scripts.ergodoxez
 ```
 
-    /nix/store/k44f007j7256mkl092s61jydi6pm7qbr-flash-ergodoxez
+    /nix/store/y1jn5zli4waqpkrgn65yhzhbr5k3ia7q-flash-ergodoxez
 
 ## Running commands<a id="sec-4-3"></a>
 
