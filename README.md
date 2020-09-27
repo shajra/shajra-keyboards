@@ -199,7 +199,7 @@ Note, the first time you run the commands described below, you'll see Nix doing 
         
         FLASH SOURCE: /nix/store/5ynaqxlwf7bag3c1ljzw0gkzfk03yvbd-model01-custom-shajra-src
         
-        BOARD_HARDWARE_PATH="/nix/store/6i93w0s48p5wgq76zyw5kqg77clrs5m5-kaleidoscope-src/arduino/hardware" /nix/store/6i93w0s48p5wgq76zyw5kqg77clrs5m5-kaleidoscope-src/arduino/hardware/keyboardio/avr/libraries/Kaleidoscope/bin//kaleidoscope-builder flash
+        BOARD_HARDWARE_PATH="/nix/store/j0qzfg490zqrnizd3vrdb3a06bpa8dz9-kaleidoscope-src/arduino/hardware" /nix/store/j0qzfg490zqrnizd3vrdb3a06bpa8dz9-kaleidoscope-src/arduino/hardware/keyboardio/avr/libraries/Kaleidoscope/bin//kaleidoscope-builder flash
         To update your keyboard's firmware, hold down the 'Prog' key on your keyboard.
         
         (When the 'Prog' key glows red, you can release it.)
@@ -242,17 +242,17 @@ nix build --no-link --file nix/ci.nix \
     && nix path-info --file nix/ci.nix
 ```
 
-    /nix/store/6mxsw5s6k7h5ll1xn703j1c7zzcys0kg-flash-model01
-    /nix/store/ahnp5bcasdrsbi66pqf04dnk6s4aji1a-ergodoxez-factory-flash
-    /nix/store/b0pwwvbqp79c1q70g05llqhcf3fwp3y9-shajra-keyboards-licenses
+    /nix/store/1l5c360qg65hl19r3l1pfkkl3mz9x5j0-model01-custom-shajra-hex
+    /nix/store/21r868aaw6f1x0mgwizvlyvmzk543mcf-model01-factory-flash
+    /nix/store/5w1cdr80h6m0m01c66l4kd4zxcs3590i-model01-custom-shajra-flash
+    /nix/store/aqcci85xzahmlvqclyr9b4987llxsjyb-flash-ergodoxez
+    /nix/store/fq9wg2qzjyw324a331gj9p01f9zcl816-flash-model01
+    /nix/store/hfg04ym7y57pr1p4dd4fnq9a85s3cczj-model01-factory-hex
     /nix/store/khp6kfz82xky1gzw267j9zq51ajbz4wz-ergodoxez-factory-hex
-    /nix/store/l34kgja5kyvrz2ymy4j6sj2a3dih24zb-model01-factory-flash
-    /nix/store/ll7pfrip0gkljz17l1vf47zqpkn8z3j3-model01-custom-shajra-hex
-    /nix/store/lvvqbija8z2vi23aj6c0flgp518b9fma-model01-custom-shajra-flash
-    /nix/store/paw6kxmcqhv3axz6x9rdw948ksis5rlv-ergodoxez-custom-shajra-flash
-    /nix/store/q67vsqqbbl8yq382n5dn6kr54hr1a9bl-model01-factory-hex
+    /nix/store/nb0kpqs2mrmd4a8gyv62261msj6ank0d-ergodoxez-custom-shajra-flash
     /nix/store/qd9jzdi6jdmq1fggbwamwd5xf385wy08-ergodoxez-custom-shajra-hex
-    /nix/store/y1jn5zli4waqpkrgn65yhzhbr5k3ia7q-flash-ergodoxez
+    /nix/store/yfnz99ygf86rxzc2zc2y9c9zqpjv0fpy-ergodoxez-factory-flash
+    /nix/store/zi6zdq3nh7cgzl1db4fvn53aq9c26ac6-shajra-keyboards-licenses
 
 # Release<a id="sec-6"></a>
 
