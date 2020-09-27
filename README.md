@@ -243,13 +243,13 @@ nix build --no-link --file nix/ci.nix \
 ```
 
     /nix/store/1l5c360qg65hl19r3l1pfkkl3mz9x5j0-model01-custom-shajra-hex
+    /nix/store/1sal39agiz856caz6b07c3zjjhm6qrzn-flash-model01
     /nix/store/21r868aaw6f1x0mgwizvlyvmzk543mcf-model01-factory-flash
     /nix/store/5w1cdr80h6m0m01c66l4kd4zxcs3590i-model01-custom-shajra-flash
-    /nix/store/aqcci85xzahmlvqclyr9b4987llxsjyb-flash-ergodoxez
-    /nix/store/fq9wg2qzjyw324a331gj9p01f9zcl816-flash-model01
     /nix/store/hfg04ym7y57pr1p4dd4fnq9a85s3cczj-model01-factory-hex
     /nix/store/khp6kfz82xky1gzw267j9zq51ajbz4wz-ergodoxez-factory-hex
     /nix/store/nb0kpqs2mrmd4a8gyv62261msj6ank0d-ergodoxez-custom-shajra-flash
+    /nix/store/nbkmyx2hiq8d0vc0ayd5fmanmhapjc49-flash-ergodoxez
     /nix/store/qd9jzdi6jdmq1fggbwamwd5xf385wy08-ergodoxez-custom-shajra-hex
     /nix/store/yfnz99ygf86rxzc2zc2y9c9zqpjv0fpy-ergodoxez-factory-flash
     /nix/store/zi6zdq3nh7cgzl1db4fvn53aq9c26ac6-shajra-keyboards-licenses
