@@ -6,6 +6,7 @@
 , gnumake
 , gnused
 , perl
+, pkgs
 , stdenv
 , systemd
 , kaleidoscope-factory
@@ -32,7 +33,7 @@ let
         src = kaleidoscope-factory;
         patchPhase = ''
             substituteInPlace avr/platform.txt \
-                --replace "-Wimplicit-fallthrough=3" ""
+                --replace "-Wimplicit-fallthrough=2" ""
         '';
         buildPhase = ''
             true
@@ -52,14 +53,12 @@ let
         in stdenv.mkDerivation {
             name = "model01-${scriptSuffix}-src";
             src = model01-factory;
+            phases = ["unpackPhase" "installPhase"];
             patchPhase = ''
                 BUILD_INFO="$out"
                 echo "#define BUILD_INFORMATION \"$BUILD_INFO\"" \
                     > src/Version.h
                 ${changeCmd}
-            '';
-            buildPhase = ''
-                true
             '';
             installPhase = ''
                 cp -rL . "$out"
@@ -70,15 +69,13 @@ let
     hex = stdenv.mkDerivation {
         name = "model01-${scriptSuffix}-hex";
         src = model01;
+        phases = ["unpackPhase" "buildPhase"];
         buildPhase = ''
             mkdir "$out"
-            SKETCHBOOK_DIR="${kaleidoscope}/arduino" \
+            env -i PATH="$PATH" SKETCHBOOK_DIR="${kaleidoscope}/arduino" \
                 ARDUINO_PATH="${arduino}/share/arduino" \
                 OUTPUT_PATH="$out" \
                 make
-        '';
-        installPhase = ''
-            true
         '';
     };
 

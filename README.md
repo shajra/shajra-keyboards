@@ -177,11 +177,11 @@ Note, the first time you run the commands described below, you'll see Nix doing 
         Flashing ZSA Technology Lab's Ergodox EZ (custom "shajra" keymap)
         =================================================================
         
-        FLASH SOURCE: /nix/store/kjyp1fa4apnkxk464fndn2p4g7yfkjl4-qmk-custom-shajra-src
-        FLASH BINARY: /nix/store/qrls0a00bs4cr5gp5lkqi630jsrrhp6p-ergodoxez-custom-shajra-hex
+        FLASH SOURCE: /nix/store/59a8ld36ma679a0wb60szlaa6jz0mldk-qmk-custom-shajra-src
+        FLASH BINARY: /nix/store/hps4h4r6pf768bm8lvbi1pra1qbrg4kn-ergodoxez-custom-shajra-hex
         
         Teensy Loader, Command Line, Version 2.1
-        Read "/nix/store/qrls0a00bs4cr5gp5lkqi630jsrrhp6p-ergodoxez-custom-shajra-hex": 27376 bytes, 84.9% usage
+        Read "/nix/store/hps4h4r6pf768bm8lvbi1pra1qbrg4kn-ergodoxez-custom-shajra-hex": 27376 bytes, 84.9% usage
         Waiting for Teensy device...
          (hint: press the reset button)
 
@@ -197,9 +197,9 @@ Note, the first time you run the commands described below, you'll see Nix doing 
         Flashing Keyboardio's Model 01 (custom "shajra" keymap)
         =======================================================
         
-        FLASH SOURCE: /nix/store/5ynaqxlwf7bag3c1ljzw0gkzfk03yvbd-model01-custom-shajra-src
+        FLASH SOURCE: /nix/store/baplp3i7m62vz0v4wwmrgyavqwxq76gm-model01-custom-shajra-src
         
-        BOARD_HARDWARE_PATH="/nix/store/j0qzfg490zqrnizd3vrdb3a06bpa8dz9-kaleidoscope-src/arduino/hardware" /nix/store/j0qzfg490zqrnizd3vrdb3a06bpa8dz9-kaleidoscope-src/arduino/hardware/keyboardio/avr/libraries/Kaleidoscope/bin//kaleidoscope-builder flash
+        BOARD_HARDWARE_PATH="/nix/store/ncd3n9cqv5cblvd31a4sqv62mcndc9m3-kaleidoscope-src/arduino/hardware" /nix/store/ncd3n9cqv5cblvd31a4sqv62mcndc9m3-kaleidoscope-src/arduino/hardware/keyboardio/avr/libraries/Kaleidoscope/bin//kaleidoscope-builder flash
         To update your keyboard's firmware, hold down the 'Prog' key on your keyboard.
         
         (When the 'Prog' key glows red, you can release it.)
@@ -242,17 +242,17 @@ nix build --no-link --file nix/ci.nix \
     && nix path-info --file nix/ci.nix
 ```
 
-    /nix/store/1l5c360qg65hl19r3l1pfkkl3mz9x5j0-model01-custom-shajra-hex
-    /nix/store/1sal39agiz856caz6b07c3zjjhm6qrzn-flash-model01
-    /nix/store/21r868aaw6f1x0mgwizvlyvmzk543mcf-model01-factory-flash
-    /nix/store/5w1cdr80h6m0m01c66l4kd4zxcs3590i-model01-custom-shajra-flash
-    /nix/store/hfg04ym7y57pr1p4dd4fnq9a85s3cczj-model01-factory-hex
+    /nix/store/1vxvjb5pd1nqdc0ymnm52cdlzwspczmn-model01-factory-hex
+    /nix/store/4b4qj1xh36sqx02s65yj9cxyhlqj0xsw-model01-factory-flash
+    /nix/store/64kb65bkhp5n3mv0q31iyfa160yvccyk-model01-custom-shajra-flash
+    /nix/store/73r48qls6dask4gniq0dgp4w373znwxd-ergodoxez-custom-shajra-flash
+    /nix/store/dg6hbbh3mif5v04g5fk3hb4r3k489scs-flash-model01
+    /nix/store/gvxvgk6wp8z37j2fi2m0qrswwpna5v5p-model01-custom-shajra-hex
     /nix/store/khp6kfz82xky1gzw267j9zq51ajbz4wz-ergodoxez-factory-hex
-    /nix/store/nb0kpqs2mrmd4a8gyv62261msj6ank0d-ergodoxez-custom-shajra-flash
-    /nix/store/nbkmyx2hiq8d0vc0ayd5fmanmhapjc49-flash-ergodoxez
-    /nix/store/qd9jzdi6jdmq1fggbwamwd5xf385wy08-ergodoxez-custom-shajra-hex
-    /nix/store/yfnz99ygf86rxzc2zc2y9c9zqpjv0fpy-ergodoxez-factory-flash
-    /nix/store/zi6zdq3nh7cgzl1db4fvn53aq9c26ac6-shajra-keyboards-licenses
+    /nix/store/p774sdzy1hz0w2cffh1s6w8kmwl40h5g-flash-ergodoxez
+    /nix/store/r4w2n581ii0fljiml6vcw763279n9dcs-ergodoxez-factory-flash
+    /nix/store/vpyyzy3icl3y0qj4mvvan9jwfdlzaybz-ergodoxez-custom-shajra-hex
+    /nix/store/xbbmv16yqynm60qj2r8izh240i6yyksh-shajra-keyboards-licenses
 
 # Release<a id="sec-6"></a>
 

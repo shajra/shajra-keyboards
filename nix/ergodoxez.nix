@@ -25,9 +25,7 @@ let
     qmk-custom = stdenv.mkDerivation {
         name = "qmk-${scriptSuffix}-src";
         src = qmk-factory;
-        buildPhase = ''
-            true
-        '';
+        phases = ["installPhase"];
         installPhase = ''
             cp -r "$src" "$out"
             KEYMAPS_DIR="$out"/keyboards/ergodox_ez/keymaps
