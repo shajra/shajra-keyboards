@@ -312,7 +312,7 @@
    #+END_SRC
 
    #+RESULTS:
-   : /nix/store/p774sdzy1hz0w2cffh1s6w8kmwl40h5g-flash-ergodoxez
+   : /nix/store/9gjavan46fscsxa8y5ys88lgf1palfhy-flash-ergodoxez
 
    Following these symlinks, we can see the files the project provides:
 
@@ -339,7 +339,7 @@
    #+END_SRC
 
    #+RESULTS:
-   : /nix/store/p774sdzy1hz0w2cffh1s6w8kmwl40h5g-flash-ergodoxez
+   : /nix/store/9gjavan46fscsxa8y5ys88lgf1palfhy-flash-ergodoxez
 
 ** Running commands
 
