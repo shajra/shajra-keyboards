@@ -26,7 +26,7 @@ The following are links to the exact source downloaded and used,
 including all license information (most of which is GPLv3 or
 GPLv2):
 
-QMK firmware source for Ergodox EZ (GPLv2, mostly):
+QMK firmware source for Ergodox EZ and Moonlander (GPLv2, mostly):
 
     ${qmk-factory}
 

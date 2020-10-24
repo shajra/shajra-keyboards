@@ -40,11 +40,9 @@ let
 
 in rec {
 
-    shajra-keyboards-ergodoxez =
-        pkgs.callPackage (import ./ergodoxez.nix) {};
-
-    shajra-keyboards-model01 =
-        pkgs.callPackage (import ./model01.nix) {};
+    shajra-keyboards-ergodoxez  = pkgs.callPackage (import ./ergodoxez.nix)  {};
+    shajra-keyboards-model01    = pkgs.callPackage (import ./model01.nix)    {};
+    shajra-keyboards-moonlander = pkgs.callPackage (import ./moonlander.nix) {};
 
     shajra-keyboards-flash-scripts =
         pkgs.recurseIntoAttrs (

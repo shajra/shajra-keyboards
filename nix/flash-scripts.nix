@@ -12,4 +12,9 @@
         keyboard_desc = "Keyboardio's Model 01";
         prog_name = "flash-model01";
     };
+    moonlander = shajra-keyboards-flash {
+        keyboard_id = "moonlander";
+        keyboard_desc = "ZSA Technology Lab's Moonlander";
+        prog_name = "flash-moonlander";
+    };
 }

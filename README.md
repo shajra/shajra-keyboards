@@ -1,7 +1,7 @@
 - [About the Project](#sec-1)
 - [The mappings](#sec-2)
     - [Model 01 "shajra" keymap](#sec-2-0-1)
-    - [Ergodox EZ "shajra" keymap](#sec-2-0-2)
+    - [Ergodox EZ "shajra" keymap (Moonlander similar)](#sec-2-0-2)
 - [Using these key mappings](#sec-3)
     - [1. Install Nix on your GNU/Linux distribution](#sec-3-0-1)
     - [2. Set up Cachix](#sec-3-0-2)
@@ -21,10 +21,11 @@
 
 # About the Project<a id="sec-1"></a>
 
-This project has the "shajra" keyboard mappings for two ergonomic split keyboards:
+This project has the "shajra" keyboard mappings for three ergonomic split keyboards:
 
 -   [Keyboardio's Model 01](https://shop.keyboard.io), programmed with [Kaleidoscope](https://github.com/keyboardio/Kaleidoscope) firmware.
 -   [ZSA Technology Labs' Ergodox EZ](https://ergodox-ez.com), programmed with [QMK](https://docs.qmk.fm) firmware
+-   [ZSA Technology Labs' Moonlander](https://www.zsa.io/moonlander/), programmed with [QMK](https://docs.qmk.fm) firmware
 
 Beyond the keymap, this project offers some streamlined automation with [Nix](https://nixos.org/nix) that you can use for your own keymap. This automation works for GNU/Linux only (sorry, not MacOS or Windows). See [the provided documentation on Nix](doc/nix.md) for more on what Nix is, why we're motivated to use it, and how to get set up with it for this project.
 
@@ -32,13 +33,15 @@ The rest of this document discusses using this automation. To get the most out o
 
 # The mappings<a id="sec-2"></a>
 
-The "shajra" keymaps for both keyboards are extremely similar, which works out well because the physical layouts of these keyboards are also similar. We can more easily switch from one keyboard to another, and retain the design benefits of the mapping.
+The "shajra" keymaps for these keyboards are extremely similar, which works out well because the physical layouts of these keyboards are also similar. We can more easily switch from one keyboard to another, and retain the design benefits of the mapping.
 
 ### Model 01 "shajra" keymap<a id="sec-2-0-1"></a>
 
 ![img](doc/model-01-shajra-layout.png)
 
-### Ergodox EZ "shajra" keymap<a id="sec-2-0-2"></a>
+### Ergodox EZ "shajra" keymap (Moonlander similar)<a id="sec-2-0-2"></a>
+
+Note the Moonlander keyboard is almost an identical layout to the EZ, and not illustrated here. There are just two two less keys on the thumb cluster. The leads to not having either Home or End on the base layer for the Moonlander. And the "application menu" keycodes are moved to the bottom-outer corners.
 
 ![img](doc/ergodox-ez-shajra-layout.png)
 
@@ -92,22 +95,33 @@ To program either keyboard with a new mapping, you need to augment your OS confi
 
 The following are recommended rules for each keyboard:
 
-    # For Teensy/Ergodox
-    ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?", ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_PORT_IGNORE}="1"
-    ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789A]?", ENV{MTP_NO_PROBE}="1"
-    SUBSYSTEMS=="usb", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789ABCD]?", MODE:="0666"
-    KERNEL=="ttyACM*", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?", MODE:="0666"
+    # For Ergodox EZ
+    ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?", \
+        ENV{ID_MM_DEVICE_IGNORE}="1"
+    ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789A]?", \
+        ENV{MTP_NO_PROBE}="1"
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="16c0", \
+        ATTRS{idProduct}=="04[789ABCD]?", MODE:="0666"
+    KERNEL=="ttyACM*", ATTRS{idVendor}=="16c0", \
+        ATTRS{idProduct}=="04[789B]?", MODE:="0666"
     
-    # For Kaleidoscope/Keyboardio
-    SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2300", SYMLINK+="model01", ENV{ID_MM_DEVICE_IGNORE}:="1", ENV{ID_MM_CANDIDATE}:="0", TAG+="uaccess", TAG+="seat"
-    SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2301", SYMLINK+="model01", ENV{ID_MM_DEVICE_IGNORE}:="1", ENV{ID_MM_CANDIDATE}:="0", TAG+="uaccess", TAG+="seat"
-
-Note, each rule must be on a single line (even if the line gets long). Udev rules have no syntax to support rules spanning multiple lines.
+    # For Moonlander
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", \
+        MODE:="0666", SYMLINK+="stm32_dfu"
+    
+    # For Model 01
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2300", \
+        SYMLINK+="model01", ENV{ID_MM_DEVICE_IGNORE}:="1", \
+        ENV{ID_MM_CANDIDATE}:="0", TAG+="uaccess", TAG+="seat"
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2301", \
+        SYMLINK+="model01", ENV{ID_MM_DEVICE_IGNORE}:="1", \
+        ENV{ID_MM_CANDIDATE}:="0", TAG+="uaccess", TAG+="seat"
 
 These settings should correspond to the official documentation of tools and libraries used by this project:
 
 -   [QMK documentation for configuring Halfkey bootloader used by the Ergodox EZ](https://docs.qmk.fm/#/flashing?id=halfkay)
 -   [Teensy CLI documentation, used internally for flashing the Ergodox EZ](https://www.pjrc.com/teensy/loader_cli.html)
+-   [Wally CLI, used internally for flashing the Moonlander](https://github.com/zsa/wally/blob/master/dist/linux64/50-wally.rules)
 -   [Kaleidoscope documentation](https://kaleidoscope.readthedocs.io/en/latest/setup_toolchain.html#a-name-arduino-linux-a-install-arduino-on-linux)
 
 Each distribution is different, but on many GNU/Linux systems, udev rules are put in a file in `/etc/udev/rules.d` with a ".rules" extension.
@@ -122,7 +136,7 @@ Or just restart the computer.
 
 ### 4. For Kaleidoscope, join the necessary OS group<a id="sec-3-0-4"></a>
 
-> ***NOTE:*** You don't need this step if you're flashing the Ergodox EZ.
+> ***NOTE:*** You don't need this step if you're flashing the Ergodox EZ or Moonlander.
 
 Once udev is configured, when you plug in the Keyboardio Model 01, a `/dev/ttyACM0` should appear. On many systems, this device is group-owned by the "dialout" or the "uucp" group:
 
@@ -151,7 +165,7 @@ groups | grep dialout
 
 ### 5. Unplug and replug your keyboard<a id="sec-3-0-5"></a>
 
-Unplug your keyboard(s) and plug them back in, to make sure everything's set to program.
+Unplug your keyboard(s) and plug them back in, to make sure everything's set to program. Rebooting your computer is probably overkill, but would probably work too.
 
 ### 6. Get the code and run it<a id="sec-3-0-6"></a>
 
@@ -177,15 +191,32 @@ Note, the first time you run the commands described below, you'll see Nix doing 
         Flashing ZSA Technology Lab's Ergodox EZ (custom "shajra" keymap)
         =================================================================
         
-        FLASH SOURCE: /nix/store/59a8ld36ma679a0wb60szlaa6jz0mldk-qmk-custom-shajra-src
-        FLASH BINARY: /nix/store/hps4h4r6pf768bm8lvbi1pra1qbrg4kn-ergodoxez-custom-shajra-hex
+        FLASH SOURCE: /nix/store/6csf33lyw54gr85z73wwa09l1z6cfcla-qmk-custom-shajra-src
+        FLASH BINARY: /nix/store/73sivfb24s1cdq5j5b7yl2rizznq9b5a-ergodoxez-custom-shajra.hex
         
         Teensy Loader, Command Line, Version 2.1
-        Read "/nix/store/hps4h4r6pf768bm8lvbi1pra1qbrg4kn-ergodoxez-custom-shajra-hex": 27376 bytes, 84.9% usage
+        Read "/nix/store/73sivfb24s1cdq5j5b7yl2rizznq9b5a-ergodoxez-custom-shajra.hex": 22514 bytes, 69.8% usage
         Waiting for Teensy device...
          (hint: press the reset button)
 
-2.  Flashing a Keyboardio Model 01 keyboard
+2.  Flashing a Moonlander keyboard
+
+    You can run the following to flash your Moonlander with the new keymap, pressing the reset button when prompted (access the reset button with an unbent paperclip inserted into the small hole in the top left corner of the left keyboard half):
+    
+    ```shell
+    ./flash-moonlander
+    ```
+    
+        
+        Flashing ZSA Technology Lab's Moonlander (custom "shajra" keymap)
+        =================================================================
+        
+        FLASH SOURCE: /nix/store/fcb11dw2id98s071a13jyh7xk45dfda6-qmk-custom-shajra-src
+        FLASH BINARY: /nix/store/5ll6v3i9pf1maak1xykzgs54wsmbs1mn-moonlander-custom-shajra.bin
+        
+        ⠋ Press the reset button of your keyboard.
+
+3.  Flashing a Keyboardio Model 01 keyboard
 
     You can run the following to flash your Keyboardio Model 01, holding down the `Prog` key and then pressing `Enter` when prompted:
     
@@ -199,7 +230,7 @@ Note, the first time you run the commands described below, you'll see Nix doing 
         
         FLASH SOURCE: /nix/store/xjy097lsm5qjb23rxs104pdsvaw8iir5-model01-custom-shajra-src
         
-        BOARD_HARDWARE_PATH="/nix/store/1mpg7r2f2x1rv438kqd552i8q92bpqa7-kaleidoscope-src/arduino/hardware" /nix/store/1mpg7r2f2x1rv438kqd552i8q92bpqa7-kaleidoscope-src/arduino/hardware/keyboardio/avr/libraries/Kaleidoscope/bin//kaleidoscope-builder flash
+        BOARD_HARDWARE_PATH="/nix/store/xhx5vlrqhy03fq48mb90i8v5kscpka0f-kaleidoscope-src/arduino/hardware" /nix/store/xhx5vlrqhy03fq48mb90i8v5kscpka0f-kaleidoscope-src/arduino/hardware/keyboardio/avr/libraries/Kaleidoscope/bin//kaleidoscope-builder flash
         To update your keyboard's firmware, hold down the 'Prog' key on your keyboard.
         
         (When the 'Prog' key glows red, you can release it.)
@@ -213,7 +244,7 @@ Note, the first time you run the commands described below, you'll see Nix doing 
 
 This project's scripts won't save off your previous keymap from your keyboard. But we can revert to the keymap that your keyboard shipped with.
 
-This can be done with the `-F` / `--factory` switch, which both `./flash-ergodoxez` and `./flash-model01` support. Both scripts have a `-h` / `--help` in case you forget your options.
+This can be done with the `-F` / `--factory` switch, which all the flashing scripts support. These scripts have a `-h` / `--help` switch in case you forget your options.
 
 # Customization<a id="sec-5"></a>
 
@@ -221,7 +252,7 @@ This can be done with the `-F` / `--factory` switch, which both `./flash-ergodox
 
 The provided code is fairly compact. If you look in the `keymaps` directory, you should find familiar files that you would edit in QMK or Kaleidoscope projects, respectively. These keymaps are compiled into the flashing scripts provided with this project.
 
-For both keyboards, The "shajra" keymap is in it's own directory. You can make your own keymaps and put them in a sibling directory with the name of your choice, and they'll be compiled in as well.
+For both keyboards, The "shajra" keymap is in its own directory. You can make your own keymaps and put them in a sibling directory with the name of your choice, and they'll be compiled in as well.
 
 If you don't want to use keymaps compiled into the flashing scripts, you can use another directory of keymaps at runtime with the `-K` / `-keymaps` switch.
 
@@ -242,17 +273,22 @@ nix build --no-link --file nix/ci.nix \
     && nix path-info --file nix/ci.nix
 ```
 
-    /nix/store/4ai3z1ljb8b83qpn1h45432hy53h61db-shajra-keyboards-licenses
-    /nix/store/73r48qls6dask4gniq0dgp4w373znwxd-ergodoxez-custom-shajra-flash
-    /nix/store/9gjavan46fscsxa8y5ys88lgf1palfhy-flash-ergodoxez
-    /nix/store/bs3hn7l159acc98dldb15abzsk2jv1s0-flash-model01
-    /nix/store/hjnww04adrbr0j1r7zf50kmf15k77dsl-model01-custom-shajra-flash
-    /nix/store/jgcf6gzmn4dbpqykf8j847i3nxh1vhck-model01-factory-hex
-    /nix/store/khp6kfz82xky1gzw267j9zq51ajbz4wz-ergodoxez-factory-hex
-    /nix/store/r4w2n581ii0fljiml6vcw763279n9dcs-ergodoxez-factory-flash
-    /nix/store/vpyyzy3icl3y0qj4mvvan9jwfdlzaybz-ergodoxez-custom-shajra-hex
-    /nix/store/vvj4vww1x3mlrdq9ad1h6gq690090zi4-model01-factory-flash
-    /nix/store/y2yjx8qj1d616sink0rps5pbkhk2k33q-model01-custom-shajra-hex
+    /nix/store/5jfqw2yzs3qrwcrasll8ksyi8fxp76xa-shajra-keyboards-licenses
+    /nix/store/bmyq3h0dmg6dkqq0pwg3l6a6jbybpm6n-model01-factory-flash
+    /nix/store/clsf2q6rn2qwb8z2ll224bvsws0h4rdr-model01-custom-shajra-hex
+    /nix/store/cqhpyxpwc7lkwdd572mcfmkq83jlvlsb-moonlander-custom-shajra.bin
+    /nix/store/dmasgfpcsx0hwfcfxgd52ckmhl046zra-ergodoxez-factory.hex
+    /nix/store/g4289r7kcfr0wp4y0qhmr8z0zlv8f0cv-flash-model01
+    /nix/store/h4hxh185ffj0qhqiwfna60s1vhm4hd0w-ergodoxez-custom-shajra-flash
+    /nix/store/hvkzz6hkcbxi6wq7xk5cw5z1xbjfkf4l-model01-factory-hex
+    /nix/store/i7mbak174pffhr411gbgkrzh77hfkfwh-moonlander-factory.bin
+    /nix/store/ildp5hqg1i6xyg9npn2g0lj9g8fnrmqs-moonlander-factory-flash
+    /nix/store/ipivfsrd0yryw7qqkkls281cksjjsc9l-flash-ergodoxez
+    /nix/store/ndfichs04r2d3hc31q25qygvs46fc4i4-model01-custom-shajra-flash
+    /nix/store/pzdfpdpxldq8v8lgidp9fg077k4kzlp6-ergodoxez-factory-flash
+    /nix/store/rpmhyi6ll8i2yv1rmw2ckm064x8vjzn2-ergodoxez-custom-shajra.hex
+    /nix/store/rz2j743wf8ychn6p0zqs9y12zaz2vw09-moonlander-custom-shajra-flash
+    /nix/store/ylr35vjpjiwp581gyqm9lx963i2kh9fn-flash-moonlander
 
 # Release<a id="sec-6"></a>
 

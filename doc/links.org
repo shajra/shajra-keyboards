@@ -8,6 +8,7 @@
 #+LINK: key-altgr https://en.wikipedia.org/wiki/AltGr_key
 #+LINK: keyboardio https://shop.keyboard.io
 #+LINK: key-compose https://en.wikipedia.org/wiki/Compose_key
+#+LINK: moonlander https://www.zsa.io/moonlander/
 #+LINK: niv https://github.com/nmattia/niv
 #+LINK: nix https://nixos.org/nix
 #+LINK: nix-env https://nixos.org/nix/manual/#sec-nix-env
@@ -23,4 +24,5 @@
 #+LINK: signature_plastics https://pimpmykeyboard.com/key-cap-family-specs
 #+LINK: teensy https://www.pjrc.com/teensy/loader_cli.html
 #+LINK: vim https://www.vim.org
+#+LINK: wally-udev https://github.com/zsa/wally/blob/master/dist/linux64/50-wally.rules
 #+LINK: zilent https://zealpc.net/products/zilents

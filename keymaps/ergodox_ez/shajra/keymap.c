@@ -2,14 +2,14 @@
 #include "version.h"
 
 
-// Layers
-//
-#define BASE     0
-#define MAC      1
-#define FUNCTION 2
-#define NUMPAD   3
-#define MEDIA    4
-#define MOUSE    5
+enum layers {
+    BASE,
+    MAC,
+    FUNCTION,
+    NUMPAD,
+    MEDIA,
+    MOUSE
+};
 
 
 enum custom_keycodes

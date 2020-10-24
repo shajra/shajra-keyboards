@@ -16,7 +16,7 @@
     - [Swapping `GUI` and `Alt` mappings](#sec-4-0-9)
     - [Media and Mouse layers](#sec-4-0-10)
 
-This document discusses the rationale of the "shajra" keymap for the Ergodox EZ and Model 01 keyboards.
+This document discusses the rationale of the "shajra" keymap for the Ergodox EZ, Moonlander, and Model 01 keyboards.
 
 It seems a waste to have a nice ergonomic split keyboard, only to program it with a keymap full of ergonomic setbacks. The number of possible mappings can be overwhelming. We could just choose something, good or bad, and iterate on it as we think of improvements. This though can be a tedious process because we have to train through the inconvenience of muscle memory to really assess how well a mapping is working out. And we have to be diligent not to confuse familiarity with ergonomic improvement.
 
@@ -35,7 +35,7 @@ Here's a list of some guiding principles that have some cascading impact on how 
 -   What mode/state the keyboard is in should be extremely simple and predictable.
 -   All reasonable modifier combinations should be possible, most ergonomically.
 -   Paired keys should be adjacent or symmetrically laid out.
--   Support convenient one-handed use where possible
+-   Support convenient one-handed use where possible.
 -   If no other factors apply, lean on familiarity with common layouts.
 -   The keymapping should support the entry of non-standard characters, but English will be the dominant language typed.
 
@@ -55,6 +55,8 @@ For reference, below are diagrams of the keymaps for the Model 01 and Ergodox EZ
 ### Ergodox EZ "shajra" keymap<a id="sec-2-0-2"></a>
 
 ![img](./ergodox-ez-shajra-layout.png)
+
+Note the Moonlander keyboard is almost an identical layout to the EZ, and not illustrated here. There are just two two less keys on the thumb cluster. The leads to not having either Home or End on the base layer for the Moonlander. And the "application menu" keycodes are moved to the bottom-outer corners.
 
 ### Reading the keymap diagrams<a id="sec-2-0-3"></a>
 
@@ -80,7 +82,7 @@ For reference, below are diagrams of the keymaps for the Model 01 and Ergodox EZ
 
 # Ergodox EZ keyboard modifications<a id="sec-3"></a>
 
-There's two problems one might find with the stock Ergodox EZ keyboard (that the Model 01 doesn't seem to have):
+There's two problems one might find with the stock Ergodox EZ keyboard. The Model 01 has none of these problems. And the Moonlander's newer design addresses these issues well-enough.
 
 -   four of the bottom row keys (the yellow keys assigned arrow keycodes in the diagram above) are more easily accessible by thumbs, but the provided keycaps may not well accomodate thumb presses
 
@@ -92,7 +94,9 @@ By replacing the switches with something smoother and lighter like [Zilent 62g s
 
 To further reduce binding, the 2u keycaps of the thumb cluster can be replaced with 1.5u keycaps. Another benefit, the 1.5u keycap leaves a gap between it and any keycap right above it, which makes it easier to press a 1u key above without accidentally pressing the 1.5u key below. This gap is illustrated in the Ergodox EZ diagram above.
 
-If your Ergodox EZ shipped with DSA (unsculptured) keycaps, you may find you can conveniently press all the yellow keys in the keymap diagram with your thumbs. If your Ergodox shipped with DCS (sculptured) keycaps, you will likely find four bottom row keys (mentioned earlier) sculptured too sharply for comfortable thumb presses. Replacing these keycaps is recommended to use the "shajra" keymap.
+If your Ergodox EZ shipped with DSA (unsculptured) keycaps, you may find you can conveniently press all the yellow keys in the keymap diagram with your thumbs. The Moonlander ships only with DSA keycaps, so switching out keycaps is more a matter of preference.
+
+If your Ergodox shipped with DCS (sculptured) keycaps, you will likely find four bottom row keys (mentioned earlier) sculptured too sharply for comfortable thumb presses. Replacing these keycaps is recommended to use the "shajra" keymap.
 
 [Signature Plastics](https://pimpmykeyboard.com/key-cap-family-specs) is a popular place to get alternate keycaps. If you do get keycaps from a third party like Signature Plastics, consider the G20 keycaps, which work well for thumb presses because of their low profile and rounded edges.
 
@@ -112,7 +116,7 @@ If we really want something like Colemak or Dvorak we could implement it later a
 
 ### Using Mod-Tap and Qukeys<a id="sec-4-0-2"></a>
 
-With the Ergodox EZ and Model 01, we get new keys that can get much more utility from our thumbs/palms, which are sturdier than any of our fingers. Our thumbs/palms get home keys of their own (the Model 01 even has physical homing bumps on its thumb keys). These keys are a central feature of both keyboards.
+With the Ergodox EZ, Moonlander, and Model 01, we get new keys that can get much more utility from our thumbs/palms, which are sturdier than any of our fingers. Our thumbs/palms get home keys of their own (the Model 01 even has physical homing bumps on its thumb keys). These keys are a central feature of both keyboards.
 
 In traditional keyboards, commonly pressed keys like `Enter` and `Shift` are pressed by pinky fingers (the hand's weakest), and are not close to home keys. These keys are great candidates to move towards the new thumb/palm home keys made available.
 
@@ -140,7 +144,7 @@ QMK has a feature where you can tap a Mod-Tap key quickly before holding it to h
 
 Fortunately, there's a workaround. We can use the Function layer to overlay on top of any keycode that can't repeat, the same keycode for repeating. So in our example, if we collocated `Space` and `Shift` in the same key with Mod-Tap/Qukey, but used our workaround, we could chord and hold `Function+Space` to get a repeating space. This workaround seems manageable for the few common keys we have collocated with modifiers using Mod-Tap/Qukeys.
 
-The "shajra" keymap uses this workaround, and you can see it used for the thumb keys in the keymap diagrams above for both the Ergodox EZ and the Model 01.
+The "shajra" keymap uses this workaround, and you can see it used for the thumb keys in the keymap diagrams above.
 
 ### Mapping modifiers<a id="sec-4-0-5"></a>
 
@@ -187,7 +191,7 @@ The "shajra" keymap makes this `Alt Gr` keys a One-Shot Modifier (OSM), to make 
 
 Note that on GNU/Linux, `Shift+Right Alt` is often configured to be a [`Compose` (`⎄`) key](https://en.wikipedia.org/wiki/Compose_key), which serves a similar function to an `Alt Gr` key. The major difference is that `Compose` keys are one-shot (tapped, not held) by nature, and therefore not a traditional modifier.
 
-Because they are similar in function, the `Alt Gr` and `Compose` keys are placed adjacent to one another in both Model 01 and Ergodox EZ "shajra" keymaps.
+Because they are similar in function, the `Alt Gr` and `Compose` keys are placed adjacent to one another in all "shajra" keymaps.
 
 ### Mapping more non-modifiers<a id="sec-4-0-7"></a>
 
@@ -240,16 +244,16 @@ Regarding the last item in this table, some keys already exist from our Base lay
 
 For different operating systems, we want to have a modifier to set user-specific custom key bindings. We might even want to have similar operations between different operating systems. For instance, we might have user-specific keybindings for window management to have a consistent experience between different operating systems. But we don't want these keybindings to overlap with useful default OS/application-level keybindings.
 
-On Macs, the `Option` (`⌥`) key is used less frequently for default OS/application keybindings than `Cmd` (`⌘`) or `Ctrl`. So the `Left Alt` keycode is good to use as a user/custom modifier, since it's interpretted as `Left Option` key by Macs.
+On Macs, the `Option` (`⌥`) key is used less frequently for default OS/application keybindings than `Cmd` (`⌘`) or `Ctrl`. So the `Left Alt` keycode is good to use as a user/custom modifier, since it's interpreted as `Left Option` key by Macs.
 
-On GNU/Linux and Windows, the `Super` (`Windows`) key is used less frequently for default OS/application keybinding than `Ctrl` or `Alt`. So the `Left GUI` keycode is good to use as a user/custom modifier, since it's interpretted as a `Left Super` (`Left Windows`) key. However, Macs interpret this keycode as `Cmd` (`⌘`), which conflicts with very common keybindings (`⌘-c` or `⌘-v` for copy/paste, for instance).
+On GNU/Linux and Windows, the `Super` (`Windows`) key is used less frequently for default OS/application keybinding than `Ctrl` or `Alt`. So the `Left GUI` keycode is good to use as a user/custom modifier, since it's interpreted as a `Left Super` (`Left Windows`) key. However, Macs interpret this keycode as `Cmd` (`⌘`), which conflicts with very common keybindings (`⌘-c` or `⌘-v` for copy/paste, for instance).
 
-If we put our custom keybindings on the `GUI` keycode for GNU/Linux and Windows operating systems, and if we put similar keybindings on the `Alt` keycode for Macs, then it can be useful to swap the locations of these two modifiers when switching between operating systems. This way, similar keybinds retain the same location our on Ergodox EZ and Model 01 keyboards.
+If we put our custom keybindings on the `GUI` keycode for GNU/Linux and Windows operating systems, and if we put similar keybindings on the `Alt` keycode for Macs, then it can be useful to swap the locations of these two modifiers when switching between operating systems. This way, similar keybinds retain the same location our on Ergodox EZ, Moonlander, and Model 01 keyboards.
 
 This is why the "shajra" keymap provides a key to swap the `GUI` and `Left Alt` keycode locations.
 
 ### Media and Mouse layers<a id="sec-4-0-10"></a>
 
-This project doesn't provide diagrams of the Media or Mouse layers, but hopefully you can follow the code for these layers in the respective code for the [Ergodox EZ](https://github.com/shajra/shajra-keyboards/blob/master/ergodox_ez/keymaps/shajra/keymap.c#L103-L143) and the [Model 01](https://github.com/shajra/shajra-keyboards/blob/master/model_01/keymaps/shajra/Model01-Firmware.ino#L106-L138).
+This project doesn't provide diagrams of the Media or Mouse layers, but hopefully you can follow the code for these layers in the respective code for the [Ergodox EZ](https://github.com/shajra/shajra-keyboards/blob/master/ergodox_ez/keymaps/shajra/keymap.c#L103-L143), [Moonlander](https://github.com/shajra/shajra-keyboards/blob/master/moonlander/keymaps/shajra/keymap.c#L56-L71), and the [Model 01](https://github.com/shajra/shajra-keyboards/blob/master/model_01/keymaps/shajra/Model01-Firmware.ino#L106-L138).
 
 For both layers, while holding a pinky to enter the layer, the layer offers some keys laid out in a directional orientation, accessed by fingers. Some thumb keys are also used. These layers were more creatively laid out, but hopefully they are intuitive enough to commit to memory.
