@@ -16,7 +16,6 @@ enum custom_keycodes {
     VRSN = ML_SAFE_RANGE,
 };
 
-// clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
 { [BASE] = LAYOUT_moonlander
     ( KC_CAPS,           KC_1, KC_2, KC_3, KC_4, KC_5, RGB_TOG, /**/ TG(MAC), KC_6, KC_7, KC_8,    KC_9,   KC_0,    TG(NUMPAD)
@@ -83,6 +82,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
+// DESIGN: the small LEDs are just always on.  This is useful because it's good
+// to always have some indication if the "MAC" layer is on, even if the RGB
+// lighting for the keys is disabled.  The LEDs are far less distracting than
+// the RGB lighting.
+//
 void matrix_init_user(void)
 {
     keyboard_config.led_level = 1;
@@ -90,31 +94,77 @@ void matrix_init_user(void)
     layer_state_set_kb(layer_state);
 };
 
+// DESIGN: RGB lighting combines a background with one of two possible overlays.
+//
+// The background RGB lighting is the stock patterns QMK provides (rainbow
+// effects, heat sink, etc.).
+//
+// Here's controls for just the background RGB lighting:
+//
+//     RGB_TOG: toggle background RGB background lighting on/off
+//     RGB_MOD: cycle between different patterns (there's a lot)
+//     RGB_HUI: move forward in hue cycle
+//     RGB_HUD: move backward in hue cycle
+//     RGB_VAI: increase brightness
+//     RGB_VAD: decrease brightness
+//
+// This just lays down a background lighting.  On top of this background, we can
+// toggle layer-based lighting with TOGGLE_LAYER_COLOR.  This toggles between
+// the following modes:
+//
+//     - lighting the bottom and outer rows of both halves a solid color
+//       indicating the highest enabled layer
+//
+//     - lighting the blocks of keys when available for the NUMPAD, MEDIA, and
+//       MOUSE layers.
+//
+// Technically, this means that the RGB lighting can never be 100% disabled, but
+// when toggling off both RGB_TOG and TOGGLE_LAYER_COLOR, the only remaining
+// lighting is from NUMPAD, MEDIA, and MOUSE usage, which is generally not that
+// common.
+//
+// Also, note that the hue and brightness controls don't affect the hue or
+// brightness of the overlays, which are hardcoded at a medium brightness.
+//
+// RGB index-to-location mapping:
+//
+//   0  5 10 15 20 25 29          65 61 56 51 46 41 36
+//   1  6 11 16 21 26 30          66 62 57 52 47 42 37
+//   2  7 12 17 22 27 31          67 63 58 53 48 43 38
+//   3  8 13 18 23 28                64 59 54 49 44 39
+//   4  9 14 19 24    35          71    60 55 50 45 40
+//                 32 33 34    70 69 68
+//
 #ifdef RGB_MATRIX_ENABLE
 
-#define RGB_MATRIX_SET_RED(i)    rgb_matrix_set_color(i, 160,   0,   0)
-#define RGB_MATRIX_SET_ORANGE(i) rgb_matrix_set_color(i, 140,  70,   0)
-#define RGB_MATRIX_SET_YELLOW(i) rgb_matrix_set_color(i, 130, 100,   0)
-#define RGB_MATRIX_SET_GREEN(i)  rgb_matrix_set_color(i,   0, 160,   0)
-#define RGB_MATRIX_SET_BLUE(i)   rgb_matrix_set_color(i,   0,  70, 130)
-#define RGB_MATRIX_SET_INDIGO(i) rgb_matrix_set_color(i,   0,   0, 170)
-#define RGB_MATRIX_SET_VIOLET(i) rgb_matrix_set_color(i, 130,   0, 120)
-#define RGB_MATRIX_SET_OFF(i)    rgb_matrix_set_color(i,   0,   0,   0)
+#define RGB_DIM_RED    160,   0,   0
+#define RGB_DIM_ORANGE 140,  70,   0
+#define RGB_DIM_YELLOW 130, 100,   0
+#define RGB_DIM_GREEN    0, 160,   0
+#define RGB_DIM_BLUE     0,  70, 130
+#define RGB_DIM_INDIGO   0,   0, 170
+#define RGB_DIM_VIOLET 130,   0, 120
+#define RGB_DIM_OFF      0,   0,   0
 
-#define RGB_MATRIX_SET_ALL_RED()    set_layer_color(160,   0,   0)
-#define RGB_MATRIX_SET_ALL_ORANGE() set_layer_color(140,  70,   0)
-#define RGB_MATRIX_SET_ALL_YELLOW() set_layer_color(130, 100,   0)
-#define RGB_MATRIX_SET_ALL_GREEN()  set_layer_color(  0, 160,   0)
-#define RGB_MATRIX_SET_ALL_BLUE()   set_layer_color(  0,  70, 130)
-#define RGB_MATRIX_SET_ALL_INDIGO() set_layer_color(  0,   0, 170)
-#define RGB_MATRIX_SET_ALL_VIOLET() set_layer_color(130,   0, 120)
-#define RGB_MATRIX_SET_ALL_OFF()    set_layer_color(  0,   0,   0)
-
-void set_layer_color(uint8_t r, uint8_t g, uint8_t b) {
-    for (int i = 0; i < DRIVER_LED_TOTAL; i++) {
-        rgb_matrix_set_color( i, r, g, b );
-    }
-}
+#define RGB_MATRIX_SET_OUTER_KEYS(color) \
+    rgb_matrix_set_color( 0, color); \
+    rgb_matrix_set_color( 1, color); \
+    rgb_matrix_set_color( 2, color); \
+    rgb_matrix_set_color( 3, color); \
+    rgb_matrix_set_color( 4, color); \
+    rgb_matrix_set_color( 9, color); \
+    rgb_matrix_set_color(14, color); \
+    rgb_matrix_set_color(19, color); \
+    rgb_matrix_set_color(24, color); \
+    rgb_matrix_set_color(36, color); \
+    rgb_matrix_set_color(37, color); \
+    rgb_matrix_set_color(38, color); \
+    rgb_matrix_set_color(39, color); \
+    rgb_matrix_set_color(40, color); \
+    rgb_matrix_set_color(45, color); \
+    rgb_matrix_set_color(50, color); \
+    rgb_matrix_set_color(55, color); \
+    rgb_matrix_set_color(60, color)
 
 void rgb_matrix_indicators_user(void) {
     if (g_suspend_state || keyboard_config.disable_layer_led) {
@@ -126,82 +176,98 @@ void rgb_matrix_indicators_user(void) {
                 break;
         }
         if (layer_state_cmp(layer_state, NUMPAD)) {
-            RGB_MATRIX_SET_RED(42);
-            RGB_MATRIX_SET_RED(43);
-            RGB_MATRIX_SET_RED(44);
-            RGB_MATRIX_SET_RED(45);
-            RGB_MATRIX_SET_RED(47);
-            RGB_MATRIX_SET_RED(48);
-            RGB_MATRIX_SET_RED(49);
-            RGB_MATRIX_SET_RED(50);
-            RGB_MATRIX_SET_RED(52);
-            RGB_MATRIX_SET_RED(53);
-            RGB_MATRIX_SET_RED(54);
-            RGB_MATRIX_SET_RED(55);
-            RGB_MATRIX_SET_RED(57);
-            RGB_MATRIX_SET_RED(58);
-            RGB_MATRIX_SET_RED(59);
-            RGB_MATRIX_SET_RED(60);
-            RGB_MATRIX_SET_RED(63);
+            rgb_matrix_set_color(42, RGB_DIM_RED);
+            rgb_matrix_set_color(43, RGB_DIM_RED);
+            rgb_matrix_set_color(44, RGB_DIM_RED);
+            rgb_matrix_set_color(45, RGB_DIM_RED);
+            rgb_matrix_set_color(47, RGB_DIM_RED);
+            rgb_matrix_set_color(48, RGB_DIM_RED);
+            rgb_matrix_set_color(49, RGB_DIM_RED);
+            rgb_matrix_set_color(50, RGB_DIM_RED);
+            rgb_matrix_set_color(52, RGB_DIM_RED);
+            rgb_matrix_set_color(53, RGB_DIM_RED);
+            rgb_matrix_set_color(54, RGB_DIM_RED);
+            rgb_matrix_set_color(55, RGB_DIM_RED);
+            rgb_matrix_set_color(57, RGB_DIM_RED);
+            rgb_matrix_set_color(58, RGB_DIM_RED);
+            rgb_matrix_set_color(59, RGB_DIM_RED);
+            rgb_matrix_set_color(60, RGB_DIM_RED);
+            rgb_matrix_set_color(63, RGB_DIM_RED);
         }
         if (layer_state_cmp(layer_state, MEDIA)) {
-            RGB_MATRIX_SET_GREEN(11);
-            RGB_MATRIX_SET_GREEN(12);
-            RGB_MATRIX_SET_GREEN(16);
-            RGB_MATRIX_SET_GREEN(17);
-            RGB_MATRIX_SET_GREEN(21);
-            RGB_MATRIX_SET_GREEN(22);
+            rgb_matrix_set_color(11, RGB_DIM_GREEN);
+            rgb_matrix_set_color(12, RGB_DIM_GREEN);
+            rgb_matrix_set_color(16, RGB_DIM_GREEN);
+            rgb_matrix_set_color(17, RGB_DIM_GREEN);
+            rgb_matrix_set_color(21, RGB_DIM_GREEN);
+            rgb_matrix_set_color(22, RGB_DIM_GREEN);
             //
-            RGB_MATRIX_SET_GREEN(32);
-            RGB_MATRIX_SET_GREEN(33);
-            RGB_MATRIX_SET_GREEN(34);
+            rgb_matrix_set_color(32, RGB_DIM_GREEN);
+            rgb_matrix_set_color(33, RGB_DIM_GREEN);
+            rgb_matrix_set_color(34, RGB_DIM_GREEN);
             //
-            RGB_MATRIX_SET_GREEN(68);
-            RGB_MATRIX_SET_GREEN(69);
+            rgb_matrix_set_color(68, RGB_DIM_GREEN);
+            rgb_matrix_set_color(69, RGB_DIM_GREEN);
         }
         if (layer_state_cmp(layer_state, MOUSE)) {
-            RGB_MATRIX_SET_INDIGO(12);
-            RGB_MATRIX_SET_INDIGO(16);
-            RGB_MATRIX_SET_INDIGO(17);
-            RGB_MATRIX_SET_INDIGO(22);
+            rgb_matrix_set_color(12, RGB_DIM_INDIGO);
+            rgb_matrix_set_color(16, RGB_DIM_INDIGO);
+            rgb_matrix_set_color(17, RGB_DIM_INDIGO);
+            rgb_matrix_set_color(22, RGB_DIM_INDIGO);
             //
-            RGB_MATRIX_SET_INDIGO(32);
-            RGB_MATRIX_SET_INDIGO(33);
-            RGB_MATRIX_SET_INDIGO(34);
+            rgb_matrix_set_color(32, RGB_DIM_INDIGO);
+            rgb_matrix_set_color(33, RGB_DIM_INDIGO);
+            rgb_matrix_set_color(34, RGB_DIM_INDIGO);
             //
-            RGB_MATRIX_SET_INDIGO(48);
-            RGB_MATRIX_SET_INDIGO(52);
-            RGB_MATRIX_SET_INDIGO(53);
-            RGB_MATRIX_SET_INDIGO(58);
+            rgb_matrix_set_color(48, RGB_DIM_INDIGO);
+            rgb_matrix_set_color(52, RGB_DIM_INDIGO);
+            rgb_matrix_set_color(53, RGB_DIM_INDIGO);
+            rgb_matrix_set_color(58, RGB_DIM_INDIGO);
             //
-            RGB_MATRIX_SET_INDIGO(68);
-            RGB_MATRIX_SET_INDIGO(69);
+            rgb_matrix_set_color(68, RGB_DIM_INDIGO);
+            rgb_matrix_set_color(69, RGB_DIM_INDIGO);
         }
     } else {
         switch (biton32(layer_state)) {
             case MAC:
-                RGB_MATRIX_SET_ALL_BLUE();
+                RGB_MATRIX_SET_OUTER_KEYS(RGB_DIM_BLUE);
                 break;
             case FUNCTION:
-                RGB_MATRIX_SET_ALL_VIOLET();
+                RGB_MATRIX_SET_OUTER_KEYS(RGB_DIM_VIOLET);
                 break;
             case NUMPAD:
-                RGB_MATRIX_SET_ALL_RED();
+                RGB_MATRIX_SET_OUTER_KEYS(RGB_DIM_RED);
                 break;
             case MEDIA:
-                RGB_MATRIX_SET_ALL_GREEN();
+                RGB_MATRIX_SET_OUTER_KEYS(RGB_DIM_GREEN);
                 break;
             case MOUSE:
-                RGB_MATRIX_SET_ALL_INDIGO();
+                RGB_MATRIX_SET_OUTER_KEYS(RGB_DIM_INDIGO);
                 break;
             default:
-                RGB_MATRIX_SET_ALL_YELLOW();
+                RGB_MATRIX_SET_OUTER_KEYS(RGB_DIM_YELLOW);
                 break;
         }
     }
 }
 #endif
 
+// DESIGN: The left-side LEDs are light up identically to the right-side ones.
+// It's a bit hard to know whether I'll have an easier view of the small LEDs on
+// the right half or the left half.
+//
+// These LEDs indicate the highest layer enabled, even if RGB lighting is
+// toggled off.
+//
+//   LED indices on left half: 1, 2, 3
+//   LED indices on right half: 4, 5, 6
+//
+//   MAC:      * o o  (1, 4)
+//   FUNCTION: o * o  (2, 5)
+//   NUMPAD:   o o *  (3, 6)
+//   MEDIA:    * * o  (1, 2, 4, 5)
+//   MOUSE:    o * *  (2, 3, 5, 6)
+//
 layer_state_t layer_state_set_user(layer_state_t state) {
 
     ML_LED_1(false);
