@@ -45,10 +45,10 @@
         "homepage": "",
         "owner": "shajra",
         "repo": "nix-project",
-        "rev": "f144c765698b406905c0b42f274ff1ada2a6be3f",
-        "sha256": "0b7lpz04jvhvdbj04196xgzrp9hz7f1kx5kmjy7zfmk9sg1rw024",
+        "rev": "a8523f2c57203c71d28eeba74c746cb9600a588e",
+        "sha256": "12zdsw8j0nnl905j62ibprqxy0v77iyddd1kqc1bwywn82mqpyiw",
         "type": "tarball",
-        "url": "https://github.com/shajra/nix-project/archive/f144c765698b406905c0b42f274ff1ada2a6be3f.tar.gz",
+        "url": "https://github.com/shajra/nix-project/archive/a8523f2c57203c71d28eeba74c746cb9600a588e.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
@@ -69,10 +69,10 @@
         "homepage": "https://qmk.fm",
         "owner": "qmk",
         "repo": "qmk_firmware",
-        "rev": "24ae9232e2656e5d8ebf32cbdfba22bc42946876",
-        "sha256": "1x4js2kldqsh1na8rw98a4a5xk4fhrrka7yzmq4zzk16qkja146q",
+        "rev": "af455a8368dc564df51f9657b04932956ccf580b",
+        "sha256": "1yzxj08zk7ym9s1lzsaz5zhnj79jrwl3ljvkyk864g5cgn3qdyhl",
         "type": "tarball",
-        "url": "https://github.com/qmk/qmk_firmware/archive/24ae9232e2656e5d8ebf32cbdfba22bc42946876.tar.gz",
+        "url": "https://github.com/qmk/qmk_firmware/archive/af455a8368dc564df51f9657b04932956ccf580b.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
