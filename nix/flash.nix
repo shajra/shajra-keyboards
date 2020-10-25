@@ -19,7 +19,7 @@ set -eu
 
 FACTORY=false
 KEYMAP="${defaults.keymap}"
-KEYMAPS_DIR="${defaults.keymaps}"
+KEYMAPS_DIR="${toString defaults.keymaps}"
 NIX_EXE="$(command -v nix || true)"
 
 
