@@ -17,10 +17,10 @@
      (alist-get (intern arg) (car (read-from-string (f-read "nix.org.el"))))
    #+END_SRC
 
-   #+MACRO: get (eval (concat $2 (alist-get '$1 (car (read-from-string (f-read "nix.org.el")))) $2))
-   #+MACRO: package-attr {{{get(package-attr, "\"")}}}
-   #+MACRO: package-name {{{get(package-name, "\"")}}}
-   #+MACRO: package-exe {{{get(package-exe, "=")}}}
+   #+MACRO: get (eval (concat $2 (alist-get (intern $1) (car (read-from-string (f-read "nix.org.el")))) $2))
+   #+MACRO: package-attr {{{get(package-attr,")}}}
+   #+MACRO: package-name {{{get(package-name,")}}}
+   #+MACRO: package-exe {{{get(package-exe,=)}}}
 
 ** Formatting help
 
@@ -66,7 +66,8 @@
    This begins a session with environment variables initialized.
 
    #+NAME: session-init
-   #+BEGIN_SRC shell :session env :dir .. :results silent :noweb yes
+   #+BEGIN_SRC shell :session env :results silent :noweb yes
+     cd ..
      <<nix-init>>
    #+END_SRC
 
@@ -325,7 +326,7 @@
    #+END_SRC
 
    #+RESULTS: nix-build-link
-   : /nix/store/4nsv3ajqd85hdazbhdg02ppzsw7wv9c2-flash-ergodoxez
+   : /nix/store/j9vjc5b7b8z70jj1z1py9vvl149f800a-flash-ergodoxez
 
    Following these symlinks, we can see the files the project provides:
 
@@ -354,7 +355,7 @@
    #+END_SRC
 
    #+RESULTS: nix-build-path
-   : /nix/store/4nsv3ajqd85hdazbhdg02ppzsw7wv9c2-flash-ergodoxez
+   : /nix/store/j9vjc5b7b8z70jj1z1py9vvl149f800a-flash-ergodoxez
 
 ** Running commands
 
@@ -430,7 +431,7 @@
    following:
 
    #+NAME: nix-env-install
-   #+BEGIN_SRC shell :session env :dir .. :results output :exports both :noweb yes :post crop(text=*this*, first-n=1, last-n=3)
+   #+BEGIN_SRC shell :session env :results output :exports both :noweb yes :post crop(text=*this*, first-n=1, last-n=3)
      nix-env --install --file . --attr <<get("package-attr")>> 2>&1
    #+END_SRC
 
@@ -451,7 +452,7 @@
    its name, in this case {{{package-name}}}:
 
    #+NAME: nix-env-uninstall
-   #+BEGIN_SRC shell :session env :dir .. :results output :exports both :noweb yes
+   #+BEGIN_SRC shell :session env :results output :exports both :noweb yes
      nix-env --uninstall <<get("package-name")>> 2>&1
    #+END_SRC
 
