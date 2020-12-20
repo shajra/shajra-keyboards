@@ -4,6 +4,7 @@ cd "$(dirname "$0")"
 
 nix run \
     --ignore-environment \
+    --keep HOME \
     --file nix \
     shajra-keyboards-flash-scripts.model01 \
     --command \

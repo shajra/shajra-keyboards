@@ -9,10 +9,14 @@
 
 let
     defaults = (import ./config.nix).default."${keyboard_id}";
+    name = "flash-${keyboard_id}";
+    meta.description = "Flash ${keyboard_desc} Keyboard";
 in
 
-shajra-keyboards-lib.writeShellChecked "flash-${keyboard_id}"
-"Flash ${keyboard_desc} Keyboard"
+shajra-keyboards-lib.writeShellCheckedExe name
+{
+    inherit meta;
+}
 ''
 set -eu
 
@@ -23,7 +27,7 @@ KEYMAPS_DIR="${toString defaults.keymaps}"
 NIX_EXE="$(command -v nix || true)"
 
 
-. "${shajra-keyboards-lib.lib-sh}/bin/lib.sh"
+. "${shajra-keyboards-lib.lib-sh}/share/nix-project/lib.sh"
 
 print_usage()
 {
@@ -61,6 +65,7 @@ main()
     add_nix_to_path "$NIX_EXE"
     nix run \
         --ignore-environment \
+        --keep HOME \
         --arg factory "$FACTORY" \
         --argstr keymap "$KEYMAP" \
         --arg keymaps "$(${coreutils}/bin/readlink -f "$KEYMAPS_DIR")" \

@@ -1,0 +1,27 @@
+#!/bin/sh -eu
+
+cd "$(dirname "$0")/.."
+
+get()
+(
+    url="$1"
+    dest="${url##*/}"
+    echo
+    echo "GETTING LATEST: $url"
+    nix run \
+        --ignore-environment \
+        --file nix \
+        pkgs-stable.curl \
+        --command \
+        curl \
+        "$url" \
+        > "nix/arduino/$dest"
+)
+
+for url in \
+    http://downloads.arduino.cc/libraries/library_index.json \
+    http://downloads.arduino.cc/packages/package_index.json \
+    http://downloads.arduino.cc/packages/package_index.json.sig \
+    https://raw.githubusercontent.com/keyboardio/boardsmanager/master/package_keyboardio_index.json
+do get "$url"
+done

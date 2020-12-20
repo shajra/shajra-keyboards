@@ -1,15 +1,17 @@
-{ arduino
-, bashInteractive
+{ arduino-cli
+, arduino-tarball-avr
+, arduino-tarball-avrdude
+, arduino-tarball-avr-gcc
+, arduino-tarball-ctags
+, arduino-tarball-ota
+, arduino-tarball-serial-discovery
 , coreutils
-, gawk
 , gnugrep
-, gnumake
-, gnused
 , perl
 , pkgs
 , stdenv
-, systemd
 , kaleidoscope-factory
+, kaleidoscope-bundle
 , model01-factory
 , shajra-keyboards-lib
 }:
@@ -28,23 +30,6 @@ let
     scriptSuffix = if factory then "factory" else "custom-${keymap}";
     keymapDesc   = if factory then "factory" else "${keymap} custom";
 
-    kaleidoscope = stdenv.mkDerivation {
-        name = "kaleidoscope-src";
-        src = kaleidoscope-factory;
-        patchPhase = ''
-            substituteInPlace avr/platform.txt \
-                --replace "-Wimplicit-fallthrough=2" ""
-        '';
-        buildPhase = ''
-            true
-        '';
-        installPhase = ''
-            BOARD_HARDWARE_PATH="$out/arduino/hardware"
-            mkdir -p "$BOARD_HARDWARE_PATH"
-            cp -rL . "$BOARD_HARDWARE_PATH/keyboardio"
-        '';
-    };
-
     model01 =
         let changeCmd =
             if ! factory
@@ -53,61 +38,126 @@ let
         in stdenv.mkDerivation {
             name = "model01-${scriptSuffix}-src";
             src = model01-factory;
-            phases = ["unpackPhase" "installPhase"];
+            phases = ["unpackPhase" "patchPhase" "installPhase"];
             patchPhase = ''
-                BUILD_INFO="$out"
+                BUILD_INFO="''${out#/nix/store/}"
                 echo "#define BUILD_INFORMATION \"$BUILD_INFO\"" \
                     > src/Version.h
                 ${changeCmd}
             '';
             installPhase = ''
-                cp -rL . "$out"
-                cat $out/src/*
+                mkdir "$out"
+                cp -rL . "$out/Model01-Firmware"
             '';
         };
 
+    depName = p: builtins.baseNameOf p.url;
+
     hex = stdenv.mkDerivation {
         name = "model01-${scriptSuffix}-hex";
-        src = model01;
+        #src = model01;
+        srcs = [model01 kaleidoscope-factory];
+        outputs = ["out" "arduino"];
+        sourceRoot = ".";
+        nativeBuildInputs = [arduino-cli perl];
         phases = ["unpackPhase" "buildPhase"];
         buildPhase = ''
-            mkdir "$out"
-            env -i PATH="$PATH" SKETCHBOOK_DIR="${kaleidoscope}/arduino" \
-                ARDUINO_PATH="${arduino}/share/arduino" \
-                OUTPUT_PATH="$out" \
-                make
+            export KALEIDOSCOPE_DIR="$(pwd)/kaleidoscope-src"
+            export KALEIDOSCOPE_TEMP_PATH="$out"
+            export ARDUINO_CONTENT="$arduino"
+            export ARDUINO_DIRECTORIES_USER="$arduino/user"
+            export ARDUINO_DIRECTORIES_DATA="$arduino/data"
+            export SKETCH_IDENTIFIER=Model01-Firmware
+            #export VERBOSE=1
+
+            mkdir --parents "$KALEIDOSCOPE_TEMP_PATH"
+            mkdir --parents "$ARDUINO_DIRECTORIES_USER/hardware"
+            mkdir --parents "$ARDUINO_DIRECTORIES_DATA/staging/packages"
+            mkdir --parents "$ARDUINO_DIRECTORIES_DATA/staging/tools"
+
+            cp --archive ${kaleidoscope-bundle} \
+                "$arduino/user/hardware/keyboardio"
+            chmod -R +w "$arduino/user/hardware/keyboardio"
+
+            cp "${./arduino/library_index.json}" \
+                "$arduino/data/library_index.json"
+            cp "${./arduino/package_index.json}" \
+                "$arduino/data/package_index.json"
+            cp "${./arduino/package_index.json.sig}" \
+                "$arduino/data/package_index.json.sig"
+            cp "${./arduino/package_keyboardio_index.json}" \
+                "$arduino/data/package_keyboardio_index.json"
+            ln --symbolic "${arduino-tarball-avr}" \
+                "$arduino/data/staging/packages/${depName arduino-tarball-avr}"
+            ln --symbolic "${arduino-tarball-avrdude}" \
+                "$arduino/data/staging/packages/${depName arduino-tarball-avrdude}"
+            ln --symbolic "${arduino-tarball-avr-gcc}" \
+                "$arduino/data/staging/packages/${depName arduino-tarball-avr-gcc}"
+            ln --symbolic "${arduino-tarball-ota}" \
+                "$arduino/data/staging/packages/${depName arduino-tarball-ota}"
+            ln --symbolic "${arduino-tarball-ctags}" \
+                "$arduino/data/staging/tools/${depName arduino-tarball-ctags}"
+            ln --symbolic "${arduino-tarball-serial-discovery}" \
+                "$arduino/data/staging/tools/${depName arduino-tarball-serial-discovery}"
+
+            make --directory "$ARDUINO_DIRECTORIES_USER/hardware/keyboardio" \
+                 prepare-virtual
+
+            arduino-cli config init
+            arduino-cli core install "arduino:avr"
+
+            cd "model01-${scriptSuffix}-src/Model01-Firmware"
+            make compile
         '';
+
     };
 
-    # IDEA: Unfortunately, because Kaleidoscope has a more
-    # complicated build/flash script, the flashing doesn't use
-    # the "hex" derivation above yet.  The firmware is built
-    # outside a Nix derivation when this flashing script is
-    # called.  But Nix still helps to keep the environment of
-    # that runtime build more hermetic.
     flash =
         let src = model01;
-        in lib.writeShellChecked "model01-${scriptSuffix}-flash"
-            "Flash Keyboard.io Model 01 (${keymapDesc} keymap)"
+            bin = hex.out;
+        in lib.writeShellCheckedExe "model01-${scriptSuffix}-flash" {
+                meta.description =
+                    "Flash Keyboard.io Model 01 (${keymapDesc} keymap)";
+            }
             ''
-            PATH="${bashInteractive}/bin"
+            PATH="${arduino-cli}/bin"
             PATH="${coreutils}/bin:$PATH"
-            PATH="${gawk}/bin:$PATH"
             PATH="${gnugrep}/bin:$PATH"
-            PATH="${gnumake}/bin:$PATH"
-            PATH="${gnused}/bin:$PATH"
-            PATH="${perl}/bin:$PATH"
-            PATH="${systemd}/bin:$PATH"
             SOURCE="${src}"
+            BINARY="${bin}"
+
+            PORT="$(env -i \
+                PATH="$PATH" \
+                HOME="$HOME" \
+                ARDUINO_DIRECTORIES_USER="${hex.arduino}/user" \
+                arduino-cli board list \
+                | grep keyboardio:avr \
+                | cut -d ' ' -f 1)"
+
             echo
             echo FLASH SOURCE: "$SOURCE"
+            echo FLASH BINARY: "$BINARY"
+            echo DETECTED PORT: "$PORT"
             echo
-            cd "$SOURCE" || exit 1
+            cd "$SOURCE/Model01-Firmware" || exit 1
+            echo "To flash your keyboard, you must hold down the 'Prog' key."
+            echo "While holding the 'Prog' key, press 'Enter', but continue to"
+            echo "hold the 'Prog' key.  You can release it once flashing has"
+            echo "started, and the key glows red."
+            echo
+            echo "Do these steps now, or Ctrl-C to quit..."
+            read -r
             env -i \
                 PATH="$PATH" \
-                SKETCHBOOK_DIR="${kaleidoscope}/arduino" \
-                ARDUINO_PATH="${arduino}/share/arduino" \
-                make flash
+                HOME="$HOME" \
+                ARDUINO_DIRECTORIES_USER="${hex.arduino}/user" \
+                ARDUINO_DIRECTORIES_DATA="${hex.arduino}/data" \
+                arduino-cli \
+                upload \
+                --fqbn keyboardio:avr:model01 \
+                --input-dir "${bin}/output/Model01-Firmware" \
+                --port "$PORT" \
+                --verbose
             '';
 
 in { inherit flash hex; }

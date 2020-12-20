@@ -6,8 +6,11 @@
 }:
 
 
-shajra-keyboards-lib.writeShellChecked "shajra-keyboards-licenses"
-"License information for shajra-keyboards project"
+shajra-keyboards-lib.writeShellCheckedExe "shajra-keyboards-licenses"
+{
+    meta.description =
+        "License information for shajra-keyboards project";
+}
 ''
 set -eu
 

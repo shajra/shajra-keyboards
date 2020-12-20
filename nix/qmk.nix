@@ -48,11 +48,20 @@ let
         name = "${keyboardId}-${scriptSuffix}.${firmwareExtension}";
         nativeBuildInputs = [
             # DESIGN: the QMK build warns this will be needed in the future
-            python3
+            (python3.withPackages (ps: with ps; [
+                appdirs
+                argcomplete
+                colorama
+                hjson
+                milc
+                pygments
+            ]))
         ];
         inherit buildInputs;
         src = qmk;
         postPatch = ''
+            substituteInPlace bin/qmk \
+                --replace "#!/usr/bin/env python" "#!$(command -v python)"
             VERSION="$out"
             echo "#define QMK_VERSION \"$VERSION\"" \
                 > quantum/version.h
@@ -70,8 +79,10 @@ let
     flash =
         let src = qmk;
             bin = hex;
-        in lib.writeShellChecked "${keyboardId}-${scriptSuffix}-flash"
-            "Flash ${keyboardDesc} (${keymapDesc} keymap)"
+        in lib.writeShellCheckedExe "${keyboardId}-${scriptSuffix}-flash" {
+                meta.description =
+                    "Flash ${keyboardDesc} (${keymapDesc} keymap)";
+            }
             ''
             SOURCE="${src}"
             BINARY="${bin}"

@@ -1,19 +1,35 @@
 let
 
     fromGitHub = source: name:
-        with source; pkgs.fetchFromGitHub {
+        with source; pkgs-stable.fetchFromGitHub {
             inherit owner repo rev sha256 name;
             fetchSubmodules = true;
         };
 
-    sources = builtins.fromJSON
+    sources = import ./sources.nix;
+
+    sources-json = builtins.fromJSON
         (builtins.readFile ./sources.json);
 
-    nix-project-all = import (import ./sources.nix).nix-project;
+    nix-project-all = import sources.nix-project;
+
+    arduino-tarball-avr = sources.arduino-tarball-avr;
+    arduino-tarball-avrdude = sources.arduino-tarball-avrdude;
+    arduino-tarball-avr-gcc = sources.arduino-tarball-avr-gcc;
+    arduino-tarball-ctags = sources.arduino-tarball-ctags;
+    arduino-tarball-ota = sources.arduino-tarball-ota;
+    arduino-tarball-serial-discovery = sources.arduino-tarball-serial-discovery;
 
     overlay = self: super: {
         nix-project-lib = nix-project-all.nix-project-lib;
         inherit
+        arduino-tarball-avr
+        arduino-tarball-avrdude
+        arduino-tarball-avr-gcc
+        arduino-tarball-ctags
+        arduino-tarball-ota
+        arduino-tarball-serial-discovery
+        kaleidoscope-bundle
         kaleidoscope-factory
         model01-factory
         qmk-factory
@@ -21,17 +37,24 @@ let
         shajra-keyboards-lib;
     };
 
-    pkgs = import (import ./sources.nix).nixpkgs {
+    pkgs-stable = import sources.nixpkgs {
         config = {};
         overlays = [overlay];
     };
 
-    qmk-factory = fromGitHub sources.qmk "qmk-src";
+    pkgs = import sources.nixpkgs-unstable {
+        config = {};
+        overlays = [overlay];
+    };
 
-    kaleidoscope-factory =
-        fromGitHub sources.kaleidoscope "kaleidoscope-src";
+    qmk-factory = fromGitHub sources-json.qmk "qmk-src";
 
-    model01-factory = fromGitHub sources.model01 "model01-src";
+    kaleidoscope-bundle =
+        fromGitHub sources-json.kaleidoscope-bundle "kaleidoscope-bundle-src";
+
+    kaleidoscope-factory = sources.kaleidoscope;
+
+    model01-factory = sources.model01;
 
     shajra-keyboards-lib = pkgs.callPackage (import ./lib.nix) {};
 
@@ -51,6 +74,6 @@ in rec {
     shajra-keyboards-licenses =
         pkgs.callPackage (import ./licenses.nix) {};
 
-    inherit pkgs shajra-keyboards-flash;
+    inherit pkgs pkgs-stable shajra-keyboards-flash;
 
 } // nix-project-all
