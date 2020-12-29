@@ -49,10 +49,10 @@
         "name": "kaleidoscope",
         "owner": "keyboardio",
         "repo": "kaleidoscope",
-        "rev": "8bb344b29d6a403b013865ce9f0d38c924cc07fe",
-        "sha256": "1pjk42z88vprrz1cc1ab7jzi23fnwjrfqrzrc17rsk45d7wjnjk5",
+        "rev": "ff86fe1ed98834bed22069fed8707f732998c461",
+        "sha256": "0h08v0kzm7dl9zag9bdvf1gii920nvhyy49d2kr7y6jpinzry9ad",
         "type": "tarball",
-        "url": "https://github.com/keyboardio/kaleidoscope/archive/8bb344b29d6a403b013865ce9f0d38c924cc07fe.tar.gz",
+        "url": "https://github.com/keyboardio/kaleidoscope/archive/ff86fe1ed98834bed22069fed8707f732998c461.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "kaleidoscope-bundle": {
@@ -101,10 +101,10 @@
         "homepage": "",
         "owner": "shajra",
         "repo": "nix-project",
-        "rev": "8f0c2c7966cbce397e612d74e821ba40cfa665a9",
-        "sha256": "110ry63avkn0rraac880zd4wqsvlkd6ry8zlri0jz4davb3h81w5",
+        "rev": "26d0ccc999a78ba724340e23dc2a2bc39c1e41a4",
+        "sha256": "10v35v6x9wlbyql9r4d6xxs53cc5gw6xj9748kwr148aczklkmg8",
         "type": "tarball",
-        "url": "https://github.com/shajra/nix-project/archive/8f0c2c7966cbce397e612d74e821ba40cfa665a9.tar.gz",
+        "url": "https://github.com/shajra/nix-project/archive/26d0ccc999a78ba724340e23dc2a2bc39c1e41a4.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
@@ -113,10 +113,10 @@
         "homepage": "https://github.com/NixOS/nixpkgs",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "3d2d8f281a27d466fa54b469b5993f7dde198375",
-        "sha256": "1hfis53xyzy6hfdivlwkwdy7irbhk7c500a4lf7x43cfkijx5ks1",
+        "rev": "b43faa27fac1f9a77454a69400ee9f54a9ac9447",
+        "sha256": "07r5na2frgw68x0aww7pskk44hgccavz7788mnhmllm5gl1j2206",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/3d2d8f281a27d466fa54b469b5993f7dde198375.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/b43faa27fac1f9a77454a69400ee9f54a9ac9447.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs-unstable": {
@@ -125,10 +125,10 @@
         "homepage": "https://github.com/NixOS/nixpkgs",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e9158eca70ae59e73fae23be5d13d3fa0cfc78b4",
-        "sha256": "0cnmvnvin9ixzl98fmlm3g17l6w95gifqfb3rfxs55c0wj2ddy53",
+        "rev": "2f47650c2f28d87f86ab807b8a339c684d91ec56",
+        "sha256": "17akl75x28rzq97gaad32flswdsp150nfsg7h909kda721zql71a",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/e9158eca70ae59e73fae23be5d13d3fa0cfc78b4.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/2f47650c2f28d87f86ab807b8a339c684d91ec56.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "qmk": {
@@ -137,10 +137,10 @@
         "homepage": "https://qmk.fm",
         "owner": "qmk",
         "repo": "qmk_firmware",
-        "rev": "e3211e307ec14c326b03b39806ed7bb11b927d34",
-        "sha256": "19r14gzb4dz9gr80qjgv04yzrlwpgjh9m97gnralv7d9sf10zzbi",
+        "rev": "5fde2d730c854eb6516771f1c5dcd22626f85efb",
+        "sha256": "1law16ahinn6wfp4iiyn2sjfzcf8w812w920kgb06y9cakzl8wwm",
         "type": "tarball",
-        "url": "https://github.com/qmk/qmk_firmware/archive/e3211e307ec14c326b03b39806ed7bb11b927d34.tar.gz",
+        "url": "https://github.com/qmk/qmk_firmware/archive/5fde2d730c854eb6516771f1c5dcd22626f85efb.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }

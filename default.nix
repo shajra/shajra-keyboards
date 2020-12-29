@@ -1,5 +1,11 @@
-builtins.removeAttrs (import ./nix) [
-    "nix-project-exe"
-    "nix-project-org2gfm"
-    "pkgs"
-]
+with (import ./nix);
+
+{
+    inherit
+    shajra-keyboards-ergodoxez
+    shajra-keyboards-model01
+    shajra-keyboards-moonlander
+    shajra-keyboards-flash-scripts
+    shajra-keyboards-licenses
+    shajra-keyboards-flash;
+}

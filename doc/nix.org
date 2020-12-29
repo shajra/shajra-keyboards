@@ -241,14 +241,14 @@
 
    #+RESULTS: nix-search
    #+begin_example
-   ,* nix-project-lib.lib-sh (nix-project-lib)
-     Common shell functions
-
    ,* shajra-keyboards-flash-scripts.ergodoxez (flash-ergodoxez)
      Flash ZSA Technology Lab's Ergodox EZ Keyboard
 
    ,* shajra-keyboards-flash-scripts.model01 (flash-model01)
      Flash Keyboardio's Model 01 Keyboard
+
+   ,* shajra-keyboards-flash-scripts.moonlander (flash-moonlander)
+     Flash ZSA Technology Lab's Moonlander Keyboard
 
    …
    #+end_example
@@ -341,7 +341,7 @@
    #+END_SRC
 
    #+RESULTS: nix-build-link
-   : /nix/store/zc0rqn5ghn6y4sdc4byw9xx45d32m7cc-flash-ergodoxez
+   : /nix/store/m168ava5r8k5nrlfmpkbgipcwgjijf61-flash-ergodoxez
 
    Following these symlinks, we can see the files the project provides:
 
@@ -370,7 +370,7 @@
    #+END_SRC
 
    #+RESULTS: nix-build-path
-   : /nix/store/zc0rqn5ghn6y4sdc4byw9xx45d32m7cc-flash-ergodoxez
+   : /nix/store/m168ava5r8k5nrlfmpkbgipcwgjijf61-flash-ergodoxez
 
 ** Running commands
 
