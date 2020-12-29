@@ -147,7 +147,7 @@ let
             echo
             echo "Do these steps now, or Ctrl-C to quit..."
             read -r
-            env -i \
+            "${coreutils}/bin/env" -i \
                 PATH="$PATH" \
                 HOME="$HOME" \
                 ARDUINO_DIRECTORIES_USER="${hex.arduino}/user" \

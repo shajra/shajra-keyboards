@@ -71,7 +71,6 @@ let
                 make ${qmkTargetName}:${keymapName}
         '';
         installPhase = ''
-            ls -l
             cp ${qmkTargetName}_${keymapName}.${firmwareExtension} "$out"
         '';
     };

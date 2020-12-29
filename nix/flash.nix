@@ -31,7 +31,7 @@ NIX_EXE="$(command -v nix || true)"
 
 print_usage()
 {
-    ${coreutils}/bin/cat - <<EOF
+    "${coreutils}/bin/cat" - <<EOF
 USAGE: ${prog_name} [OPTION]...
 
 DESCRIPTION:
@@ -68,7 +68,7 @@ main()
         --keep HOME \
         --arg factory "$FACTORY" \
         --argstr keymap "$KEYMAP" \
-        --arg keymaps "$(${coreutils}/bin/readlink -f "$KEYMAPS_DIR")" \
+        --arg keymaps "$("${coreutils}/bin/readlink" -f "$KEYMAPS_DIR")" \
         --file "${./.}" \
         "shajra-keyboards-${keyboard_id}" \
         --command "${keyboard_id}-$SCRIPT_SUFFIX-flash"
@@ -131,7 +131,7 @@ print_header()
     echo
     msg="Flashing ${keyboard_desc} ($keymap_name keymap)"
     echo "$msg"
-    echo "$msg" | ${coreutils}/bin/tr -c '\n' =
+    echo "$msg" | "${coreutils}/bin/tr" -c '\n' =
 }
 
 
