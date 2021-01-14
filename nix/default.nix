@@ -37,14 +37,19 @@ let
         shajra-keyboards-lib;
     };
 
-    pkgs-stable = import sources.nixpkgs {
-        config = {};
-        overlays = [overlay];
+    pythonOverlay = self: super: {
+        python3-unstable = pkgs-unstable.python3;
     };
 
-    pkgs = import sources.nixpkgs-unstable {
+
+    pkgs-stable = import sources.nixpkgs {
         config = {};
-        overlays = [overlay];
+        overlays = [overlay pythonOverlay];
+    };
+
+    pkgs-unstable = import sources.nixpkgs-unstable {
+        config = {};
+        overlays = [overlay pythonOverlay];
     };
 
     qmk-factory = fromGitHub sources-json.qmk "qmk-src";
@@ -56,24 +61,26 @@ let
 
     model01-factory = sources.model01;
 
-    shajra-keyboards-lib = pkgs.callPackage (import ./lib.nix) {};
+    shajra-keyboards-lib = pkgs-stable.callPackage (import ./lib.nix) {};
 
     shajra-keyboards-flash =
-        pkgs.callPackage (import ./flash.nix) {};
+        pkgs-stable.callPackage (import ./flash.nix) {};
 
 in rec {
 
-    shajra-keyboards-ergodoxez  = pkgs.callPackage (import ./ergodoxez.nix)  {};
-    shajra-keyboards-model01    = pkgs.callPackage (import ./model01.nix)    {};
-    shajra-keyboards-moonlander = pkgs.callPackage (import ./moonlander.nix) {};
+    # DESIGN: unstable has the latest Arduino binaries (good for Kaleidoscope)
+    # DESIGN: unstable's GCC AVR and ARM compiler wasn't cached in Hydra (bad for QMK)
+    shajra-keyboards-ergodoxez  = pkgs-stable.callPackage (import ./ergodoxez.nix)  {};
+    shajra-keyboards-moonlander = pkgs-stable.callPackage (import ./moonlander.nix) {};
+    shajra-keyboards-model01    = pkgs-unstable.callPackage (import ./model01.nix)  {};
 
     shajra-keyboards-flash-scripts =
-        pkgs.recurseIntoAttrs (
-            pkgs.callPackage (import ./flash-scripts.nix) {});
+        pkgs-stable.recurseIntoAttrs (
+            pkgs-stable.callPackage (import ./flash-scripts.nix) {});
 
     shajra-keyboards-licenses =
-        pkgs.callPackage (import ./licenses.nix) {};
+        pkgs-stable.callPackage (import ./licenses.nix) {};
 
-    inherit pkgs pkgs-stable shajra-keyboards-flash;
+    inherit pkgs-unstable pkgs-stable shajra-keyboards-flash;
 
 } // nix-project-all

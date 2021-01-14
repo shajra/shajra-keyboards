@@ -2,6 +2,8 @@ with (import ./.);
 
 let
 
+    lib = pkgs-stable.lib;
+
     ergodoxezFactory  = shajra-keyboards-ergodoxez  { factory = true; };
     model01Factory    = shajra-keyboards-model01    { factory = true; };
     moonlanderFactory = shajra-keyboards-moonlander { factory = true; };
@@ -40,18 +42,18 @@ let
                         factory = false;
                         keymap = filename;
                     };
-                in pkgs.lib.nameValuePair n v;
-         in pkgs.lib.mapAttrs' toBuild read_keymaps;
+                in lib.nameValuePair n v;
+         in lib.mapAttrs' toBuild read_keymaps;
 
     flashCustom = id:
         let toFlash = name: build:
-                pkgs.lib.nameValuePair "${name}-flash" build.flash;
-        in pkgs.lib.mapAttrs' toFlash (buildsCustom id);
+                lib.nameValuePair "${name}-flash" build.flash;
+        in lib.mapAttrs' toFlash (buildsCustom id);
 
     hexCustom = id:
         let toHex = name: build:
-                pkgs.lib.nameValuePair "${name}-hex" build.hex;
-        in pkgs.lib.mapAttrs' toHex (buildsCustom id);
+                lib.nameValuePair "${name}-hex" build.hex;
+        in lib.mapAttrs' toHex (buildsCustom id);
 
 in
 

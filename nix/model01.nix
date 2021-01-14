@@ -132,11 +132,20 @@ let
                 ARDUINO_DIRECTORIES_USER="${hex.arduino}/user" \
                 arduino-cli board list \
                 | grep keyboardio:avr \
+                | head -1 \
                 | cut -d ' ' -f 1)"
 
             echo
             echo FLASH SOURCE: "$SOURCE"
             echo FLASH BINARY: "$BINARY"
+
+            if [ -z "$PORT" ]
+            then
+                echo
+                echo "ERROR: no port detected (is your Model 01 keyboard plugged in?)" >&2
+                exit 1
+            fi
+
             echo DETECTED PORT: "$PORT"
             echo
             cd "$SOURCE/Model01-Firmware" || exit 1

@@ -9,14 +9,14 @@ nix run \
     --keep LOCALE_ARCHIVE \
     --file nix \
     nix-project-org2gfm \
-    pkgs.ansifilter \
-    pkgs.bash \
-    pkgs.coreutils \
-    pkgs.gnugrep \
-    pkgs.gnutar \
-    pkgs.gzip \
-    pkgs.procps \
-    pkgs.tree \
+    pkgs-stable.ansifilter \
+    pkgs-stable.bash \
+    pkgs-stable.coreutils \
+    pkgs-stable.gnugrep \
+    pkgs-stable.gnutar \
+    pkgs-stable.gzip \
+    pkgs-stable.procps \
+    pkgs-stable.tree \
     --command \
     org2gfm \
     --ignore 'links.org' \

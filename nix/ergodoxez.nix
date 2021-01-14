@@ -14,7 +14,7 @@ callPackage ./qmk.nix {} { inherit factory keymap keymaps; } {
     firmwareExtension = "hex";
     keyboardId = "ergodoxez";
     keyboardDesc = "Ergodox EZ";
-    buildInputs = [
+    nativeBuildInputs = [
         pkgsCross.avr.buildPackages.gcc
     ];
     flashCmd =

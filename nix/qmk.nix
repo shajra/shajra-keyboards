@@ -1,4 +1,4 @@
-{ python3
+{ python3-unstable
 , qmk-factory
 , stdenv
 , shajra-keyboards-lib
@@ -14,7 +14,7 @@
 , firmwareExtension
 , keyboardId
 , keyboardDesc
-, buildInputs
+, nativeBuildInputs
 , flashCmd
 }:
 
@@ -46,9 +46,9 @@ let
 
     hex = stdenv.mkDerivation {
         name = "${keyboardId}-${scriptSuffix}.${firmwareExtension}";
-        nativeBuildInputs = [
+        nativeBuildInputs = nativeBuildInputs ++ [
             # DESIGN: the QMK build warns this will be needed in the future
-            (python3.withPackages (ps: with ps; [
+            (python3-unstable.withPackages (ps: with ps; [
                 appdirs
                 argcomplete
                 colorama
@@ -57,7 +57,6 @@ let
                 pygments
             ]))
         ];
-        inherit buildInputs;
         src = qmk;
         postPatch = ''
             substituteInPlace bin/qmk \
