@@ -144,7 +144,7 @@ After a successful call of `nix build`, you'll see one or more symlinks for each
 readlink result*
 ```
 
-    /nix/store/x1sgq1jwdfqc6sz1fc09lmwlbp5zfr90-flash-ergodoxez
+    /nix/store/v7cph6xqc78cdvznw28dymc05j40y3c5-flash-ergodoxez
 
 Following these symlinks, we can see the files the project provides:
 
@@ -166,7 +166,7 @@ It's common to configure these "result" symlinks as ignored in source control to
 nix path-info --file . shajra-keyboards-flash-scripts.ergodoxez
 ```
 
-    /nix/store/x1sgq1jwdfqc6sz1fc09lmwlbp5zfr90-flash-ergodoxez
+    /nix/store/v7cph6xqc78cdvznw28dymc05j40y3c5-flash-ergodoxez
 
 ## Running commands<a id="sec-4-3"></a>
 
