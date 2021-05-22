@@ -52,7 +52,9 @@ let
                 appdirs
                 argcomplete
                 colorama
+                dotty-dict
                 hjson
+                jsonschema
                 milc
                 pygments
             ]))

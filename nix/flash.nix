@@ -1,4 +1,6 @@
 { coreutils
+, gnutar
+, gzip
 , shajra-keyboards-lib
 }:
 
@@ -62,6 +64,7 @@ main()
     if [ "$FACTORY" = "true" ]
     then SCRIPT_SUFFIX="factory"
     fi
+    PATH="${gnutar}/bin:${gzip}/bin"
     add_nix_to_path "$NIX_EXE"
     nix run \
         --ignore-environment \

@@ -35,11 +35,11 @@
         "version": "1.3.0"
     },
     "arduino-tarball-serial-discovery": {
-        "sha256": "1qiinx2h18hz2jlwz9gydqx6575w3l5b2qrz83nfp9iyh96hv1qs",
+        "sha256": "1vvrfqi6viydirvmrv1rgnf8d5bw4d4s597argacsf4qwzfr98zw",
         "type": "file",
-        "url": "https://downloads.arduino.cc/tools/serial-discovery-linux64-v1.0.0.tar.bz2",
-        "url_template": "https://downloads.arduino.cc/tools/serial-discovery-linux64-v<version>.tar.bz2",
-        "version": "1.0.0"
+        "url": "https://downloads.arduino.cc/discovery/serial-discovery/serial-discovery_v1.2.1_Linux_64bit.tar.gz",
+        "url_template": "https://downloads.arduino.cc/discovery/serial-discovery/serial-discovery_v<version>_Linux_64bit.tar.gz",
+        "version": "1.2.1"
     },
     "kaleidoscope": {
         "branch": "master",
@@ -49,10 +49,10 @@
         "name": "kaleidoscope",
         "owner": "keyboardio",
         "repo": "kaleidoscope",
-        "rev": "4f9afcfdb9f804075a4f18fd9d17777a64b1f779",
-        "sha256": "0z194rkb94r1xfxv7jkpakj2w18ykx70b1ajag071b1fdl4q4nb3",
+        "rev": "32446ae18c5fbbcb4ec4fec46caf52dcdca4ce86",
+        "sha256": "0vawga4qsmnq3bmzr1bx3rzvf464xy5nw0yqc95iwbb1wq9jdmza",
         "type": "tarball",
-        "url": "https://github.com/keyboardio/kaleidoscope/archive/4f9afcfdb9f804075a4f18fd9d17777a64b1f779.tar.gz",
+        "url": "https://github.com/keyboardio/kaleidoscope/archive/32446ae18c5fbbcb4ec4fec46caf52dcdca4ce86.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "kaleidoscope-bundle": {
@@ -89,10 +89,10 @@
         "homepage": "",
         "owner": "shajra",
         "repo": "nix-project",
-        "rev": "1ae58bc74805c0b6649fc108067a03c7074bd4cf",
-        "sha256": "03cr6zz92fn2j1glw1ayihz0wyj93762m5ag8xk4qm94503rps6d",
+        "rev": "dc83cde3b973b7f67dea21e22e88571c029d554f",
+        "sha256": "0ci2mm7w5aj9cincackvlzc91mdwsbmrr8ywbl935gzyamckm34f",
         "type": "tarball",
-        "url": "https://github.com/shajra/nix-project/archive/1ae58bc74805c0b6649fc108067a03c7074bd4cf.tar.gz",
+        "url": "https://github.com/shajra/nix-project/archive/dc83cde3b973b7f67dea21e22e88571c029d554f.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
@@ -101,10 +101,10 @@
         "homepage": "https://github.com/NixOS/nixpkgs",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "38eaa62f28384bc5f6c394e2a99bd6a4913fc71f",
-        "sha256": "1pvbhvy6m5zmhhifk66ll07fnwvwnl9rrif03i4yc34s4f48m7ld",
+        "rev": "a7064e23973b0f3e1dd56cf4601758fedc38423c",
+        "sha256": "1c4s9bpgn390jzswd3vyh0827qvlnkjxa4jbib0fipgvd8nfkh4a",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/38eaa62f28384bc5f6c394e2a99bd6a4913fc71f.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/a7064e23973b0f3e1dd56cf4601758fedc38423c.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs-unstable": {
@@ -113,10 +113,10 @@
         "homepage": "https://github.com/NixOS/nixpkgs",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "9816b99e71c3504b0b4c1f8b2e004148460029d4",
-        "sha256": "1dpz36i3vx0c1wmacrki0wsf30if8xq3bnj71g89rsbxyi87lhcm",
+        "rev": "673aea9f84c955c94b105797fdc56007017af4db",
+        "sha256": "13zzzsjky30hyj2mm3m8pdna4qyajpa8c40aagx4w9rz1x5h4m6y",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/9816b99e71c3504b0b4c1f8b2e004148460029d4.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/673aea9f84c955c94b105797fdc56007017af4db.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "qmk": {
@@ -125,10 +125,10 @@
         "homepage": "https://qmk.fm",
         "owner": "qmk",
         "repo": "qmk_firmware",
-        "rev": "e1e66c78bf0168c3c83357e19127d9b0ab3fa823",
-        "sha256": "0fkq5g8fvk0qqlid6kpmkqv6vgx19y94hr8jx7byd9pwv1r219fp",
+        "rev": "40f235a96c7f64822f6fb29b6aa7aab117689888",
+        "sha256": "1ywsw42gg0x5ghdidbd3ba2wwasy5bkcyvp5vraz88w2pfzisgnf",
         "type": "tarball",
-        "url": "https://github.com/qmk/qmk_firmware/archive/e1e66c78bf0168c3c83357e19127d9b0ab3fa823.tar.gz",
+        "url": "https://github.com/qmk/qmk_firmware/archive/40f235a96c7f64822f6fb29b6aa7aab117689888.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }

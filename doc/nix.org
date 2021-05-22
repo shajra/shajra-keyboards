@@ -341,7 +341,7 @@
    #+END_SRC
 
    #+RESULTS: nix-build-link
-   : /nix/store/4gdzhnffm6z25rh0iw063s8095xd8dkq-flash-ergodoxez
+   : /nix/store/vf1cxvlpmir1r4yndmif7zjcxx4nb0h7-flash-ergodoxez
 
    Following these symlinks, we can see the files the project provides:
 
@@ -370,7 +370,7 @@
    #+END_SRC
 
    #+RESULTS: nix-build-path
-   : /nix/store/4gdzhnffm6z25rh0iw063s8095xd8dkq-flash-ergodoxez
+   : /nix/store/vf1cxvlpmir1r4yndmif7zjcxx4nb0h7-flash-ergodoxez
 
 ** Running commands
 

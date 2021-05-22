@@ -51,7 +51,11 @@ let
             '';
         };
 
-    depName = p: builtins.baseNameOf p.url;
+    # DESIGN: Arduino-cli errantly names files "tar.bz2" irrespective of what
+    # the compression really is.
+    depName = p:
+        let bn = builtins.baseNameOf p.url;
+        in builtins.replaceStrings ["tar.gz"] ["tar.bz2"] bn;
 
     hex = stdenv.mkDerivation {
         name = "model01-${scriptSuffix}-hex";
@@ -62,13 +66,13 @@ let
         nativeBuildInputs = [arduino-cli perl];
         phases = ["unpackPhase" "buildPhase"];
         buildPhase = ''
-            export KALEIDOSCOPE_DIR="$(pwd)/kaleidoscope-src"
             export KALEIDOSCOPE_TEMP_PATH="$out"
             export ARDUINO_CONTENT="$arduino"
             export ARDUINO_DIRECTORIES_USER="$arduino/user"
             export ARDUINO_DIRECTORIES_DATA="$arduino/data"
+            export ARDUINO_DIRECTORIES_DOWNLOADS="$arduino/data/staging"
             export SKETCH_IDENTIFIER=Model01-Firmware
-            #export VERBOSE=1
+            export VERBOSE=1
 
             mkdir --parents "$KALEIDOSCOPE_TEMP_PATH"
             mkdir --parents "$ARDUINO_DIRECTORIES_USER/hardware"
