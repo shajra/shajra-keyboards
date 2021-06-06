@@ -6,4 +6,4 @@
  (run-attr       . "shajra-keyboards-flash-scripts.ergodoxez")
  (run-name       . "flash-ergodoxez")
  (run-target     . "flash-ergodoxez")
- (nixos-release  . "nixos-20.09"))
+ (nixos-release  . "nixos-21.05"))

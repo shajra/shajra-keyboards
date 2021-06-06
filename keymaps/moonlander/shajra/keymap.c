@@ -167,7 +167,7 @@ void matrix_init_user(void)
     rgb_matrix_set_color(60, color)
 
 void rgb_matrix_indicators_user(void) {
-    if (g_suspend_state || keyboard_config.disable_layer_led) {
+    if (keyboard_config.disable_layer_led) {
         switch (rgb_matrix_get_flags()) {
             case LED_FLAG_NONE:
                 rgb_matrix_set_color_all(0, 0, 0);

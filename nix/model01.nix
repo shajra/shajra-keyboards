@@ -10,9 +10,7 @@
 , perl
 , pkgs
 , stdenv
-, kaleidoscope-factory
 , kaleidoscope-bundle
-, model01-factory
 , shajra-keyboards-lib
 }:
 
@@ -37,7 +35,7 @@ let
             else "";
         in stdenv.mkDerivation {
             name = "model01-${scriptSuffix}-src";
-            src = model01-factory;
+            src = "${kaleidoscope-bundle}/avr/libraries/Model01-Firmware";
             phases = ["unpackPhase" "patchPhase" "installPhase"];
             patchPhase = ''
                 BUILD_INFO="''${out#/nix/store/}"
@@ -59,8 +57,7 @@ let
 
     hex = stdenv.mkDerivation {
         name = "model01-${scriptSuffix}-hex";
-        #src = model01;
-        srcs = [model01 kaleidoscope-factory];
+        src = model01;
         outputs = ["out" "arduino"];
         sourceRoot = ".";
         nativeBuildInputs = [arduino-cli perl];

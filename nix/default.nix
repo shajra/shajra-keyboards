@@ -19,6 +19,9 @@ let
     arduino-tarball-ctags = sources.arduino-tarball-ctags;
     arduino-tarball-ota = sources.arduino-tarball-ota;
     arduino-tarball-serial-discovery = sources.arduino-tarball-serial-discovery;
+    hid-src = sources.pyhidapi;
+    milc-src = sources.milc;
+    qmk-cli-src = sources.qmk_cli;
 
     overlay = self: super: {
         nix-project-lib = nix-project-all.nix-project-lib;
@@ -30,8 +33,9 @@ let
         arduino-tarball-ota
         arduino-tarball-serial-discovery
         kaleidoscope-bundle
-        kaleidoscope-factory
-        model01-factory
+        hid-src
+        milc-src
+        qmk-cli-src
         qmk-factory
         shajra-keyboards-flash
         shajra-keyboards-lib;
@@ -56,10 +60,6 @@ let
 
     kaleidoscope-bundle =
         fromGitHub sources-json.kaleidoscope-bundle "kaleidoscope-bundle-src";
-
-    kaleidoscope-factory = sources.kaleidoscope;
-
-    model01-factory = sources.model01;
 
     shajra-keyboards-lib = pkgs-stable.callPackage (import ./lib.nix) {};
 

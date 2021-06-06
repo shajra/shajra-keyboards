@@ -41,20 +41,6 @@
         "url_template": "https://downloads.arduino.cc/discovery/serial-discovery/serial-discovery_v<version>_Linux_64bit.tar.gz",
         "version": "1.2.1"
     },
-    "kaleidoscope": {
-        "branch": "master",
-        "description": "A Kaleidoscope distribution for the Keyboardio Model 01 and other keyboards.",
-        "fetchSubmodules": true,
-        "homepage": "",
-        "name": "kaleidoscope",
-        "owner": "keyboardio",
-        "repo": "kaleidoscope",
-        "rev": "32446ae18c5fbbcb4ec4fec46caf52dcdca4ce86",
-        "sha256": "0vawga4qsmnq3bmzr1bx3rzvf464xy5nw0yqc95iwbb1wq9jdmza",
-        "type": "tarball",
-        "url": "https://github.com/keyboardio/kaleidoscope/archive/32446ae18c5fbbcb4ec4fec46caf52dcdca4ce86.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "kaleidoscope-bundle": {
         "branch": "master",
         "description": "A Kaleidoscope distribution for the Keyboardio Model 01 and other keyboards.",
@@ -69,18 +55,16 @@
         "url": "https://github.com/keyboardio/Kaleidoscope-Bundle-Keyboardio/archive/9c65fb559e850794ea48c1ecb1162a643f60243e.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
-    "model01": {
-        "branch": "master",
-        "description": "The \"standard\" Keyboardio Model 01 Firmware sketch.",
-        "fetchSubmodules": true,
-        "homepage": null,
-        "name": "model01",
-        "owner": "keyboardio",
-        "repo": "Model01-Firmware",
-        "rev": "f4ff736e4761e58992071418dc585cefc6e2f1e8",
-        "sha256": "086xy0v43rba9hmb0a1569cxvdlh7z8wv8fbhps4lkdjxrmjkfpn",
+    "milc": {
+        "branch": "1.4.2",
+        "description": "Batteries-Included Python 3 CLI Framework",
+        "homepage": "http://milc.clueboard.co",
+        "owner": "clueboard",
+        "repo": "milc",
+        "rev": "ef7f8bb730eef170813b16b42f132805956808f5",
+        "sha256": "08bgfwihlf72p1292x1fnwyd6a759iciv621p1qyzxqdj979qzk9",
         "type": "tarball",
-        "url": "https://github.com/keyboardio/Model01-Firmware/archive/f4ff736e4761e58992071418dc585cefc6e2f1e8.tar.gz",
+        "url": "https://github.com/clueboard/milc/archive/ef7f8bb730eef170813b16b42f132805956808f5.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nix-project": {
@@ -89,22 +73,22 @@
         "homepage": "",
         "owner": "shajra",
         "repo": "nix-project",
-        "rev": "fc998da7bf92ad1d0927da58e9edca692390c33e",
-        "sha256": "1qk4yvz7klk7waqf24h3hbjz7jf3jza5qn7fli8755qcdcr5gv3w",
+        "rev": "b5c9ad3c2de8fb1c4320835ef72a85bc0cdda4b8",
+        "sha256": "1wnd5c5m5pw21q3j4x9hw6awn38zz4hw4kvxhis7cbpjjddm9669",
         "type": "tarball",
-        "url": "https://github.com/shajra/nix-project/archive/fc998da7bf92ad1d0927da58e9edca692390c33e.tar.gz",
+        "url": "https://github.com/shajra/nix-project/archive/b5c9ad3c2de8fb1c4320835ef72a85bc0cdda4b8.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
-        "branch": "nixos-20.09",
+        "branch": "nixos-21.05",
         "description": "A read-only mirror of NixOS/nixpkgs tracking the released channels. Send issues and PRs to",
         "homepage": "https://github.com/NixOS/nixpkgs",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "1f7155200fa1eb752054e2c9062bfdeb023e8098",
-        "sha256": "0l03az63aw649lyh037csiyarxgbwbmk49lk5n466nmv5glpgzl5",
+        "rev": "aa576357673d609e618d87db43210e49d4bb1789",
+        "sha256": "1868s3mp0lwg1jpxsgmgijzddr90bjkncf6k6zhdjqihf0i1n2np",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/1f7155200fa1eb752054e2c9062bfdeb023e8098.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/aa576357673d609e618d87db43210e49d4bb1789.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs-unstable": {
@@ -113,10 +97,22 @@
         "homepage": "https://github.com/NixOS/nixpkgs",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "d42cd445dde587e9a993cd9434cb43da07c4c5de",
-        "sha256": "0dzrn97srxyw5a3g7hf8chwccxns5z3aij23hc0fch7ygc8w0gq0",
+        "rev": "1ca6b0a0cc38dbba0441202535c92841dd39d1ae",
+        "sha256": "0mwnlc5v16wm9hqq8k09vry7qzhiy6kp52nn51s33iq4hrx9d364",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/d42cd445dde587e9a993cd9434cb43da07c4c5de.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/1ca6b0a0cc38dbba0441202535c92841dd39d1ae.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "pyhidapi": {
+        "branch": "1.0.4",
+        "description": "hidapi bindings in ctypes",
+        "homepage": null,
+        "owner": "apmorton",
+        "repo": "pyhidapi",
+        "rev": "ec92d96dab18a23f66d2ebcf853b38f47d258545",
+        "sha256": "0n0hv9x8g2wpn69jmh9k03lxvk8ljlc4j7rfzdxx4jwy37h2xid4",
+        "type": "tarball",
+        "url": "https://github.com/apmorton/pyhidapi/archive/ec92d96dab18a23f66d2ebcf853b38f47d258545.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "qmk": {
@@ -125,10 +121,22 @@
         "homepage": "https://qmk.fm",
         "owner": "qmk",
         "repo": "qmk_firmware",
-        "rev": "bbe453599f0ffde73e2386354f30d8b38e3b4b13",
-        "sha256": "05l2583ps64m39sv4j8d82xgad2b9b2iphy49gbh6z05w48kq2ry",
+        "rev": "7aab06ffdf6f198ee6c079088eb2de4162000f53",
+        "sha256": "00f03pqhc437n0n9mdc1p62sr4p1mk9fyxkxsfy5hp77mi8jnyvq",
         "type": "tarball",
-        "url": "https://github.com/qmk/qmk_firmware/archive/bbe453599f0ffde73e2386354f30d8b38e3b4b13.tar.gz",
+        "url": "https://github.com/qmk/qmk_firmware/archive/7aab06ffdf6f198ee6c079088eb2de4162000f53.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "qmk_cli": {
+        "branch": "0.0.51",
+        "description": "A program to help users work with QMK",
+        "homepage": null,
+        "owner": "qmk",
+        "repo": "qmk_cli",
+        "rev": "8b30a9766d338594af24a8c5b09b8aeecba5ecf3",
+        "sha256": "1hz1745kh8s585i7r10h11saw6lymhl2q72z55q4lb2qvpy6ab9f",
+        "type": "tarball",
+        "url": "https://github.com/qmk/qmk_cli/archive/8b30a9766d338594af24a8c5b09b8aeecba5ecf3.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }

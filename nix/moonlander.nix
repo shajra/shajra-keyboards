@@ -1,8 +1,8 @@
 deps@
 { callPackage
 , dfu-util
-#, pkgsCross
 , gcc-arm-embedded
+#, pkgsCross
 , wally-cli
 }:
 
@@ -21,14 +21,12 @@ callPackage ./qmk.nix {} { inherit factory keymap keymaps; } {
         dfu-util
 
 	# DESIGN: maybe later can move to these as in the Nixpkgs derivation for
-	# qmk_firmware, but for now these aren't cached in Hydra
+	# qmk_firmware, but for now there's a problem with the ARM cross build
+	# not supporting newlib-nano.
         #
-        #pkgsCross.avr.buildPackages.gcc
-        #pkgsCross.avr.buildPackages.binutils
         #pkgsCross.arm-embedded.buildPackages.gcc
-        #pkgsCross.armhf-embedded.buildPackages.gcc
 
         gcc-arm-embedded
     ];
-    flashCmd = "${wally-cli}/bin/wally";
+    flashCmd = "${wally-cli}/bin/wally-cli";
 }
