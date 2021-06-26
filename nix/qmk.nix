@@ -1,7 +1,6 @@
 { python3-unstable
 , poetry2nix
 , which
-, writeScriptBin
 , hidapi
 , qmk-cli-src
 , hid-src
