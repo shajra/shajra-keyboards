@@ -19,8 +19,6 @@ let
     arduino-tarball-ctags = sources.arduino-tarball-ctags;
     arduino-tarball-ota = sources.arduino-tarball-ota;
     arduino-tarball-serial-discovery = sources.arduino-tarball-serial-discovery;
-    hid-src = sources.pyhidapi;
-    milc-src = sources.milc;
     qmk-cli-src = sources.qmk_cli;
 
     overlay = self: super: {
@@ -33,8 +31,6 @@ let
         arduino-tarball-ota
         arduino-tarball-serial-discovery
         kaleidoscope-bundle
-        hid-src
-        milc-src
         qmk-cli-src
         qmk-factory
         shajra-keyboards-flash

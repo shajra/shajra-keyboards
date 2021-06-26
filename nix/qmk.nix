@@ -1,12 +1,9 @@
-{ python3-unstable
-, poetry2nix
-, which
-, hidapi
+{ hidapi
+, python3-unstable
 , qmk-cli-src
-, hid-src
-, milc-src
 , qmk-factory
 , stdenv
+, which
 , shajra-keyboards-lib
 }:
 
@@ -55,8 +52,9 @@ let
             propagatedBuildInputs = [super.setuptools-scm];
         });
         qmk-cli = super.buildPythonApplication {
-            pname = "qmk";
-            version = "0.0.0";
+            pname = "qmk_cli";
+	    # DESIGN: update to 1.0.0 when nixpkgs-unstable has Pygments 2.9.0
+            version = "0.0.52";
             src = qmk-cli-src;
             propagatedBuildInputs = with self; [
                 dotty-dict
@@ -73,38 +71,6 @@ let
                 yapf
             ];
             doCheck = false;
-        };
-        hid = super.buildPythonPackage {
-            pname = "hid";
-            version = "0.0.0";
-            src = hid-src;
-            doCheck = false;
-            buildInputs = with self; [
-                hidapi
-            ];
-            postPatch = ''
-                substituteInPlace hid/__init__.py \
-                    --replace "libhidapi" "${hidapi}/lib/libhidapi"
-            '';
-        };
-        milc = super.buildPythonPackage {
-            pname = "milc";
-            version = "0.0.0";
-            src = milc-src;
-            propagatedBuildInputs = with self; [
-                appdirs
-                argcomplete
-                colorama
-                halo
-                spinners
-            ];
-            checkInputs = with self; [
-                flake8
-                hjson
-                nose2
-                semver
-                yapf
-            ];
         };
     };
 
