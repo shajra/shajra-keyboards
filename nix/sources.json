@@ -97,10 +97,10 @@
         "homepage": "https://qmk.fm",
         "owner": "qmk",
         "repo": "qmk_firmware",
-        "rev": "cbe761ea1628691c9ed7f93d06aab145fc2c9077",
-        "sha256": "09vw5akfv1dnrx742qhy5098q514qpjdfyzivw244rihc31n6035",
+        "rev": "53ace430fe2229111b57d76ddbc9130b6cbc0f2a",
+        "sha256": "134dlny7s8dv8i2pi2rwrwg8wrijf6913sv4pb76qsx2jhg9f0fc",
         "type": "tarball",
-        "url": "https://github.com/qmk/qmk_firmware/archive/cbe761ea1628691c9ed7f93d06aab145fc2c9077.tar.gz",
+        "url": "https://github.com/qmk/qmk_firmware/archive/53ace430fe2229111b57d76ddbc9130b6cbc0f2a.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "qmk_cli": {
