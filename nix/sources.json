@@ -91,6 +91,20 @@
         "url": "https://github.com/NixOS/nixpkgs/archive/967d40bec14be87262b21ab901dbace23b7365db.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "pyrsistent": {
+        "sha256": "1bsg6pv3m1gbkcxp8644h5dk0p5b8xrhg8v00qmcfgwad2nssp27",
+        "type": "tarball",
+        "url": "https://pypi.io/packages/source/p/pyrsistent/pyrsistent-0.18.0.tar.gz",
+        "url_template": "https://pypi.io/packages/source/p/pyrsistent/pyrsistent-<version>.tar.gz",
+        "version": "0.18.0"
+    },
+    "pyusb": {
+        "sha256": "0gz36zwz303lfxxnskd0ldw6l7rmh0bx36l2fgzq7zgi5plkq6pw",
+        "type": "tarball",
+        "url": "https://pypi.io/packages/source/p/pyusb/pyusb-1.2.1.tar.gz",
+        "url_template": "https://pypi.io/packages/source/p/pyusb/pyusb-<version>.tar.gz",
+        "version": "1.2.1"
+    },
     "qmk": {
         "branch": "master",
         "description": "Open-source keyboard firmware for Atmel AVR and Arm USB families",
@@ -104,15 +118,17 @@
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "qmk_cli": {
-        "branch": "0.0.52",
-        "description": "A program to help users work with QMK",
-        "homepage": null,
-        "owner": "qmk",
-        "repo": "qmk_cli",
-        "rev": "c41fd5e9402f072dc6cfe36b5690e344c90d3a1f",
-        "sha256": "0ls3i3kpfzs5dqnwhk3qrdirmz23kb7q9qq02wwm3wrvbdyqn858",
+        "sha256": "19nh626l0fjagjjq95vh5angqh5x6bqz8v3jzjv2dpf8bgj8zv1a",
         "type": "tarball",
-        "url": "https://github.com/qmk/qmk_cli/archive/c41fd5e9402f072dc6cfe36b5690e344c90d3a1f.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+        "url": "https://pypi.io/packages/source/q/qmk/qmk-0.2.2.tar.gz",
+        "url_template": "https://pypi.io/packages/source/q/qmk/qmk-<version>.tar.gz",
+        "version": "0.2.2"
+    },
+    "qmk-dotty-dict": {
+        "sha256": "1j9cbhakr7gif18m231zpz5vhkch18ib5rpvyzks422i3wq0pfhw",
+        "type": "tarball",
+        "url": "https://pypi.io/packages/source/q/qmk-dotty-dict/qmk_dotty_dict-1.3.0.post1.tar.gz",
+        "url_template": "https://pypi.io/packages/source/q/qmk-dotty-dict/qmk_dotty_dict-<version>.tar.gz",
+        "version": "1.3.0.post1"
     }
 }

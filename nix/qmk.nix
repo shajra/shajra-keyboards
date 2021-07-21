@@ -1,6 +1,8 @@
-{ hidapi
+{ pyrsistent-src
 , python3-unstable
+, pyusb-src
 , qmk-cli-src
+, qmk-dotty-dict-src
 , qmk-factory
 , stdenv
 , which
@@ -48,23 +50,47 @@ let
     qmk-src = if factory then qmk-factory else qmk-custom;
 
     pythonOverrides = self: super: {
-        dotty-dict = super.dotty-dict.overridePythonAttrs(old: {
-            propagatedBuildInputs = [super.setuptools-scm];
+        qmk-dotty-dict = super.dotty-dict.overridePythonAttrs(old: {
+            pname = "qmk-dotty-dict";
+            version = "1.3.0.post1";
+            src = qmk-dotty-dict-src;
         });
-        qmk-cli = super.buildPythonApplication {
+        pyusb = super.pyusb.overridePythonAttrs (old: {
+            version = "1.2.1";
+            src = pyusb-src;
+        });
+        pyrsistent = super.pyrsistent.overridePythonAttrs (old: {
+            version = "0.18.0";
+            src = pyrsistent-src;
+        });
+        qmk_cli = super.buildPythonApplication {
             pname = "qmk_cli";
             # DESIGN: updating to a newer CLI is annoying because they
             # started exact-pinning dependencies
             version = "0.0.52";
             src = qmk-cli-src;
             propagatedBuildInputs = with self; [
-                dotty-dict
+                appdirs
+                argcomplete
+                attrs
+                colorama
+                coverage
+                qmk-dotty-dict
+                halo
                 hid
                 hjson
                 jsonschema
+                log-symbols
+                mccabe
                 milc
-                pyusb
+                pycodestyle
+                pyflakes
                 pygments
+                pyrsistent
+                pyusb
+                six
+                spinners
+                termcolor
             ];
             buildInputs = with self; [
                 flake8
@@ -77,7 +103,7 @@ let
 
     qmk-cli = (python3-unstable.override {
         packageOverrides = pythonOverrides;
-    }).pkgs.qmk-cli;
+    }).pkgs.qmk_cli;
 
     hex = stdenv.mkDerivation {
         name = "${keyboardId}-${scriptSuffix}.${firmwareExtension}";

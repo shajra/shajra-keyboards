@@ -20,6 +20,9 @@ let
     arduino-tarball-ota = sources.arduino-tarball-ota;
     arduino-tarball-serial-discovery = sources.arduino-tarball-serial-discovery;
     qmk-cli-src = sources.qmk_cli;
+    qmk-dotty-dict-src = sources.qmk-dotty-dict;
+    pyusb-src = sources.pyusb;
+    pyrsistent-src = sources.pyrsistent;
 
     overlay = self: super: {
         nix-project-lib = nix-project-all.nix-project-lib;
@@ -31,7 +34,10 @@ let
         arduino-tarball-ota
         arduino-tarball-serial-discovery
         kaleidoscope-bundle
+        pyrsistent-src
+        pyusb-src
         qmk-cli-src
+        qmk-dotty-dict-src
         qmk-factory
         shajra-keyboards-flash
         shajra-keyboards-lib;
