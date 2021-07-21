@@ -6,7 +6,7 @@
 
 { keyboard_id
 , keyboard_desc
-, prog_name
+, progName
 }:
 
 let
@@ -34,7 +34,7 @@ NIX_EXE="$(command -v nix || true)"
 print_usage()
 {
     "${coreutils}/bin/cat" - <<EOF
-USAGE: ${prog_name} [OPTION]...
+USAGE: ${progName} [OPTION]...
 
 DESCRIPTION:
 
