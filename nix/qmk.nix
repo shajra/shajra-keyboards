@@ -53,7 +53,8 @@ let
         });
         qmk-cli = super.buildPythonApplication {
             pname = "qmk_cli";
-	    # DESIGN: update to 1.0.0 when nixpkgs-unstable has Pygments 2.9.0
+            # DESIGN: updating to a newer CLI is annoying because they
+            # started exact-pinning dependencies
             version = "0.0.52";
             src = qmk-cli-src;
             propagatedBuildInputs = with self; [
