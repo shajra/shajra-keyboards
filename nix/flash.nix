@@ -4,15 +4,15 @@
 , shajra-keyboards-lib
 }:
 
-{ keyboard_id
-, keyboard_desc
+{ keyboardId
+, keyboardDesc
 , progName
 }:
 
 let
-    defaults = (import ./config.nix).default."${keyboard_id}";
-    name = "flash-${keyboard_id}";
-    meta.description = "Flash ${keyboard_desc} Keyboard";
+    defaults = (import ./config.nix).default."${keyboardId}";
+    name = "flash-${keyboardId}";
+    meta.description = "Flash ${keyboardDesc} Keyboard";
 in
 
 shajra-keyboards-lib.writeShellCheckedExe name
@@ -45,7 +45,7 @@ USAGE: ${progName} [OPTION]...
 
 DESCRIPTION:
 
-    Flashes ${keyboard_desc} Keyboard
+    Flashes ${keyboardDesc} Keyboard
 
 OPTIONS:
 
@@ -79,8 +79,8 @@ main()
         --argstr keymap "$KEYMAP" \
         --arg keymaps "$(readlink -f "$KEYMAPS_DIR")" \
         --file "${./.}" \
-        "shajra-keyboards-${keyboard_id}" \
-        --command "${keyboard_id}-$SCRIPT_SUFFIX-flash"
+        "shajra-keyboards-${keyboardId}" \
+        --command "${keyboardId}-$SCRIPT_SUFFIX-flash"
 }
 
 parse_args()
@@ -138,7 +138,7 @@ print_header()
     then keymap_name="factory"
     fi
     echo
-    msg="Flashing ${keyboard_desc} ($keymap_name keymap)"
+    msg="Flashing ${keyboardDesc} ($keymap_name keymap)"
     echo "$msg"
     echo "$msg" | tr -c '\n' =
 }

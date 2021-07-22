@@ -276,20 +276,20 @@ nix build --no-link --file nix/ci.nix \
 
     /nix/store/0xi8lipvms0aabwam7dpdixza36b2zzd-model01-factory-hex
     /nix/store/21msr2sqm1f2289lbgcr22ai5vbphh46-ergodoxez-factory.hex
+    /nix/store/2yag64l7fhmw2j3jv7kvgps4jacp13bq-flash-ergodoxez
     /nix/store/97g0hlzqdbnvpslxk0h1qdyd937q4a50-moonlander-factory.bin
     /nix/store/b0z5vcbma2bmxvdp1bdfz9iy000cw1fi-model01-factory-flash
     /nix/store/bd2xh4cxlmp6np9aw1059dmayj7gddjd-ergodoxez-custom-shajra-flash
     /nix/store/bqwmk626i20j2w9681n2czbp1cv6swnz-model01-custom-shajra-hex
     /nix/store/fkmjsnryikafgnsgmmzjabrvas8avp4v-moonlander-custom-shajra.bin
     /nix/store/gqygh57p23n85clpavjvadmgqxr7b8li-ergodoxez-factory-flash
-    /nix/store/hdwkh2bkczj49i48c7105znhwq8vmf28-flash-ergodoxez
     /nix/store/hkl90j84c66qbpkazqp79hvq1grx2jd4-model01-custom-shajra-flash
     /nix/store/jy1bdcah13brlj9zp9wl1802aavrhyzb-moonlander-factory-flash
-    /nix/store/q3r6fzpcjww3s31qwvjyhv13dhwrd8pc-flash-moonlander
+    /nix/store/n4bl2sr4rqgayvbnkqccamjllj8wxbmk-flash-moonlander
     /nix/store/v7kwjbi0pdnfpm0gmllrmh0dnglbqdn2-ergodoxez-custom-shajra.hex
     /nix/store/vlcqlfxfyaly71slyia7gh84nzl1sb28-shajra-keyboards-licenses
-    /nix/store/wrcxyq07lfa1s27840hmkjclsv7yy4sd-flash-model01
     /nix/store/x9wccsa44gnpkarr8j032vzpmiy2pm66-moonlander-custom-shajra-flash
+    /nix/store/yxl26fgijnd4z7mky2jbzrdnpgz5swvp-flash-model01
 
 # Release<a id="sec-6"></a>
 
