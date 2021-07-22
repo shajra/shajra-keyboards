@@ -18,5 +18,5 @@ callPackage ./qmk.nix {} { inherit factory keymap keymaps; } {
         pkgsCross.avr.buildPackages.gcc
     ];
     flashCmd =
-        "${teensy-loader-cli}/bin/teensy-loader-cli -v -w --mcu=atmega32u4";
+        "\"${teensy-loader-cli}/bin/teensy-loader-cli\" -v -w --mcu=atmega32u4";
 }

@@ -119,15 +119,17 @@ let
         in lib.writeShellCheckedExe "model01-${scriptSuffix}-flash" {
                 meta.description =
                     "Flash Keyboard.io Model 01 (${keymapDesc} keymap)";
+                path = [
+                    arduino-cli
+                    coreutils
+                    gnugrep
+                ];
             }
             ''
-            PATH="${arduino-cli}/bin"
-            PATH="${coreutils}/bin:$PATH"
-            PATH="${gnugrep}/bin:$PATH"
             SOURCE="${src}"
             BINARY="${bin}"
 
-            PORT="$(env -i \
+            PORT="$(env --ignore-environment \
                 PATH="$PATH" \
                 HOME="$HOME" \
                 ARDUINO_DIRECTORIES_USER="${hex.arduino}/user" \
@@ -157,7 +159,7 @@ let
             echo
             echo "Do these steps now, or Ctrl-C to quit..."
             read -r
-            "${coreutils}/bin/env" -i \
+            env --ignore-environment \
                 PATH="$PATH" \
                 HOME="$HOME" \
                 ARDUINO_DIRECTORIES_USER="${hex.arduino}/user" \

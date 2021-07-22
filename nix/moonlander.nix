@@ -28,5 +28,5 @@ callPackage ./qmk.nix {} { inherit factory keymap keymaps; } {
 
         gcc-arm-embedded
     ];
-    flashCmd = "${wally-cli}/bin/wally-cli";
+    flashCmd = "\"${wally-cli}/bin/wally-cli\"";
 }

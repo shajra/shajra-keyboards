@@ -18,9 +18,16 @@ in
 shajra-keyboards-lib.writeShellCheckedExe name
 {
     inherit meta;
+    pathPure = false;
+    path = [
+        coreutils
+        gnutar
+        gzip
+    ];
 }
 ''
 set -eu
+set -o pipefail
 
 
 FACTORY=false
@@ -33,7 +40,7 @@ NIX_EXE="$(command -v nix || true)"
 
 print_usage()
 {
-    "${coreutils}/bin/cat" - <<EOF
+    cat - <<EOF
 USAGE: ${progName} [OPTION]...
 
 DESCRIPTION:
@@ -64,14 +71,13 @@ main()
     if [ "$FACTORY" = "true" ]
     then SCRIPT_SUFFIX="factory"
     fi
-    PATH="${gnutar}/bin:${gzip}/bin"
     add_nix_to_path "$NIX_EXE"
     nix run \
         --ignore-environment \
         --keep HOME \
         --arg factory "$FACTORY" \
         --argstr keymap "$KEYMAP" \
-        --arg keymaps "$("${coreutils}/bin/readlink" -f "$KEYMAPS_DIR")" \
+        --arg keymaps "$(readlink -f "$KEYMAPS_DIR")" \
         --file "${./.}" \
         "shajra-keyboards-${keyboard_id}" \
         --command "${keyboard_id}-$SCRIPT_SUFFIX-flash"
@@ -134,7 +140,7 @@ print_header()
     echo
     msg="Flashing ${keyboard_desc} ($keymap_name keymap)"
     echo "$msg"
-    echo "$msg" | "${coreutils}/bin/tr" -c '\n' =
+    echo "$msg" | tr -c '\n' =
 }
 
 
