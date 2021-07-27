@@ -20,9 +20,9 @@ callPackage ./qmk.nix {} { inherit factory keymap keymaps; } {
     nativeBuildInputs = [
         dfu-util
 
-	# DESIGN: maybe later can move to these as in the Nixpkgs derivation for
-	# qmk_firmware, but for now there's a problem with the ARM cross build
-	# not supporting newlib-nano.
+        # DESIGN: maybe later can move to these as in the Nixpkgs derivation for
+        # qmk_firmware, but for now there's a problem with the ARM cross build
+        # not supporting newlib-nano.
         #
         #pkgsCross.arm-embedded.buildPackages.gcc
 
