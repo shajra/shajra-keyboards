@@ -12,6 +12,7 @@ shajra-keyboards-lib.writeShellCheckedExe "shajra-keyboards-licenses"
 }
 ''
 set -eu
+set -o pipefail
 
 ${coreutils}/bin/cat - <<EOF
 Third Party Licenses for "shajra-keyboards"

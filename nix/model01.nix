@@ -126,6 +126,9 @@ let
                 ];
             }
             ''
+            set -eu
+            set -o pipefail
+
             SOURCE="${src}"
             BINARY="${bin}"
 

@@ -135,6 +135,8 @@ let
                     "Flash ${keyboardDesc} (${keymapDesc} keymap)";
             }
             ''
+            set -eu
+            set -o pipefail
             SOURCE="${src}"
             BINARY="${bin}"
             echo

@@ -333,22 +333,22 @@
 
    #+RESULTS: nix-build
    #+begin_example
-   /nix/store/13wl9ly7qfdzgi93hw192adakxp0gn56-flash-moonlander
-   /nix/store/1793rkdydv36h2igqrwnrqwds8bjqg09-moonlander-factory-flash
-   /nix/store/4k2nwr2gjlabng4qkrp1kzpmv3x8ydp8-ergodoxez-factory-flash
-   /nix/store/4rd2kiisar62sqa6fq0wnl8xgh2l99k0-flash-ergodoxez
+   /nix/store/1wlv7mmqx0adfhwswnhjpm31084kc35z-model01-factory-flash
    /nix/store/5x5di39ijhrfsd01c8vpkg86gn7p8cam-ergodoxez-factory.hex
-   /nix/store/65wcx5kwybz4b6nwa8i6gwjv8z6hlx55-model01-custom-shajra-flash
    /nix/store/6vg6259qakfwb1qy4cpis8hsccmwsjnz-model01-custom-shajra-hex
    /nix/store/6wav3jvws9kqbj1059kddmq2pfa20n5f-moonlander-custom-shajra.bin
-   /nix/store/a5d4yxlq442h63rzfj1gy0sip5w3b7a9-ergodoxez-custom-shajra-flash
-   /nix/store/c4iz86vwdw2cpnb59l2wl6iyn8xrv8ww-model01-factory-flash
-   /nix/store/ds9l8vsn5b9xsw8cnxis0q55481vr3b6-moonlander-custom-shajra-flash
-   /nix/store/gxw7b1v292nm7xp18fsws9q8n354yr9a-shajra-keyboards-licenses
+   /nix/store/cggdmph0nyzxn5j6iq50cdrpg4ycbis4-moonlander-custom-shajra-flash
+   /nix/store/gmpa2dqaa501vv4ns05ccgf9ik5ybvkw-ergodoxez-custom-shajra-flash
    /nix/store/hz9qd4bsnkm15l6kd0g3yn56vpjqpxmb-ergodoxez-custom-shajra.hex
    /nix/store/l7rw0iwvrq01lwpv6a1mbkkzfgp7742v-model01-factory-hex
-   /nix/store/lgasbjnq0djksywbh17s5wl9kixw2l9v-flash-model01
+   /nix/store/n67w2q0qb47si0z4carv1n7xqxzr5l3a-flash-moonlander
+   /nix/store/n9490maap8qr7rjlg2y3b04l9l7hx6ri-shajra-keyboards-licenses
+   /nix/store/nimg6srqfsvvmxdqxbhaw1394lms3902-flash-model01
+   /nix/store/nkxwfnyyy5qk6daqkl0anirbswaskvqi-flash-ergodoxez
+   /nix/store/vl3hk4pkdjwmbicxds4x296niczkqbhl-model01-custom-shajra-flash
    /nix/store/xc26xipjvlx5j6dgks3n3wqz7jx01yqf-moonlander-factory.bin
+   /nix/store/xvr71wx1pnfk59pavr3gyzd2qa14zr4j-moonlander-factory-flash
+   /nix/store/zxlbb3vr91gh8yxzndk3wvbp8xavxkxj-ergodoxez-factory-flash
    #+end_example
 
 * Release
