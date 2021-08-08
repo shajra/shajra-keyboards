@@ -366,7 +366,7 @@ have a name prefixed with "result" and point back to the respective build in
 #+END_SRC
 
 #+RESULTS: nix-build-link
-: /nix/store/q1f1l7mjcaxr91yhzn95dbl9l9n03maw-flash-ergodoxez
+: /nix/store/9xsqryx7v7ny0w9w0rz9j0zrdjw1ypil-flash-ergodoxez
 
 Following these symlinks, we can see the files the project provides:
 
@@ -395,7 +395,7 @@ you can use =nix path-info= after a successful build:
 #+END_SRC
 
 #+RESULTS: nix-build-path
-: /nix/store/q1f1l7mjcaxr91yhzn95dbl9l9n03maw-flash-ergodoxez
+: /nix/store/9xsqryx7v7ny0w9w0rz9j0zrdjw1ypil-flash-ergodoxez
 
 ** Running commands
 
