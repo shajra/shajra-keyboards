@@ -1,20 +1,26 @@
+- [Designing a keyboard mapping](#sec-1)
 - [Principles and assumptions](#principles_and_assumptions)
-- [The keymaps](#sec-2)
-    - [Model 01 "shajra" keymap](#sec-2-0-1)
-    - [Ergodox EZ "shajra" keymap](#sec-2-0-2)
-    - [Reading the keymap diagrams](#sec-2-0-3)
-- [Ergodox EZ keyboard modifications](#sec-3)
-- [Principle-guided decisions](#sec-4)
-    - [Core QWERTY layout](#sec-4-0-1)
-    - [Using Mod-Tap and Qukeys](#sec-4-0-2)
-    - [Avoid One-Shot Modifiers (OSM)](#sec-4-0-3)
-    - [Working around a problem with Mod-Tap and Qukeys](#sec-4-0-4)
-    - [Mapping modifiers](#sec-4-0-5)
-    - [More on `Alt Gr` and `Compose`](#altgr_and_compose)
-    - [Mapping more non-modifiers](#sec-4-0-7)
-    - [Mapping the Function layer](#sec-4-0-8)
-    - [Swapping `GUI` and `Alt` mappings](#sec-4-0-9)
-    - [Media and Mouse layers](#sec-4-0-10)
+- [The keymaps](#sec-3)
+  - [Model 01 "shajra" keymap](#sec-3-1)
+  - [Ergodox EZ "shajra" keymap](#sec-3-2)
+  - [Reading the keymap diagrams](#sec-3-3)
+    - [Coloring](#sec-3-3-1)
+    - [Modifiers](#sec-3-3-2)
+- [Ergodox EZ keyboard modifications](#sec-4)
+- [Principle-guided decisions](#sec-5)
+  - [Core QWERTY layout](#sec-5-1)
+  - [Using Mod-Tap and Qukeys](#sec-5-2)
+  - [Avoid One-Shot Modifiers (OSM)](#sec-5-3)
+  - [Working around a problem with Mod-Tap and Qukeys](#sec-5-4)
+  - [Mapping modifiers](#sec-5-5)
+  - [More on `Alt Gr` and `Compose`](#altgr_and_compose)
+  - [Mapping more non-modifiers](#sec-5-7)
+  - [Mapping the Function layer](#sec-5-8)
+  - [Swapping `GUI` and `Alt` mappings](#sec-5-9)
+  - [Media and Mouse layers](#sec-5-10)
+
+
+# Designing a keyboard mapping<a id="sec-1"></a>
 
 This document discusses the rationale of the "shajra" keymap for the Ergodox EZ, Moonlander, and Model 01 keyboards.
 
@@ -44,43 +50,43 @@ Additionally, there's a few physical assumptions that factor into some decisions
 -   The original author has larger hands, which means some keys are assumed reachable that may not be for everyone.
 -   For the Ergodox EZ, the original author has also modified the switches and keycaps to make more keys accessible by thumb keypresses.
 
-# The keymaps<a id="sec-2"></a>
+# The keymaps<a id="sec-3"></a>
 
 For reference, below are diagrams of the keymaps for the Model 01 and Ergodox EZ.
 
-### Model 01 "shajra" keymap<a id="sec-2-0-1"></a>
+## Model 01 "shajra" keymap<a id="sec-3-1"></a>
 
 ![img](./model-01-shajra-layout.png)
 
-### Ergodox EZ "shajra" keymap<a id="sec-2-0-2"></a>
+## Ergodox EZ "shajra" keymap<a id="sec-3-2"></a>
 
 ![img](./ergodox-ez-shajra-layout.png)
 
 Note the Moonlander keyboard is almost an identical layout to the EZ, and not illustrated here. There are just two two less keys on the thumb cluster. The leads to not having either Home or End on the base layer for the Moonlander. And the "application menu" keycodes are moved to the bottom-outer corners.
 
-### Reading the keymap diagrams<a id="sec-2-0-3"></a>
+## Reading the keymap diagrams<a id="sec-3-3"></a>
 
-1.  Coloring
+### Coloring<a id="sec-3-3-1"></a>
 
-    -   Black labels represent the Base layer.
-    -   Blue labels represent the Function layer.
-    -   Red labels represent the Num Pad layer.
-    -   Yellow keys should be easily pressed by thumbs or palms.
-    -   Beige keys are core keys easily pressed by fingers.
+-   Black labels represent the Base layer.
+-   Blue labels represent the Function layer.
+-   Red labels represent the Num Pad layer.
+-   Yellow keys should be easily pressed by thumbs or palms.
+-   Beige keys are core keys easily pressed by fingers.
 
-2.  Modifiers
+### Modifiers<a id="sec-3-3-2"></a>
 
-    -   The lower-right corner label on some keys shows the modifier accessed by holding it (other labels reference keycodes accessed by tapping).
-    -   The "Shift," "Ctrl," and "GUI" labels represent "Left" or "Right" keycodes, respective to which keyboard half they are on.
-    -   For both halves, the keycode represented by the "Alt" label is for only the `Left Alt` keycode.
-    -   The following labels represent keycodes used for entering characters beyond a typical US/English keyboard:
-        -   The "Alt Gr" label represents a [`Alt Graph` modifier](https://en.wikipedia.org/wiki/AltGr_key), which we emulate with the `Right Alt` keycode.
-        -   The "⎄" label represents a [`Compose` key](https://en.wikipedia.org/wiki/Compose_key), which we emulate with `Shift + Right Alt`.
-    -   The Media and Mouse layers are not shown in these diagrams to avoid clutter.
-    
-    Note that we've given some special treatment to the right and left `Alt` keycodes. This is explained more [later](#altgr_and_compose).
+-   The lower-right corner label on some keys shows the modifier accessed by holding it (other labels reference keycodes accessed by tapping).
+-   The "Shift," "Ctrl," and "GUI" labels represent "Left" or "Right" keycodes, respective to which keyboard half they are on.
+-   For both halves, the keycode represented by the "Alt" label is for only the `Left Alt` keycode.
+-   The following labels represent keycodes used for entering characters beyond a typical US/English keyboard:
+-   The "Alt Gr" label represents a [`Alt Graph` modifier](https://en.wikipedia.org/wiki/AltGr_key), which we emulate with the `Right Alt` keycode.
+-   The "⎄" label represents a [`Compose` key](https://en.wikipedia.org/wiki/Compose_key), which we emulate with `Shift + Right Alt`.
+-   The Media and Mouse layers are not shown in these diagrams to avoid clutter.
 
-# Ergodox EZ keyboard modifications<a id="sec-3"></a>
+Note that we've given some special treatment to the right and left `Alt` keycodes. This is explained more [later](#altgr_and_compose).
+
+# Ergodox EZ keyboard modifications<a id="sec-4"></a>
 
 There's two problems one might find with the stock Ergodox EZ keyboard. The Model 01 has none of these problems. And the Moonlander's newer design addresses these issues well-enough.
 
@@ -100,11 +106,11 @@ If your Ergodox shipped with DCS (sculptured) keycaps, you will likely find four
 
 [Signature Plastics](https://pimpmykeyboard.com/key-cap-family-specs) is a popular place to get alternate keycaps. If you do get keycaps from a third party like Signature Plastics, consider the G20 keycaps, which work well for thumb presses because of their low profile and rounded edges.
 
-# Principle-guided decisions<a id="sec-4"></a>
+# Principle-guided decisions<a id="sec-5"></a>
 
 Here's a few decisions that fell from the principles mentioned earlier.
 
-### Core QWERTY layout<a id="sec-4-0-1"></a>
+## Core QWERTY layout<a id="sec-5-1"></a>
 
 Alternative layouts may have some merits, but the time commitment to learn a new layout seems steep for what may only be a small improvement in typing speed or ergonomic comfort.
 
@@ -114,7 +120,7 @@ For keys easily reached by fingers (the beige keys in our diagrams), we'll use a
 
 If we really want something like Colemak or Dvorak we could implement it later as a layer to toggle to/from. But QWERTY will be the base.
 
-### Using Mod-Tap and Qukeys<a id="sec-4-0-2"></a>
+## Using Mod-Tap and Qukeys<a id="sec-5-2"></a>
 
 With the Ergodox EZ, Moonlander, and Model 01, we get new keys that can get much more utility from our thumbs/palms, which are sturdier than any of our fingers. Our thumbs/palms get home keys of their own (the Model 01 even has physical homing bumps on its thumb keys). These keys are a central feature of both keyboards.
 
@@ -124,7 +130,7 @@ To further capitalize on these thumb/palm keys, We can use QMK's [Mod-Tap](https
 
 Mod-Tap/Qukey is not good for every key, though. It can lead to some typos when typing fast, especially with a hint of rollover that can register as an accidental hold. For this reason, it's not good to use it with normal alphanumeric keys. So we won't use Mod-Tap for our core QWERTY keys (the beige keys).
 
-### Avoid One-Shot Modifiers (OSM)<a id="sec-4-0-3"></a>
+## Avoid One-Shot Modifiers (OSM)<a id="sec-5-3"></a>
 
 Thus far, we've presumed that modifiers need to be oriented such that we can expressively and ergonomically chord them. However, [Kaleidoscope's OneShot plugin](https://kaleidoscope.readthedocs.io/en/latest/plugins/OneShot.html) and [QMK's One-Shot feature](https://docs.qmk.fm/#/one_shot_keys) allow us to use tapping to emulate holding a modifier.
 
@@ -136,7 +142,7 @@ The "shajra" keymap instead uses Mod-Tap/Qukeys to reduce not only the need to h
 
 For these reasons, we'll mostly avoid One-Shot, and prefer Mod-Tap/Qukeys instead.
 
-### Working around a problem with Mod-Tap and Qukeys<a id="sec-4-0-4"></a>
+## Working around a problem with Mod-Tap and Qukeys<a id="sec-5-4"></a>
 
 With Kaleidoscope, when we use Qukeys, we lose the ability to hold a key and have it repeat (because holding a key registers as the modifier sharing the key instead). Some keys like `Space` and `Backspace` can be annoying to use without a repeating hold.
 
@@ -146,7 +152,7 @@ Fortunately, there's a workaround. We can use the Function layer to overlay on t
 
 The "shajra" keymap uses this workaround, and you can see it used for the thumb keys in the keymap diagrams above.
 
-### Mapping modifiers<a id="sec-4-0-5"></a>
+## Mapping modifiers<a id="sec-5-5"></a>
 
 The modifiers below have been ordered from most frequently used to least:
 
@@ -177,7 +183,7 @@ You'll notice in the "shajra" keymap that the modifiers line the bottom keys pre
 
 For the most part the modifiers are laid out symmetrically, with one exception. One half swaps the `Alt` and `GUI` locations of the other half. We do this because the inner-most thumb keys are a little bit of a stretch for holding a modifier key. So we try to balance the load across two modifiers.
 
-### More on `Alt Gr` and `Compose`<a id="altgr_and_compose"></a>
+## More on `Alt Gr` and `Compose`<a id="altgr_and_compose"></a>
 
 Historically, some keyboards targetting an international audience provide a [`Alt Graph` (`Alt Gr`) modifier](https://en.wikipedia.org/wiki/AltGr_key) where a `Right Alt` key would be (and thus only one `Alt` key on the left side). With this modifier some operating systems would support entry of a variety of currency and language symbols (such as "€" or "ä") beyond those on a standard US/English keyboard.
 
@@ -193,7 +199,7 @@ Note that on GNU/Linux, `Shift+Right Alt` is often configured to be a [`Compose`
 
 Because they are similar in function, the `Alt Gr` and `Compose` keys are placed adjacent to one another in all "shajra" keymaps.
 
-### Mapping more non-modifiers<a id="sec-4-0-7"></a>
+## Mapping more non-modifiers<a id="sec-5-7"></a>
 
 Because we've decided to support chording with Mod-Tap/Qukeys, we want our Base layer to have all the keys commonly used for applications keybinds. Otherwise, when chording, we also need the `Function` modifier. Of the keys on a full 104-key keyboard, we may not have room for the function keys, the numpad, and some less used keys like `Print Screen`, `Scroll Lock`, and `Pause`. But we should have the rest on our Base layer.
 
@@ -222,7 +228,7 @@ To increase ergonomics the "shajra" keymap maps the keycodes above in order of u
 
 Also, we've tried to keep naturally paired keys either adjacent, or symmetrically balanced across the two keyboard halves.
 
-### Mapping the Function layer<a id="sec-4-0-8"></a>
+## Mapping the Function layer<a id="sec-5-8"></a>
 
 There's a few ways to lay out keycodes in the Function layer. Here's some reasoning for how the keycodes on the Function layer are mapped in the "shajra" keymap:
 
@@ -240,7 +246,7 @@ There's a few ways to lay out keycodes in the Function layer. Here's some reason
 
 Regarding the last item in this table, some keys already exist from our Base layer with shifting, but it's nice to have all our symbols on one layer, so we don't have to toggle between switching between shifting the Base layer and toggling the Function layer (for example, this occurs with programming operators such as `<*>`, and `<$>`).
 
-### Swapping `GUI` and `Alt` mappings<a id="sec-4-0-9"></a>
+## Swapping `GUI` and `Alt` mappings<a id="sec-5-9"></a>
 
 For different operating systems, we want to have a modifier to set user-specific custom key bindings. We might even want to have similar operations between different operating systems. For instance, we might have user-specific keybindings for window management to have a consistent experience between different operating systems. But we don't want these keybindings to overlap with useful default OS/application-level keybindings.
 
@@ -252,7 +258,7 @@ If we put our custom keybindings on the `GUI` keycode for GNU/Linux and Windows 
 
 This is why the "shajra" keymap provides a key to swap the `GUI` and `Left Alt` keycode locations.
 
-### Media and Mouse layers<a id="sec-4-0-10"></a>
+## Media and Mouse layers<a id="sec-5-10"></a>
 
 This project doesn't provide diagrams of the Media or Mouse layers, but hopefully you can follow the code for these layers in the respective code for the [Ergodox EZ](https://github.com/shajra/shajra-keyboards/blob/master/ergodox_ez/keymaps/shajra/keymap.c#L103-L143), [Moonlander](https://github.com/shajra/shajra-keyboards/blob/master/moonlander/keymaps/shajra/keymap.c#L56-L71), and the [Model 01](https://github.com/shajra/shajra-keyboards/blob/master/model_01/keymaps/shajra/Model01-Firmware.ino#L106-L138).
 

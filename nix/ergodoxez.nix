@@ -1,11 +1,12 @@
 { callPackage
 , pkgsCross
 , teensy-loader-cli
+, shajra-keyboards-config
 }:
 
 { factory ? false
-, keymap  ? (import ./config.nix).default.keymap.ergodoxez
-, keymaps ? ../keymaps/ergodox_ez
+, keymap  ? shajra-keyboards-config.default.ergodoxez.keymap
+, keymaps ? shajra-keyboards-config.default.ergodoxez.keymaps
 }:
 
 callPackage ./qmk.nix {} { inherit factory keymap keymaps; } {

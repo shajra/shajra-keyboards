@@ -1,6 +1,7 @@
 { coreutils
 , gnutar
 , gzip
+, shajra-keyboards-config
 , shajra-keyboards-lib
 }:
 
@@ -10,7 +11,7 @@
 }:
 
 let
-    defaults = (import ./config.nix).default."${keyboardId}";
+    defaults = shajra-keyboards-config.default."${keyboardId}";
     name = "flash-${keyboardId}";
     meta.description = "Flash ${keyboardDesc} Keyboard";
 in

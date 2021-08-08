@@ -11,12 +11,13 @@
 , pkgs
 , stdenv
 , kaleidoscope-bundle
+, shajra-keyboards-config
 , shajra-keyboards-lib
 }:
 
 { factory ? false
-, keymap  ? (import ./config.nix).default.keymap.model01
-, keymaps ? ../keymaps/model_01
+, keymap  ? shajra-keyboards-config.default.model01.keymap
+, keymaps ? shajra-keyboards-config.default.model01.keymaps
 }:
 
 let
@@ -132,6 +133,7 @@ let
             SOURCE="${src}"
             BINARY="${bin}"
 
+            set +o pipefail
             PORT="$(env --ignore-environment \
                 PATH="$PATH" \
                 HOME="$HOME" \
@@ -140,6 +142,7 @@ let
                 | grep keyboardio:avr \
                 | head -1 \
                 | cut -d ' ' -f 1)"
+            set -o pipefail
 
             echo
             echo FLASH SOURCE: "$SOURCE"

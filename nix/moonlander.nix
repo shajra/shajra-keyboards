@@ -4,11 +4,12 @@ deps@
 , gcc-arm-embedded
 #, pkgsCross
 , wally-cli
+, shajra-keyboards-config
 }:
 
 { factory ? false
-, keymap  ? (import ./config.nix).default.keymap.moonlander
-, keymaps ? ../keymaps/moonlander
+, keymap ? shajra-keyboards-config.default.moonlander.keymap
+, keymaps ? shajra-keyboards-config.default.moonlander.keymaps
 }:
 
 callPackage ./qmk.nix {} { inherit factory keymap keymaps; } {

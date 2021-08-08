@@ -4,388 +4,373 @@
 
 [[https://github.com/shajra/shajra-keyboards/actions][https://github.com/shajra/shajra-keyboards/workflows/CI/badge.svg]]
 
-* About the Project
+* About the project
 
-  This project has the "shajra" keyboard mappings for three ergonomic split
-  keyboards:
+This project has the "shajra" keyboard mappings for three ergonomic split
+keyboards:
 
-  - [[keyboardio][Keyboardio's Model 01]], programmed with [[kaleidoscope][Kaleidoscope]] firmware.
-  - [[ergodox-ez][ZSA Technology Labs' Ergodox EZ]], programmed with [[qmk][QMK]] firmware
-  - [[moonlander][ZSA Technology Labs' Moonlander]], programmed with [[qmk][QMK]] firmware
+- [[keyboardio][Keyboardio's Model 01]], programmed with [[kaleidoscope][Kaleidoscope]] firmware.
+- [[ergodox-ez][ZSA Technology Labs' Ergodox EZ]], programmed with [[qmk][QMK]] firmware
+- [[moonlander][ZSA Technology Labs' Moonlander]], programmed with [[qmk][QMK]] firmware
 
-  Beyond the keymap, this project offers some streamlined automation with [[nix][Nix]]
-  that you can use for your own keymap. This automation works for GNU/Linux
-  only (sorry, not MacOS or Windows). See [[file:doc/nix.org][the provided documentation on Nix]] for
-  more on what Nix is, why we're motivated to use it, and how to get set up
-  with it for this project.
+Beyond the keymap, this project offers some streamlined automation with [[nix][Nix]] that
+you can use for your own keymap. This automation works for GNU/Linux only
+(sorry, not MacOS or Windows). See [[file:doc/nix.org][the provided documentation on Nix]] for more on
+what Nix is, why we're motivated to use it, and how to get set up with it for
+this project.
 
-  The rest of this document discusses using this automation. To get the most
-  out of the keymap itself, you may be interested in the [[file:doc/design.org][design document]]
-  explaining the motivation behind the mapping.
+The rest of this document discusses using this automation. To get the most out
+of the keymap itself, you may be interested in the [[file:doc/design.org][design document]] explaining
+the motivation behind the mapping.
 
 * The mappings
 
-  The "shajra" keymaps for these keyboards are extremely similar, which works
-  out well because the physical layouts of these keyboards are also similar. We
-  can more easily switch from one keyboard to another, and retain the design
-  benefits of the mapping.
+The "shajra" keymaps for these keyboards are extremely similar, which works out
+well because the physical layouts of these keyboards are also similar. We can
+more easily switch from one keyboard to another, and retain the design benefits
+of the mapping.
 
-*** Model 01 "shajra" keymap
+** Model 01 "shajra" keymap
 
-    [[file:doc/model-01-shajra-layout.png]]
+[[file:doc/model-01-shajra-layout.png]]
 
-*** Ergodox EZ "shajra" keymap (Moonlander similar)
+** Ergodox EZ "shajra" keymap (Moonlander similar)
 
-    Note the Moonlander keyboard is almost an identical layout to the EZ, and
-    not illustrated here.  There are just two two less keys on the thumb
-    cluster.  The leads to not having either Home or End on the base layer for
-    the Moonlander.  And the "application menu" keycodes are moved to the
-    bottom-outer corners.
+Note the Moonlander keyboard is almost an identical layout to the EZ, and not
+illustrated here. There are just two two less keys on the thumb cluster. The
+leads to not having either Home or End on the base layer for the Moonlander. And
+the "application menu" keycodes are moved to the bottom-outer corners.
 
-    [[file:doc/ergodox-ez-shajra-layout.png]]
+[[file:doc/ergodox-ez-shajra-layout.png]]
 
 * Using these key mappings
 
-  This project only supports a GNU/Linux operating system (sorry, not MacOS or
-  Windows) with the [[nix][Nix package manager]] installed.
+This project only supports a GNU/Linux operating system (sorry, not MacOS or
+Windows) with the [[nix][Nix package manager]] installed.
 
-  QMK and Kaleidoscope have build complexities and dependencies that can take a
-  moment to work through. Nix can automate this hassle away by downloading and
-  setting up all the necessary third-party dependencies in a way that
+QMK and Kaleidoscope have build complexities and dependencies that can take a
+moment to work through. Nix can automate this hassle away by downloading and
+setting up all the necessary third-party dependencies in a way that
 
-  - is highly reproducible
-  - won't conflict with your current system/configuration.
+- is highly reproducible
+- won't conflict with your current system/configuration.
 
-  By using Nix, we won't have to worry about downloading QMK or Kaleidoscope,
-  or making sure we have the right version of build tools like Arduino
-  installed, or messing with Git submodules, or setting up environment
-  variables. Nix does all this for us. The provided scripts simplify using Nix
-  even further.
+By using Nix, we won't have to worry about downloading QMK or Kaleidoscope, or
+making sure we have the right version of build tools like Arduino installed, or
+messing with Git submodules, or setting up environment variables. Nix does all
+this for us. The provided scripts simplify using Nix even further.
 
-  The following steps will get your keyboard flashed.
+The following steps will get your keyboard flashed.
 
-*** 1. Install Nix on your GNU/Linux distribution
+** 1. Install Nix on your GNU/Linux distribution
 
-    #+INCLUDE: "doc/nix.org::*Nix package manager setup" :only-contents t
+#+INCLUDE: "doc/nix.org::*Nix package manager setup" :only-contents t
 
-*** 2. Set up Cachix
+** 2. Set up Cachix
 
-    #+INCLUDE: "doc/nix.org::*Cache setup" :only-contents t
+#+INCLUDE: "doc/nix.org::*Cache setup" :only-contents t
 
-*** 3. Make sure your udev rules are set
+** 3. Make sure your udev rules are set
 
-    To program either keyboard with a new mapping, you need to augment your OS
-    configuration with new udev rules.
+To program either keyboard with a new mapping, you need to augment your OS
+configuration with new udev rules.
 
-    The following are recommended rules for each keyboard:
+The following are recommended rules for each keyboard:
 
-    #+BEGIN_EXAMPLE
-      # For Ergodox EZ
-      ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?", \
-          ENV{ID_MM_DEVICE_IGNORE}="1"
-      ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789A]?", \
-          ENV{MTP_NO_PROBE}="1"
-      SUBSYSTEMS=="usb", ATTRS{idVendor}=="16c0", \
-          ATTRS{idProduct}=="04[789ABCD]?", MODE:="0666"
-      KERNEL=="ttyACM*", ATTRS{idVendor}=="16c0", \
-          ATTRS{idProduct}=="04[789B]?", MODE:="0666"
+#+BEGIN_EXAMPLE
+  # For Ergodox EZ
+  ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?", \
+      ENV{ID_MM_DEVICE_IGNORE}="1"
+  ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789A]?", \
+      ENV{MTP_NO_PROBE}="1"
+  SUBSYSTEMS=="usb", ATTRS{idVendor}=="16c0", \
+      ATTRS{idProduct}=="04[789ABCD]?", MODE:="0666"
+  KERNEL=="ttyACM*", ATTRS{idVendor}=="16c0", \
+      ATTRS{idProduct}=="04[789B]?", MODE:="0666"
 
-      # For Moonlander
-      SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", \
-          MODE:="0666", SYMLINK+="stm32_dfu"
+  # For Moonlander
+  SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", \
+      MODE:="0666", SYMLINK+="stm32_dfu"
 
-      # For Model 01
-      SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2300", \
-          SYMLINK+="model01", ENV{ID_MM_DEVICE_IGNORE}:="1", \
-          ENV{ID_MM_CANDIDATE}:="0", TAG+="uaccess", TAG+="seat"
-      SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2301", \
-          SYMLINK+="model01", ENV{ID_MM_DEVICE_IGNORE}:="1", \
-          ENV{ID_MM_CANDIDATE}:="0", TAG+="uaccess", TAG+="seat"
-    #+END_EXAMPLE
+  # For Model 01
+  SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2300", \
+      SYMLINK+="model01", ENV{ID_MM_DEVICE_IGNORE}:="1", \
+      ENV{ID_MM_CANDIDATE}:="0", TAG+="uaccess", TAG+="seat"
+  SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2301", \
+      SYMLINK+="model01", ENV{ID_MM_DEVICE_IGNORE}:="1", \
+      ENV{ID_MM_CANDIDATE}:="0", TAG+="uaccess", TAG+="seat"
+#+END_EXAMPLE
 
-    These settings should correspond to the official documentation of tools and
-    libraries used by this project:
+These settings should correspond to the official documentation of tools and
+libraries used by this project:
 
-    - [[qmk-setup][QMK documentation for configuring Halfkey bootloader used by the Ergodox EZ]]
-    - [[teensy][Teensy CLI documentation,  used internally for flashing the Ergodox EZ]]
-    - [[wally-udev][Wally CLI,  used internally for flashing the Moonlander]]
-    - [[kaleidoscope-setup][Kaleidoscope documentation]]
+- [[qmk-setup][QMK documentation for configuring Halfkey bootloader used by the Ergodox EZ]]
+- [[teensy][Teensy CLI documentation,  used internally for flashing the Ergodox EZ]]
+- [[wally-udev][Wally CLI,  used internally for flashing the Moonlander]]
+- [[kaleidoscope-setup][Kaleidoscope documentation]]
 
-    Each distribution is different, but on many GNU/Linux systems, udev rules
-    are put in a file in =/etc/udev/rules.d= with a ".rules" extension.
+Each distribution is different, but on many GNU/Linux systems, udev rules are
+put in a file in =/etc/udev/rules.d= with a ".rules" extension.
 
-    On some systems, you can activate these rules with the following commands:
+On some systems, you can activate these rules with the following commands:
 
-    #+BEGIN_SRC shell :eval no
-      udevadm control --reload-rules udevadm trigger
-    #+END_SRC
+#+BEGIN_SRC shell :eval no
+  udevadm control --reload-rules udevadm trigger
+#+END_SRC
 
-    Or just restart the computer.
+Or just restart the computer.
 
-*** 4. For Kaleidoscope, join the necessary OS group
+** 4. For Kaleidoscope, join the necessary OS group
 
-    #+BEGIN_QUOTE
-    */NOTE:/* You don't need this step if you're flashing the Ergodox EZ or
-    Moonlander.
-    #+END_QUOTE
+#+BEGIN_QUOTE
+*/NOTE:/* You don't need this step if you're flashing the Ergodox EZ or
+Moonlander.
+#+END_QUOTE
 
-    Once udev is configured, when you plug in the Keyboardio Model 01, a serial
-    device should show up under =/dev/serial/by-id= with a name matching
-    "usb-Keyboardio_Model_01_*".  This is a human-readable symlink pointing to
-    the real device which should be something like =/dev/ttyACM0=.  On many
-    systems, this device is group-owned by the "dialout" or the "uucp" group:
+Once udev is configured, when you plug in the Keyboardio Model 01, a serial
+device should show up under =/dev/serial/by-id= with a name matching
+"usb-Keyboardio_Model_01_*". This is a human-readable symlink pointing to the
+real device which should be something like =/dev/ttyACM0=. On many systems, this
+device is group-owned by the "dialout" or the "uucp" group:
 
-    In the following example, we can see the device is group-owned by the
-    "dialout" group.
+In the following example, we can see the device is group-owned by the "dialout"
+group.
 
-    #+BEGIN_SRC shell :eval no :exports both
-      ls -lL /dev/serial/by-id/usb-Keyboardio_Model_01_*
-    #+END_SRC
+#+BEGIN_SRC shell :eval no :exports both
+  ls -lL /dev/serial/by-id/usb-Keyboardio_Model_01_*
+#+END_SRC
 
-    #+RESULTS:
-    : crw-rw---- 1 root dialout 166, 0 Dec 28 20:09 /dev/serial/by-id/usb-Keyboardio_Model_01_Ckbio01E-if00
+#+RESULTS:
+: crw-rw---- 1 root dialout 166, 0 Dec 28 20:09 /dev/serial/by-id/usb-Keyboardio_Model_01_Ckbio01E-if00
 
-    On most distributions, the follow commands should work to join a group
-    (substituting =$TTY_GROUP= and =$USERNAME=):
+On most distributions, the follow commands should work to join a group
+(substituting =$TTY_GROUP= and =$USERNAME=):
 
-    #+BEGIN_SRC shell :eval no
-      sudo usermod -a -G $TTY_GROUP $USERNAME
-      newgrp $TTY_GROUP
-    #+END_SRC
+#+BEGIN_SRC shell :eval no
+  sudo usermod -a -G $TTY_GROUP $USERNAME
+  newgrp $TTY_GROUP
+#+END_SRC
 
-    You should see memberships in the new group with the =groups= command:
+You should see memberships in the new group with the =groups= command:
 
-    #+BEGIN_SRC shell :eval no :exports both
-      groups | grep dialout
-    #+END_SRC
+#+BEGIN_SRC shell :eval no :exports both
+  groups | grep dialout
+#+END_SRC
 
-    #+RESULTS:
-    : users wheel video dialout docker
+#+RESULTS:
+: users wheel video dialout docker
 
-*** 5. Unplug and replug your keyboard
+** 5. Unplug and replug your keyboard
 
-    Unplug your keyboard(s) and plug them back in, to make sure everything's set
-    to program.  Rebooting your computer is probably overkill, but would
-    probably work too.
+Unplug your keyboard(s) and plug them back in, to make sure everything's set to
+program. Rebooting your computer is probably overkill, but would probably work
+too.
 
-*** 6. Get the code and run it
+** 6. Get the code and run it
 
-    Clone this code base and go into the directory:
+Clone this code base and go into the directory:
 
-    #+BEGIN_SRC shell :eval no
-      cd $SOME_WORKING_DIR
-      clone https://github.com/shajra/shajra-keyboards.git
-      cd shajra-keyboards
-    #+END_SRC
+#+BEGIN_SRC shell :eval no
+  cd $SOME_WORKING_DIR
+  clone https://github.com/shajra/shajra-keyboards.git
+  cd shajra-keyboards
+#+END_SRC
 
-    Note, the first time you run the commands described below, you'll see
-    Nix doing a lot of downloading and compiling. After that, subsequent
-    invocations should be quicker with less output.
+Note, the first time you run the commands described below, you'll see Nix doing
+a lot of downloading and compiling. After that, subsequent invocations should be
+quicker with less output.
 
-**** Flashing an Ergodox EZ keyboard
+*** Flashing an Ergodox EZ keyboard
 
-     You can run the following to flash your Ergodox EZ with the new keymap,
-     pressing the reset button when prompted (access the reset button with an
-     unbent paperclip inserted into the small hole in the top right corner of
-     the right keyboard half):
+You can run the following to flash your Ergodox EZ with the new keymap, pressing
+the reset button when prompted (access the reset button with an unbent paperclip
+inserted into the small hole in the top right corner of the right keyboard
+half):
 
-     #+BEGIN_SRC shell :eval no
-       ./flash-ergodoxez
-     #+END_SRC
+#+BEGIN_SRC shell :eval no
+  ./flash-ergodoxez
+#+END_SRC
 
-     #+NAME: flash-ergodoxez
-     #+BEGIN_SRC bash :results output :exports results
-       head -11 < <(./flash-ergodoxez)
-     #+END_SRC
+#+NAME: flash-ergodoxez
+#+BEGIN_SRC bash :results output :exports results
+  head -11 < <(./flash-ergodoxez)
+#+END_SRC
 
-     #+RESULTS: flash-ergodoxez
-     #+begin_example
+#+RESULTS: flash-ergodoxez
+#+begin_example
 
-     Flashing ZSA Technology Lab's Ergodox EZ (custom "shajra" keymap)
-     =================================================================
+Flashing ZSA Technology Lab's Ergodox EZ (custom "shajra" keymap)
+=================================================================
 
-     FLASH SOURCE: /nix/store/r8sc6438fysbbvn35a8yiwfq3p8marq2-qmk-custom-shajra-src
-     FLASH BINARY: /nix/store/hz9qd4bsnkm15l6kd0g3yn56vpjqpxmb-ergodoxez-custom-shajra.hex
+FLASH SOURCE: /nix/store/r8sc6438fysbbvn35a8yiwfq3p8marq2-qmk-custom-shajra-src
+FLASH BINARY: /nix/store/hz9qd4bsnkm15l6kd0g3yn56vpjqpxmb-ergodoxez-custom-shajra.hex
 
-     Teensy Loader, Command Line, Version 2.1
-     Read "/nix/store/hz9qd4bsnkm15l6kd0g3yn56vpjqpxmb-ergodoxez-custom-shajra.hex": 22594 bytes, 70.0% usage
-     Waiting for Teensy device...
-      (hint: press the reset button)
-     #+end_example
+Teensy Loader, Command Line, Version 2.1
+Read "/nix/store/hz9qd4bsnkm15l6kd0g3yn56vpjqpxmb-ergodoxez-custom-shajra.hex": 22594 bytes, 70.0% usage
+Waiting for Teensy device...
+ (hint: press the reset button)
+#+end_example
 
-**** Flashing a Moonlander keyboard
+*** Flashing a Moonlander keyboard
 
-     You can run the following to flash your Moonlander with the new keymap,
-     pressing the reset button when prompted (access the reset button with an
-     unbent paperclip inserted into the small hole in the top left corner of the
-     left keyboard half):
+You can run the following to flash your Moonlander with the new keymap, pressing
+the reset button when prompted (access the reset button with an unbent paperclip
+inserted into the small hole in the top left corner of the left keyboard half):
 
-     #+BEGIN_SRC shell :eval no
-       ./flash-moonlander
-     #+END_SRC
+#+BEGIN_SRC shell :eval no
+  ./flash-moonlander
+#+END_SRC
 
-     #+NAME: flash-moonlander
-     #+BEGIN_SRC bash :results output :exports results
-       head -c350 < <(./flash-moonlander) | ansifilter
-     #+END_SRC
+#+NAME: flash-moonlander
+#+BEGIN_SRC bash :results output :exports results
+  head -c350 < <(./flash-moonlander) | ansifilter
+#+END_SRC
 
-     #+RESULTS: flash-moonlander
-     : 
-     : Flashing ZSA Technology Lab's Moonlander (custom "shajra" keymap)
-     : =================================================================
-     : 
-     : FLASH SOURCE: /nix/store/xcy8alg32ja7h3p35dyjni9rjihsbwpn-qmk-custom-shajra-src
-     : FLASH BINARY: /nix/store/6wav3jvws9kqbj1059kddmq2pfa20n5f-moonlander-custom-shajra.bin
-     : 
-     : ⠋ Press the reset button of your keyboard.
+#+RESULTS: flash-moonlander
+: 
+: Flashing ZSA Technology Lab's Moonlander (custom "shajra" keymap)
+: =================================================================
+: 
+: FLASH SOURCE: /nix/store/xcy8alg32ja7h3p35dyjni9rjihsbwpn-qmk-custom-shajra-src
+: FLASH BINARY: /nix/store/6wav3jvws9kqbj1059kddmq2pfa20n5f-moonlander-custom-shajra.bin
+: 
+: ⠋ Press the reset button of your keyboard.
 
-**** Flashing a Keyboardio Model 01 keyboard
+*** Flashing a Keyboardio Model 01 keyboard
 
-     You can run the following to flash your Keyboardio Model 01, holding
-     down the =Prog= key and then pressing =Enter= when prompted:
+You can run the following to flash your Keyboardio Model 01, holding down the
+=Prog= key and then pressing =Enter= when prompted:
 
-     #+BEGIN_SRC shell :eval no
-       ./flash-model01
-     #+END_SRC
+#+BEGIN_SRC shell :eval no
+  ./flash-model01
+#+END_SRC
 
-     #+NAME: flash-model01
-     #+BEGIN_SRC bash :results output :exports results
-       head -14 < <(./flash-model01)
-     #+END_SRC
+#+NAME: flash-model01
+#+BEGIN_SRC bash :results output :exports results
+  head -14 < <(./flash-model01)
+#+END_SRC
 
-     #+RESULTS: flash-model01
-     #+begin_example
+#+RESULTS: flash-model01
+: 
+: Flashing Keyboardio's Model 01 (custom "shajra" keymap)
+: =======================================================
+: 
+: FLASH SOURCE: /nix/store/0jmqf7s1zd6iwl3vqc7kywx8i5y4bsch-model01-custom-shajra-src
+: FLASH BINARY: /nix/store/6vg6259qakfwb1qy4cpis8hsccmwsjnz-model01-custom-shajra-hex
+: 
 
-     Flashing Keyboardio's Model 01 (custom "shajra" keymap)
-     =======================================================
-
-     FLASH SOURCE: /nix/store/0jmqf7s1zd6iwl3vqc7kywx8i5y4bsch-model01-custom-shajra-src
-     FLASH BINARY: /nix/store/6vg6259qakfwb1qy4cpis8hsccmwsjnz-model01-custom-shajra-hex
-     DETECTED PORT: /dev/ttyACM0
-
-     To flash your keyboard, you must hold down the 'Prog' key.
-     While holding the 'Prog' key, press 'Enter', but continue to
-     hold the 'Prog' key.  You can release it once flashing has
-     started, and the key glows red.
-
-     Do these steps now, or Ctrl-C to quit...
-     #+end_example
-
-     The =Prog= key is hardwired to be the top-left-most key of the
-     Keyboardio Model 01, but the =Enter= key can be remapped. If you forget
-     where the =Enter= has been mapped to on your Keyboard, you can hit
-     =Enter= on another connected keyboard.
+The =Prog= key is hardwired to be the top-left-most key of the Keyboardio Model
+01, but the =Enter= key can be remapped. If you forget where the =Enter= has
+been mapped to on your Keyboard, you can hit =Enter= on another connected
+keyboard.
 
 * Reverting to the factory default mapping
 
-  This project's scripts won't save off your previous keymap from your keyboard.
-  But we can revert to the keymap that your keyboard shipped with.
+This project's scripts won't save off your previous keymap from your keyboard.
+But we can revert to the keymap that your keyboard shipped with.
 
-  This can be done with the =-F= / =--factory= switch, which all the flashing
-  scripts support. These scripts have a =-h= / =--help= switch in case you
-  forget your options.
+This can be done with the =-F= / =--factory= switch, which all the flashing
+scripts support. These scripts have a =-h= / =--help= switch in case you forget
+your options.
 
 * Customization
 
-** Customizing Keymaps
+** Customizing keymaps
 
-   The provided code is fairly compact. If you look in the =keymaps= directory,
-   you should find familiar files that you would edit in QMK or Kaleidoscope
-   projects, respectively. These keymaps are compiled into the flashing scripts
-   provided with this project.
+The provided code is fairly compact. If you look in the =keymaps= directory, you
+should find familiar files that you would edit in QMK or Kaleidoscope projects,
+respectively. These keymaps are compiled into the flashing scripts provided with
+this project.
 
-   For both keyboards, The "shajra" keymap is in its own directory. You can make
-   your own keymaps and put them in a sibling directory with the name of your
-   choice, and they'll be compiled in as well.
+For both keyboards, The "shajra" keymap is in its own directory. You can make
+your own keymaps and put them in a sibling directory with the name of your
+choice, and they'll be compiled in as well.
 
-   If you don't want to use keymaps compiled into the flashing scripts, you can
-   use another directory of keymaps at runtime with the =-K= / =-keymaps=
-   switch.
+If you don't want to use keymaps compiled into the flashing scripts, you can use
+another directory of keymaps at runtime with the =-K= / =-keymaps= switch.
 
-   Then you can use the =-k= / =--keymap= switch of either script to load your
-   custom keymap by the name you chose for the keymap in the "keymaps"
-   directory. The scripts should pick up changes, rebuild anything necessary,
-   and flash your keyboard.
+Then you can use the =-k= / =--keymap= switch of either script to load your
+custom keymap by the name you chose for the keymap in the "keymaps" directory.
+The scripts should pick up changes, rebuild anything necessary, and flash your
+keyboard.
 
-   The used keymap source code is copied into =/nix/store=, and the invocation
-   of the flashing scripts will print out a "FLASH SOURCE:" line indicating the
-   source used for compiling/flashing for your reference. These are the full
-   source trees you'd normally use if following the QMK or Kaleidoscope
-   documentation manually.
+The used keymap source code is copied into =/nix/store=, and the invocation of
+the flashing scripts will print out a "FLASH SOURCE:" line indicating the source
+used for compiling/flashing for your reference. These are the full source trees
+you'd normally use if following the QMK or Kaleidoscope documentation manually.
 
 ** Development
 
-   This project relies heavily on Nix, primarily to help deal with all the
-   complexity of setting up dependencies.
+This project relies heavily on Nix, primarily to help deal with all the
+complexity of setting up dependencies.
 
-   The [[file:doc/nix.org][provided documentation on Nix]] introduces Nix and how to use it in the
-   context of this project.
+The [[file:doc/nix.org][provided documentation on Nix]] introduces Nix and how to use it in the
+context of this project.
 
-   If you want to check that everything builds before flashing your keyboard,
-   you can build locally everything built by this project's continuous
-   integration:
+If you want to check that everything builds before flashing your keyboard, you
+can build locally everything built by this project's continuous integration:
 
-   #+NAME: nix-build
-   #+BEGIN_SRC shell :results output :exports both
-     nix build --no-link --file nix/ci.nix \
-         && nix path-info --file nix/ci.nix
-   #+END_SRC
+#+NAME: nix-build
+#+BEGIN_SRC shell :results output :exports both
+  nix build --no-link --file nix/ci.nix \
+      && nix path-info --file nix/ci.nix
+#+END_SRC
 
-   #+RESULTS: nix-build
-   #+begin_example
-   /nix/store/1wlv7mmqx0adfhwswnhjpm31084kc35z-model01-factory-flash
-   /nix/store/5x5di39ijhrfsd01c8vpkg86gn7p8cam-ergodoxez-factory.hex
-   /nix/store/6vg6259qakfwb1qy4cpis8hsccmwsjnz-model01-custom-shajra-hex
-   /nix/store/6wav3jvws9kqbj1059kddmq2pfa20n5f-moonlander-custom-shajra.bin
-   /nix/store/cggdmph0nyzxn5j6iq50cdrpg4ycbis4-moonlander-custom-shajra-flash
-   /nix/store/gmpa2dqaa501vv4ns05ccgf9ik5ybvkw-ergodoxez-custom-shajra-flash
-   /nix/store/hz9qd4bsnkm15l6kd0g3yn56vpjqpxmb-ergodoxez-custom-shajra.hex
-   /nix/store/l7rw0iwvrq01lwpv6a1mbkkzfgp7742v-model01-factory-hex
-   /nix/store/n67w2q0qb47si0z4carv1n7xqxzr5l3a-flash-moonlander
-   /nix/store/n9490maap8qr7rjlg2y3b04l9l7hx6ri-shajra-keyboards-licenses
-   /nix/store/nimg6srqfsvvmxdqxbhaw1394lms3902-flash-model01
-   /nix/store/nkxwfnyyy5qk6daqkl0anirbswaskvqi-flash-ergodoxez
-   /nix/store/vl3hk4pkdjwmbicxds4x296niczkqbhl-model01-custom-shajra-flash
-   /nix/store/xc26xipjvlx5j6dgks3n3wqz7jx01yqf-moonlander-factory.bin
-   /nix/store/xvr71wx1pnfk59pavr3gyzd2qa14zr4j-moonlander-factory-flash
-   /nix/store/zxlbb3vr91gh8yxzndk3wvbp8xavxkxj-ergodoxez-factory-flash
-   #+end_example
+#+RESULTS: nix-build
+#+begin_example
+/nix/store/4k24wn99m145bkd7w19v61d6vzwyssjf-flash-model01
+/nix/store/5x5di39ijhrfsd01c8vpkg86gn7p8cam-ergodoxez-factory.hex
+/nix/store/6vg6259qakfwb1qy4cpis8hsccmwsjnz-model01-custom-shajra-hex
+/nix/store/6wav3jvws9kqbj1059kddmq2pfa20n5f-moonlander-custom-shajra.bin
+/nix/store/cggdmph0nyzxn5j6iq50cdrpg4ycbis4-moonlander-custom-shajra-flash
+/nix/store/fdp0iw24mp1m3jry2r2ayj4204rmimdq-model01-custom-shajra-flash
+/nix/store/gmpa2dqaa501vv4ns05ccgf9ik5ybvkw-ergodoxez-custom-shajra-flash
+/nix/store/hz9qd4bsnkm15l6kd0g3yn56vpjqpxmb-ergodoxez-custom-shajra.hex
+/nix/store/l7rw0iwvrq01lwpv6a1mbkkzfgp7742v-model01-factory-hex
+/nix/store/n9490maap8qr7rjlg2y3b04l9l7hx6ri-shajra-keyboards-licenses
+/nix/store/q1f1l7mjcaxr91yhzn95dbl9l9n03maw-flash-ergodoxez
+/nix/store/qna4dm6fik01h015hjr5mgzdjrawmynw-flash-moonlander
+/nix/store/xc26xipjvlx5j6dgks3n3wqz7jx01yqf-moonlander-factory.bin
+/nix/store/xq0fn85yhn06raaphkqqrx32xsarzx77-model01-factory-flash
+/nix/store/xvr71wx1pnfk59pavr3gyzd2qa14zr4j-moonlander-factory-flash
+/nix/store/zxlbb3vr91gh8yxzndk3wvbp8xavxkxj-ergodoxez-factory-flash
+#+end_example
 
 * Release
 
-  The "master" branch of the repository on GitHub has the latest released
-  version of this code. There is currently no commitment to either forward or
-  backward compatibility. However the scripts for compiling/flashing are
-  largely stable and are less likely to change than the "shajra" keymap.
+The "master" branch of the repository on GitHub has the latest released version
+of this code. There is currently no commitment to either forward or backward
+compatibility. However the scripts for compiling/flashing are largely stable and
+are less likely to change than the "shajra" keymap.
 
-  "user/shajra" branches are personal branches that may be force-pushed to. The
-  "master" branch should not experience force-pushes and is recommended for
-  general use.
+"user/shajra" branches are personal branches that may be force-pushed to. The
+"master" branch should not experience force-pushes and is recommended for
+general use.
 
 * License
 
-  This project is not a modified work in the traditional sense. It provides
-  scripts the end user runs to make a modified work. Most of the source code
-  modified (QMK, Kaleidoscope, and Model 01) is licensed under either GPLv2 or
-  GPLv3.
+This project is not a modified work in the traditional sense. It provides
+scripts the end user runs to make a modified work. Most of the source code
+modified (QMK, Kaleidoscope, and Model 01) is licensed under either GPLv2 or
+GPLv3.
 
-  If you have Nix installed, then a provided script =licenses-thirdparty= can
-  be run to download all original source used, including license information.
+If you have Nix installed, then a provided script =licenses-thirdparty= can be
+run to download all original source used, including license information.
 
-  In the spirit of the projects we build upon, all files in this
-  "shajra-keyboards" project are licensed under the terms of GPLv3 or (at your
-  option) any later version.
+In the spirit of the projects we build upon, all files in this
+"shajra-keyboards" project are licensed under the terms of GPLv3 or (at your
+option) any later version.
 
-  Please see the [[./COPYING.md][COPYING.md]] file for more details.
+Please see the [[./COPYING.md][COPYING.md]] file for more details.
 
 * Contribution
 
-  Feel free to file issues and submit pull requests with GitHub. Ideas for how
-  to improve automation are welcome. If you have ideas on how to improve the
-  "shajra" keymap, just make a compelling argument considering the factors that
-  have already gone into [[file:doc/design.org][its design]].
+Feel free to file issues and submit pull requests with GitHub. Ideas for how to
+improve automation are welcome. If you have ideas on how to improve the "shajra"
+keymap, just make a compelling argument considering the factors that have
+already gone into [[file:doc/design.org][its design]].
 
-  There is only one author to date, so the following copyright covers all files
-  in this project:
+There is only one author to date, so the following copyright covers all files in
+this project:
 
-  Copyright © 2019 Sukant Hajra
+Copyright © 2019 Sukant Hajra

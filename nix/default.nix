@@ -1,3 +1,7 @@
+{ externalOverrides ? {}
+, externalJsonOverrides ? {}
+}:
+
 let
 
     fromGitHub = source: name:
@@ -6,26 +10,27 @@ let
             fetchSubmodules = true;
         };
 
-    sources = import ./sources.nix;
+    external = import external/sources.nix // externalOverrides;
 
-    sources-json = builtins.fromJSON
-        (builtins.readFile ./sources.json);
+    externalJson = builtins.fromJSON
+        (builtins.readFile external/sources.json) // externalJsonOverrides;
 
-    nix-project-all = import sources.nix-project;
+    nix-project-all = import external.nix-project;
 
-    arduino-tarball-avr = sources.arduino-tarball-avr;
-    arduino-tarball-avrdude = sources.arduino-tarball-avrdude;
-    arduino-tarball-avr-gcc = sources.arduino-tarball-avr-gcc;
-    arduino-tarball-ctags = sources.arduino-tarball-ctags;
-    arduino-tarball-ota = sources.arduino-tarball-ota;
-    arduino-tarball-serial-discovery = sources.arduino-tarball-serial-discovery;
-    qmk-cli-src = sources.qmk_cli;
-    qmk-dotty-dict-src = sources.qmk-dotty-dict;
-    pyusb-src = sources.pyusb;
-    pyrsistent-src = sources.pyrsistent;
+    arduino-tarball-avr = external.arduino-tarball-avr;
+    arduino-tarball-avrdude = external.arduino-tarball-avrdude;
+    arduino-tarball-avr-gcc = external.arduino-tarball-avr-gcc;
+    arduino-tarball-ctags = external.arduino-tarball-ctags;
+    arduino-tarball-ota = external.arduino-tarball-ota;
+    arduino-tarball-serial-discovery = external.arduino-tarball-serial-discovery;
+    qmk-cli-src = external.qmk_cli;
+    qmk-dotty-dict-src = external.qmk-dotty-dict;
+    pyusb-src = external.pyusb;
+    pyrsistent-src = external.pyrsistent;
 
     overlay = self: super: {
         nix-project-lib = nix-project-all.nix-project-lib;
+        shajra-keyboards-config = import ../config.nix;
         inherit
         arduino-tarball-avr
         arduino-tarball-avrdude
@@ -48,20 +53,19 @@ let
     };
 
 
-    pkgs-stable = import sources.nixpkgs {
+    pkgs-stable = import external.nixpkgs {
         config = {};
         overlays = [overlay pythonOverlay];
     };
 
-    pkgs-unstable = import sources.nixpkgs-unstable {
+    pkgs-unstable = import external.nixpkgs-unstable {
         config = {};
         overlays = [overlay pythonOverlay];
     };
 
-    qmk-factory = fromGitHub sources-json.qmk "qmk-src";
-
+    qmk-factory = fromGitHub externalJson.qmk "qmk-src";
     kaleidoscope-bundle =
-        fromGitHub sources-json.kaleidoscope-bundle "kaleidoscope-bundle-src";
+        fromGitHub externalJson.kaleidoscope-bundle "kaleidoscope-bundle-src";
 
     shajra-keyboards-lib = pkgs-stable.callPackage (import ./lib.nix) {};
 

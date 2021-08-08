@@ -11,12 +11,14 @@
 #+LINK: moonlander https://www.zsa.io/moonlander/
 #+LINK: niv https://github.com/nmattia/niv
 #+LINK: nix https://nixos.org/nix
+#+LINK: nix-darwin https://daiderd.com/nix-darwin
 #+LINK: nix-env https://nixos.org/nix/manual/#sec-nix-env
 #+LINK: nix-expr https://nixos.org/nix/manual/#ch-expression-language
 #+LINK: nix-install https://nixos.org/nix/manual/#chap-installation
 #+LINK: nix-learn https://nixos.org/learn.html
-#+LINK: nix-tutorial https://github.com/shajra/example-nix/tree/master/tutorials/0-nix-intro
+#+LINK: nixos https://nixos.org
 #+LINK: nixpkgs https://github.com/NixOS/nixpkgs
+#+LINK: nix-tutorial https://github.com/shajra/example-nix/tree/master/tutorials/0-nix-intro
 #+LINK: qmk https://docs.qmk.fm
 #+LINK: qmk-modtap https://docs.qmk.fm/#/mod_tap
 #+LINK: qmk-oneshot https://docs.qmk.fm/#/one_shot_keys
