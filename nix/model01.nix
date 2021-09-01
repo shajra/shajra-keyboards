@@ -165,7 +165,7 @@ let
             echo
             echo "Do these steps now, or Ctrl-C to quit..."
             read -r
-            env --ignore-environment \
+            exec env --ignore-environment \
                 PATH="$PATH" \
                 HOME="$HOME" \
                 ARDUINO_DIRECTORIES_USER="${hex.arduino}/user" \

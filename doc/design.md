@@ -28,7 +28,7 @@ It seems a waste to have a nice ergonomic split keyboard, only to program it wit
 
 To help deal with this problem, the "shajra" keymap is built upon a few guiding principles and constraints. Ideally, these principles and constraints would hone in on exactly one solution. Unfortunately, reality is not that tidy, though the options do narrow down a bit.
 
-Keyboard customization is very personal, so it's common to end up with your own keymap. Maybe this one can work for you, possibly with a few tweaks.
+Keyboard customization is personal, so it's common to end up with your own keymap. Maybe this one can work for you, possibly with a few tweaks.
 
 # Principles and assumptions<a id="principles_and_assumptions"></a>
 
@@ -77,11 +77,11 @@ Note the Moonlander keyboard is almost an identical layout to the EZ, and not il
 ### Modifiers<a id="sec-3-3-2"></a>
 
 -   The lower-right corner label on some keys shows the modifier accessed by holding it (other labels reference keycodes accessed by tapping).
--   The "Shift," "Ctrl," and "GUI" labels represent "Left" or "Right" keycodes, respective to which keyboard half they are on.
--   For both halves, the keycode represented by the "Alt" label is for only the `Left Alt` keycode.
+-   The “Shift,” “Ctrl,” and “GUI” labels represent “Left” or “Right” keycodes, respective to which keyboard half they are on.
+-   For both halves, the keycode represented by the “Alt” label is for only the `Left Alt` keycode.
 -   The following labels represent keycodes used for entering characters beyond a typical US/English keyboard:
--   The "Alt Gr" label represents a [`Alt Graph` modifier](https://en.wikipedia.org/wiki/AltGr_key), which we emulate with the `Right Alt` keycode.
--   The "⎄" label represents a [`Compose` key](https://en.wikipedia.org/wiki/Compose_key), which we emulate with `Shift + Right Alt`.
+-   The “Alt Gr” label represents a [`Alt Graph` modifier](https://en.wikipedia.org/wiki/AltGr_key), which we emulate with the `Right Alt` keycode.
+-   The “⎄” label represents a [`Compose` key](https://en.wikipedia.org/wiki/Compose_key), which we emulate with `Shift + Right Alt`.
 -   The Media and Mouse layers are not shown in these diagrams to avoid clutter.
 
 Note that we've given some special treatment to the right and left `Alt` keycodes. This is explained more [later](#altgr_and_compose).
@@ -185,7 +185,7 @@ For the most part the modifiers are laid out symmetrically, with one exception. 
 
 ## More on `Alt Gr` and `Compose`<a id="altgr_and_compose"></a>
 
-Historically, some keyboards targetting an international audience provide a [`Alt Graph` (`Alt Gr`) modifier](https://en.wikipedia.org/wiki/AltGr_key) where a `Right Alt` key would be (and thus only one `Alt` key on the left side). With this modifier some operating systems would support entry of a variety of currency and language symbols (such as "€" or "ä") beyond those on a standard US/English keyboard.
+Historically, some keyboards targetting an international audience provide a [`Alt Graph` (`Alt Gr`) modifier](https://en.wikipedia.org/wiki/AltGr_key) where a `Right Alt` key would be (and thus only one `Alt` key on the left side). With this modifier some operating systems would support entry of a variety of currency and language symbols (such as “€” or “ä”) beyond those on a standard US/English keyboard.
 
 On Macs, both left and right `Option` (`⌥`) keys help enter alternate symbols similarly to an `Alt Gr` key. And keyboards that emit the `Alt` keycodes are interpretted by Macs as an `Option` keycodes.
 
@@ -212,9 +212,9 @@ The following non-modifier keycodes below have been ordered from most frequently
 | `Enter`                    | `⏎`                 | essential for all tasks                                    |
 | `'`                        |                     | apostrophes common in text, but historically next to `;`   |
 | `Esc`                      | `⎋`                 | essential for Vim-style keybinds                           |
-| `Tab`                      | `↹`                 | very useful for shell/programming tab-complete             |
+| `Tab`                      | `↹`                 | useful for shell/programming tab-complete                  |
 | `-` `=`                    |                     | CLI switches, "zoom" keybindings, common in programming    |
-| `Left` `Right` `Down` `Up` | `⬅` `➡` `⬇` `⬆`     | very useful in a variety of contexts                       |
+| `Left` `Right` `Down` `Up` | `⬅` `➡` `⬇` `⬆`     | useful in a variety of contexts                            |
 | `` ` ``                    |                     | common in "markdown" languages for verbatim text           |
 | `Page Down` `Page Up`      | `⇟` `⇞`             | useful when reading a large page                           |
 | `[` `]`                    |                     | occurs occasionally when programming                       |
@@ -241,7 +241,7 @@ There's a few ways to lay out keycodes in the Function layer. Here's some reason
 | `(` `)` `[` `]` `{` `}`    | balanced enclosing marks are adjacent                           |
 | `` ` `` `'` `"`            | all these quotes are adjacent                                   |
 | `Left` `Down` `Up` `Right` | placed above `h`, `j`, `k`, and `l` for Vim-style navigation    |
-| `~` `/`                    | adjacent because home directories are prefixed "~/"             |
+| `~` `/`                    | adjacent because home directories are prefixed “~/”             |
 | `+` `_` `<` `>` `?` `:`    | placed such that `Function` is the same as `Shift`              |
 
 Regarding the last item in this table, some keys already exist from our Base layer with shifting, but it's nice to have all our symbols on one layer, so we don't have to toggle between switching between shifting the Base layer and toggling the Function layer (for example, this occurs with programming operators such as `<*>`, and `<$>`).
@@ -252,7 +252,7 @@ For different operating systems, we want to have a modifier to set user-specific
 
 On Macs, the `Option` (`⌥`) key is used less frequently for default OS/application keybindings than `Cmd` (`⌘`) or `Ctrl`. So the `Left Alt` keycode is good to use as a user/custom modifier, since it's interpreted as `Left Option` key by Macs.
 
-On GNU/Linux and Windows, the `Super` (`Windows`) key is used less frequently for default OS/application keybinding than `Ctrl` or `Alt`. So the `Left GUI` keycode is good to use as a user/custom modifier, since it's interpreted as a `Left Super` (`Left Windows`) key. However, Macs interpret this keycode as `Cmd` (`⌘`), which conflicts with very common keybindings (`⌘-c` or `⌘-v` for copy/paste, for instance).
+On GNU/Linux and Windows, the `Super` (`Windows`) key is used less frequently for default OS/application keybinding than `Ctrl` or `Alt`. So the `Left GUI` keycode is good to use as a user/custom modifier, since it's interpreted as a `Left Super` (`Left Windows`) key. However, Macs interpret this keycode as `Cmd` (`⌘`), which conflicts with common keybindings (`⌘-c` or `⌘-v` for copy/paste, for instance).
 
 If we put our custom keybindings on the `GUI` keycode for GNU/Linux and Windows operating systems, and if we put similar keybindings on the `Alt` keycode for Macs, then it can be useful to swap the locations of these two modifiers when switching between operating systems. This way, similar keybinds retain the same location our on Ergodox EZ, Moonlander, and Model 01 keyboards.
 
@@ -260,6 +260,6 @@ This is why the "shajra" keymap provides a key to swap the `GUI` and `Left Alt` 
 
 ## Media and Mouse layers<a id="sec-5-10"></a>
 
-This project doesn't provide diagrams of the Media or Mouse layers, but hopefully you can follow the code for these layers in the respective code for the [Ergodox EZ](https://github.com/shajra/shajra-keyboards/blob/master/ergodox_ez/keymaps/shajra/keymap.c#L103-L143), [Moonlander](https://github.com/shajra/shajra-keyboards/blob/master/moonlander/keymaps/shajra/keymap.c#L56-L71), and the [Model 01](https://github.com/shajra/shajra-keyboards/blob/master/model_01/keymaps/shajra/Model01-Firmware.ino#L106-L138).
+This project doesn't provide diagrams of the Media or Mouse layers, but hopefully you can follow the code for these layers in the respective code for the [Ergodox EZ](https://github.com/shajra/shajra-keyboards/blob/main/ergodox_ez/keymaps/shajra/keymap.c#L103-L143), [Moonlander](https://github.com/shajra/shajra-keyboards/blob/main/moonlander/keymaps/shajra/keymap.c#L56-L71), and the [Model 01](https://github.com/shajra/shajra-keyboards/blob/main/model_01/keymaps/shajra/Model01-Firmware.ino#L106-L138).
 
 For both layers, while holding a pinky to enter the layer, the layer offers some keys laid out in a directional orientation, accessed by fingers. Some thumb keys are also used. These layers were more creatively laid out, but hopefully they are intuitive enough to commit to memory.

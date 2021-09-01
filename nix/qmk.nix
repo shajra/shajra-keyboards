@@ -1,6 +1,4 @@
-{ pyrsistent-src
-, python3-unstable
-, pyusb-src
+{ python3-unstable
 , qmk-cli-src
 , qmk-dotty-dict-src
 , qmk-factory
@@ -55,42 +53,26 @@ let
             version = "1.3.0.post1";
             src = qmk-dotty-dict-src;
         });
-        pyusb = super.pyusb.overridePythonAttrs (old: {
-            version = "1.2.1";
-            src = pyusb-src;
-        });
-        pyrsistent = super.pyrsistent.overridePythonAttrs (old: {
-            version = "0.18.0";
-            src = pyrsistent-src;
-        });
         qmk_cli = super.buildPythonApplication {
             pname = "qmk_cli";
-            # DESIGN: updating to a newer CLI is annoying because they
-            # started exact-pinning dependencies
-            version = "0.0.52";
+            version = "1.0.0";
             src = qmk-cli-src;
+            patchPhase = ''
+                cat << EOF > setup.py
+                from setuptools import setup
+
+                if __name__ == "__main__":
+                    setup()
+                EOF
+            '';
             propagatedBuildInputs = with self; [
-                appdirs
-                argcomplete
-                attrs
-                colorama
-                coverage
-                qmk-dotty-dict
-                halo
                 hid
+                milc
+                pyusb
                 hjson
                 jsonschema
-                log-symbols
-                mccabe
-                milc
-                pycodestyle
-                pyflakes
                 pygments
-                pyrsistent
-                pyusb
-                six
-                spinners
-                termcolor
+                qmk-dotty-dict
             ];
             buildInputs = with self; [
                 flake8
@@ -143,7 +125,7 @@ let
             echo FLASH SOURCE: "$SOURCE"
             echo FLASH BINARY: "$BINARY"
             echo
-            ${flashCmd} "$BINARY"
+            exec ${flashCmd} "$BINARY"
             '';
 
 in { inherit flash hex; }

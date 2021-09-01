@@ -97,24 +97,24 @@ parse_args()
             FACTORY="true"
             ;;
         -k|--keymap)
-            KEYMAP="''${2:-}"
-            if [ -z "$KEYMAP" ]
+            if [ -z "''${2:-}" ]
             then die "$1 requires argument"
             fi
+            KEYMAP="''${2:-}"
             shift
             ;;
         -K|--keymaps)
-            KEYMAPS_DIR="''${2:-}"
-            if [ -z "$KEYMAPS_DIR" ]
+            if [ -z "''${2:-}" ]
             then die "$1 requires argument"
             fi
+            KEYMAPS_DIR="''${2:-}"
             shift
             ;;
         -N|--nix)
-            NIX_EXE="''${2:-}"
-            if [ -z "$NIX_EXE" ]
+            if [ -z "''${2:-}" ]
             then die "$1 requires argument"
             fi
+            NIX_EXE="''${2:-}"
             shift
             ;;
         *)

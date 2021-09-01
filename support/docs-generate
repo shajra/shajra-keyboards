@@ -13,13 +13,11 @@ nix run \
     pkgs-stable.bash \
     pkgs-stable.coreutils \
     pkgs-stable.gnugrep \
-    pkgs-stable.gnutar \
-    pkgs-stable.gzip \
     pkgs-stable.procps \
     pkgs-stable.tree \
     --command \
     org2gfm \
-    --ignore 'links.org' \
+    --exclude links.org \
     --nix "$(command -v nix)" \
     --evaluate \
     "$@"

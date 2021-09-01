@@ -56,15 +56,15 @@
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nix-project": {
-        "branch": "master",
+        "branch": "main",
         "description": "Tools to manage a Nix-based project",
         "homepage": "",
         "owner": "shajra",
         "repo": "nix-project",
-        "rev": "6365bda5db789ca6fc42114dde3a82c16d0b3afd",
-        "sha256": "0m2dmx8251qm7mghhjb4rv2zcc0nsdq9f0hv7q0ls2d56iqqb9b4",
+        "rev": "546f682bdb18e19c2dd35aac953c0848b5fd295d",
+        "sha256": "1anwdb0njcvg20nlahhihnkjfk2h2jckbqdv1dhd9knw2c4mmazi",
         "type": "tarball",
-        "url": "https://github.com/shajra/nix-project/archive/6365bda5db789ca6fc42114dde3a82c16d0b3afd.tar.gz",
+        "url": "https://github.com/shajra/nix-project/archive/546f682bdb18e19c2dd35aac953c0848b5fd295d.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
@@ -73,10 +73,10 @@
         "homepage": "https://github.com/NixOS/nixpkgs",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "733682c32929293341f113f297b64ea6319e9089",
-        "sha256": "0f6zi45av9s176a2pi15jyf08xk0nsg181hhjhnz3asr0whyarf1",
+        "rev": "74d017edb6717ad76d38edc02ad3210d4ad66b96",
+        "sha256": "0wvz41izp4djzzr0a6x54hcm3xjr51nlj8vqghfgyrjpk8plyk4s",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/733682c32929293341f113f297b64ea6319e9089.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/74d017edb6717ad76d38edc02ad3210d4ad66b96.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs-unstable": {
@@ -85,25 +85,11 @@
         "homepage": "https://github.com/NixOS/nixpkgs",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "439b1605227b8adb1357b55ce8529d541abbe9eb",
-        "sha256": "1jmlia9670lq89ic241zvif5q68qsqhqzm68pbdacxjmdrr0ahqf",
+        "rev": "8d8a28b47b7c41aeb4ad01a2bd8b7d26986c3512",
+        "sha256": "1s29nc3ppsjdq8kgbh8pc26xislkv01yph58xv2vjklkvsmz5pzm",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/439b1605227b8adb1357b55ce8529d541abbe9eb.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/8d8a28b47b7c41aeb4ad01a2bd8b7d26986c3512.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
-    "pyrsistent": {
-        "sha256": "1bsg6pv3m1gbkcxp8644h5dk0p5b8xrhg8v00qmcfgwad2nssp27",
-        "type": "tarball",
-        "url": "https://pypi.io/packages/source/p/pyrsistent/pyrsistent-0.18.0.tar.gz",
-        "url_template": "https://pypi.io/packages/source/p/pyrsistent/pyrsistent-<version>.tar.gz",
-        "version": "0.18.0"
-    },
-    "pyusb": {
-        "sha256": "0gz36zwz303lfxxnskd0ldw6l7rmh0bx36l2fgzq7zgi5plkq6pw",
-        "type": "tarball",
-        "url": "https://pypi.io/packages/source/p/pyusb/pyusb-1.2.1.tar.gz",
-        "url_template": "https://pypi.io/packages/source/p/pyusb/pyusb-<version>.tar.gz",
-        "version": "1.2.1"
     },
     "qmk": {
         "branch": "master",
@@ -111,10 +97,10 @@
         "homepage": "https://qmk.fm",
         "owner": "qmk",
         "repo": "qmk_firmware",
-        "rev": "bc2b73f997743a164bfa19541a25209b4f276771",
-        "sha256": "0ln989jyrx6rpiq23yqz6dhmn63akl0wd8rfwkfsxsc1dzgqmnjb",
+        "rev": "8d97c54770ef5205455dc7d8b004fcaf3d148168",
+        "sha256": "1m6hfm1gq74wnr3cn8p6x0sxr2blzahb37rym4lwim7fb5769364",
         "type": "tarball",
-        "url": "https://github.com/qmk/qmk_firmware/archive/bc2b73f997743a164bfa19541a25209b4f276771.tar.gz",
+        "url": "https://github.com/qmk/qmk_firmware/archive/8d97c54770ef5205455dc7d8b004fcaf3d148168.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "qmk-dotty-dict": {
@@ -125,10 +111,10 @@
         "version": "1.3.0.post1"
     },
     "qmk_cli": {
-        "sha256": "19nh626l0fjagjjq95vh5angqh5x6bqz8v3jzjv2dpf8bgj8zv1a",
+        "sha256": "10n2ic3lm5qkpnb8ir2dkxz1z8b6jzi5vyhv0c7dp5g59xx2n727",
         "type": "tarball",
-        "url": "https://pypi.io/packages/source/q/qmk/qmk-0.2.2.tar.gz",
+        "url": "https://pypi.io/packages/source/q/qmk/qmk-1.0.0.tar.gz",
         "url_template": "https://pypi.io/packages/source/q/qmk/qmk-<version>.tar.gz",
-        "version": "0.2.2"
+        "version": "1.0.0"
     }
 }

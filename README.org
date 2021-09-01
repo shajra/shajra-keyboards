@@ -1,4 +1,4 @@
-#+TITLE: Ergonomic Keyboard "shajra" Mappings (with Nix)
+#+TITLE: Ergonomic Keyboard “shajra” Mappings (with Nix)
 #+SETUPFILE: doc/links.org
 #+OPTIONS: ^:nil
 
@@ -6,7 +6,7 @@
 
 * About the project
 
-This project has the "shajra" keyboard mappings for three ergonomic split
+This project has the “shajra” keyboard mappings for three ergonomic split
 keyboards:
 
 - [[keyboardio][Keyboardio's Model 01]], programmed with [[kaleidoscope][Kaleidoscope]] firmware.
@@ -25,16 +25,16 @@ the motivation behind the mapping.
 
 * The mappings
 
-The "shajra" keymaps for these keyboards are extremely similar, which works out
+The “shajra” keymaps for these keyboards are extremely similar, which works out
 well because the physical layouts of these keyboards are also similar. We can
 more easily switch from one keyboard to another, and retain the design benefits
 of the mapping.
 
-** Model 01 "shajra" keymap
+** Model 01 “shajra” keymap
 
 [[file:doc/model-01-shajra-layout.png]]
 
-** Ergodox EZ "shajra" keymap (Moonlander similar)
+** Ergodox EZ “shajra” keymap (Moonlander similar)
 
 Note the Moonlander keyboard is almost an identical layout to the EZ, and not
 illustrated here. There are just two two less keys on the thumb cluster. The
@@ -114,8 +114,8 @@ put in a file in =/etc/udev/rules.d= with a ".rules" extension.
 
 On some systems, you can activate these rules with the following commands:
 
-#+BEGIN_SRC shell :eval no
-  udevadm control --reload-rules udevadm trigger
+#+BEGIN_SRC sh :eval no
+udevadm control --reload-rules udevadm trigger
 #+END_SRC
 
 Or just restart the computer.
@@ -136,8 +136,8 @@ device is group-owned by the "dialout" or the "uucp" group:
 In the following example, we can see the device is group-owned by the "dialout"
 group.
 
-#+BEGIN_SRC shell :eval no :exports both
-  ls -lL /dev/serial/by-id/usb-Keyboardio_Model_01_*
+#+BEGIN_SRC sh :eval no :exports both
+ls -lL /dev/serial/by-id/usb-Keyboardio_Model_01_*
 #+END_SRC
 
 #+RESULTS:
@@ -146,15 +146,15 @@ group.
 On most distributions, the follow commands should work to join a group
 (substituting =$TTY_GROUP= and =$USERNAME=):
 
-#+BEGIN_SRC shell :eval no
-  sudo usermod -a -G $TTY_GROUP $USERNAME
-  newgrp $TTY_GROUP
+#+BEGIN_SRC sh :eval no
+sudo usermod -a -G $TTY_GROUP $USERNAME
+newgrp $TTY_GROUP
 #+END_SRC
 
 You should see memberships in the new group with the =groups= command:
 
-#+BEGIN_SRC shell :eval no :exports both
-  groups | grep dialout
+#+BEGIN_SRC sh :eval no :exports both
+groups | grep dialout
 #+END_SRC
 
 #+RESULTS:
@@ -170,10 +170,10 @@ too.
 
 Clone this code base and go into the directory:
 
-#+BEGIN_SRC shell :eval no
-  cd $SOME_WORKING_DIR
-  clone https://github.com/shajra/shajra-keyboards.git
-  cd shajra-keyboards
+#+BEGIN_SRC sh :eval no
+cd $SOME_WORKING_DIR
+clone https://github.com/shajra/shajra-keyboards.git
+cd shajra-keyboards
 #+END_SRC
 
 Note, the first time you run the commands described below, you'll see Nix doing
@@ -187,13 +187,13 @@ the reset button when prompted (access the reset button with an unbent paperclip
 inserted into the small hole in the top right corner of the right keyboard
 half):
 
-#+BEGIN_SRC shell :eval no
-  ./flash-ergodoxez
+#+BEGIN_SRC sh :eval no
+./flash-ergodoxez
 #+END_SRC
 
 #+NAME: flash-ergodoxez
 #+BEGIN_SRC bash :results output :exports results
-  head -11 < <(./flash-ergodoxez)
+head -11 < <(./flash-ergodoxez)
 #+END_SRC
 
 #+RESULTS: flash-ergodoxez
@@ -202,14 +202,19 @@ half):
 Flashing ZSA Technology Lab's Ergodox EZ (custom "shajra" keymap)
 =================================================================
 
-FLASH SOURCE: /nix/store/7qmlg5jkvy9ddrgi8frd6ghvwf2vmzdw-qmk-custom-shajra-src
-FLASH BINARY: /nix/store/g73y14bna8ap0g3i397i4vkbhb6gii7h-ergodoxez-custom-shajra.hex
+FLASH SOURCE: /nix/store/n5sfb5mcb3ngfw4wvw7rm9pf39z2kndf-qmk-custom-shajra-src
+FLASH BINARY: /nix/store/3vis7rkgwj34x7wvnx48r57653g50ly6-ergodoxez-custom-shajra.hex
 
 Teensy Loader, Command Line, Version 2.1
-Read "/nix/store/g73y14bna8ap0g3i397i4vkbhb6gii7h-ergodoxez-custom-shajra.hex": 22594 bytes, 70.0% usage
+Read "/nix/store/3vis7rkgwj34x7wvnx48r57653g50ly6-ergodoxez-custom-shajra.hex": 22288 bytes, 69.1% usage
 Waiting for Teensy device...
  (hint: press the reset button)
 #+end_example
+
+#+NAME: flash-ergodoxez-cleanup
+#+BEGIN_SRC sh :results output silent :exports none
+pkill teensy-loader
+#+END_SRC
 
 *** Flashing a Moonlander keyboard
 
@@ -217,13 +222,13 @@ You can run the following to flash your Moonlander with the new keymap, pressing
 the reset button when prompted (access the reset button with an unbent paperclip
 inserted into the small hole in the top left corner of the left keyboard half):
 
-#+BEGIN_SRC shell :eval no
-  ./flash-moonlander
+#+BEGIN_SRC sh :eval no
+./flash-moonlander
 #+END_SRC
 
 #+NAME: flash-moonlander
 #+BEGIN_SRC bash :results output :exports results
-  head -c350 < <(./flash-moonlander) | ansifilter
+head -c350 < <(./flash-moonlander) | ansifilter
 #+END_SRC
 
 #+RESULTS: flash-moonlander
@@ -231,8 +236,8 @@ inserted into the small hole in the top left corner of the left keyboard half):
 : Flashing ZSA Technology Lab's Moonlander (custom "shajra" keymap)
 : =================================================================
 : 
-: FLASH SOURCE: /nix/store/vjbx9slwdb2kskpm009i4aqhyjdkilnf-qmk-custom-shajra-src
-: FLASH BINARY: /nix/store/0knmkp8wdq8r4g3m3y11m6942kpp4y6c-moonlander-custom-shajra.bin
+: FLASH SOURCE: /nix/store/n5fhvnhbgk2c8gmnj7wabyyi3w4a3kly-qmk-custom-shajra-src
+: FLASH BINARY: /nix/store/3ib22pvri5xxhkwsl3v5xi5l1pxh7j78-moonlander-custom-shajra.bin
 : 
 : ⠋ Press the reset button of your keyboard.
 
@@ -241,13 +246,13 @@ inserted into the small hole in the top left corner of the left keyboard half):
 You can run the following to flash your Keyboardio Model 01, holding down the
 =Prog= key and then pressing =Enter= when prompted:
 
-#+BEGIN_SRC shell :eval no
-  ./flash-model01
+#+BEGIN_SRC sh :eval no
+./flash-model01
 #+END_SRC
 
 #+NAME: flash-model01
 #+BEGIN_SRC bash :results output :exports results
-  head -14 < <(./flash-model01)
+head -14 < <(./flash-model01)
 #+END_SRC
 
 #+RESULTS: flash-model01
@@ -256,8 +261,8 @@ You can run the following to flash your Keyboardio Model 01, holding down the
 Flashing Keyboardio's Model 01 (custom "shajra" keymap)
 =======================================================
 
-FLASH SOURCE: /nix/store/g4kzbnsac5cw8ylar0dfz0srn48mx2gq-model01-custom-shajra-src
-FLASH BINARY: /nix/store/20l7yblnhwmnpvqyyqkfkgig934lwp0d-model01-custom-shajra-hex
+FLASH SOURCE: /nix/store/py9jgcmilw2kvjgn4nsgy4jjgpl01rsg-model01-custom-shajra-src
+FLASH BINARY: /nix/store/80zimj48r5wcv33jxxrzv7zsljkaca30-model01-custom-shajra-hex
 DETECTED PORT: /dev/ttyACM0
 
 To flash your keyboard, you must hold down the 'Prog' key.
@@ -291,7 +296,7 @@ should find familiar files that you would edit in QMK or Kaleidoscope projects,
 respectively. These keymaps are compiled into the flashing scripts provided with
 this project.
 
-For both keyboards, The "shajra" keymap is in its own directory. You can make
+For both keyboards, The “shajra” keymap is in its own directory. You can make
 your own keymaps and put them in a sibling directory with the name of your
 choice, and they'll be compiled in as well.
 
@@ -320,40 +325,40 @@ If you want to check that everything builds before flashing your keyboard, you
 can build locally everything built by this project's continuous integration:
 
 #+NAME: nix-build
-#+BEGIN_SRC shell :results output :exports both
-  nix build --no-link --file nix/ci.nix \
-      && nix path-info --file nix/ci.nix
+#+BEGIN_SRC sh :results output :exports both
+nix build --no-link --file nix/ci.nix \
+    && nix path-info --file nix/ci.nix
 #+END_SRC
 
 #+RESULTS: nix-build
 #+begin_example
-/nix/store/0knmkp8wdq8r4g3m3y11m6942kpp4y6c-moonlander-custom-shajra.bin
-/nix/store/20l7yblnhwmnpvqyyqkfkgig934lwp0d-model01-custom-shajra-hex
-/nix/store/2pyzpfjm1mz45flm558hayj8jbw6xdd6-model01-custom-shajra-flash
-/nix/store/8fbn5v1ahxs9ycxijihlns4skyi6s71r-moonlander-factory-flash
-/nix/store/9mchp4fkcw9aazwnmh2nb6m52x50dblx-moonlander-factory.bin
-/nix/store/9xsqryx7v7ny0w9w0rz9j0zrdjw1ypil-flash-ergodoxez
-/nix/store/g73y14bna8ap0g3i397i4vkbhb6gii7h-ergodoxez-custom-shajra.hex
-/nix/store/hyy32ngryjcvdf3rsi4384qcgjg0140c-ergodoxez-factory.hex
-/nix/store/iamdc6aj025cbfgrnxkvfy8jqn1pn4wc-model01-factory-hex
-/nix/store/ifzb1hz2jcrg07xgank7x5hqanvwq4fv-flash-model01
-/nix/store/jyq4b10ngc935mzzr53a6ibh102hsij9-model01-factory-flash
-/nix/store/l0qfcsc7q6rls9k9924sq1a71m58g5xv-ergodoxez-factory-flash
-/nix/store/rb3s8d49iznjgjkl3j5fczx28w8rzk4k-ergodoxez-custom-shajra-flash
-/nix/store/rxi9ba9jpfm4w1w72j22gac0qy05xqg3-moonlander-custom-shajra-flash
-/nix/store/smbh0gf05k6is6ss6svaczqlv46gnvfd-flash-moonlander
-/nix/store/xyjlsixlf5dghpbsns4fyvwvj9m1dbij-shajra-keyboards-licenses
+/nix/store/090wzqn8cqmh8smsnhxnnqri0s838m6q-ergodoxez-factory.hex
+/nix/store/3ib22pvri5xxhkwsl3v5xi5l1pxh7j78-moonlander-custom-shajra.bin
+/nix/store/3vis7rkgwj34x7wvnx48r57653g50ly6-ergodoxez-custom-shajra.hex
+/nix/store/80zimj48r5wcv33jxxrzv7zsljkaca30-model01-custom-shajra-hex
+/nix/store/89x1wx6b818n21cmbhr6n7shk0h59ilw-model01-factory-flash
+/nix/store/fy4dp72v7p1mgnfz3zw800pylcfwhf1b-moonlander-factory-flash
+/nix/store/gfc1ala1l57ivmqasnifvi8zmrvmagaj-moonlander-custom-shajra-flash
+/nix/store/gnv95xb6xnnxgqibh3vqg0rzlfr9rpii-model01-factory-hex
+/nix/store/j6hlzl40sgqcwydx6qzjpfs1g2r5f9ar-flash-ergodoxez
+/nix/store/krclgscrds23is72ilcfl1nzsvgzjhid-model01-custom-shajra-flash
+/nix/store/pgadw9pv935602rk78s1b81aqcvdjyb6-ergodoxez-factory-flash
+/nix/store/rbghk36nsz7nxgr647lkcakrhbx62r05-shajra-keyboards-licenses
+/nix/store/rwff7s7cg2wlxdvn05kxxhlzz0sl7p7r-flash-model01
+/nix/store/vvw4w0k2w2zm0msy22v62sgg99b4614g-flash-moonlander
+/nix/store/x88lbprlzxhdhxhvq3m7y544f8y111sj-moonlander-factory.bin
+/nix/store/z05qzy9szfmc52mkv34ka2cb8dgdynnz-ergodoxez-custom-shajra-flash
 #+end_example
 
 * Release
 
-The "master" branch of the repository on GitHub has the latest released version
+The "main" branch of the repository on GitHub has the latest released version
 of this code. There is currently no commitment to either forward or backward
 compatibility. However the scripts for compiling/flashing are largely stable and
-are less likely to change than the "shajra" keymap.
+are less likely to change than the “shajra” keymap.
 
 "user/shajra" branches are personal branches that may be force-pushed to. The
-"master" branch should not experience force-pushes and is recommended for
+"main" branch should not experience force-pushes and is recommended for
 general use.
 
 * License
@@ -375,7 +380,7 @@ Please see the [[./COPYING.md][COPYING.md]] file for more details.
 * Contribution
 
 Feel free to file issues and submit pull requests with GitHub. Ideas for how to
-improve automation are welcome. If you have ideas on how to improve the "shajra"
+improve automation are welcome. If you have ideas on how to improve the “shajra”
 keymap, just make a compelling argument considering the factors that have
 already gone into [[file:doc/design.org][its design]].
 
