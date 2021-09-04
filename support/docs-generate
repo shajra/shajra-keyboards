@@ -18,6 +18,7 @@ nix run \
     --command \
     org2gfm \
     --exclude links.org \
+    --exclude nix.mac.org \
     --nix "$(command -v nix)" \
     --evaluate \
     "$@"

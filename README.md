@@ -1,7 +1,7 @@
 - [About the project](#sec-1)
 - [The mappings](#sec-2)
-  - [Model 01 "shajra" keymap](#sec-2-1)
-  - [Ergodox EZ "shajra" keymap (Moonlander similar)](#sec-2-2)
+  - [Model 01 “shajra” keymap](#sec-2-1)
+  - [Ergodox EZ “shajra” keymap (Moonlander similar)](#sec-2-2)
 - [Using these key mappings](#sec-3)
   - [1. Install Nix on your GNU/Linux distribution](#sec-3-1)
   - [2. Set up Cachix](#sec-3-2)
@@ -24,7 +24,7 @@
 
 # About the project<a id="sec-1"></a>
 
-This project has the "shajra" keyboard mappings for three ergonomic split keyboards:
+This project has the “shajra” keyboard mappings for three ergonomic split keyboards:
 
 -   [Keyboardio's Model 01](https://shop.keyboard.io), programmed with [Kaleidoscope](https://github.com/keyboardio/Kaleidoscope) firmware.
 -   [ZSA Technology Labs' Ergodox EZ](https://ergodox-ez.com), programmed with [QMK](https://docs.qmk.fm) firmware
@@ -36,13 +36,13 @@ The rest of this document discusses using this automation. To get the most out o
 
 # The mappings<a id="sec-2"></a>
 
-The "shajra" keymaps for these keyboards are extremely similar, which works out well because the physical layouts of these keyboards are also similar. We can more easily switch from one keyboard to another, and retain the design benefits of the mapping.
+The “shajra” keymaps for these keyboards are extremely similar, which works out well because the physical layouts of these keyboards are also similar. We can more easily switch from one keyboard to another, and retain the design benefits of the mapping.
 
-## Model 01 "shajra" keymap<a id="sec-2-1"></a>
+## Model 01 “shajra” keymap<a id="sec-2-1"></a>
 
 ![img](doc/model-01-shajra-layout.png)
 
-## Ergodox EZ "shajra" keymap (Moonlander similar)<a id="sec-2-2"></a>
+## Ergodox EZ “shajra” keymap (Moonlander similar)<a id="sec-2-2"></a>
 
 Note the Moonlander keyboard is almost an identical layout to the EZ, and not illustrated here. There are just two two less keys on the thumb cluster. The leads to not having either Home or End on the base layer for the Moonlander. And the "application menu" keycodes are moved to the bottom-outer corners.
 
@@ -67,15 +67,8 @@ The following steps will get your keyboard flashed.
 
 If you don't already have Nix, [the official installation script](https://nixos.org/learn.html) should work on a variety of UNIX-like operating systems:
 
-```shell
+```bash
 sh <(curl -L https://nixos.org/nix/install) --daemon
-```
-
-If you're on a recent release of MacOS, you will need an extra switch:
-
-```shell
-sh <(curl -L https://nixos.org/nix/install) --daemon \
-    --darwin-use-unencrypted-nix-store-volume
 ```
 
 After installation, you may have to exit your terminal session and log back in to have environment variables configured to put Nix executables on your `PATH`.
@@ -90,7 +83,7 @@ It's recommended to configure Nix to use shajra.cachix.org as a Nix *substitutor
 
 You can configure shajra.cachix.org as a substitutor with the following command:
 
-```shell
+```sh
 nix run \
     --file https://cachix.org/api/v1/install \
     cachix \
@@ -144,7 +137,7 @@ Each distribution is different, but on many GNU/Linux systems, udev rules are pu
 
 On some systems, you can activate these rules with the following commands:
 
-```shell
+```sh
 udevadm control --reload-rules udevadm trigger
 ```
 
@@ -158,7 +151,7 @@ Once udev is configured, when you plug in the Keyboardio Model 01, a serial devi
 
 In the following example, we can see the device is group-owned by the "dialout" group.
 
-```shell
+```sh
 ls -lL /dev/serial/by-id/usb-Keyboardio_Model_01_*
 ```
 
@@ -166,14 +159,14 @@ ls -lL /dev/serial/by-id/usb-Keyboardio_Model_01_*
 
 On most distributions, the follow commands should work to join a group (substituting `$TTY_GROUP` and `$USERNAME`):
 
-```shell
+```sh
 sudo usermod -a -G $TTY_GROUP $USERNAME
 newgrp $TTY_GROUP
 ```
 
 You should see memberships in the new group with the `groups` command:
 
-```shell
+```sh
 groups | grep dialout
 ```
 
@@ -187,7 +180,7 @@ Unplug your keyboard(s) and plug them back in, to make sure everything's set to 
 
 Clone this code base and go into the directory:
 
-```shell
+```sh
 cd $SOME_WORKING_DIR
 clone https://github.com/shajra/shajra-keyboards.git
 cd shajra-keyboards
@@ -199,7 +192,7 @@ Note, the first time you run the commands described below, you'll see Nix doing 
 
 You can run the following to flash your Ergodox EZ with the new keymap, pressing the reset button when prompted (access the reset button with an unbent paperclip inserted into the small hole in the top right corner of the right keyboard half):
 
-```shell
+```sh
 ./flash-ergodoxez
 ```
 
@@ -207,11 +200,11 @@ You can run the following to flash your Ergodox EZ with the new keymap, pressing
     Flashing ZSA Technology Lab's Ergodox EZ (custom "shajra" keymap)
     =================================================================
     
-    FLASH SOURCE: /nix/store/7qmlg5jkvy9ddrgi8frd6ghvwf2vmzdw-qmk-custom-shajra-src
-    FLASH BINARY: /nix/store/g73y14bna8ap0g3i397i4vkbhb6gii7h-ergodoxez-custom-shajra.hex
+    FLASH SOURCE: /nix/store/qlxpmp31dymx0j2rd4aawpkv4cv3pbcv-qmk-custom-shajra-src
+    FLASH BINARY: /nix/store/i8g5jac8f82vxf1s0ibvwnsd7rfyv9wh-ergodoxez-custom-shajra.hex
     
     Teensy Loader, Command Line, Version 2.1
-    Read "/nix/store/g73y14bna8ap0g3i397i4vkbhb6gii7h-ergodoxez-custom-shajra.hex": 22594 bytes, 70.0% usage
+    Read "/nix/store/i8g5jac8f82vxf1s0ibvwnsd7rfyv9wh-ergodoxez-custom-shajra.hex": 22288 bytes, 69.1% usage
     Waiting for Teensy device...
      (hint: press the reset button)
 
@@ -219,7 +212,7 @@ You can run the following to flash your Ergodox EZ with the new keymap, pressing
 
 You can run the following to flash your Moonlander with the new keymap, pressing the reset button when prompted (access the reset button with an unbent paperclip inserted into the small hole in the top left corner of the left keyboard half):
 
-```shell
+```sh
 ./flash-moonlander
 ```
 
@@ -227,8 +220,8 @@ You can run the following to flash your Moonlander with the new keymap, pressing
     Flashing ZSA Technology Lab's Moonlander (custom "shajra" keymap)
     =================================================================
     
-    FLASH SOURCE: /nix/store/vjbx9slwdb2kskpm009i4aqhyjdkilnf-qmk-custom-shajra-src
-    FLASH BINARY: /nix/store/0knmkp8wdq8r4g3m3y11m6942kpp4y6c-moonlander-custom-shajra.bin
+    FLASH SOURCE: /nix/store/wndcbm4l12njg2yv40zj2p2f1qxlzw1q-qmk-custom-shajra-src
+    FLASH BINARY: /nix/store/m7pnfxn36aac35b1ngkdaa52fsdzsjg5-moonlander-custom-shajra.bin
     
     ⠋ Press the reset button of your keyboard.
 
@@ -236,7 +229,7 @@ You can run the following to flash your Moonlander with the new keymap, pressing
 
 You can run the following to flash your Keyboardio Model 01, holding down the `Prog` key and then pressing `Enter` when prompted:
 
-```shell
+```sh
 ./flash-model01
 ```
 
@@ -244,8 +237,8 @@ You can run the following to flash your Keyboardio Model 01, holding down the `P
     Flashing Keyboardio's Model 01 (custom "shajra" keymap)
     =======================================================
     
-    FLASH SOURCE: /nix/store/g4kzbnsac5cw8ylar0dfz0srn48mx2gq-model01-custom-shajra-src
-    FLASH BINARY: /nix/store/20l7yblnhwmnpvqyyqkfkgig934lwp0d-model01-custom-shajra-hex
+    FLASH SOURCE: /nix/store/py9jgcmilw2kvjgn4nsgy4jjgpl01rsg-model01-custom-shajra-src
+    FLASH BINARY: /nix/store/80zimj48r5wcv33jxxrzv7zsljkaca30-model01-custom-shajra-hex
     DETECTED PORT: /dev/ttyACM0
     
     To flash your keyboard, you must hold down the 'Prog' key.
@@ -269,7 +262,7 @@ This can be done with the `-F` / `--factory` switch, which all the flashing scri
 
 The provided code is fairly compact. If you look in the `keymaps` directory, you should find familiar files that you would edit in QMK or Kaleidoscope projects, respectively. These keymaps are compiled into the flashing scripts provided with this project.
 
-For both keyboards, The "shajra" keymap is in its own directory. You can make your own keymaps and put them in a sibling directory with the name of your choice, and they'll be compiled in as well.
+For both keyboards, The “shajra” keymap is in its own directory. You can make your own keymaps and put them in a sibling directory with the name of your choice, and they'll be compiled in as well.
 
 If you don't want to use keymaps compiled into the flashing scripts, you can use another directory of keymaps at runtime with the `-K` / `-keymaps` switch.
 
@@ -285,33 +278,33 @@ The [provided documentation on Nix](doc/nix.md) introduces Nix and how to use it
 
 If you want to check that everything builds before flashing your keyboard, you can build locally everything built by this project's continuous integration:
 
-```shell
+```sh
 nix build --no-link --file nix/ci.nix \
     && nix path-info --file nix/ci.nix
 ```
 
-    /nix/store/0knmkp8wdq8r4g3m3y11m6942kpp4y6c-moonlander-custom-shajra.bin
-    /nix/store/20l7yblnhwmnpvqyyqkfkgig934lwp0d-model01-custom-shajra-hex
-    /nix/store/2pyzpfjm1mz45flm558hayj8jbw6xdd6-model01-custom-shajra-flash
-    /nix/store/8fbn5v1ahxs9ycxijihlns4skyi6s71r-moonlander-factory-flash
-    /nix/store/9mchp4fkcw9aazwnmh2nb6m52x50dblx-moonlander-factory.bin
-    /nix/store/9xsqryx7v7ny0w9w0rz9j0zrdjw1ypil-flash-ergodoxez
-    /nix/store/g73y14bna8ap0g3i397i4vkbhb6gii7h-ergodoxez-custom-shajra.hex
-    /nix/store/hyy32ngryjcvdf3rsi4384qcgjg0140c-ergodoxez-factory.hex
-    /nix/store/iamdc6aj025cbfgrnxkvfy8jqn1pn4wc-model01-factory-hex
-    /nix/store/ifzb1hz2jcrg07xgank7x5hqanvwq4fv-flash-model01
-    /nix/store/jyq4b10ngc935mzzr53a6ibh102hsij9-model01-factory-flash
-    /nix/store/l0qfcsc7q6rls9k9924sq1a71m58g5xv-ergodoxez-factory-flash
-    /nix/store/rb3s8d49iznjgjkl3j5fczx28w8rzk4k-ergodoxez-custom-shajra-flash
-    /nix/store/rxi9ba9jpfm4w1w72j22gac0qy05xqg3-moonlander-custom-shajra-flash
-    /nix/store/smbh0gf05k6is6ss6svaczqlv46gnvfd-flash-moonlander
-    /nix/store/xyjlsixlf5dghpbsns4fyvwvj9m1dbij-shajra-keyboards-licenses
+    /nix/store/2bqzv0qf9j5caw6sj1s52w27n4lk8ysj-moonlander-factory-flash
+    /nix/store/2nmlqmawnbq8q03zj8ipw11hw8552izz-ergodoxez-factory-flash
+    /nix/store/80zimj48r5wcv33jxxrzv7zsljkaca30-model01-custom-shajra-hex
+    /nix/store/89x1wx6b818n21cmbhr6n7shk0h59ilw-model01-factory-flash
+    /nix/store/8szb707d5x00nvgsw30dw60gsrg8wv57-flash-ergodoxez
+    /nix/store/9wbn2ijn88x82aqrzmih2qkl73khv8n5-shajra-keyboards-licenses
+    /nix/store/b26wjw6izxk5gm65m4nacbsrn12c0rvs-ergodoxez-factory.hex
+    /nix/store/gnv95xb6xnnxgqibh3vqg0rzlfr9rpii-model01-factory-hex
+    /nix/store/i8g5jac8f82vxf1s0ibvwnsd7rfyv9wh-ergodoxez-custom-shajra.hex
+    /nix/store/krclgscrds23is72ilcfl1nzsvgzjhid-model01-custom-shajra-flash
+    /nix/store/ld0a7ikvd947y63hy5nk62z5sc18wfhs-ergodoxez-custom-shajra-flash
+    /nix/store/m7pnfxn36aac35b1ngkdaa52fsdzsjg5-moonlander-custom-shajra.bin
+    /nix/store/pmq0hn0fkvvsz1zrgy5ysjcia4i951lq-moonlander-custom-shajra-flash
+    /nix/store/q35vqgx13s14bqn4j852q28kik13x90b-flash-model01
+    /nix/store/qakgwrm7dkm5spmb0fn01z6ign3kjqws-flash-moonlander
+    /nix/store/ys5p94axyql7kbaj9msvrz66mwpdcnr6-moonlander-factory.bin
 
 # Release<a id="sec-6"></a>
 
-The "master" branch of the repository on GitHub has the latest released version of this code. There is currently no commitment to either forward or backward compatibility. However the scripts for compiling/flashing are largely stable and are less likely to change than the "shajra" keymap.
+The "main" branch of the repository on GitHub has the latest released version of this code. There is currently no commitment to either forward or backward compatibility. However the scripts for compiling/flashing are largely stable and are less likely to change than the “shajra” keymap.
 
-"user/shajra" branches are personal branches that may be force-pushed to. The "master" branch should not experience force-pushes and is recommended for general use.
+"user/shajra" branches are personal branches that may be force-pushed to. The "main" branch should not experience force-pushes and is recommended for general use.
 
 # License<a id="sec-7"></a>
 
@@ -325,7 +318,7 @@ Please see the [COPYING.md](./COPYING.md) file for more details.
 
 # Contribution<a id="sec-8"></a>
 
-Feel free to file issues and submit pull requests with GitHub. Ideas for how to improve automation are welcome. If you have ideas on how to improve the "shajra" keymap, just make a compelling argument considering the factors that have already gone into [its design](doc/design.md).
+Feel free to file issues and submit pull requests with GitHub. Ideas for how to improve automation are welcome. If you have ideas on how to improve the “shajra” keymap, just make a compelling argument considering the factors that have already gone into [its design](doc/design.md).
 
 There is only one author to date, so the following copyright covers all files in this project:
 
