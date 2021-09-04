@@ -202,11 +202,11 @@ head -11 < <(./flash-ergodoxez)
 Flashing ZSA Technology Lab's Ergodox EZ (custom "shajra" keymap)
 =================================================================
 
-FLASH SOURCE: /nix/store/n5sfb5mcb3ngfw4wvw7rm9pf39z2kndf-qmk-custom-shajra-src
-FLASH BINARY: /nix/store/3vis7rkgwj34x7wvnx48r57653g50ly6-ergodoxez-custom-shajra.hex
+FLASH SOURCE: /nix/store/qlxpmp31dymx0j2rd4aawpkv4cv3pbcv-qmk-custom-shajra-src
+FLASH BINARY: /nix/store/i8g5jac8f82vxf1s0ibvwnsd7rfyv9wh-ergodoxez-custom-shajra.hex
 
 Teensy Loader, Command Line, Version 2.1
-Read "/nix/store/3vis7rkgwj34x7wvnx48r57653g50ly6-ergodoxez-custom-shajra.hex": 22288 bytes, 69.1% usage
+Read "/nix/store/i8g5jac8f82vxf1s0ibvwnsd7rfyv9wh-ergodoxez-custom-shajra.hex": 22288 bytes, 69.1% usage
 Waiting for Teensy device...
  (hint: press the reset button)
 #+end_example
@@ -236,8 +236,8 @@ head -c350 < <(./flash-moonlander) | ansifilter
 : Flashing ZSA Technology Lab's Moonlander (custom "shajra" keymap)
 : =================================================================
 : 
-: FLASH SOURCE: /nix/store/n5fhvnhbgk2c8gmnj7wabyyi3w4a3kly-qmk-custom-shajra-src
-: FLASH BINARY: /nix/store/3ib22pvri5xxhkwsl3v5xi5l1pxh7j78-moonlander-custom-shajra.bin
+: FLASH SOURCE: /nix/store/wndcbm4l12njg2yv40zj2p2f1qxlzw1q-qmk-custom-shajra-src
+: FLASH BINARY: /nix/store/m7pnfxn36aac35b1ngkdaa52fsdzsjg5-moonlander-custom-shajra.bin
 : 
 : ⠋ Press the reset button of your keyboard.
 
@@ -332,22 +332,22 @@ nix build --no-link --file nix/ci.nix \
 
 #+RESULTS: nix-build
 #+begin_example
-/nix/store/090wzqn8cqmh8smsnhxnnqri0s838m6q-ergodoxez-factory.hex
-/nix/store/3ib22pvri5xxhkwsl3v5xi5l1pxh7j78-moonlander-custom-shajra.bin
-/nix/store/3vis7rkgwj34x7wvnx48r57653g50ly6-ergodoxez-custom-shajra.hex
+/nix/store/2bqzv0qf9j5caw6sj1s52w27n4lk8ysj-moonlander-factory-flash
+/nix/store/2nmlqmawnbq8q03zj8ipw11hw8552izz-ergodoxez-factory-flash
 /nix/store/80zimj48r5wcv33jxxrzv7zsljkaca30-model01-custom-shajra-hex
 /nix/store/89x1wx6b818n21cmbhr6n7shk0h59ilw-model01-factory-flash
-/nix/store/fy4dp72v7p1mgnfz3zw800pylcfwhf1b-moonlander-factory-flash
-/nix/store/gfc1ala1l57ivmqasnifvi8zmrvmagaj-moonlander-custom-shajra-flash
+/nix/store/8szb707d5x00nvgsw30dw60gsrg8wv57-flash-ergodoxez
+/nix/store/9wbn2ijn88x82aqrzmih2qkl73khv8n5-shajra-keyboards-licenses
+/nix/store/b26wjw6izxk5gm65m4nacbsrn12c0rvs-ergodoxez-factory.hex
 /nix/store/gnv95xb6xnnxgqibh3vqg0rzlfr9rpii-model01-factory-hex
-/nix/store/j6hlzl40sgqcwydx6qzjpfs1g2r5f9ar-flash-ergodoxez
+/nix/store/i8g5jac8f82vxf1s0ibvwnsd7rfyv9wh-ergodoxez-custom-shajra.hex
 /nix/store/krclgscrds23is72ilcfl1nzsvgzjhid-model01-custom-shajra-flash
-/nix/store/pgadw9pv935602rk78s1b81aqcvdjyb6-ergodoxez-factory-flash
-/nix/store/rbghk36nsz7nxgr647lkcakrhbx62r05-shajra-keyboards-licenses
-/nix/store/rwff7s7cg2wlxdvn05kxxhlzz0sl7p7r-flash-model01
-/nix/store/vvw4w0k2w2zm0msy22v62sgg99b4614g-flash-moonlander
-/nix/store/x88lbprlzxhdhxhvq3m7y544f8y111sj-moonlander-factory.bin
-/nix/store/z05qzy9szfmc52mkv34ka2cb8dgdynnz-ergodoxez-custom-shajra-flash
+/nix/store/ld0a7ikvd947y63hy5nk62z5sc18wfhs-ergodoxez-custom-shajra-flash
+/nix/store/m7pnfxn36aac35b1ngkdaa52fsdzsjg5-moonlander-custom-shajra.bin
+/nix/store/pmq0hn0fkvvsz1zrgy5ysjcia4i951lq-moonlander-custom-shajra-flash
+/nix/store/q35vqgx13s14bqn4j852q28kik13x90b-flash-model01
+/nix/store/qakgwrm7dkm5spmb0fn01z6ign3kjqws-flash-moonlander
+/nix/store/ys5p94axyql7kbaj9msvrz66mwpdcnr6-moonlander-factory.bin
 #+end_example
 
 * Release

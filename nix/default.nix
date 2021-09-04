@@ -5,7 +5,7 @@
 let
 
     fromGitHub = source: name:
-        with source; pkgs-stable.fetchFromGitHub {
+        with source; nixpkgs-stable.fetchFromGitHub {
             inherit owner repo rev sha256 name;
             fetchSubmodules = true;
         };
@@ -15,7 +15,7 @@ let
     externalJson = builtins.fromJSON
         (builtins.readFile external/sources.json) // externalJsonOverrides;
 
-    nix-project-all = import external.nix-project;
+    nix-project = import external.nix-project;
 
     arduino-tarball-avr = external.arduino-tarball-avr;
     arduino-tarball-avrdude = external.arduino-tarball-avrdude;
@@ -27,7 +27,7 @@ let
     qmk-dotty-dict-src = external.qmk-dotty-dict;
 
     overlay = self: super: {
-        nix-project-lib = nix-project-all.nix-project-lib;
+        nix-project-lib = nix-project.nix-project-lib;
         shajra-keyboards-config = import ../config.nix;
         inherit
         arduino-tarball-avr
@@ -45,16 +45,16 @@ let
     };
 
     pythonOverlay = self: super: {
-        python3-unstable = pkgs-unstable.python3;
+        python3-unstable = nixpkgs-unstable.python3;
     };
 
 
-    pkgs-stable = import external.nixpkgs {
+    nixpkgs-stable = import external.nixpkgs {
         config = {};
         overlays = [overlay pythonOverlay];
     };
 
-    pkgs-unstable = import external.nixpkgs-unstable {
+    nixpkgs-unstable = import external.nixpkgs-unstable {
         config = {};
         overlays = [overlay pythonOverlay];
     };
@@ -63,26 +63,42 @@ let
     kaleidoscope-bundle =
         fromGitHub externalJson.kaleidoscope-bundle "kaleidoscope-bundle-src";
 
-    shajra-keyboards-lib = pkgs-stable.callPackage (import ./lib.nix) {};
+    shajra-keyboards-lib = nixpkgs-stable.callPackage (import ./lib.nix) {};
 
     shajra-keyboards-flash =
-        pkgs-stable.callPackage (import ./flash.nix) {};
-
-in rec {
+        nixpkgs-stable.callPackage (import ./flash.nix) {};
 
     # DESIGN: unstable has the latest Arduino binaries (good for Kaleidoscope)
     # DESIGN: unstable's GCC AVR and ARM compiler wasn't cached in Hydra (bad for QMK)
-    shajra-keyboards-ergodoxez  = pkgs-stable.callPackage (import ./ergodoxez.nix)  {};
-    shajra-keyboards-moonlander = pkgs-stable.callPackage (import ./moonlander.nix) {};
-    shajra-keyboards-model01    = pkgs-unstable.callPackage (import ./model01.nix)  {};
+    shajra-keyboards-ergodoxez  = nixpkgs-stable.callPackage (import ./ergodoxez.nix)  {};
+    shajra-keyboards-moonlander = nixpkgs-stable.callPackage (import ./moonlander.nix) {};
+    shajra-keyboards-model01    = nixpkgs-unstable.callPackage (import ./model01.nix)  {};
 
     shajra-keyboards-flash-scripts =
-        pkgs-stable.recurseIntoAttrs (
-            pkgs-stable.callPackage (import ./flash-scripts.nix) {});
+        nixpkgs-stable.recurseIntoAttrs (
+            nixpkgs-stable.callPackage (import ./flash-scripts.nix) {});
 
     shajra-keyboards-licenses =
-        pkgs-stable.callPackage (import ./licenses.nix) {};
+        nixpkgs-stable.callPackage (import ./licenses.nix) {};
 
-    inherit pkgs-unstable pkgs-stable shajra-keyboards-flash;
+    distribution = {
+        inherit
+        shajra-keyboards-flash-scripts
+        shajra-keyboards-licenses;
+    };
 
-} // nix-project-all
+    build =  distribution // {
+        inherit
+        shajra-keyboards-ergodoxez
+        shajra-keyboards-moonlander
+        shajra-keyboards-model01;
+    };
+
+in {
+    inherit
+    build
+    distribution
+    nix-project
+    nixpkgs-stable
+    nixpkgs-unstable;
+}

@@ -1,4 +1,5 @@
-{ python3-unstable
+{ gnugrep
+, python3-unstable
 , qmk-cli-src
 , qmk-dotty-dict-src
 , qmk-factory
@@ -115,6 +116,7 @@ let
         in lib.writeShellCheckedExe "${keyboardId}-${scriptSuffix}-flash" {
                 meta.description =
                     "Flash ${keyboardDesc} (${keymapDesc} keymap)";
+                path = [ gnugrep ];
             }
             ''
             set -eu
@@ -125,7 +127,8 @@ let
             echo FLASH SOURCE: "$SOURCE"
             echo FLASH BINARY: "$BINARY"
             echo
-            exec ${flashCmd} "$BINARY"
+            # DESIGN: https://github.com/google/gousb/issues/87
+            exec ${flashCmd} "$BINARY" 2> >(grep -v '[code -10]' >&2)
             '';
 
 in { inherit flash hex; }

@@ -4,7 +4,7 @@ cd "$(dirname "$0")"
 
 nix run \
     --ignore-environment \
-    --file nix \
+    --file . \
     shajra-keyboards-licenses \
     --command \
     shajra-keyboards-licenses

@@ -2,11 +2,11 @@ with (import ./. {});
 
 let
 
-    lib = pkgs-stable.lib;
+    lib = nixpkgs-stable.lib;
 
-    ergodoxezFactory  = shajra-keyboards-ergodoxez  { factory = true; };
-    model01Factory    = shajra-keyboards-model01    { factory = true; };
-    moonlanderFactory = shajra-keyboards-moonlander { factory = true; };
+    ergodoxezFactory  = build.shajra-keyboards-ergodoxez  { factory = true; };
+    model01Factory    = build.shajra-keyboards-model01    { factory = true; };
+    moonlanderFactory = build.shajra-keyboards-moonlander { factory = true; };
 
     buildsFactory = {
         ergodoxez-factory-flash    = ergodoxezFactory.flash;
@@ -28,9 +28,9 @@ let
 
     keymaps = matchId ../keymaps/ergodox_ez ../keymaps/model_01 ../keymaps/moonlander;
 
-    ergodoxezCustom  = shajra-keyboards-ergodoxez;
-    model01Custom    = shajra-keyboards-model01;
-    moonlanderCustom = shajra-keyboards-moonlander;
+    ergodoxezCustom  = build.shajra-keyboards-ergodoxez;
+    model01Custom    = build.shajra-keyboards-model01;
+    moonlanderCustom = build.shajra-keyboards-moonlander;
 
     builderCustom = matchId ergodoxezCustom model01Custom moonlanderCustom;
 
@@ -64,5 +64,5 @@ in
     // (hexCustom   "ergodoxez")
     // (hexCustom   "model01")
     // (hexCustom   "moonlander")
-    // shajra-keyboards-flash-scripts
-    // { inherit shajra-keyboards-licenses; }
+    // build.shajra-keyboards-flash-scripts
+    // { inherit (build) shajra-keyboards-licenses; }

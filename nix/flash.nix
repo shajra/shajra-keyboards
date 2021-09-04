@@ -37,7 +37,7 @@ KEYMAPS_DIR="${toString defaults.keymaps}"
 NIX_EXE="$(command -v nix || true)"
 
 
-. "${shajra-keyboards-lib.lib-sh}/share/nix-project/lib.sh"
+. "${shajra-keyboards-lib.common}/share/nix-project/common.bash"
 
 print_usage()
 {
@@ -80,7 +80,7 @@ main()
         --argstr keymap "$KEYMAP" \
         --arg keymaps "$(readlink -f "$KEYMAPS_DIR")" \
         --file "${./.}" \
-        "shajra-keyboards-${keyboardId}" \
+        "build.shajra-keyboards-${keyboardId}" \
         --command "${keyboardId}-$SCRIPT_SUFFIX-flash"
 }
 

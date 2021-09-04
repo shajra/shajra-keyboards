@@ -375,7 +375,7 @@ readlink result*
 #+END_SRC
 
 #+RESULTS: nix-build-link
-: /nix/store/j6hlzl40sgqcwydx6qzjpfs1g2r5f9ar-flash-ergodoxez
+: /nix/store/8szb707d5x00nvgsw30dw60gsrg8wv57-flash-ergodoxez
 
 Following these symlinks, we can see the files the project provides:
 
@@ -404,7 +404,7 @@ nix path-info --file . <<get("package-attr")>>
 #+END_SRC
 
 #+RESULTS: nix-build-path
-: /nix/store/j6hlzl40sgqcwydx6qzjpfs1g2r5f9ar-flash-ergodoxez
+: /nix/store/8szb707d5x00nvgsw30dw60gsrg8wv57-flash-ergodoxez
 
 ** Running commands
 
