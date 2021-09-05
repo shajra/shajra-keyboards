@@ -1,6 +1,6 @@
-#+TITLE: Ergonomic Keyboard “shajra” Mappings (with Nix)
-#+SETUPFILE: doc/links.org
-#+OPTIONS: ^:nil
+#+title: Ergonomic Keyboard “shajra” Mappings (with Nix)
+#+setupfile: doc/links.org
+#+options: ^:nil
 
 [[https://github.com/shajra/shajra-keyboards/actions][https://github.com/shajra/shajra-keyboards/workflows/CI/badge.svg]]
 
@@ -64,11 +64,11 @@ The following steps will get your keyboard flashed.
 
 ** 1. Install Nix on your GNU/Linux distribution
 
-#+INCLUDE: "doc/nix.org::*Nix package manager setup" :only-contents t
+#+include: "doc/nix.org::*Nix package manager setup" :only-contents t
 
 ** 2. Set up Cachix
 
-#+INCLUDE: "doc/nix.org::*Cache setup" :only-contents t
+#+include: "doc/nix.org::*Cache setup" :only-contents t
 
 ** 3. Make sure your udev rules are set
 
@@ -77,7 +77,7 @@ configuration with new udev rules.
 
 The following are recommended rules for each keyboard:
 
-#+BEGIN_EXAMPLE
+#+begin_example
   # For Ergodox EZ
   ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?", \
       ENV{ID_MM_DEVICE_IGNORE}="1"
@@ -99,7 +99,7 @@ The following are recommended rules for each keyboard:
   SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2301", \
       SYMLINK+="model01", ENV{ID_MM_DEVICE_IGNORE}:="1", \
       ENV{ID_MM_CANDIDATE}:="0", TAG+="uaccess", TAG+="seat"
-#+END_EXAMPLE
+#+end_example
 
 These settings should correspond to the official documentation of tools and
 libraries used by this project:
@@ -114,18 +114,18 @@ put in a file in =/etc/udev/rules.d= with a ".rules" extension.
 
 On some systems, you can activate these rules with the following commands:
 
-#+BEGIN_SRC sh :eval no
+#+begin_src sh :eval no
 udevadm control --reload-rules udevadm trigger
-#+END_SRC
+#+end_src
 
 Or just restart the computer.
 
 ** 4. For Kaleidoscope, join the necessary OS group
 
-#+BEGIN_QUOTE
+#+begin_quote
 */NOTE:/* You don't need this step if you're flashing the Ergodox EZ or
 Moonlander.
-#+END_QUOTE
+#+end_quote
 
 Once udev is configured, when you plug in the Keyboardio Model 01, a serial
 device should show up under =/dev/serial/by-id= with a name matching
@@ -136,28 +136,28 @@ device is group-owned by the "dialout" or the "uucp" group:
 In the following example, we can see the device is group-owned by the "dialout"
 group.
 
-#+BEGIN_SRC sh :eval no :exports both
+#+begin_src sh :eval no :exports both
 ls -lL /dev/serial/by-id/usb-Keyboardio_Model_01_*
-#+END_SRC
+#+end_src
 
-#+RESULTS:
+#+results:
 : crw-rw---- 1 root dialout 166, 0 Dec 28 20:09 /dev/serial/by-id/usb-Keyboardio_Model_01_Ckbio01E-if00
 
 On most distributions, the follow commands should work to join a group
 (substituting =$TTY_GROUP= and =$USERNAME=):
 
-#+BEGIN_SRC sh :eval no
+#+begin_src sh :eval no
 sudo usermod -a -G $TTY_GROUP $USERNAME
 newgrp $TTY_GROUP
-#+END_SRC
+#+end_src
 
 You should see memberships in the new group with the =groups= command:
 
-#+BEGIN_SRC sh :eval no :exports both
+#+begin_src sh :eval no :exports both
 groups | grep dialout
-#+END_SRC
+#+end_src
 
-#+RESULTS:
+#+results:
 : users wheel video dialout docker
 
 ** 5. Unplug and replug your keyboard
@@ -170,11 +170,11 @@ too.
 
 Clone this code base and go into the directory:
 
-#+BEGIN_SRC sh :eval no
+#+begin_src sh :eval no
 cd $SOME_WORKING_DIR
 clone https://github.com/shajra/shajra-keyboards.git
 cd shajra-keyboards
-#+END_SRC
+#+end_src
 
 Note, the first time you run the commands described below, you'll see Nix doing
 a lot of downloading and compiling. After that, subsequent invocations should be
@@ -187,16 +187,16 @@ the reset button when prompted (access the reset button with an unbent paperclip
 inserted into the small hole in the top right corner of the right keyboard
 half):
 
-#+BEGIN_SRC sh :eval no
+#+begin_src sh :eval no
 ./flash-ergodoxez
-#+END_SRC
+#+end_src
 
-#+NAME: flash-ergodoxez
-#+BEGIN_SRC bash :results output :exports results
+#+name: flash-ergodoxez
+#+begin_src bash :results output :exports results
 head -11 < <(./flash-ergodoxez)
-#+END_SRC
+#+end_src
 
-#+RESULTS: flash-ergodoxez
+#+results: flash-ergodoxez
 #+begin_example
 
 Flashing ZSA Technology Lab's Ergodox EZ (custom "shajra" keymap)
@@ -211,10 +211,10 @@ Waiting for Teensy device...
  (hint: press the reset button)
 #+end_example
 
-#+NAME: flash-ergodoxez-cleanup
-#+BEGIN_SRC sh :results output silent :exports none
+#+name: flash-ergodoxez-cleanup
+#+begin_src sh :results output silent :exports none
 pkill teensy-loader
-#+END_SRC
+#+end_src
 
 *** Flashing a Moonlander keyboard
 
@@ -222,16 +222,16 @@ You can run the following to flash your Moonlander with the new keymap, pressing
 the reset button when prompted (access the reset button with an unbent paperclip
 inserted into the small hole in the top left corner of the left keyboard half):
 
-#+BEGIN_SRC sh :eval no
+#+begin_src sh :eval no
 ./flash-moonlander
-#+END_SRC
+#+end_src
 
-#+NAME: flash-moonlander
-#+BEGIN_SRC bash :results output :exports results
+#+name: flash-moonlander
+#+begin_src bash :results output :exports results
 head -c350 < <(./flash-moonlander) | ansifilter
-#+END_SRC
+#+end_src
 
-#+RESULTS: flash-moonlander
+#+results: flash-moonlander
 : 
 : Flashing ZSA Technology Lab's Moonlander (custom "shajra" keymap)
 : =================================================================
@@ -246,16 +246,16 @@ head -c350 < <(./flash-moonlander) | ansifilter
 You can run the following to flash your Keyboardio Model 01, holding down the
 =Prog= key and then pressing =Enter= when prompted:
 
-#+BEGIN_SRC sh :eval no
+#+begin_src sh :eval no
 ./flash-model01
-#+END_SRC
+#+end_src
 
-#+NAME: flash-model01
-#+BEGIN_SRC bash :results output :exports results
+#+name: flash-model01
+#+begin_src bash :results output :exports results
 head -14 < <(./flash-model01)
-#+END_SRC
+#+end_src
 
-#+RESULTS: flash-model01
+#+results: flash-model01
 #+begin_example
 
 Flashing Keyboardio's Model 01 (custom "shajra" keymap)
@@ -324,13 +324,13 @@ context of this project.
 If you want to check that everything builds before flashing your keyboard, you
 can build locally everything built by this project's continuous integration:
 
-#+NAME: nix-build
-#+BEGIN_SRC sh :results output :exports both
+#+name: nix-build
+#+begin_src sh :results output :exports both
 nix build --no-link --file nix/ci.nix \
     && nix path-info --file nix/ci.nix
-#+END_SRC
+#+end_src
 
-#+RESULTS: nix-build
+#+results: nix-build
 #+begin_example
 /nix/store/2bqzv0qf9j5caw6sj1s52w27n4lk8ysj-moonlander-factory-flash
 /nix/store/2nmlqmawnbq8q03zj8ipw11hw8552izz-ergodoxez-factory-flash

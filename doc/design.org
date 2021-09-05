@@ -1,5 +1,5 @@
-#+TITLE: Design of the "shajra" Keymap
-#+SETUPFILE: links.org
+#+title: Design of the "shajra" Keymap
+#+setupfile: links.org
 
 * Designing a keyboard mapping
 

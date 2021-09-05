@@ -1,5 +1,5 @@
-#+TITLE: Support for Project Maintenance
-#+SETUPFILE: ../doc/links.org
+#+title: Support for Project Maintenance
+#+setupfile: ../doc/links.org
 
 The files in this directory support the maintenance of the project. You can
 safely ignore this directory if you only want to use the project.
