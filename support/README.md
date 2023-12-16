@@ -2,11 +2,11 @@ The files in this directory support the maintenance of the project. You can safe
 
 There are two scripts in this directory.
 
--   `dependencies-upgrade`
+-   `arduino-upgrade`
 -   `docs-generate`
 
 They are designed to be called with no arguments, and can be called from any working directory, though they both modify the source code in place.
 
-`dependencies-upgrade` updates the dependencies in [../nix/external/sources.json](../nix/external/sources.json) with a tool called [Niv](https://github.com/nmattia/niv).
+`arduino-upgrade` updates the indices in [../nix/arduino](../nix/arduino).
 
 `docs-generate` will execute any `SRC` blocks in Org-mode files, modifying them in place. And then it generates GitHub Flavored Markdown files from them.

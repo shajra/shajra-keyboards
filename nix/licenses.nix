@@ -1,5 +1,5 @@
 { coreutils
-, kaleidoscope-bundle
+, keyboardio-kaleidoscope-factory
 , qmk-factory
 , shajra-keyboards-lib
 }:
@@ -35,7 +35,7 @@ QMK firmware source for Ergodox EZ and Moonlander (GPLv2, mostly):
 
 Kaleidoscope firmware source for Keyboardio keyboards (GPLv3):
 
-    ${kaleidoscope-bundle}
+    ${keyboardio-kaleidoscope-factory}
 
 EOF
 ''

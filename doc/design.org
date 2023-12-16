@@ -1,5 +1,5 @@
 #+title: Design of the "shajra" Keymap
-#+setupfile: links.org
+#+setupfile: internal/links.org
 
 * Designing a keyboard mapping
 
@@ -57,7 +57,7 @@ EZ.
 
 ** Model 01 "shajra" keymap
 
-[[file:./model-01-shajra-layout.png]]
+[[file:./model-100-shajra-layout.png]]
 
 ** Ergodox EZ "shajra" keymap
 

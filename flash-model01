@@ -2,11 +2,10 @@
 
 cd "$(dirname "$0")"
 
-nix run \
+nix shell \
     --ignore-environment \
     --keep HOME \
-    --file . \
-    shajra-keyboards-flash-scripts.model01 \
+    .#flash-model01 \
     --command \
     flash-model01 \
     --nix "$(command -v nix)" \

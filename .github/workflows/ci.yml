@@ -6,12 +6,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: cachix/install-nix-action@v14
-    - uses: cachix/cachix-action@v10
+    - uses: actions/checkout@v3
+    - uses: DeterminateSystems/nix-installer-action@main
+    - uses: DeterminateSystems/magic-nix-cache-action@main
+    - uses: cachix/cachix-action@v12
       with:
         name: shajra
         signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
     - run: cat ~/.config/nix/nix.conf
-    - run: nix --print-build-logs build --file nix/ci.nix
-    - run: nix path-info --file nix/ci.nix
+    - run: nix flake lock --update-input keymaps-ergodoxez
+    - run: nix flake lock --update-input keymaps-model01
+    - run: nix flake lock --update-input keymaps-model100
+    - run: nix flake lock --update-input keymaps-moonlander
+    - run: nix --print-build-logs build --print-out-paths .#ci

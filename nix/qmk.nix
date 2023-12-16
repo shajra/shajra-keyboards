@@ -1,25 +1,23 @@
 { gnugrep
-, python3-unstable
-, qmk-cli-src
-, qmk-dotty-dict-src
+, qmk
 , qmk-factory
 , stdenv
-, which
+, wally-cli
 , shajra-keyboards-lib
 }:
 
-{ factory
-, keymap
-, keymaps
-}:
-
-{ qmkKeyboardName
-, qmkTargetName
+{ buildKeyboardName
+, targetNameInfix
 , firmwareExtension
 , keyboardId
 , keyboardDesc
 , nativeBuildInputs
-, flashCmd
+}:
+
+{ factory
+, keymapsSource ? throw "must specify keymaps source if not factory"
+, keymaps ? throw "must provide keymaps directory if not factory"
+, keymap ? throw "must specify keymap if not factory"
 }:
 
 let
@@ -28,7 +26,7 @@ let
 
     custom = lib.keymapPath keymaps keymap;
 
-    scriptSuffix = if factory then "factory" else "custom-${keymap}";
+    scriptSuffix = if factory then "factory" else "${keymapsSource}-${keymap}";
     keymapDesc   = if factory then "factory" else "${keymap} custom";
 
     keymapName = if factory then "default" else keymap;
@@ -39,96 +37,50 @@ let
         phases = ["installPhase"];
         installPhase = ''
             cp -r "$src" "$out"
-            KEYMAPS_DIR="$out"/keyboards/${qmkKeyboardName}/keymaps
-            chmod +w "$KEYMAPS_DIR"
+            KEYMAPS_DIR="$out"/keyboards/${buildKeyboardName}/keymaps
+            chmod -R +w "$KEYMAPS_DIR"
+            rm -rf "$KEYMAPS_DIR/${keymap}"
             cp -r ${custom} "$KEYMAPS_DIR/${keymap}"
-            chmod -w "$KEYMAPS_DIR"
+            chmod -R -w "$KEYMAPS_DIR"
         '';
     };
 
     qmk-src = if factory then qmk-factory else qmk-custom;
 
-    pythonOverrides = self: super: {
-        qmk-dotty-dict = super.dotty-dict.overridePythonAttrs(old: {
-            pname = "qmk-dotty-dict";
-            version = "1.3.0.post1";
-            src = qmk-dotty-dict-src;
-        });
-        qmk_cli = super.buildPythonApplication {
-            pname = "qmk_cli";
-            version = "1.0.0";
-            src = qmk-cli-src;
-            patchPhase = ''
-                cat << EOF > setup.py
-                from setuptools import setup
-
-                if __name__ == "__main__":
-                    setup()
-                EOF
-            '';
-            propagatedBuildInputs = with self; [
-                hid
-                milc
-                pyusb
-                hjson
-                jsonschema
-                pygments
-                qmk-dotty-dict
-            ];
-            buildInputs = with self; [
-                flake8
-                nose2
-                yapf
-            ];
-            doCheck = false;
-        };
-    };
-
-    qmk-cli = (python3-unstable.override {
-        packageOverrides = pythonOverrides;
-    }).pkgs.qmk_cli;
-
     hex = stdenv.mkDerivation {
         name = "${keyboardId}-${scriptSuffix}.${firmwareExtension}";
-        nativeBuildInputs = nativeBuildInputs ++ [
-            which
-            qmk-cli
-        ];
+        nativeBuildInputs = nativeBuildInputs ++ [ qmk ];
         src = qmk-src;
         postPatch = ''
-            VERSION="$out"
+            VERSION="''${out#/nix/store}"
             echo "#define QMK_VERSION \"$VERSION\"" \
                 > quantum/version.h
         '';
         buildPhase = ''
-            qmk
             SKIP_GIT=true SKIP_VERSION=true \
-                make ${qmkTargetName}:${keymapName}
+                make ${buildKeyboardName}:${keymapName}
         '';
         installPhase = ''
-            cp ${qmkTargetName}_${keymapName}.${firmwareExtension} "$out"
+            cp ${buildKeyboardName}${targetNameInfix}_${keymapName}.${firmwareExtension} "$out"
         '';
     };
 
-    flash =
-        let src = qmk-src;
-            bin = hex;
-        in lib.writeShellCheckedExe "${keyboardId}-${scriptSuffix}-flash" {
-                meta.description =
-                    "Flash ${keyboardDesc} (${keymapDesc} keymap)";
-                path = [ gnugrep ];
-            }
-            ''
-            set -eu
-            set -o pipefail
-            SOURCE="${src}"
-            BINARY="${bin}"
-            echo
-            echo FLASH SOURCE: "$SOURCE"
-            echo FLASH BINARY: "$BINARY"
-            echo
-            # DESIGN: https://github.com/google/gousb/issues/87
-            exec ${flashCmd} "$BINARY" 2> >(grep -v '[code -10]' >&2)
-            '';
+    flash = lib.writeShellCheckedExe "${keyboardId}-${scriptSuffix}-flash" {
+            meta.description =
+                "Flash ${keyboardDesc} (${keymapDesc} keymap)";
+            path = [ gnugrep ];
+        }
+        ''
+        set -eu
+        set -o pipefail
+        SOURCE="${qmk-src}"
+        BINARY="${hex}"
+        echo
+        echo FLASH SOURCE: "$SOURCE"
+        echo FLASH BINARY: "$BINARY"
+        echo
+        # DESIGN: https://github.com/google/gousb/issues/87
+        exec "${wally-cli}/bin/wally-cli" "$BINARY" 2> >(grep -v '[code -10]' >&2)
+    '';
 
 in { inherit flash hex; }

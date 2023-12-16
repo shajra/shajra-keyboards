@@ -2,23 +2,26 @@
 
 cd "$(dirname "$0")/.."
 
-nix run \
+nix shell \
     --ignore-environment \
     --keep HOME \
     --keep LANG \
     --keep LOCALE_ARCHIVE \
-    --file nix \
-    nix-project.nix-project-org2gfm \
-    nixpkgs-stable.ansifilter \
-    nixpkgs-stable.bash \
-    nixpkgs-stable.coreutils \
-    nixpkgs-stable.gnugrep \
-    nixpkgs-stable.procps \
-    nixpkgs-stable.tree \
+    .#nixpkgs.org2gfm \
+    .#nixpkgs.ansifilter \
+    .#nixpkgs.bash \
+    .#nixpkgs.coreutils \
+    .#nixpkgs.git \
+    .#nixpkgs.gnugrep \
+    .#nixpkgs.gnutar \
+    .#nixpkgs.gzip \
+    .#nixpkgs.jq \
+    .#nixpkgs.nixfmt \
+    .#nixpkgs.tree \
     --command \
     org2gfm \
-    --exclude links.org \
-    --exclude nix.mac.org \
+    --path-bin \
+    --exclude internal \
     --nix "$(command -v nix)" \
     --evaluate \
     "$@"

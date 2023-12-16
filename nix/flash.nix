@@ -1,7 +1,11 @@
 { coreutils
+, gnused
 , gnutar
 , gzip
-, shajra-keyboards-config
+, lib
+, nix-project-lib
+, shajra-keyboards-keymaps
+, shajra-keyboards-keymap
 , shajra-keyboards-lib
 }:
 
@@ -11,17 +15,28 @@
 }:
 
 let
-    defaults = shajra-keyboards-config.default."${keyboardId}";
+
     name = "flash-${keyboardId}";
     meta.description = "Flash ${keyboardDesc} Keyboard";
-in
+    filterSrc = p: lib.sourceFilesBySuffices p [
+        ".lock"
+        ".nix"
+        ".json"
+        ".json.sig"
+        ".h"
+        ".c"
+        ".ino"
+    ];
+    builtinKeymaps = toString (filterSrc shajra-keyboards-keymaps.builtin."${keyboardId}");
+    defaultKeymap = shajra-keyboards-keymap."${keyboardId}";
 
-shajra-keyboards-lib.writeShellCheckedExe name
+in nix-project-lib.writeShellCheckedExe name
 {
     inherit meta;
     pathPure = false;
     path = [
         coreutils
+        gnused
         gnutar
         gzip
     ];
@@ -32,12 +47,13 @@ set -o pipefail
 
 
 FACTORY=false
-KEYMAP="${defaults.keymap}"
-KEYMAPS_DIR="${toString defaults.keymaps}"
+KEYMAPS_SOURCE=builtin
+KEYMAP="${defaultKeymap}"
+KEYMAPS_DIR="${builtinKeymaps}"
 NIX_EXE="$(command -v nix || true)"
 
 
-. "${shajra-keyboards-lib.common}/share/nix-project/common.bash"
+. "${nix-project-lib.scriptCommon}/share/nix-project/common.bash"
 
 print_usage()
 {
@@ -56,7 +72,7 @@ OPTIONS:
     -F --factory        flash factory default mapping
     -N --nix            filepath of 'nix' executable to use
 
-    If neither -k nor -F provided, flashes the "${defaults.keymap}" mapping.
+    If neither -k nor -F provided, flashes the "${defaultKeymap}" mapping.
     If multiple -k switches used, then last one wins.
     The -F switch overrides -k.
 
@@ -68,20 +84,16 @@ main()
     parse_args "$@"
     validate_args
     print_header
-    SCRIPT_SUFFIX="custom-$KEYMAP"
-    if [ "$FACTORY" = "true" ]
-    then SCRIPT_SUFFIX="factory"
-    fi
     add_nix_to_path "$NIX_EXE"
-    nix run \
-        --ignore-environment \
-        --keep HOME \
-        --arg factory "$FACTORY" \
-        --argstr keymap "$KEYMAP" \
-        --arg keymaps "$(readlink -f "$KEYMAPS_DIR")" \
-        --file "${./.}" \
-        "build.shajra-keyboards-${keyboardId}" \
-        --command "${keyboardId}-$SCRIPT_SUFFIX-flash"
+
+    WARN_REGEX="warning: not writing modified lock file of flake"
+    WARN_REGEX+="\|trace: using non-memoized"
+    {
+        if [ "$KEYMAPS_SOURCE" = input ]
+        then do_flash --override-input "keymaps-${keyboardId}" "path:$KEYMAPS_DIR"
+        else do_flash
+        fi
+    } 2> >(sed "/$WARN_REGEX/d; /• Updated input/{N;N;d;}">&2)
 }
 
 parse_args()
@@ -108,6 +120,7 @@ parse_args()
             then die "$1 requires argument"
             fi
             KEYMAPS_DIR="''${2:-}"
+            KEYMAPS_SOURCE=input
             shift
             ;;
         -N|--nix)
@@ -142,6 +155,22 @@ print_header()
     msg="Flashing ${keyboardDesc} ($keymap_name keymap)"
     echo "$msg"
     echo "$msg" | tr -c '\n' =
+}
+
+do_flash()
+{
+    SCRIPT_SUFFIX="$KEYMAPS_SOURCE-$KEYMAP"
+    if [ "$FACTORY" = "true" ]
+    then SCRIPT_SUFFIX="factory"
+    fi
+    SCRIPT_NAME="${keyboardId}-$SCRIPT_SUFFIX-flash"
+    nix --extra-experimental-features "nix-command flakes" \
+        shell \
+        --ignore-environment \
+        --keep HOME \
+        "$@" \
+        "${filterSrc ../.}#nixpkgs.shajra-keyboards-build.$SCRIPT_NAME" \
+        --command "$SCRIPT_NAME"
 }
 
 

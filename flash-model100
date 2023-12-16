@@ -1,0 +1,13 @@
+#!/bin/sh -eu
+
+cd "$(dirname "$0")"
+
+nix --extra-experimental-features "nix-command flakes" \
+    shell \
+    --ignore-environment \
+    --keep HOME \
+    .#flash-model100 \
+    --command \
+    flash-model100 \
+    --nix "$(command -v nix)" \
+    "$@"

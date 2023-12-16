@@ -13,7 +13,7 @@ enum layers {
 
 
 enum custom_keycodes {
-    VRSN = ML_SAFE_RANGE,
+    VRSN = SAFE_RANGE,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
@@ -38,7 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
     )
 , [FUNCTION] = LAYOUT_moonlander
     ( RGB_MOD, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   TOGGLE_LAYER_COLOR
-    ,                                                                /**/ EEP_RST, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  RESET
+    ,                                                                /**/ EE_CLR,  KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  RESET
     , RGB_HUI, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_QUOT, KC_HOME, /**/ KC_PLUS, _______, KC_AMPR, KC_ASTR, KC_TILD, KC_SLSH, KC_F11
     , RGB_HUD, KC_CIRC, KC_DLR,  KC_LPRN, KC_RPRN, KC_DQUO, KC_END,  /**/ KC_UNDS, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_COLN, KC_F12
     , RGB_VAI, KC_HASH, KC_PERC, KC_LBRC, KC_RBRC, KC_GRV,           /**/          KC_BSLS, KC_PIPE, KC_LT,   KC_GT,   KC_QUES, _______
@@ -74,9 +74,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
         switch (keycode) {
-        case VRSN:
-            SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
-            return false;
+            case VRSN:
+                SEND_STRING
+                    (     QMK_KEYBOARD
+                    "/"   QMK_KEYMAP
+                    " @ " QMK_VERSION
+                    );
+                return false;
+            case KC_CAPS:
+                if (host_keyboard_led_state().caps_lock) {
+                    ML_LED_1(false);
+                    ML_LED_4(false);
+                } else {
+                    ML_LED_1(1);
+                    ML_LED_4(1);
+                }
+                register_code(KC_CAPS);
+                return false;
         }
     }
     return true;
@@ -146,6 +160,14 @@ void matrix_init_user(void)
 #define RGB_DIM_VIOLET 130,   0, 120
 #define RGB_DIM_OFF      0,   0,   0
 
+#define RGB_MATRIX_SET_INNER_KEYS(color) \
+    rgb_matrix_set_color(29, color); \
+    rgb_matrix_set_color(30, color); \
+    rgb_matrix_set_color(31, color); \
+    rgb_matrix_set_color(65, color); \
+    rgb_matrix_set_color(66, color); \
+    rgb_matrix_set_color(67, color)
+
 #define RGB_MATRIX_SET_OUTER_KEYS(color) \
     rgb_matrix_set_color( 0, color); \
     rgb_matrix_set_color( 1, color); \
@@ -166,7 +188,12 @@ void matrix_init_user(void)
     rgb_matrix_set_color(55, color); \
     rgb_matrix_set_color(60, color)
 
-void rgb_matrix_indicators_user(void) {
+bool is_caps_lock_on(void) {
+    led_t led_state = host_keyboard_led_state();
+    return led_state.caps_lock;
+}
+
+bool rgb_matrix_indicators_user(void) {
     if (keyboard_config.disable_layer_led) {
         switch (rgb_matrix_get_flags()) {
             case LED_FLAG_NONE:
@@ -195,19 +222,19 @@ void rgb_matrix_indicators_user(void) {
             rgb_matrix_set_color(63, RGB_DIM_RED);
         }
         if (layer_state_cmp(layer_state, MEDIA)) {
-            rgb_matrix_set_color(11, RGB_DIM_GREEN);
-            rgb_matrix_set_color(12, RGB_DIM_GREEN);
-            rgb_matrix_set_color(16, RGB_DIM_GREEN);
-            rgb_matrix_set_color(17, RGB_DIM_GREEN);
-            rgb_matrix_set_color(21, RGB_DIM_GREEN);
-            rgb_matrix_set_color(22, RGB_DIM_GREEN);
+            rgb_matrix_set_color(11, RGB_DIM_BLUE);
+            rgb_matrix_set_color(12, RGB_DIM_BLUE);
+            rgb_matrix_set_color(16, RGB_DIM_BLUE);
+            rgb_matrix_set_color(17, RGB_DIM_BLUE);
+            rgb_matrix_set_color(21, RGB_DIM_BLUE);
+            rgb_matrix_set_color(22, RGB_DIM_BLUE);
             //
-            rgb_matrix_set_color(32, RGB_DIM_GREEN);
-            rgb_matrix_set_color(33, RGB_DIM_GREEN);
-            rgb_matrix_set_color(34, RGB_DIM_GREEN);
+            rgb_matrix_set_color(32, RGB_DIM_BLUE);
+            rgb_matrix_set_color(33, RGB_DIM_BLUE);
+            rgb_matrix_set_color(34, RGB_DIM_BLUE);
             //
-            rgb_matrix_set_color(68, RGB_DIM_GREEN);
-            rgb_matrix_set_color(69, RGB_DIM_GREEN);
+            rgb_matrix_set_color(68, RGB_DIM_BLUE);
+            rgb_matrix_set_color(69, RGB_DIM_BLUE);
         }
         if (layer_state_cmp(layer_state, MOUSE)) {
             rgb_matrix_set_color(12, RGB_DIM_INDIGO);
@@ -230,7 +257,7 @@ void rgb_matrix_indicators_user(void) {
     } else {
         switch (biton32(layer_state)) {
             case MAC:
-                RGB_MATRIX_SET_OUTER_KEYS(RGB_DIM_BLUE);
+                RGB_MATRIX_SET_OUTER_KEYS(RGB_DIM_GREEN);
                 break;
             case FUNCTION:
                 RGB_MATRIX_SET_OUTER_KEYS(RGB_DIM_VIOLET);
@@ -239,7 +266,7 @@ void rgb_matrix_indicators_user(void) {
                 RGB_MATRIX_SET_OUTER_KEYS(RGB_DIM_RED);
                 break;
             case MEDIA:
-                RGB_MATRIX_SET_OUTER_KEYS(RGB_DIM_GREEN);
+                RGB_MATRIX_SET_OUTER_KEYS(RGB_DIM_BLUE);
                 break;
             case MOUSE:
                 RGB_MATRIX_SET_OUTER_KEYS(RGB_DIM_INDIGO);
@@ -249,7 +276,12 @@ void rgb_matrix_indicators_user(void) {
                 break;
         }
     }
+    if (is_caps_lock_on()) {
+        RGB_MATRIX_SET_INNER_KEYS(RGB_DIM_RED);
+    }
+    return false;
 }
+
 #endif
 
 // DESIGN: The left-side LEDs are light up identically to the right-side ones.
@@ -259,32 +291,32 @@ void rgb_matrix_indicators_user(void) {
 // These LEDs indicate the highest layer enabled, even if RGB lighting is
 // toggled off.
 //
-//   LED indices on left half: 1, 2, 3
+//   LED indices on left half:  1, 2, 3
 //   LED indices on right half: 4, 5, 6
 //
-//   MAC:      * o o  (1, 4)
-//   FUNCTION: o * o  (2, 5)
-//   NUMPAD:   o o *  (3, 6)
-//   MEDIA:    * * o  (1, 2, 4, 5)
-//   MOUSE:    o * *  (2, 3, 5, 6)
-//
+//   MAC:           o * o  (2, 5)
+//   FUNCTION/CAPS: * o o  (1, 4)
+//   NUMPAD:        o o *  (3, 6)
+//   MEDIA:         * * o  (1, 2, 4, 5)
+//   MOUSE:         o * *  (2, 3, 5, 6)
+
 layer_state_t layer_state_set_user(layer_state_t state) {
 
-    ML_LED_1(false);
-    ML_LED_2(false);
+    ML_LED_2(layer_state_cmp(state, MAC));
+    ML_LED_5(layer_state_cmp(state, MAC));
+    ML_LED_1(host_keyboard_led_state().caps_lock);
+    ML_LED_4(host_keyboard_led_state().caps_lock);
     ML_LED_3(false);
-    ML_LED_4(false);
-    ML_LED_5(false);
     ML_LED_6(false);
 
     switch (get_highest_layer(state)) {
         case MAC:
-            ML_LED_1(1);
-            ML_LED_4(1);
-            break;
-        case FUNCTION:
             ML_LED_2(1);
             ML_LED_5(1);
+            break;
+        case FUNCTION:
+            ML_LED_1(1);
+            ML_LED_4(1);
             break;
         case NUMPAD:
             ML_LED_3(1);

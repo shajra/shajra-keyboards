@@ -1,8 +1,10 @@
 {
-    default.ergodoxez.keymap = "shajra";
-    default.ergodoxez.keymaps = keymaps/ergodox_ez;
-    default.model01.keymap = "shajra";
-    default.model01.keymaps = keymaps/model_01;
-    default.moonlander.keymap = "shajra";
-    default.moonlander.keymaps = keymaps/moonlander;
+    ergodoxez.keymap = "shajra";
+    ergodoxez.keymaps = keymaps/ergodox_ez;
+    model01.keymap = "shajra";
+    model01.keymaps = keymaps/model_01;
+    model100.keymap = "shajra";
+    model100.keymaps = keymaps/model_100;
+    moonlander.keymap = "shajra";
+    moonlander.keymaps = keymaps/moonlander;
 }

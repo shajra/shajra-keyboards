@@ -8,20 +8,16 @@ get()
     dest="${url##*/}"
     echo
     echo "GETTING LATEST: $url"
-    nix run \
-        --ignore-environment \
-        --file nix \
-        pkgs-stable.curl \
-        --command \
-        curl \
+    curl \
         "$url" \
         > "nix/arduino/$dest"
 )
 
 for url in \
-    http://downloads.arduino.cc/libraries/library_index.json \
-    http://downloads.arduino.cc/packages/package_index.json \
-    http://downloads.arduino.cc/packages/package_index.json.sig \
-    https://raw.githubusercontent.com/keyboardio/boardsmanager/master/package_keyboardio_index.json
+    https://downloads.arduino.cc/libraries/library_index.json \
+    https://downloads.arduino.cc/libraries/library_index.json.sig \
+    https://downloads.arduino.cc/packages/package_index.json \
+    https://downloads.arduino.cc/packages/package_index.json.sig \
+    https://raw.githubusercontent.com/keyboardio/boardsmanager/master/devel/package_kaleidoscope_devel_index.json
 do get "$url"
 done

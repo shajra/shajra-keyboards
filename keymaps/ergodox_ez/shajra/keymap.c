@@ -12,10 +12,9 @@ enum layers {
 };
 
 
-enum custom_keycodes
-{ EPRM = SAFE_RANGE
-, VRSN
-, RGB_SLD
+enum custom_keycodes {
+    EPRM = SAFE_RANGE,
+    VRSN
 };
 
 
@@ -71,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
     ,                                                       _______
     ,                                     KC_BSPC, KC_TAB,  KC_ESC
     // right hand
-    , EPRM,    KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  RESET
+    , EPRM,    KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  EE_CLR
     , KC_PLUS, _______, KC_AMPR, KC_ASTR, KC_TILD, KC_SLSH, KC_F11
     ,          KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_COLN, KC_F12
     , KC_UNDS, KC_BSLS, KC_PIPE, KC_LT,   KC_GT,   KC_QUES, _______
@@ -143,12 +142,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
 };
 
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record)
-{
-    if (record->event.pressed)
-    {
-        switch (keycode)
-        {
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (record->event.pressed) {
+        switch (keycode) {
             case EPRM:
                 eeconfig_init();
                 return false;
@@ -159,35 +155,61 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
                     " @ " QMK_VERSION
                     );
                 return false;
-            #ifdef RGBLIGHT_ENABLE
-            case RGB_SLD:
-                rgblight_mode(1);
+            case KC_CAPS:
+                if (host_keyboard_led_state().caps_lock) {
+                    ergodox_right_led_1_off();
+                } else {
+                    ergodox_right_led_1_on();
+                }
+                register_code(KC_CAPS);
                 return false;
-            #endif
         }
     }
     return true;
 }
 
 // Runs just one time when the keyboard initializes.
-void matrix_init_user(void)
-{
-    #ifdef RGBLIGHT_COLOR_LAYER_0
+void keyboard_post_init_user(void) {
+#ifdef RGBLIGHT_COLOR_LAYER_0
     rgblight_setrgb(RGBLIGHT_COLOR_LAYER_0);
-    #endif
+#endif
 };
 
+// DESIGN: The left-side LEDs are light up identically to the right-side ones.
+// It's a bit hard to know whether I'll have an easier view of the small LEDs on
+// the right half or the left half.
+//
+// These LEDs indicate the highest layer enabled, even if RGB lighting is
+// toggled off.
+//
+//   LED indices on left half:  1, 2, 3
+//   LED indices on right half: 4, 5, 6
+//
+//   MAC:           o * o  (2, 5)
+//   FUNCTION/CAPS: * o o  (1, 4)
+//   NUMPAD:        o o *  (3, 6)
+//   MEDIA:         * * o  (1, 2, 4, 5)
+//   MOUSE:         o * *  (2, 3, 5, 6)
+
 // Runs whenever there is a layer state change.
-uint32_t layer_state_set_user(uint32_t state)
-{
-    ergodox_board_led_off();
-    ergodox_right_led_1_off();
-    ergodox_right_led_2_off();
+layer_state_t layer_state_set_user(layer_state_t state) {
+
+    if (layer_state_cmp(state, MAC)) {
+        ergodox_right_led_2_on();
+    } else {
+        ergodox_right_led_2_off();
+    }
+
+    if (host_keyboard_led_state().caps_lock) {
+        ergodox_right_led_1_on();
+    } else {
+        ergodox_right_led_1_off();
+    }
+
     ergodox_right_led_3_off();
-    uint8_t layer = biton32(state);
-    switch (layer)
-    {
-        case 0:
+
+    switch (get_highest_layer(state)) {
+        case BASE:
             #ifdef RGBLIGHT_COLOR_LAYER_0
             rgblight_setrgb(RGBLIGHT_COLOR_LAYER_0);
             #else
@@ -196,32 +218,32 @@ uint32_t layer_state_set_user(uint32_t state)
             #endif
             #endif
             break;
-        case 1:
-            ergodox_right_led_1_on();
+        case MAC:
+            ergodox_right_led_2_on();
             #ifdef RGBLIGHT_COLOR_LAYER_1
             rgblight_setrgb(RGBLIGHT_COLOR_LAYER_1);
             #endif
             break;
-        case 2:
-            ergodox_right_led_2_on();
+        case FUNCTION:
+            ergodox_right_led_1_on();
             #ifdef RGBLIGHT_COLOR_LAYER_2
             rgblight_setrgb(RGBLIGHT_COLOR_LAYER_2);
             #endif
             break;
-        case 3:
+        case NUMPAD:
             ergodox_right_led_3_on();
             #ifdef RGBLIGHT_COLOR_LAYER_3
             rgblight_setrgb(RGBLIGHT_COLOR_LAYER_3);
             #endif
             break;
-        case 4:
+        case MEDIA:
             ergodox_right_led_1_on();
             ergodox_right_led_2_on();
             #ifdef RGBLIGHT_COLOR_LAYER_4
             rgblight_setrgb(RGBLIGHT_COLOR_LAYER_4);
             #endif
             break;
-        case 5:
+        case MOUSE:
             ergodox_right_led_2_on();
             ergodox_right_led_3_on();
             #ifdef RGBLIGHT_COLOR_LAYER_5

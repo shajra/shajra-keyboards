@@ -56,7 +56,7 @@ For reference, below are diagrams of the keymaps for the Model 01 and Ergodox EZ
 
 ## Model 01 "shajra" keymap<a id="sec-3-1"></a>
 
-![img](./model-01-shajra-layout.png)
+![img](./model-100-shajra-layout.png)
 
 ## Ergodox EZ "shajra" keymap<a id="sec-3-2"></a>
 
