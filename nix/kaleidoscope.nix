@@ -66,23 +66,13 @@ let
 
     lockNodes = (builtins.fromJSON (builtins.readFile ../flake.lock)).nodes;
 
-    # DESIGN: Arduino-cli errantly names files "tar.bz2" irrespective of what
-    # the compression really is.
-    #depName = p:
-    #    let bn = builtins.baseNameOf p;
-    #    in builtins.replaceStrings ["tar.gz"] ["tar.bz2"] bn;
     depName = name: builtins.baseNameOf lockNodes."${name}".original.url;
 
-    hex = stdenv.mkDerivation {
-        name = "${keyboardId}-${scriptSuffix}-hex";
+    setup = stdenv.mkDerivation {
+        name = "kaleidoscope-setup";
         nativeBuildInputs = nativeBuildInputs ++ [ arduino-cli perl ];
         src = kaleidoscope-src;
-        outputs = [ "out" "user" "data" ];
-        postPatch = ''
-            BUILD_INFO="''${out#/nix/store/}"
-            SKETCH_DIR="examples/Devices/Keyboardio/${buildKeyboardName}"
-            echo "#define BUILD_INFORMATION \"$BUILD_INFO\"" > "$SKETCH_DIR/Version.h"
-        '';
+
         buildPhase = ''
 
             export KALEIDOSCOPE_DIR="$(pwd)"
@@ -93,21 +83,11 @@ let
             export ARDUINO_DIRECTORIES_DOWNLOADS="$ARDUINO_CONTENT/downloads"
             export ARDUINO_DIRECTORIES_USER="$ARDUINO_CONTENT/user"
             export ARDUINO_DATA_DIR="$ARDUINO_DIRECTORIES_DATA"  # maybe not needed
-            export FQBN="${fullyQualifiedBoardName}"
-            export SKETCH_IDENTIFIER=${buildKeyboardName}
             export VERBOSE=1
 
             mkdir --parents "$ARDUINO_DIRECTORIES_DATA"
             mkdir --parents "$ARDUINO_DIRECTORIES_DOWNLOADS/packages"
             mkdir --parents "$ARDUINO_DIRECTORIES_USER/hardware"
-
-            #cat << EOF > "$ARDUINO_DIRECTORIES_DATA/arduino-cli.yaml"
-            #directories:
-            #  data: $ARDUINO_DIRECTORIES_DATA
-            #  downloads: $ARDUINO_DIRECTORIES_DOWNLOADS
-            #  user: $ARDUINO_DIRECTORIES_USER
-            #EOF
-            #touch "$ARDUINO_DATA_DIR/inventory.yaml"
 
             cp "${./arduino/library_index.json}" \
                 "$ARDUINO_DIRECTORIES_DATA/library_index.json"
@@ -161,14 +141,42 @@ let
             arduino-cli core install "keyboardio:gd32-tools-only"
 
             make --directory "$ARDUINO_DIRECTORIES_USER/hardware/keyboardio" prepare-virtual
+        '';
+
+        installPhase = ''
+            cp -r ".arduino" "$out"
+        '';
+
+    };
+
+    hex = stdenv.mkDerivation {
+        name = "${keyboardId}-${scriptSuffix}-hex";
+        nativeBuildInputs = nativeBuildInputs ++ [ arduino-cli ];
+        src = kaleidoscope-src;
+        postPatch = ''
+            BUILD_INFO="''${out#/nix/store/}"
+            SKETCH_DIR="examples/Devices/Keyboardio/${buildKeyboardName}"
+            echo "#define BUILD_INFORMATION \"$BUILD_INFO\"" > "$SKETCH_DIR/Version.h"
+        '';
+        buildPhase = ''
+
+            export KALEIDOSCOPE_DIR="$(pwd)"
+            export KALEIDOSCOPE_TEMP_PATH="$(pwd)/tmp"
+            export ARDUINO_BOARD_MANAGER_ADDITIONAL_URLS=https://raw.githubusercontent.com/keyboardio/boardsmanager/master/devel/package_kaleidoscope_devel_index.json
+            export ARDUINO_DIRECTORIES_DATA="${setup}/data"
+            export ARDUINO_DIRECTORIES_DOWNLOADS="${setup}/downloads"
+            export ARDUINO_DIRECTORIES_USER="${setup}/user"
+            export ARDUINO_DATA_DIR="$ARDUINO_DIRECTORIES_DATA"  # maybe not needed
+            export FQBN="${fullyQualifiedBoardName}"
+            export SKETCH_IDENTIFIER=${buildKeyboardName}
+            export VERBOSE=1
 
             SKETCH_DIR="$KALEIDOSCOPE_DIR/examples/Devices/Keyboardio/${buildKeyboardName}"
             make --directory "$SKETCH_DIR"
         '';
+
         installPhase = ''
             cp -r "tmp/output/${buildKeyboardName}" "$out"
-            cp -r ".arduino/data" "$data"
-            cp -r ".arduino/user" "$user"
         '';
 
     };
@@ -193,7 +201,7 @@ let
         PORT="$(env --ignore-environment \
             PATH="$PATH" \
             HOME="$HOME" \
-            ARDUINO_DIRECTORIES_USER="${hex.user}" \
+            ARDUINO_DIRECTORIES_USER="${setup}/user" \
             arduino-cli board list \
             | grep ${fullyQualifiedBoardName} \
             | head -1 \
@@ -225,8 +233,8 @@ let
         exec env --ignore-environment \
             PATH="$PATH" \
             HOME="$HOME" \
-            ARDUINO_DIRECTORIES_USER="${hex.user}" \
-            ARDUINO_DIRECTORIES_DATA="${hex.data}" \
+            ARDUINO_DIRECTORIES_USER="${setup}/user" \
+            ARDUINO_DIRECTORIES_DATA="${setup}/data" \
             arduino-cli \
             upload \
             --fqbn ${fullyQualifiedBoardName} \
