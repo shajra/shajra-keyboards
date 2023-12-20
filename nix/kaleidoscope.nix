@@ -71,7 +71,7 @@ let
     setup = stdenv.mkDerivation {
         name = "kaleidoscope-setup";
         nativeBuildInputs = nativeBuildInputs ++ [ arduino-cli perl ];
-        src = kaleidoscope-src;
+        src = keyboardio-kaleidoscope-factory;
 
         buildPhase = ''
 
