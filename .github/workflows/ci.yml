@@ -14,8 +14,4 @@ jobs:
         name: shajra
         signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
     - run: cat ~/.config/nix/nix.conf
-    - run: nix flake lock --update-input keymaps-ergodoxez
-    - run: nix flake lock --update-input keymaps-model01
-    - run: nix flake lock --update-input keymaps-model100
-    - run: nix flake lock --update-input keymaps-moonlander
     - run: nix --print-build-logs build --print-out-paths .#ci
