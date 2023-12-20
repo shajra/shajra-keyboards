@@ -73,6 +73,16 @@ let
         nativeBuildInputs = nativeBuildInputs ++ [ arduino-cli perl ];
         src = keyboardio-kaleidoscope-factory;
 
+        # DESIGN: To reproduce this work manually, I do the following:
+        #
+        #     1. Clone the Kaleidoscope repository
+        #     2. VERBOSE=1 KALEIDOSCOPE_DIR=... make setup
+        #
+        #  That gives enough output of what's going on to mimic in the builder
+        #  script below.  Dependencies might change. They are based upon some
+        #  rather large JSON indices.  These can be upgraded with
+        #  support/arduino-upgrade.
+        #
         buildPhase = ''
 
             export KALEIDOSCOPE_DIR="$(pwd)"
@@ -134,7 +144,6 @@ let
                 "$ARDUINO_DIRECTORIES_USER/hardware/keyboardio/gd32"
             chmod -R +w "$ARDUINO_DIRECTORIES_USER"
 
-            #make --directory "$KALEIDOSCOPE_DIR" setup
             arduino-cli config init
             arduino-cli core install "arduino:avr"
             arduino-cli core install "keyboardio:avr-tools-only"
@@ -144,7 +153,9 @@ let
         '';
 
         installPhase = ''
-            cp -r ".arduino" "$out"
+            mkdir "$out"
+            cp -r ".arduino/user" "$out"
+            cp -r ".arduino/data" "$out"
         '';
 
     };
@@ -164,7 +175,6 @@ let
             export KALEIDOSCOPE_TEMP_PATH="$(pwd)/tmp"
             export ARDUINO_BOARD_MANAGER_ADDITIONAL_URLS=https://raw.githubusercontent.com/keyboardio/boardsmanager/master/devel/package_kaleidoscope_devel_index.json
             export ARDUINO_DIRECTORIES_DATA="${setup}/data"
-            export ARDUINO_DIRECTORIES_DOWNLOADS="${setup}/downloads"
             export ARDUINO_DIRECTORIES_USER="${setup}/user"
             export ARDUINO_DATA_DIR="$ARDUINO_DIRECTORIES_DATA"  # maybe not needed
             export FQBN="${fullyQualifiedBoardName}"
