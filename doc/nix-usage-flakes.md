@@ -205,7 +205,7 @@ nix search nixpkgs 'gpu|opengl|accel' terminal
     * legacyPackages.x86_64-linux.kitty (0.31.0)
       A modern, hackable, featureful, OpenGL based terminal emulator
     
-    * legacyPackages.x86_64-linux.rio (0.0.32)
+    * legacyPackages.x86_64-linux.rio (0.0.33)
       A hardware-accelerated GPU terminal emulator powered by WebGPU
     
     * legacyPackages.x86_64-linux.wezterm (20230712-072601-f4abf8fd)
@@ -257,7 +257,7 @@ After a successful call of `nix build`, you'll see one or more symlinks for each
 readlink result*
 ```
 
-    /nix/store/6nryh742rmj5xpn8ikgwdlq5xsn9nkr0-shajra-keyboards-licenses
+    /nix/store/v1vr721kj917f0skg3sy1jzp6gjh2nkv-shajra-keyboards-licenses
 
 Following these symlinks, we can see the files the project provides:
 
@@ -279,7 +279,7 @@ It's common to configure these “result” symlinks as ignored in source contro
 nix path-info .#licenses-thirdparty
 ```
 
-    /nix/store/6nryh742rmj5xpn8ikgwdlq5xsn9nkr0-shajra-keyboards-licenses
+    /nix/store/v1vr721kj917f0skg3sy1jzp6gjh2nkv-shajra-keyboards-licenses
 
 ## Running commands in a shell<a id="sec-4-6"></a>
 
@@ -392,7 +392,7 @@ nix shell --ignore-environment \
     --command which shajra-keyboards-licenses
 ```
 
-    /nix/store/6nryh742rmj5xpn8ikgwdlq5xsn9nkr0-shajra-keyboards-licenses/bin/shajra-keyboards-licenses
+    /nix/store/v1vr721kj917f0skg3sy1jzp6gjh2nkv-shajra-keyboards-licenses/bin/shajra-keyboards-licenses
 
 This is all a consequence of everything discussed in previous sections, but it's good to see clearly that what we do with local flake references can work just as well with remote flake references.
 
@@ -420,7 +420,7 @@ nix profile list
     Flake attribute:    packages.x86_64-linux.licenses-thirdparty
     Original flake URL: git+file:///home/tnks/src/shajra/shajra-keyboards
     Locked flake URL:   git+file:///home/tnks/src/shajra/shajra-keyboards
-    Store paths:        /nix/store/6nryh742rmj5xpn8ikgwdlq5xsn9nkr0-shajra-keyboards-licenses
+    Store paths:        /nix/store/v1vr721kj917f0skg3sy1jzp6gjh2nkv-shajra-keyboards-licenses
 
 If we want to uninstall a program from our profile, we do so by the index from this list:
 
