@@ -14,6 +14,8 @@ git clone https://github.com/keyboardio/Kaleidoscope.git \
 
 git -C "$KALEIDOSCOPE_DIR" submodule update --init
 
+cd "$KALEIDOSCOPE_DIR"
+
 nix shell nixpkgs#arduino-cli --command \
     make -C "$KALEIDOSCOPE_DIR" setup \
     2> "/tmp/kaleidoscope.make.$(date +%Y%m%d).err" \
