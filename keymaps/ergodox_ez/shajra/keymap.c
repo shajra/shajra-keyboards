@@ -30,7 +30,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
     ,                                                                                                KC_APP
     ,                                                         LSFT_T(KC_BSPC), LT(FUNCTION, KC_TAB), LALT_T(KC_ESC)
     // right hand
-    , TG(MAC), KC_6, KC_7,            KC_8,          KC_9,          KC_0,          TG(NUMPAD)
+    , _______, KC_6, KC_7,            KC_8,          KC_9,          KC_0,          TG(NUMPAD)
     , KC_EQL,  KC_Y, KC_U,            KC_I,          KC_O,          KC_P,          KC_BSLS
     ,          KC_H, KC_J,            KC_K,          KC_L,          KC_SCLN,       LT(MOUSE, KC_QUOT)
     , KC_MINS, KC_N, KC_M,            KC_COMM,       KC_DOT,        KC_SLSH,       RSFT_T(KC_RBRC)
@@ -61,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
     )
 , [FUNCTION] = LAYOUT_ergodox
     // left hand
-    ( _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   VRSN
+    ( _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   _______
     , _______, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_QUOT, KC_HOME
     , _______, KC_CIRC, KC_DLR,  KC_LPRN, KC_RPRN, KC_DQUO
     , _______, KC_HASH, KC_PERC, KC_LBRC, KC_RBRC, KC_GRV,  KC_END
@@ -70,11 +70,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
     ,                                                       _______
     ,                                     KC_BSPC, KC_TAB,  KC_ESC
     // right hand
-    , EPRM,    KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  EE_CLR
+    , TG(MAC), KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______
     , KC_PLUS, _______, KC_AMPR, KC_ASTR, KC_TILD, KC_SLSH, KC_F11
     ,          KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_COLN, KC_F12
     , KC_UNDS, KC_BSLS, KC_PIPE, KC_LT,   KC_GT,   KC_QUES, _______
-    ,                   KC_DOWN, KC_UP,   _______, _______, _______
+    ,                   KC_DOWN, KC_UP,   _______, _______, QK_BOOT
     , _______, _______
     , _______
     , KC_GRV,  KC_ENT,  KC_SPC
@@ -85,12 +85,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
     , _______, _______, _______, _______, _______, _______, _______
     , _______, _______, _______, _______, _______, _______
     , _______, _______, _______, _______, _______, _______, _______
-    , _______, _______, _______, _______, _______
+    , VRSN,    _______, _______, _______, _______
     ,                                              _______, _______
     ,                                                       _______
     ,                                     _______, _______, _______
     // right hand
-    , _______, _______, _______, _______, _______, _______, _______
+    , _______,    _______, _______, _______, _______, _______, _______
     , _______, _______, KC_7,    KC_8,    KC_9,    KC_MINS, _______
     ,          KC_BSPC, KC_4,    KC_5,    KC_6,    KC_PLUS, _______
     , _______, _______, KC_1,    KC_2,    KC_3,    KC_EQL,  _______

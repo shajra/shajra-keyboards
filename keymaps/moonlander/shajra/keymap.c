@@ -18,10 +18,10 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
 { [BASE] = LAYOUT_moonlander
-    ( KC_CAPS,           KC_1, KC_2, KC_3, KC_4, KC_5, RGB_TOG, /**/ TG(MAC), KC_6, KC_7, KC_8,    KC_9,   KC_0,    TG(NUMPAD)
-    , KC_GRV,            KC_Q, KC_W, KC_E, KC_R, KC_T, KC_PGUP, /**/ KC_EQL,  KC_Y, KC_U, KC_I,    KC_O,   KC_P,    KC_BSLS
-    , LT(MEDIA, KC_TAB), KC_A, KC_S, KC_D, KC_F, KC_G, KC_PGDN, /**/ KC_MINS, KC_H, KC_J, KC_K,    KC_L,   KC_SCLN, LT(MOUSE, KC_QUOT)
-    , LSFT_T(KC_LBRC),   KC_Z, KC_X, KC_C, KC_V, KC_B,          /**/          KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, RSFT_T(KC_RBRC)
+    ( KC_CAPS,           KC_1, KC_2, KC_3, KC_4, KC_5, RGB_MOD, /**/ RGB_RMOD, KC_6, KC_7, KC_8,    KC_9,   KC_0,    TG(NUMPAD)
+    , KC_GRV,            KC_Q, KC_W, KC_E, KC_R, KC_T, KC_PGUP, /**/ KC_EQL,   KC_Y, KC_U, KC_I,    KC_O,   KC_P,    KC_BSLS
+    , LT(MEDIA, KC_TAB), KC_A, KC_S, KC_D, KC_F, KC_G, KC_PGDN, /**/ KC_MINS,  KC_H, KC_J, KC_K,    KC_L,   KC_SCLN, LT(MOUSE, KC_QUOT)
+    , LSFT_T(KC_LBRC),   KC_Z, KC_X, KC_C, KC_V, KC_B,          /**/           KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, RSFT_T(KC_RBRC)
 
     , KC_APP, OSM(MOD_RALT), LSFT(KC_RALT), LCTL_T(KC_LEFT), LGUI_T(KC_RIGHT), LT(NUMPAD, KC_DEL)
     ,                                         KC_INS, LALT_T(KC_DOWN), RCTL_T(KC_UP), RSFT(KC_RALT), OSM(MOD_RALT), KC_APP
@@ -37,12 +37,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
     ,                              _______, _______, LGUI_T(KC_ESC), /**/ LALT_T(KC_GRV), _______, _______
     )
 , [FUNCTION] = LAYOUT_moonlander
-    ( RGB_MOD, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   TOGGLE_LAYER_COLOR
-    ,                                                                /**/ EE_CLR,  KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  RESET
-    , RGB_HUI, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_QUOT, KC_HOME, /**/ KC_PLUS, _______, KC_AMPR, KC_ASTR, KC_TILD, KC_SLSH, KC_F11
-    , RGB_HUD, KC_CIRC, KC_DLR,  KC_LPRN, KC_RPRN, KC_DQUO, KC_END,  /**/ KC_UNDS, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_COLN, KC_F12
-    , RGB_VAI, KC_HASH, KC_PERC, KC_LBRC, KC_RBRC, KC_GRV,           /**/          KC_BSLS, KC_PIPE, KC_LT,   KC_GT,   KC_QUES, _______
-    , RGB_VAD, _______, _______, KC_LEFT, KC_RGHT,          KC_DEL,  /**/ _______,          KC_DOWN, KC_UP,   _______, _______, VRSN
+    ( RGB_VAI, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   RGB_TOG, /**/ TG(MAC),  KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10, _______
+    , RGB_VAD, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_QUOT, KC_HOME, /**/ KC_PLUS, _______, KC_AMPR, KC_ASTR, KC_TILD, KC_SLSH, KC_F11
+    , RGB_HUI, KC_CIRC, KC_DLR,  KC_LPRN, KC_RPRN, KC_DQUO, KC_END,  /**/ KC_UNDS, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_COLN, KC_F12
+    , RGB_HUD, KC_HASH, KC_PERC, KC_LBRC, KC_RBRC, KC_GRV,           /**/          KC_BSLS, KC_PIPE, KC_LT,   KC_GT,   KC_QUES, _______
+    , _______, _______, _______, KC_LEFT, KC_RGHT,          KC_DEL,  /**/ _______,          KC_DOWN, KC_UP,   _______, _______, QK_BOOT
     ,                                     KC_BSPC, KC_TAB,  KC_ESC,  /**/ KC_GRV,  KC_ENT,  KC_SPC
     )
 , [NUMPAD] = LAYOUT_moonlander
@@ -50,7 +49,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
     , _______, _______, _______, _______, _______, _______, _______, /**/ _______, _______, KC_7,    KC_8,    KC_9,    KC_MINS, _______
     , _______, _______, _______, _______, _______, _______, _______, /**/ _______, KC_BSPC, KC_4,    KC_5,    KC_6,    KC_PLUS, _______
     , _______, _______, _______, _______, _______, _______,          /**/          _______, KC_1,    KC_2,    KC_3,    KC_EQL,  _______
-    , _______, _______, _______, _______, _______,          _______, /**/ _______,          KC_0,    KC_DOT,  KC_ASTR, KC_SLSH, _______
+    , VRSN,    _______, _______, _______, _______,          _______, /**/ _______,          KC_0,    KC_DOT,  KC_ASTR, KC_SLSH, _______
     ,                                     _______, _______, _______, /**/ _______, _______, _______
     )
 , [MEDIA] = LAYOUT_moonlander
@@ -151,42 +150,68 @@ void matrix_init_user(void)
 //
 #ifdef RGB_MATRIX_ENABLE
 
-#define RGB_DIM_RED    160,   0,   0
-#define RGB_DIM_ORANGE 140,  70,   0
-#define RGB_DIM_YELLOW 130, 100,   0
-#define RGB_DIM_GREEN    0, 160,   0
-#define RGB_DIM_BLUE     0,  70, 130
-#define RGB_DIM_INDIGO   0,   0, 170
-#define RGB_DIM_VIOLET 130,   0, 120
-#define RGB_DIM_OFF      0,   0,   0
+#define SOLARIZED_YELLOW    (RGB){181, 137, 0}
+#define SOLARIZED_ORANGE    (RGB){203, 75,  22}
+#define SOLARIZED_RED       (RGB){220, 50,  47}
+#define SOLARIZED_MAGENTA   (RGB){211, 54,  130}
+#define SOLARIZED_VIOLET    (RGB){108, 113, 196}
+#define SOLARIZED_BLUE      (RGB){38,  139, 210}
+#define SOLARIZED_CYAN      (RGB){42,  161, 152}
+#define SOLARIZED_GREEN     (RGB){113, 173, 0}
+
+RGB dimmed(RGB color) {
+    uint8_t brightness = rgb_matrix_get_val();
+    return (RGB){
+        color.r * brightness / 255,
+        color.g * brightness / 255,
+        color.b * brightness / 255};
+}
+
+void set_color(int index, RGB rgb_color) {
+    return rgb_matrix_set_color(
+        index,
+        rgb_color.r,
+        rgb_color.g,
+        rgb_color.b);
+}
+
+#define RGB_MATRIX_SET_THUMBS(color) \
+    set_color(32, color); \
+    set_color(33, color); \
+    set_color(34, color); \
+    set_color(35, color); \
+    set_color(68, color); \
+    set_color(69, color); \
+    set_color(70, color); \
+    set_color(71, color)
 
 #define RGB_MATRIX_SET_INNER_KEYS(color) \
-    rgb_matrix_set_color(29, color); \
-    rgb_matrix_set_color(30, color); \
-    rgb_matrix_set_color(31, color); \
-    rgb_matrix_set_color(65, color); \
-    rgb_matrix_set_color(66, color); \
-    rgb_matrix_set_color(67, color)
+    set_color(29, color); \
+    set_color(30, color); \
+    set_color(31, color); \
+    set_color(65, color); \
+    set_color(66, color); \
+    set_color(67, color)
 
 #define RGB_MATRIX_SET_OUTER_KEYS(color) \
-    rgb_matrix_set_color( 0, color); \
-    rgb_matrix_set_color( 1, color); \
-    rgb_matrix_set_color( 2, color); \
-    rgb_matrix_set_color( 3, color); \
-    rgb_matrix_set_color( 4, color); \
-    rgb_matrix_set_color( 9, color); \
-    rgb_matrix_set_color(14, color); \
-    rgb_matrix_set_color(19, color); \
-    rgb_matrix_set_color(24, color); \
-    rgb_matrix_set_color(36, color); \
-    rgb_matrix_set_color(37, color); \
-    rgb_matrix_set_color(38, color); \
-    rgb_matrix_set_color(39, color); \
-    rgb_matrix_set_color(40, color); \
-    rgb_matrix_set_color(45, color); \
-    rgb_matrix_set_color(50, color); \
-    rgb_matrix_set_color(55, color); \
-    rgb_matrix_set_color(60, color)
+    set_color( 0, color); \
+    set_color( 1, color); \
+    set_color( 2, color); \
+    set_color( 3, color); \
+    set_color( 4, color); \
+    set_color( 9, color); \
+    set_color(14, color); \
+    set_color(19, color); \
+    set_color(24, color); \
+    set_color(36, color); \
+    set_color(37, color); \
+    set_color(38, color); \
+    set_color(39, color); \
+    set_color(40, color); \
+    set_color(45, color); \
+    set_color(50, color); \
+    set_color(55, color); \
+    set_color(60, color)
 
 bool is_caps_lock_on(void) {
     led_t led_state = host_keyboard_led_state();
@@ -194,92 +219,81 @@ bool is_caps_lock_on(void) {
 }
 
 bool rgb_matrix_indicators_user(void) {
-    if (keyboard_config.disable_layer_led) {
-        switch (rgb_matrix_get_flags()) {
-            case LED_FLAG_NONE:
-                rgb_matrix_set_color_all(0, 0, 0);
-                break;
-            default:
-                break;
-        }
-        if (layer_state_cmp(layer_state, NUMPAD)) {
-            rgb_matrix_set_color(42, RGB_DIM_RED);
-            rgb_matrix_set_color(43, RGB_DIM_RED);
-            rgb_matrix_set_color(44, RGB_DIM_RED);
-            rgb_matrix_set_color(45, RGB_DIM_RED);
-            rgb_matrix_set_color(47, RGB_DIM_RED);
-            rgb_matrix_set_color(48, RGB_DIM_RED);
-            rgb_matrix_set_color(49, RGB_DIM_RED);
-            rgb_matrix_set_color(50, RGB_DIM_RED);
-            rgb_matrix_set_color(52, RGB_DIM_RED);
-            rgb_matrix_set_color(53, RGB_DIM_RED);
-            rgb_matrix_set_color(54, RGB_DIM_RED);
-            rgb_matrix_set_color(55, RGB_DIM_RED);
-            rgb_matrix_set_color(57, RGB_DIM_RED);
-            rgb_matrix_set_color(58, RGB_DIM_RED);
-            rgb_matrix_set_color(59, RGB_DIM_RED);
-            rgb_matrix_set_color(60, RGB_DIM_RED);
-            rgb_matrix_set_color(63, RGB_DIM_RED);
-        }
-        if (layer_state_cmp(layer_state, MEDIA)) {
-            rgb_matrix_set_color(11, RGB_DIM_BLUE);
-            rgb_matrix_set_color(12, RGB_DIM_BLUE);
-            rgb_matrix_set_color(16, RGB_DIM_BLUE);
-            rgb_matrix_set_color(17, RGB_DIM_BLUE);
-            rgb_matrix_set_color(21, RGB_DIM_BLUE);
-            rgb_matrix_set_color(22, RGB_DIM_BLUE);
-            //
-            rgb_matrix_set_color(32, RGB_DIM_BLUE);
-            rgb_matrix_set_color(33, RGB_DIM_BLUE);
-            rgb_matrix_set_color(34, RGB_DIM_BLUE);
-            //
-            rgb_matrix_set_color(68, RGB_DIM_BLUE);
-            rgb_matrix_set_color(69, RGB_DIM_BLUE);
-        }
-        if (layer_state_cmp(layer_state, MOUSE)) {
-            rgb_matrix_set_color(12, RGB_DIM_INDIGO);
-            rgb_matrix_set_color(16, RGB_DIM_INDIGO);
-            rgb_matrix_set_color(17, RGB_DIM_INDIGO);
-            rgb_matrix_set_color(22, RGB_DIM_INDIGO);
-            //
-            rgb_matrix_set_color(32, RGB_DIM_INDIGO);
-            rgb_matrix_set_color(33, RGB_DIM_INDIGO);
-            rgb_matrix_set_color(34, RGB_DIM_INDIGO);
-            //
-            rgb_matrix_set_color(48, RGB_DIM_INDIGO);
-            rgb_matrix_set_color(52, RGB_DIM_INDIGO);
-            rgb_matrix_set_color(53, RGB_DIM_INDIGO);
-            rgb_matrix_set_color(58, RGB_DIM_INDIGO);
-            //
-            rgb_matrix_set_color(68, RGB_DIM_INDIGO);
-            rgb_matrix_set_color(69, RGB_DIM_INDIGO);
-        }
-    } else {
-        switch (biton32(layer_state)) {
-            case MAC:
-                RGB_MATRIX_SET_OUTER_KEYS(RGB_DIM_GREEN);
-                break;
-            case FUNCTION:
-                RGB_MATRIX_SET_OUTER_KEYS(RGB_DIM_VIOLET);
-                break;
-            case NUMPAD:
-                RGB_MATRIX_SET_OUTER_KEYS(RGB_DIM_RED);
-                break;
-            case MEDIA:
-                RGB_MATRIX_SET_OUTER_KEYS(RGB_DIM_BLUE);
-                break;
-            case MOUSE:
-                RGB_MATRIX_SET_OUTER_KEYS(RGB_DIM_INDIGO);
-                break;
-            default:
-                RGB_MATRIX_SET_OUTER_KEYS(RGB_DIM_YELLOW);
-                break;
-        }
+    rgblight_enable();
+    if (! keyboard_config.rgb_matrix_enable) {
+        return false;  // false indicates QMK to not process further
+    }
+    if (   layer_state_cmp(layer_state, NUMPAD)
+        || layer_state_cmp(layer_state, MEDIA)
+        || layer_state_cmp(layer_state, MOUSE)
+        || is_caps_lock_on()) {
+        rgb_matrix_set_color_all(RGB_OFF);
+    }
+    if (layer_state_cmp(layer_state, MAC)) {
+        RGB_MATRIX_SET_THUMBS(dimmed(SOLARIZED_CYAN));
+    }
+    else {
+        RGB_MATRIX_SET_THUMBS(dimmed(SOLARIZED_YELLOW));
+    }
+    if (layer_state_cmp(layer_state, NUMPAD)) {
+        RGB color = dimmed(SOLARIZED_RED);
+        set_color(42, color);
+        set_color(43, color);
+        set_color(44, color);
+        set_color(45, color);
+        set_color(47, color);
+        set_color(48, color);
+        set_color(49, color);
+        set_color(50, color);
+        set_color(52, color);
+        set_color(53, color);
+        set_color(54, color);
+        set_color(55, color);
+        set_color(57, color);
+        set_color(58, color);
+        set_color(59, color);
+        set_color(60, color);
+        set_color(63, color);
+    }
+    if (layer_state_cmp(layer_state, MEDIA)) {
+        RGB color  = dimmed(SOLARIZED_GREEN);
+        set_color(11, color);
+        set_color(12, color);
+        set_color(16, color);
+        set_color(17, color);
+        set_color(21, color);
+        set_color(22, color);
+        //
+        set_color(32, color);
+        set_color(33, color);
+        set_color(34, color);
+        //
+        set_color(68, color);
+        set_color(69, color);
+    }
+    if (layer_state_cmp(layer_state, MOUSE)) {
+        RGB color = dimmed(SOLARIZED_VIOLET);
+        set_color(12, color);
+        set_color(16, color);
+        set_color(17, color);
+        set_color(22, color);
+        //
+        set_color(32, color);
+        set_color(33, color);
+        set_color(34, color);
+        //
+        set_color(48, color);
+        set_color(52, color);
+        set_color(53, color);
+        set_color(58, color);
+        //
+        set_color(68, color);
+        set_color(69, color);
     }
     if (is_caps_lock_on()) {
-        RGB_MATRIX_SET_INNER_KEYS(RGB_DIM_RED);
+        RGB_MATRIX_SET_INNER_KEYS(dimmed(SOLARIZED_ORANGE));
     }
-    return false;
+    return true;
 }
 
 #endif

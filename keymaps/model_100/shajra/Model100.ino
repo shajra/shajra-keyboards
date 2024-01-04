@@ -5,26 +5,24 @@
 
 #include "Kaleidoscope.h"
 #include "Kaleidoscope-EEPROM-Settings.h"
-#include "Kaleidoscope-EEPROM-Keymap.h"
-#include "Kaleidoscope-FocusSerial.h"
 #include "Kaleidoscope-FirmwareVersion.h"
 #include "Kaleidoscope-MouseKeys.h"
 #include "Kaleidoscope-Macros.h"
-#include "Kaleidoscope-DynamicMacros.h"
 #include "Kaleidoscope-LEDControl.h"
-#include "Kaleidoscope-NumPad.h"
-#include "Kaleidoscope-LEDEffect-BootGreeting.h"
-#include "Kaleidoscope-LEDEffect-SolidColor.h"
-#include "Kaleidoscope-LEDEffect-Breathe.h"
-#include "Kaleidoscope-LEDEffect-Chase.h"
-#include "Kaleidoscope-LEDEffect-Rainbow.h"
+#include "Kaleidoscope-LEDEffects.h"
 #include "Kaleidoscope-LED-ActiveLayerColor.h"
-#include "Kaleidoscope-LED-Palette-Theme.h"
-#include "Kaleidoscope-Colormap.h"
+#include "Kaleidoscope-LEDEffect-Breathe.h"
+#include "Kaleidoscope-LEDEffect-BootGreeting.h"
+#include "Kaleidoscope-LEDEffect-Chase.h"
+#include "Kaleidoscope-LEDEffect-DigitalRain.h"
+#include "Kaleidoscope-LEDEffect-Rainbow.h"
+#include "Kaleidoscope-LEDEffect-SolidColor.h"
+#include "Kaleidoscope-LED-Stalker.h"
+#include "Kaleidoscope-LED-Wavepool.h"
 #include "Kaleidoscope-HardwareTestMode.h"
 #include "Kaleidoscope-HostPowerManagement.h"
 #include "Kaleidoscope-IdleLEDs.h"
-#include "Kaleidoscope-MagicCombo.h"
+#include "Kaleidoscope-DefaultLEDModeConfig.h"
 #include "Kaleidoscope-OneShot.h"
 #include "Kaleidoscope-Qukeys.h"
 #include "Kaleidoscope-USB-Quirks.h"
@@ -42,23 +40,26 @@ enum
     };
 
 /** Macro names enumerated */
-enum { MACRO_VERSION_INFO };
-
+enum
+    { MACRO_VERSION
+    , MACRO_BRIGHT_UP
+    , MACRO_BRIGHT_DOWN
+    };
 
 KEYMAPS
     ( [BASE] = KEYMAP_STACKED
         // left hand
-        ( Key_CapsLock,    Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext
-        , Key_Backtick,    Key_Q, Key_W, Key_E, Key_R, Key_T, Key_PageUp
-        , Key_Tab,         Key_A, Key_S, Key_D, Key_F, Key_G
-        , Key_LeftBracket, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_PageDown
+        ( Key_CapsLock,      Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext
+        , Key_PcApplication, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_PageUp
+        , Key_Tab,           Key_A, Key_S, Key_D, Key_F, Key_G
+        , Key_LeftBracket,   Key_Z, Key_X, Key_C, Key_V, Key_B, Key_PageDown
         , Key_Delete, Key_Backspace, Key_Tab, Key_Escape
         , Key_Home
         // right hand
-        , LockLayer(MAC), Key_6, Key_7, Key_8,     Key_9,      Key_0,         LockLayer(NUMPAD)
-        , Key_Equals,     Key_Y, Key_U, Key_I,     Key_O,      Key_P,         Key_Backslash
-        ,                 Key_H, Key_J, Key_K,     Key_L,      Key_Semicolon, Key_Quote
-        , Key_Minus,      Key_N, Key_M, Key_Comma, Key_Period, Key_Slash,     Key_RightBracket
+        , Key_LEDEffectPrevious, Key_6, Key_7, Key_8,     Key_9,      Key_0,         LockLayer(NUMPAD)
+        , Key_Equals,            Key_Y, Key_U, Key_I,     Key_O,      Key_P,         Key_Backslash
+        ,                        Key_H, Key_J, Key_K,     Key_L,      Key_Semicolon, Key_Quote
+        , Key_Minus,             Key_N, Key_M, Key_Comma, Key_Period, Key_Slash,     Key_RightBracket
         , Key_Backtick, Key_Enter, Key_Spacebar, Key_Insert
         , Key_End
         )
@@ -80,14 +81,14 @@ KEYMAPS
         )
     , [FUNCTION] = KEYMAP_STACKED
         // left hand
-        ( ___,                  Key_F1,        Key_F2,        Key_F3,               Key_F4,                Key_F5,            M(MACRO_VERSION_INFO)
-        , Key_PcApplication,    LSHIFT(Key_1), LSHIFT(Key_2), Key_LeftCurlyBracket, Key_RightCurlyBracket, Key_Quote,         Key_Home
+        ( M(MACRO_BRIGHT_UP),   Key_F1,        Key_F2,        Key_F3,               Key_F4,                Key_F5,            Key_LEDToggle
+        , M(MACRO_BRIGHT_DOWN), LSHIFT(Key_1), LSHIFT(Key_2), Key_LeftCurlyBracket, Key_RightCurlyBracket, Key_Quote,         Key_Home
         , LSHIFT(Key_RightAlt), LSHIFT(Key_6), LSHIFT(Key_4), Key_LeftParen,        Key_RightParen,        LSHIFT(Key_Quote)
         , OSM(RightAlt),        LSHIFT(Key_3), LSHIFT(Key_5), Key_LeftBracket,      Key_RightBracket,      Key_Backtick,      Key_End
         , Key_Delete, Key_Backspace, Key_Tab, Key_Escape
         , ShiftToLayer(NUMPAD)
         // right hand
-        , ___,                Key_F6,        Key_F7,                Key_F8,            Key_F9,               Key_F10,               Key_F11
+        , LockLayer(MAC),     Key_F6,        Key_F7,                Key_F8,            Key_F9,               Key_F10,               Key_F11
         , LSHIFT(Key_Equals), ___,           LSHIFT(Key_7),         LSHIFT(Key_8),     LSHIFT(Key_Backtick), Key_Slash,             Key_F12
         ,                     Key_LeftArrow, Key_DownArrow,         Key_UpArrow,       Key_RightArrow,       LSHIFT(Key_Semicolon), LSHIFT(Key_RightAlt)
         , LSHIFT(Key_Minus),  Key_Backslash, LSHIFT(Key_Backslash), LSHIFT(Key_Comma), LSHIFT(Key_Period),   LSHIFT(Key_Slash),     OSM(RightAlt)
@@ -96,10 +97,10 @@ KEYMAPS
         )
     , [NUMPAD] =  KEYMAP_STACKED
         // left hand
-        ( ___, ___, ___, ___, ___, ___, ___
-        , ___, ___, ___, ___, ___, ___, ___
-        , ___, ___, ___, ___, ___, ___
-        , ___, ___, ___, ___, ___, ___, ___
+        ( ___,              ___, ___, ___, ___, ___, ___
+        , ___,              ___, ___, ___, ___, ___, ___
+        , ___,              ___, ___, ___, ___, ___
+        , M(MACRO_VERSION), ___, ___, ___, ___, ___, ___
         , ___, ___, ___, ___
         , ___
         // right hand
@@ -128,7 +129,7 @@ KEYMAPS
         )
     , [MOUSE] = KEYMAP_STACKED
         // left hand
-        ( ___, ___, ___,          ___,         ___,          ___, ___
+        ( ___, ___, ___,          ___,         ___,          ___,              ___
         , ___, ___, Key_mouseUpL, Key_mouseUp, Key_mouseUpR, Key_mouseWarpEnd, Key_mouseWarpNE
         , ___, ___, Key_mouseL,   Key_mouseDn, Key_mouseR,   Key_mouseWarpNW
         , ___, ___, Key_mouseDnL, ___,         Key_mouseDnR, Key_mouseWarpSW,  Key_mouseWarpSE
@@ -144,31 +145,138 @@ KEYMAPS
         )
 )
 
+static uint8_t solarizedHueYellow  =  45 * 255 / 360;
+static uint8_t solarizedHueOrange  =  18 * 255 / 360;
+static uint8_t solarizedHueRed     =   1 * 255 / 360;
+static uint8_t solarizedHueMagenta = 331 * 255 / 360;
+static uint8_t solarizedHueViolet  = 237 * 255 / 360;
+static uint8_t solarizedHueBlue    = 205 * 255 / 360;
+static uint8_t solarizedHueCyan    = 175 * 255 / 360;
+static uint8_t solarizedHueGreen   =  68 * 255 / 360;
 
-static void versionInfoMacro(uint8_t keyState) {
-    if (keyToggledOn(keyState)) {
-        Macros.type(PSTR(BUILD_INFORMATION));
+static cRGB solarizedYellow  = CRGB(181, 137,   0);
+static cRGB solarizedOrange  = CRGB(203,  75,  22);
+static cRGB solarizedRed     = CRGB(220,  50,  47);
+static cRGB solarizedMagenta = CRGB(211,  54, 130);
+static cRGB solarizedViolet  = CRGB(108, 113, 196);
+static cRGB solarizedBlue    = CRGB( 38, 139, 210);
+static cRGB solarizedCyan    = CRGB( 42, 161, 152);
+static cRGB solarizedGreen   = CRGB(113, 173,   0);
+
+
+static cRGB    rgbBase   = solarizedYellow;
+static uint8_t hueBase   = solarizedHueYellow - 15;
+static cRGB    rgbMac    = solarizedCyan;
+static uint8_t hueMac    = solarizedHueCyan - 15;
+static cRGB    rgbFn     = solarizedMagenta;
+static uint8_t hueFn     = solarizedHueMagenta - 15;
+static cRGB    rgbNumpad = solarizedRed;
+static uint8_t hueNumpad = solarizedHueRed - 15;
+static cRGB    rgbMedia  = solarizedGreen;
+static uint8_t hueMedia  = solarizedHueGreen - 15;
+static cRGB    rgbMouse  = solarizedViolet;
+static uint8_t hueMouse  = solarizedHueViolet - 15;
+
+static KeyAddr keyPalmLeft  = KeyAddr(3,6);
+static KeyAddr keyPalmRight = KeyAddr(3,9);
+
+namespace kaleidoscope {
+    namespace plugin {
+        class LocalLEDEffect :  public Plugin {
+            private:
+                cRGB    leftRgb = CRGB(0,0,0);
+                uint8_t leftHue = 0;
+                cRGB    rightRgb = CRGB(0,0,0);
+                uint8_t rightHue = 0;
+                bool    rightBreathe = false;
+            public:
+                EventHandlerResult onLayerChange() {
+                    if (Layer.isActive(MEDIA)) {
+                        leftRgb = rgbMedia; leftHue = hueMedia;
+                    } else if (Layer.isActive(FUNCTION)
+                               && Runtime.device().isKeyswitchPressed(keyPalmLeft)) {
+                        leftRgb = rgbFn;    leftHue = hueFn;
+                    } else if (Layer.isActive(MAC)) {
+                        leftRgb = rgbMac;   leftHue = hueMac;
+                    } else {
+                        leftRgb = rgbBase;  leftHue = hueBase;
+                    };
+                    if (Layer.isActive(MOUSE)) {
+                        rightRgb = rgbMouse; rightHue = hueMouse;
+                    } else if (Layer.isActive(FUNCTION)
+                               && Runtime.device().isKeyswitchPressed(keyPalmRight)) {
+                        rightRgb = rgbFn;    rightHue = hueFn;
+                    } else if (Layer.isActive(MAC)) {
+                        rightRgb = rgbMac;   rightHue = hueMac;
+                    } else {
+                        rightRgb = rgbBase;  rightHue = hueBase;
+                    };
+                    rightBreathe = Layer.isActive(NUMPAD);
+                    return EventHandlerResult::OK;
+                }
+                EventHandlerResult afterEachCycle() {
+                    cRGB color = leftRgb;
+                    bool leftBreathe =
+                        Runtime.hid().keyboard().getKeyboardLEDs() & LED_CAPS_LOCK;
+                    if (leftBreathe) {
+                        color = breath_compute(leftHue);
+                    }
+                    ::LEDControl.setCrgbAt(keyPalmLeft, color);
+                    color = rightRgb;
+                    if (rightBreathe) {
+                        color = breath_compute(rightHue);
+                    }
+                    ::LEDControl.setCrgbAt(keyPalmRight, color);
+                    if (Layer.isActive(MOUSE)
+                        || Layer.isActive(MEDIA)
+                        || Layer.isActive(NUMPAD)) {
+                        for (auto keyAddr : KeyAddr::all()) {
+                            if (keyPalmLeft == KeyAddr(keyAddr)
+                                || keyPalmRight == KeyAddr(keyAddr)) {
+                                continue;
+                            }
+                            uint8_t keyLayer = Layer.lookupActiveLayer(keyAddr);
+                            color = CRGB(0,0,0);
+                            switch (keyLayer) {
+                                case MOUSE:  color = rgbMouse;  break;
+                                case MEDIA:  color = rgbMedia;  break;
+                                case NUMPAD: color = rgbNumpad; break;
+                            }
+                            ::LEDControl.setCrgbAt(KeyAddr(keyAddr), color);
+                        }
+                    }
+                    return EventHandlerResult::OK;
+                }
+        };
     }
 }
 
-const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
-    switch (macroIndex) {
-        case MACRO_VERSION_INFO:
-            versionInfoMacro(keyState);
-            break;
+kaleidoscope::plugin::LocalLEDEffect LocalLEDEffect;  // singleton instance
+
+const macro_t *macroAction(uint8_t macroIndex, KeyEvent &event) {
+    uint8_t brightness = 0;
+    LEDControl.getBrightness();
+    if (keyToggledOn(event.state)) {
+        switch (macroIndex) {
+            case MACRO_VERSION:
+                Macros.type(PSTR(BUILD_INFORMATION));
+                break;
+            case MACRO_BRIGHT_UP:
+                brightness = LEDControl.getBrightness();
+                if (brightness < 245) brightness +=  10;
+                else brightness = 255;
+                LEDControl.setBrightness(brightness);
+                break;
+            case MACRO_BRIGHT_DOWN:
+                brightness = LEDControl.getBrightness();
+                if (brightness > 10) brightness -=  10;
+                else brightness = 0;
+                LEDControl.setBrightness(brightness);
+                break;
+        }
     }
     return MACRO_NONE;
 }
-
-// Colors calibrated to draw 500mA or less from LEDs
-//
-static kaleidoscope::plugin::LEDSolidColor solidRed(160, 0, 0);
-static kaleidoscope::plugin::LEDSolidColor solidOrange(140, 70, 0);
-static kaleidoscope::plugin::LEDSolidColor solidYellow(130, 100, 0);
-static kaleidoscope::plugin::LEDSolidColor solidGreen(0, 160, 0);
-static kaleidoscope::plugin::LEDSolidColor solidBlue(0, 70, 130);
-static kaleidoscope::plugin::LEDSolidColor solidIndigo(0, 0, 170);
-static kaleidoscope::plugin::LEDSolidColor solidViolet(130, 0, 120);
 
 void toggleLedsOnSuspendResume(kaleidoscope::plugin::HostPowerManagement::Event event) {
     switch (event) {
@@ -186,78 +294,46 @@ void hostPowerManagementEventHandler(kaleidoscope::plugin::HostPowerManagement::
     toggleLedsOnSuspendResume(event);
 }
 
-enum
-    { COMBO_TOGGLE_NKRO_MODE
-    , COMBO_ENTER_TEST_MODE
-    };
-
-static void toggleKeyboardProtocol(uint8_t combo_index) {
-    USBQuirks.toggleKeyboardProtocol();
-}
-
-static void enterHardwareTestMode(uint8_t combo_index) {
-    HardwareTestMode.runTests();
-}
-
-
-USE_MAGIC_COMBOS
-    (   { .action = toggleKeyboardProtocol
-        , .keys = { R3C6, R2C6, R3C7 } // Left Fn + Esc + Shift
-        }
-    ,   { .action = enterHardwareTestMode
-        , .keys = { R3C6, R0C0, R0C6 } // Left Fn + Prog + LED
-        }
-    );
-
-
 // DESIGN: order can be important; keeping to the order from the example
 KALEIDOSCOPE_INIT_PLUGINS
 
     ( EEPROMSettings
-    , EEPROMKeymap
-    , Focus
-    , FocusSettingsCommand
-    , FocusEEPROMCommand
 
     , Qukeys  // DESIGN: Qukeys is recommended early
     , OneShot
     , Macros
     , MouseKeys
-    , MagicCombo
 
     , BootGreetingEffect
     , LEDControl
     , LEDActiveLayerColorEffect
-    , LEDOff
-    , LEDPaletteTheme
-    , ColormapEffect
+    , LEDBreatheEffect
+    , MiamiEffect
+    , LEDRainbowEffect
+    , LEDRainbowWaveEffect
+    , LEDDigitalRainEffect
+    , WavepoolEffect
+    , StalkerEffect
+    , LEDChaseEffect
+    , LocalLEDEffect
 
-    , NumPad
     , HostPowerManagement
     , IdleLEDs
-
-    , USBQuirks
-    , HardwareTestMode
+    , PersistentIdleLEDs
     );
 
 void setup()
 {
-    static const cRGB layerColormap[] PROGMEM =
-        { CRGB(128, 128,   0)  // BASE     = yellow
-        , CRGB(0,   128, 128)  // MAC      = cyan
-        , CRGB(128,   0, 128)  // FUNCTION = magenta
-        , CRGB(0,     0,   0)  // NUMPAD   = off
-        , CRGB(0,   128,   0)  // MEDIA    = green
-        , CRGB(0,     0, 128)  // MOUSE    = blue
+    const cRGB layerColormap[] PROGMEM =
+        { rgbBase
+        , rgbMac
+        , rgbFn
+        , rgbNumpad
+        , rgbMedia
+        , rgbMouse
         };
 
     Kaleidoscope.setup();
-    NumPad.numPadLayer = NUMPAD;
-    HardwareTestMode.setActionKey(R3C6);
-    LEDOff.activate();
-    EEPROMKeymap.setup(6);
-    ColormapEffect.max_layers(6);
-    Layer.move(EEPROMSettings.default_layer());
 
     // DESIGN: Key Addresses for Qukeys Plugin
     //
@@ -303,6 +379,11 @@ void setup()
         )
 
     LEDActiveLayerColorEffect.setColormap(layerColormap);
+    LEDBreatheEffect.hue = solarizedHueYellow;
+    LEDRainbowEffect.brightness(170);
+    LEDRainbowWaveEffect.brightness(160);
+    StalkerEffect.variant = STALKER(BlazingTrail);
+    DefaultLEDModeConfig.activateLEDModeIfUnconfigured(&LEDOff);
 }
 
 void loop() {
