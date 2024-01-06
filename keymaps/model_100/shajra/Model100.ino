@@ -12,7 +12,6 @@
 #include "Kaleidoscope-LEDEffects.h"
 #include "Kaleidoscope-LED-ActiveLayerColor.h"
 #include "Kaleidoscope-LEDEffect-Breathe.h"
-#include "Kaleidoscope-LEDEffect-BootGreeting.h"
 #include "Kaleidoscope-LEDEffect-Chase.h"
 #include "Kaleidoscope-LEDEffect-DigitalRain.h"
 #include "Kaleidoscope-LEDEffect-Rainbow.h"
@@ -145,40 +144,39 @@ KEYMAPS
         )
 )
 
-static uint8_t solarizedHueYellow  =  45 * 255 / 360;
-static uint8_t solarizedHueOrange  =  18 * 255 / 360;
-static uint8_t solarizedHueRed     =   1 * 255 / 360;
-static uint8_t solarizedHueMagenta = 331 * 255 / 360;
-static uint8_t solarizedHueViolet  = 237 * 255 / 360;
-static uint8_t solarizedHueBlue    = 205 * 255 / 360;
-static uint8_t solarizedHueCyan    = 175 * 255 / 360;
-static uint8_t solarizedHueGreen   =  68 * 255 / 360;
+#define solarizedYellow  CRGB(181, 137,   0)
+#define solarizedOrange  CRGB(203,  75,  22)
+#define solarizedRed     CRGB(220,  50,  47)
+#define solarizedMagenta CRGB(211,  54, 130)
+#define solarizedViolet  CRGB(108, 113, 196)
+#define solarizedBlue    CRGB( 38, 139, 210)
+#define solarizedCyan    CRGB( 42, 161, 152)
+#define solarizedGreen   CRGB(113, 173,   0)
 
-static cRGB solarizedYellow  = CRGB(181, 137,   0);
-static cRGB solarizedOrange  = CRGB(203,  75,  22);
-static cRGB solarizedRed     = CRGB(220,  50,  47);
-static cRGB solarizedMagenta = CRGB(211,  54, 130);
-static cRGB solarizedViolet  = CRGB(108, 113, 196);
-static cRGB solarizedBlue    = CRGB( 38, 139, 210);
-static cRGB solarizedCyan    = CRGB( 42, 161, 152);
-static cRGB solarizedGreen   = CRGB(113, 173,   0);
+#define solarizedHueYellow   45 * 255 / 360
+#define solarizedHueOrange   18 * 255 / 360
+#define solarizedHueRed       1 * 255 / 360
+#define solarizedHueMagenta 331 * 255 / 360
+#define solarizedHueViolet  237 * 255 / 360
+#define solarizedHueBlue    205 * 255 / 360
+#define solarizedHueCyan    175 * 255 / 360
+#define solarizedHueGreen    68 * 255 / 360
 
+#define rgbBase   solarizedYellow
+#define hueBase   solarizedHueYellow - 15
+#define rgbMac    solarizedCyan
+#define hueMac    solarizedHueCyan - 15
+#define rgbFn     solarizedMagenta
+#define hueFn     solarizedHueMagenta - 15
+#define rgbNumpad solarizedRed
+#define hueNumpad solarizedHueRed - 15
+#define rgbMedia  solarizedGreen
+#define hueMedia  solarizedHueGreen - 15
+#define rgbMouse  solarizedViolet
+#define hueMouse  solarizedHueViolet - 15
 
-static cRGB    rgbBase   = solarizedYellow;
-static uint8_t hueBase   = solarizedHueYellow - 15;
-static cRGB    rgbMac    = solarizedCyan;
-static uint8_t hueMac    = solarizedHueCyan - 15;
-static cRGB    rgbFn     = solarizedMagenta;
-static uint8_t hueFn     = solarizedHueMagenta - 15;
-static cRGB    rgbNumpad = solarizedRed;
-static uint8_t hueNumpad = solarizedHueRed - 15;
-static cRGB    rgbMedia  = solarizedGreen;
-static uint8_t hueMedia  = solarizedHueGreen - 15;
-static cRGB    rgbMouse  = solarizedViolet;
-static uint8_t hueMouse  = solarizedHueViolet - 15;
-
-static KeyAddr keyPalmLeft  = KeyAddr(3,6);
-static KeyAddr keyPalmRight = KeyAddr(3,9);
+#define keyPalmLeft  KeyAddr(3,6)
+#define keyPalmRight KeyAddr(3,9)
 
 namespace kaleidoscope {
     namespace plugin {
@@ -190,6 +188,10 @@ namespace kaleidoscope {
                 uint8_t rightHue = 0;
                 bool    rightBreathe = false;
             public:
+                EventHandlerResult onSetup() {
+                    return onLayerChange();
+                }
+
                 EventHandlerResult onLayerChange() {
                     if (Layer.isActive(MEDIA)) {
                         leftRgb = rgbMedia; leftHue = hueMedia;
@@ -299,32 +301,28 @@ KALEIDOSCOPE_INIT_PLUGINS
 
     ( EEPROMSettings
 
+    , IdleLEDs
+
     , Qukeys  // DESIGN: Qukeys is recommended early
     , OneShot
     , Macros
     , MouseKeys
 
-    , BootGreetingEffect
     , LEDControl
+    , LEDDigitalRainEffect
     , LEDActiveLayerColorEffect
     , LEDBreatheEffect
-    , MiamiEffect
-    , LEDRainbowEffect
-    , LEDRainbowWaveEffect
-    , LEDDigitalRainEffect
     , WavepoolEffect
     , StalkerEffect
-    , LEDChaseEffect
+    , MiamiEffect
     , LocalLEDEffect
 
     , HostPowerManagement
-    , IdleLEDs
-    , PersistentIdleLEDs
     );
 
 void setup()
 {
-    const cRGB layerColormap[] PROGMEM =
+    static const cRGB layerColormap[] PROGMEM =
         { rgbBase
         , rgbMac
         , rgbFn
@@ -380,10 +378,16 @@ void setup()
 
     LEDActiveLayerColorEffect.setColormap(layerColormap);
     LEDBreatheEffect.hue = solarizedHueYellow;
+    LEDDigitalRainEffect.setDecayMs(8000);
+    LEDDigitalRainEffect.setDropMs(180);
+    LEDDigitalRainEffect.setNewDropProbability(3);  // Range: 0-255
+    LEDDigitalRainEffect.setTintShadeRatio(127);    // Range: 0-255
+    LEDDigitalRainEffect.setMaximumTint(200);       // Range: 0-255
+    LEDDigitalRainEffect.setColorChannel(LEDDigitalRainEffect.ColorChannel::RED);
     LEDRainbowEffect.brightness(170);
     LEDRainbowWaveEffect.brightness(160);
     StalkerEffect.variant = STALKER(BlazingTrail);
-    DefaultLEDModeConfig.activateLEDModeIfUnconfigured(&LEDOff);
+    LEDControl.setBrightness(147);
 }
 
 void loop() {
