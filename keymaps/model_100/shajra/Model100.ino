@@ -163,17 +163,17 @@ KEYMAPS
 #define solarizedHueGreen    68 * 255 / 360
 
 #define rgbBase   solarizedYellow
-#define hueBase   solarizedHueYellow - 15
+#define hueBase   solarizedHueYellow
 #define rgbMac    solarizedCyan
-#define hueMac    solarizedHueCyan - 15
+#define hueMac    solarizedHueCyan
 #define rgbFn     solarizedMagenta
-#define hueFn     solarizedHueMagenta - 15
+#define hueFn     solarizedHueMagenta
 #define rgbNumpad solarizedRed
-#define hueNumpad solarizedHueRed - 15
+#define hueNumpad solarizedHueRed
 #define rgbMedia  solarizedGreen
-#define hueMedia  solarizedHueGreen - 15
+#define hueMedia  solarizedHueGreen
 #define rgbMouse  solarizedViolet
-#define hueMouse  solarizedHueViolet - 15
+#define hueMouse  solarizedHueViolet
 
 #define keyPalmLeft  KeyAddr(3,6)
 #define keyPalmRight KeyAddr(3,9)
@@ -187,6 +187,15 @@ namespace kaleidoscope {
                 cRGB    rightRgb = CRGB(0,0,0);
                 uint8_t rightHue = 0;
                 bool    rightBreathe = false;
+                cRGB breath_fast(uint8_t hue) {
+                    uint8_t i = (uint16_t)Runtime.millisAtCycleStart() >> 2;
+                    if (i & 0x80) { i = 255 - i; }
+                    i           = i << 1;
+                    uint8_t ii  = (i * i) >> 8;
+                    uint8_t iii = (ii * i) >> 8;
+                    i = (((3 * (uint16_t)(ii)) - (2 * (uint16_t)(iii))) / 2) + 80;
+                    return hsvToRgb(hue, 255, i);
+                }
             public:
                 EventHandlerResult onSetup() {
                     return onLayerChange();
@@ -221,12 +230,12 @@ namespace kaleidoscope {
                     bool leftBreathe =
                         Runtime.hid().keyboard().getKeyboardLEDs() & LED_CAPS_LOCK;
                     if (leftBreathe) {
-                        color = breath_compute(leftHue);
+                        color = breath_fast(leftHue);
                     }
                     ::LEDControl.setCrgbAt(keyPalmLeft, color);
                     color = rightRgb;
                     if (rightBreathe) {
-                        color = breath_compute(rightHue);
+                        color = breath_fast(rightHue);
                     }
                     ::LEDControl.setCrgbAt(keyPalmRight, color);
                     if (Layer.isActive(MOUSE)
