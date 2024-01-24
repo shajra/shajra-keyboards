@@ -78,16 +78,16 @@ nix registry list
 ```
 
     …
-    global flake:templates github:NixOS/templates
+    global flake:nixos-homepage github:NixOS/nixos-homepage
+    global flake:nixos-search github:NixOS/nixos-search
+    global flake:nixpkgs github:NixOS/nixpkgs/nixpkgs-unstable
+    global flake:nur github:nix-community/NUR
     global flake:patchelf github:NixOS/patchelf
     global flake:poetry2nix github:nix-community/poetry2nix
-    global flake:nix-serve github:edolstra/nix-serve
-    global flake:nickel github:tweag/nickel
-    global flake:bundlers github:NixOS/bundlers
     global flake:pridefetch github:SpyHoodle/pridefetch
-    global flake:systems github:nix-systems/default
-    global flake:helix github:helix-editor/helix
     global flake:sops-nix github:Mic92/sops-nix
+    global flake:systems github:nix-systems/default
+    global flake:templates github:NixOS/templates
 
 For example, rather than referencing the flake on the `nixpkgs-unstable` branch of the Nixpkgs GitHub repository with `github:NixOS/nixpkgs/nixpkgs-unstable`, we can just use the simple identifier `nixpkgs`.
 
@@ -196,16 +196,16 @@ As discussed in a previous section, we can use the flakes registry identifier of
 nix search nixpkgs 'gpu|opengl|accel' terminal
 ```
 
-    * legacyPackages.x86_64-linux.alacritty (0.12.3)
+    * legacyPackages.x86_64-linux.alacritty (0.13.1)
       A cross-platform, GPU-accelerated terminal emulator
     
-    * legacyPackages.x86_64-linux.darktile (0.0.10)
+    * legacyPackages.x86_64-linux.darktile (0.0.11)
       A GPU rendered terminal emulator designed for tiling window managers
     
-    * legacyPackages.x86_64-linux.kitty (0.31.0)
+    * legacyPackages.x86_64-linux.kitty (0.32.0)
       A modern, hackable, featureful, OpenGL based terminal emulator
     
-    * legacyPackages.x86_64-linux.rio (0.0.33)
+    * legacyPackages.x86_64-linux.rio (0.0.34)
       A hardware-accelerated GPU terminal emulator powered by WebGPU
     
     * legacyPackages.x86_64-linux.wezterm (20230712-072601-f4abf8fd)
@@ -257,7 +257,7 @@ After a successful call of `nix build`, you'll see one or more symlinks for each
 readlink result*
 ```
 
-    /nix/store/81a5w7faqzrf4lpns1dfah5f0yfwh75a-shajra-keyboards-licenses
+    /nix/store/fbkma429n9az1jgd3avvcai44617s0mp-shajra-keyboards-licenses
 
 Following these symlinks, we can see the files the project provides:
 
@@ -279,7 +279,7 @@ It's common to configure these “result” symlinks as ignored in source contro
 nix path-info .#licenses-thirdparty
 ```
 
-    /nix/store/81a5w7faqzrf4lpns1dfah5f0yfwh75a-shajra-keyboards-licenses
+    /nix/store/fbkma429n9az1jgd3avvcai44617s0mp-shajra-keyboards-licenses
 
 ## Running commands in a shell<a id="sec-4-6"></a>
 
@@ -392,7 +392,7 @@ nix shell --ignore-environment \
     --command which shajra-keyboards-licenses
 ```
 
-    /nix/store/81a5w7faqzrf4lpns1dfah5f0yfwh75a-shajra-keyboards-licenses/bin/shajra-keyboards-licenses
+    /nix/store/fbkma429n9az1jgd3avvcai44617s0mp-shajra-keyboards-licenses/bin/shajra-keyboards-licenses
 
 This is all a consequence of everything discussed in previous sections, but it's good to see clearly that what we do with local flake references can work just as well with remote flake references.
 
@@ -420,7 +420,7 @@ nix profile list
     Flake attribute:    packages.x86_64-linux.licenses-thirdparty
     Original flake URL: git+file:///home/tnks/src/shajra/shajra-keyboards
     Locked flake URL:   git+file:///home/tnks/src/shajra/shajra-keyboards
-    Store paths:        /nix/store/81a5w7faqzrf4lpns1dfah5f0yfwh75a-shajra-keyboards-licenses
+    Store paths:        /nix/store/fbkma429n9az1jgd3avvcai44617s0mp-shajra-keyboards-licenses
 
 If we want to uninstall a program from our profile, we do so by the index from this list:
 
