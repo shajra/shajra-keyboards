@@ -18,8 +18,8 @@ Beyond the keymap, this project offers some streamlined automation with [[nix][N
 you can use for your own keymap.  Or you can use this automation to return your
 keyboard to its factory default.
 
-This automation works for GNU/Linux only (sorry, not MacOS or Windows). If
-you're new to Nix this project bundles a few guides to get you started:
+This automation only works for GNU/Linux (not MacOS or Windows). If you're new
+to Nix, this project bundles a few guides to get you started:
 
 - [[file:doc/nix-introduction.org][Introduction to Nix and motivations to use it]]
 - [[file:doc/nix-installation.org][Nix installation and configuration guide]]
@@ -32,10 +32,10 @@ the motivation behind the mapping.
 
 * The mappings
 
-The “shajra” keymaps for all four keyboards are extremely similar, which works
-out well because the physical layouts of these keyboards are also similar. We
-can more easily switch from one keyboard to another, and retain the design
-benefits of the mapping.
+The “shajra” keymaps for all four keyboards are highly similar, which works out
+well because the physical layouts of these keyboards are also similar. We can
+more easily switch from one keyboard to another and retain the design benefits
+of the mapping.
 
 ** Model 100 and Model 01 “shajra” keymap
 
@@ -45,10 +45,11 @@ benefits of the mapping.
 
 [[file:doc/ergodox-ez-shajra-layout.png]]
 
-Note the Moonlander keyboard is almost an identical layout to the EZ, and not
-illustrated here. There are just two less keys on the thumb cluster. This leads
-to not having either Home or End on the base layer for the Moonlander. And the
-"application menu" keycodes are moved to the bottom-outer corners.
+Note the Moonlander keyboard is an almost identical layout to the EZ and not
+illustrated here. The Moonlander has only two fewer keys on the thumb cluster.
+This leads to not having either Home or End on the base layer for the Moonlander
+(they are still in a function layer). And the "application menu" keycodes are
+moved to the bottom-outer corners.
 
 * Using these key mappings
 
@@ -62,9 +63,9 @@ setting up all the necessary third-party dependencies in a way that
 - is highly reproducible
 - won't conflict with your current system/configuration.
 
-By using Nix, we won't have to worry about downloading QMK or Kaleidoscope, or
-making sure we have the right version of build tools like Arduino installed, or
-messing with Git submodules, or setting up environment variables. Nix does all
+Using Nix, we won't have to worry about downloading QMK or Kaleidoscope,
+ensuring we have the correct versions of build tools like Arduino, without
+messing with Git submodules or setting up environment variables. Nix does all
 this for us. The provided scripts simplify using Nix even further.
 
 The following steps will get your keyboard flashed.
@@ -141,10 +142,10 @@ Moonlander.
 #+end_quote
 
 Once udev is configured, when you plug in the Keyboardio Model 01, a serial
-device should show up under =/dev/serial/by-id= with a name matching
-"usb-Keyboardio_Model_01_*". This is a human-readable symlink pointing to the
-real device which should be something like =/dev/ttyACM0=. On many systems, this
-device is group-owned by the "dialout" or the "uucp" group:
+device should appear under =/dev/serial/by-id= with a name matching
+"usb-Keyboardio_Model_01_*". This human-readable symlink pointing to the device
+should be something like =/dev/ttyACM0=. On many systems, this device is
+group-owned by the "dialout" or the "uucp" group:
 
 In the following example, we can see the device is group-owned by the "dialout"
 group.
@@ -156,7 +157,7 @@ ls -lL /dev/serial/by-id/usb-Keyboardio_Model_01_*
 #+results:
 : crw-rw---- 1 root dialout 166, 0 Dec 28 20:09 /dev/serial/by-id/usb-Keyboardio_Model_01_Ckbio01E-if00
 
-On most distributions, the follow commands should work to join a group
+On most distributions, the following commands should work to join a group
 (substituting =$TTY_GROUP= and =$USERNAME=):
 
 #+begin_src sh :eval no
@@ -175,21 +176,20 @@ groups | grep dialout
 
 ** 5. Unplug and replug your keyboard
 
-Unplug your keyboard(s) and plug them back in, to make sure everything's set to
-program. Rebooting your computer is probably overkill, but would probably work
-too.
+Unplug your keyboard and plug it back in to ensure everything's set to program.
+Rebooting your computer is probably overkill, but would probably work too.
 
 ** 6. Flash your keyboard
 
-There are four scripts provided by this project:
+This project provides four scripts:
 - =flash-ergodoxez=
 - =flash-model01=
 - =flash-model100=
 - =flash-moonlander=
 
-Calling these scripts without any arguments will flash your respective keyboard
-with the "shajra" keymap.  There is a "--factory" switch to flash your keyboard
-back to a factory default keymap.
+Calling these scripts without arguments will flash your respective keyboard with
+the "shajra" keymap.  There is a "--factory" switch to flash your keyboard back
+to a factory default keymap.
 
 If you enabled flakes in your Nix installation, you can run these scripts
 without installing them. Here's an invocation illustrating doing so with
@@ -210,7 +210,7 @@ head -c350 < <(./flash-ergodoxez) | ansifilter
 : =================================================================
 : 
 : FLASH SOURCE: /nix/store/hr9jw8wf7fjqych406r7r04wbikn0rhk-qmk-builtin-shajra-src
-: FLASH BINARY: /nix/store/jdzx18p61pv07wv3nsk7f0bxqqcmfkxa-ergodoxez-builtin-shajra.hex
+: FLASH BINARY: /nix/store/63xg05b7f7y20bg6n167c0k6hnvdylvv-ergodoxez-builtin-shajra.hex
 : 
 : ⠋ Press the reset button of your keyboard
 
@@ -227,9 +227,9 @@ cd shajra-keyboards
 ./flash-ergodoxez
 #+end_src
 
-Note, the first time you run the commands described below, you'll see Nix doing
-a lot of downloading and compiling. After that, subsequent invocations should be
-quicker with less output.
+Note that the first time you run the commands described below, you'll see Nix
+doing a lot of downloading and compiling. After that, subsequent invocations
+should be quicker with less output.
 
 *** Flashing an Ergodox EZ keyboard
 
@@ -256,18 +256,18 @@ keyboard.
 * Reverting to the factory default mapping
 
 This project's scripts won't save off your previous keymap from your keyboard.
-But we can revert to the keymap that your keyboard shipped with.
+But we can revert to the OEM keymap that your keyboard shipped with.
 
-This can be done with the =-F= / =--factory= switch, which all the flashing
-scripts support. These scripts have a =-h= / =--help= switch in case you forget
-your options.
+Reverting to the OEM keymap can be done with the =-F= / =--factory= switch,
+which all the flashing scripts support. If you forget your options, these
+scripts have a =-h= / =--help= switch.
 
 * Customization
 
 ** Customizing keymaps
 
-The provided code is fairly compact. If you look in the =keymaps= directory, you
-should find familiar files that you would edit in QMK or Kaleidoscope projects,
+The provided code is relatively compact. In the =keymaps= directory, you should
+find familiar files you would edit in QMK or Kaleidoscope projects,
 respectively. These keymaps are compiled into the flashing scripts provided with
 this project.
 
@@ -278,15 +278,14 @@ choice, and they'll be compiled in as well.
 If you don't want to use keymaps compiled into the flashing scripts, you can use
 another directory of keymaps at runtime with the =-K= / =-keymaps= switch.
 
-Then you can use the =-k= / =--keymap= switch of either script to load your
-custom keymap by the name you chose for the keymap in the "keymaps" directory.
-The scripts should pick up changes, rebuild anything necessary, and flash your
-keyboard.
+Then you can use the =-k= / =--keymap= switch to load your custom keymap by the
+name you chose for the keymap in the "keymaps" directory.  The scripts should
+pick up changes, rebuild anything necessary, and flash your keyboard.
 
 The used keymap source code is copied into =/nix/store=, and the invocation of
 the flashing scripts will print out a "FLASH SOURCE:" line indicating the source
-used for compiling/flashing for your reference. These are the full source trees
-you'd normally use if following the QMK or Kaleidoscope documentation manually.
+used for compiling/flashing for your reference. These are the whole source trees
+you'd typically use if following the QMK or Kaleidoscope documentation manually.
 
 ** Development
 
@@ -306,11 +305,11 @@ tree $(nix build --no-link --print-out-paths) 2>/dev/null
 
 #+results: nix-build
 #+begin_example
-/nix/store/vr4awhpv7dk0hdbs8g9d1flybv44krk5-shajra-keyboards-ci
-├── build-ergodoxez-builtin-shajra-flash -> /nix/store/xhi6v5i5mvgvfh8b5z32dybn70jlv55x-ergodoxez-builtin-shajra-flash
-├── build-ergodoxez-builtin-shajra-hex -> /nix/store/jdzx18p61pv07wv3nsk7f0bxqqcmfkxa-ergodoxez-builtin-shajra.hex
-├── build-ergodoxez-factory-flash -> /nix/store/6krdd5a1x30437wbfxwbzjp05f9js7qf-ergodoxez-factory-flash
-├── build-ergodoxez-factory-hex -> /nix/store/qvrm1y19x280h8wf87p7z5r7qi1ks1q2-ergodoxez-factory.hex
+/nix/store/7mpq6w2qhann4kidnp0qz07asn96xscg-shajra-keyboards-ci
+├── build-ergodoxez-builtin-shajra-flash -> /nix/store/dqq2v9qrk94797k37wvqjayilck7zf48-ergodoxez-builtin-shajra-flash
+├── build-ergodoxez-builtin-shajra-hex -> /nix/store/63xg05b7f7y20bg6n167c0k6hnvdylvv-ergodoxez-builtin-shajra.hex
+├── build-ergodoxez-factory-flash -> /nix/store/3nw0fy9684l7ym56vlkbwgv4ipahffiz-ergodoxez-factory-flash
+├── build-ergodoxez-factory-hex -> /nix/store/vysnvcrn9drhvqx1ksvhgzdyhh5lsqri-ergodoxez-factory.hex
 ├── build-model01-builtin-shajra-flash -> /nix/store/3kbvh18n7w40v6hyywyiljkzhscnnmd6-model01-builtin-shajra-flash
 ├── build-model01-builtin-shajra-hex -> /nix/store/0f191rrfgvvjkazj2r23fk69xvf5bh6z-model01-builtin-shajra-hex
 ├── build-model01-factory-flash -> /nix/store/4gyv69sgnv5dhfp63aqhs6cgrjb55hqg-model01-factory-flash
@@ -319,14 +318,14 @@ tree $(nix build --no-link --print-out-paths) 2>/dev/null
 ├── build-model100-builtin-shajra-hex -> /nix/store/fr615qzqrzsvcsssgig934rd8sg9ghhh-model100-builtin-shajra-hex
 ├── build-model100-factory-flash -> /nix/store/d2lxfb32yg0gwhal6d8mbkvy0rm83ghv-model100-factory-flash
 ├── build-model100-factory-hex -> /nix/store/x0qja02m7wqbsyi9875lzzdv1q307szp-model100-factory-hex
-├── build-moonlander-builtin-shajra-flash -> /nix/store/axzv027c864lkvz5y15c08qq2i5w6a3b-moonlander-builtin-shajra-flash
-├── build-moonlander-builtin-shajra-hex -> /nix/store/paqxg00b5hjrfs8l0rnwvhlznbfsqv5v-moonlander-builtin-shajra.bin
-├── build-moonlander-factory-flash -> /nix/store/ivcdv8vgi25aw97x2l1bylv1743vyz7g-moonlander-factory-flash
-├── build-moonlander-factory-hex -> /nix/store/qchj9z4sqiwlmqsnbxpn59awwbkrk13k-moonlander-factory.bin
-├── flash-ergodoxez -> /nix/store/wr3qspf1c7x6616dfr976qvkhgi7ny25-flash-ergodoxez
-├── flash-model01 -> /nix/store/fi8i6s63040lgr5fk3h1my51a4qvqscp-flash-model01
-├── flash-model100 -> /nix/store/c3qrbwavh8a3b89jhpmcy5zx8l0k53bx-flash-model100
-├── flash-moonlander -> /nix/store/j0m1pf2y16sa91wmpqdjy5chx7cdkbxr-flash-moonlander
+├── build-moonlander-builtin-shajra-flash -> /nix/store/7g3lj42527dq8j6f9bmf3a73a1sjw5il-moonlander-builtin-shajra-flash
+├── build-moonlander-builtin-shajra-hex -> /nix/store/vmjrnz1w69x560l3s9bp23ll95d9ry57-moonlander-builtin-shajra.bin
+├── build-moonlander-factory-flash -> /nix/store/5hk0qjp8fkq5lx0pzgdpq37wfbk7s777-moonlander-factory-flash
+├── build-moonlander-factory-hex -> /nix/store/195v42a1hbmc9b9l9jas3jz285ki9jvv-moonlander-factory.bin
+├── flash-ergodoxez -> /nix/store/cvjpfm6l36f7s3n34990wv634qisb9hi-flash-ergodoxez
+├── flash-model01 -> /nix/store/ldlqpkxgzw151p4cvilybq3rkhk3x6ak-flash-model01
+├── flash-model100 -> /nix/store/kg6anvapld05y1kqm7xjd41jg7v404gv-flash-model100
+├── flash-moonlander -> /nix/store/l25iiyryzz1xjpwjrizj9v3b20xn1fmp-flash-moonlander
 └── licenses -> /nix/store/fbkma429n9az1jgd3avvcai44617s0mp-shajra-keyboards-licenses
 
 18 directories, 4 files
@@ -334,14 +333,14 @@ tree $(nix build --no-link --print-out-paths) 2>/dev/null
 
 * Release
 
-The "main" branch of the repository on GitHub has the latest released version
-of this code. There is currently no commitment to either forward or backward
-compatibility. However the scripts for compiling/flashing are largely stable and
-are less likely to change than the “shajra” keymap.
+The "main" branch of the GitHub repository has the latest version of this code.
+There is currently no commitment to either forward or backward compatibility.
+However, the scripts for compiling/flashing are considered stable and less
+likely to change than the “shajra” keymap.
 
 "user/shajra" branches are personal branches that may be force-pushed to. The
-"main" branch should not experience force-pushes and is recommended for
-general use.
+"main" branch should not experience force-pushes and is recommended for general
+use.
 
 * License
 

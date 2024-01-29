@@ -33,3 +33,7 @@
 #+link: vim https://www.vim.org
 #+link: wally-udev https://github.com/zsa/wally/blob/master/dist/linux64/50-wally.rules
 #+link: zilent https://zealpc.net/products/zilents
+#+link: mousemedia-ergodoxez https://github.com/shajra/shajra-keyboards/blob/main/keymaps/ergodox_ez/shajra/keymap.c#L102-L142
+#+link: mousemedia-moonlander https://github.com/shajra/shajra-keyboards/blob/main/keymaps/moonlander/shajra/keymap.c#L55-L70
+#+link: mousemedia-model01 https://github.com/shajra/shajra-keyboards/blob/main/keymaps/model_01/shajra/Model01.ino#L113-L144
+#+link: mousemedia-model100 https://github.com/shajra/shajra-keyboards/blob/main/keymaps/model_100/shajra/Model100.ino#L113-L144
