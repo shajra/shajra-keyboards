@@ -25,39 +25,45 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
     , KC_GRV,            KC_Q,          KC_W,          KC_E,            KC_R,                  KC_T, KC_PGUP
     , LT(MEDIA, KC_TAB), KC_A,          KC_S,          KC_D,            KC_F,                  KC_G
     , LSFT_T(KC_LBRC),   KC_Z,          KC_X,          KC_C,            KC_V,                  KC_B, KC_PGDN
-    , _______,           OSM(MOD_RALT), LSFT(KC_RALT), LCTL_T(KC_LEFT), LGUI_T(KC_RIGHT)
+    , _______,           OSM(MOD_RALT), LSFT(KC_RALT), LALT_T(KC_LEFT), LGUI_T(KC_RIGHT)
     ,                                                                            LT(NUMPAD, KC_DEL), KC_HOME
     ,                                                                                                KC_APP
-    ,                                                         LSFT_T(KC_BSPC), LT(FUNCTION, KC_TAB), LALT_T(KC_ESC)
+    ,                                                         LSFT_T(KC_BSPC), LT(FUNCTION, KC_TAB), LCTL_T(KC_ESC)
     // right hand
     , _______, KC_6, KC_7,            KC_8,          KC_9,          KC_0,          TG(NUMPAD)
     , KC_EQL,  KC_Y, KC_U,            KC_I,          KC_O,          KC_P,          KC_BSLS
     ,          KC_H, KC_J,            KC_K,          KC_L,          KC_SCLN,       LT(MOUSE, KC_QUOT)
     , KC_MINS, KC_N, KC_M,            KC_COMM,       KC_DOT,        KC_SLSH,       RSFT_T(KC_RBRC)
-    ,                LALT_T(KC_DOWN), RCTL_T(KC_UP), RSFT(KC_RALT), OSM(MOD_RALT), _______
+    ,                LALT_T(KC_DOWN), RGUI_T(KC_UP), RSFT(KC_RALT), OSM(MOD_RALT), _______
     , KC_END, KC_INS
     , KC_APP
-    , RGUI_T(KC_GRV), LT(FUNCTION, KC_ENT), LSFT_T(KC_SPC)
+    , RCTL_T(KC_GRV), LT(FUNCTION, KC_ENT), RSFT_T(KC_SPC)
     )
 , [MAC] = LAYOUT_ergodox
+    // DESIGN: 2024-02-03: I believe I have found a way to use both Linux and
+    // Mac systems to my liking that doesn't require toggling between layers.  I
+    // haven't ripped out the layer because I want to try my new base layer on
+    // both systems for a little while.  For now, this layer just changes the
+    // associated layer lighting, no more.
+    //
     // left hand
     ( _______, _______, _______, _______, _______, _______, _______
     , _______, _______, _______, _______, _______, _______, _______
     , _______, _______, _______, _______, _______, _______
     , _______, _______, _______, _______, _______, _______, _______
-    , _______, _______, _______, _______, LALT_T(KC_RIGHT)
+    , _______, _______, _______, _______, _______
     ,                                              _______, _______
     ,                                                       _______
-    ,                                     _______, _______, LGUI_T(KC_ESC)
+    ,                                     _______, _______, _______
     // right hand
-    , _______, _______, _______,         _______, _______, _______, _______
-    , _______, _______, _______,         _______, _______, _______, _______
-    ,          _______, _______,         _______, _______, _______, _______
-    , _______, _______, _______,         _______, _______, _______, _______
-    ,                   RGUI_T(KC_DOWN), _______, _______, _______, _______
+    , _______, _______, _______, _______, _______, _______, _______
+    , _______, _______, _______, _______, _______, _______, _______
+    ,          _______, _______, _______, _______, _______, _______
+    , _______, _______, _______, _______, _______, _______, _______
+    ,                   _______, _______, _______, _______, _______
     , _______, _______
     , _______
-    , LALT_T(KC_GRV), _______, _______
+    , _______, _______, _______
     )
 , [FUNCTION] = LAYOUT_ergodox
     // left hand

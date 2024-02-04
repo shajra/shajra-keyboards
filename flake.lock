@@ -177,11 +177,11 @@
         "nixpkgs-lib": "nixpkgs-lib"
       },
       "locked": {
-        "lastModified": 1704982712,
-        "narHash": "sha256-2Ptt+9h8dczgle2Oo6z5ni5rt/uLMG47UFTR1ry/wgg=",
+        "lastModified": 1706830856,
+        "narHash": "sha256-a0NYyp+h9hlb7ddVz4LUn1vT/PLwqfrWYcHMvFB1xYg=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "07f6395285469419cf9d078f59b5b49993198c00",
+        "rev": "b253292d9c0a5ead9bc98c4e9a26c6312e27d69f",
         "type": "github"
       },
       "original": {
@@ -195,11 +195,11 @@
         "nixpkgs-lib": "nixpkgs-lib_2"
       },
       "locked": {
-        "lastModified": 1704982712,
-        "narHash": "sha256-2Ptt+9h8dczgle2Oo6z5ni5rt/uLMG47UFTR1ry/wgg=",
+        "lastModified": 1706830856,
+        "narHash": "sha256-a0NYyp+h9hlb7ddVz4LUn1vT/PLwqfrWYcHMvFB1xYg=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "07f6395285469419cf9d078f59b5b49993198c00",
+        "rev": "b253292d9c0a5ead9bc98c4e9a26c6312e27d69f",
         "type": "github"
       },
       "original": {
@@ -229,11 +229,11 @@
     "keyboardio-kaleidoscope-bundle": {
       "flake": false,
       "locked": {
-        "lastModified": 1702669185,
-        "narHash": "sha256-BgwM8UylrpyRYUfGfMiO6mvXaUJDQgmbiw7UoqsPW/0=",
+        "lastModified": 1706808865,
+        "narHash": "sha256-GQP0X7TpSt8bH4jrzaxDZ92fTppBO7RMm3kLaIgfVM8=",
         "ref": "refs/heads/master",
-        "rev": "d65eb1e23e52f096efc365ead5df4986be28500a",
-        "revCount": 300,
+        "rev": "494587ad6121cafbacd001a3d527d5e95ea29278",
+        "revCount": 302,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/keyboardio/Kaleidoscope-Bundle-Keyboardio"
@@ -335,11 +335,11 @@
         "ox-gfm": "ox-gfm"
       },
       "locked": {
-        "lastModified": 1706481697,
-        "narHash": "sha256-SD0khCAbD2naNjQ8AcCeGw+3cTl6HUlE2KSRebqk0UM=",
+        "lastModified": 1707026290,
+        "narHash": "sha256-eLXFCLZXsFNxrlet/A268LypG5SEHbXHl0JHzqthIBk=",
         "owner": "shajra",
         "repo": "nix-project",
-        "rev": "70cdc1e022ed4bf76def964a700839d30681615d",
+        "rev": "f7461753eba229b57e699b4dd564136360dbf297",
         "type": "github"
       },
       "original": {
@@ -351,11 +351,11 @@
     "nixpkgs-lib": {
       "locked": {
         "dir": "lib",
-        "lastModified": 1703961334,
-        "narHash": "sha256-M1mV/Cq+pgjk0rt6VxoyyD+O8cOUiai8t9Q6Yyq4noY=",
+        "lastModified": 1706550542,
+        "narHash": "sha256-UcsnCG6wx++23yeER4Hg18CXWbgNpqNXcHIo5/1Y+hc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "b0d36bd0a420ecee3bc916c91886caca87c894e9",
+        "rev": "97b17f32362e475016f942bbdfda4a4a72a8a652",
         "type": "github"
       },
       "original": {
@@ -369,11 +369,11 @@
     "nixpkgs-lib_2": {
       "locked": {
         "dir": "lib",
-        "lastModified": 1703961334,
-        "narHash": "sha256-M1mV/Cq+pgjk0rt6VxoyyD+O8cOUiai8t9Q6Yyq4noY=",
+        "lastModified": 1706550542,
+        "narHash": "sha256-UcsnCG6wx++23yeER4Hg18CXWbgNpqNXcHIo5/1Y+hc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "b0d36bd0a420ecee3bc916c91886caca87c894e9",
+        "rev": "97b17f32362e475016f942bbdfda4a4a72a8a652",
         "type": "github"
       },
       "original": {
@@ -386,11 +386,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1706479965,
-        "narHash": "sha256-SdyKpxU1TOvHUFjzYzfpDajxcia//rkon6rMo3NBfFU=",
+        "lastModified": 1707016070,
+        "narHash": "sha256-P1bbrI4hYdCIg/XVS44xiHl1OHM68vlNP6L6YRQsUdM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "dc279167b20580a12a6fd14e72d837a996f6afb1",
+        "rev": "e1297790f1c4ef4f607a907ba9ce0c4b3a557609",
         "type": "github"
       },
       "original": {
@@ -402,11 +402,11 @@
     },
     "nixpkgs-stable-darwin": {
       "locked": {
-        "lastModified": 1706323961,
-        "narHash": "sha256-cfDeRh8YCX8matISbQl8ZuWJS2bzAruG6kJgdjJ3KhA=",
+        "lastModified": 1706922953,
+        "narHash": "sha256-45hHA6vQBIcn5bqxi5rtOO+r5rXKSqfWButJJQLHT1s=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "9658699e3ab26e6f499c95e2e9093819cac777b3",
+        "rev": "4f24018c731df5f1d522aefb0b9c958e2a701552",
         "type": "github"
       },
       "original": {
@@ -418,11 +418,11 @@
     },
     "nixpkgs-stable-linux": {
       "locked": {
-        "lastModified": 1706098335,
-        "narHash": "sha256-r3dWjT8P9/Ah5m5ul4WqIWD8muj5F+/gbCdjiNVBKmU=",
+        "lastModified": 1706826059,
+        "narHash": "sha256-N69Oab+cbt3flLvYv8fYnEHlBsWwdKciNZHUbynVEOA=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "a77ab169a83a4175169d78684ddd2e54486ac651",
+        "rev": "25e3d4c0d3591c99929b1ec07883177f6ea70c9d",
         "type": "github"
       },
       "original": {
@@ -434,11 +434,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1706367331,
-        "narHash": "sha256-AqgkGHRrI6h/8FWuVbnkfFmXr4Bqsr4fV23aISqj/xg=",
+        "lastModified": 1706925685,
+        "narHash": "sha256-hVInjWMmgH4yZgA4ZtbgJM1qEAel72SYhP5nOWX4UIM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "160b762eda6d139ac10ae081f8f78d640dd523eb",
+        "rev": "79a13f1437e149dc7be2d1290c74d378dad60814",
         "type": "github"
       },
       "original": {
@@ -467,11 +467,11 @@
     "qmk-factory": {
       "flake": false,
       "locked": {
-        "lastModified": 1706004123,
-        "narHash": "sha256-KwVQVxNC8dTTeRmycWfENGZtnqt0n8sY0O2LGLlwFsk=",
+        "lastModified": 1706977027,
+        "narHash": "sha256-FqRuk5LnW4MJhzb6ODYTXHXDmP5N+HiN25q3NFTnkFY=",
         "ref": "refs/heads/master",
-        "rev": "b7468f47857ad20a031906ccbd654541222a0d26",
-        "revCount": 26512,
+        "rev": "fa2fb9bbe03706219b5aff3d312ea57ace1e4b3a",
+        "revCount": 26531,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/qmk/qmk_firmware"

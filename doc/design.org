@@ -403,36 +403,6 @@ don't have to toggle between switching between shifting the Base layer and
 toggling the Function layer (for example, this occurs with programming operators
 such as =<*>=, and =<$>=).
 
-** Swapping =GUI= and =Alt= mappings
-
-For different operating systems, we want to have a modifier to set user-specific
-custom key bindings. We might even want to have similar operations between
-various operating systems. For instance, we might have user-specific
-keybindings for window management to have a consistent experience between
-different operating systems. But we don't want these keybindings to overlap with
-useful default OS/application-level keybindings.
-
-On Macs, the =Option= (=⌥=) key is used less frequently for default
-OS/application keybindings than =Cmd= (=⌘=) or =Ctrl=. So the =Left Alt= keycode
-is good to use as a user/custom modifier, since it's interpreted as =Left
-Option= key by Macs.
-
-On GNU/Linux and Windows, the =Super= (=Windows=) key is used less frequently
-for default OS/application keybinding than =Ctrl= or =Alt=. So the =Left GUI=
-keycode is good to use as a user/custom modifier, since it's interpreted as a
-=Left Super= (=Left Windows=) key. However, Macs interpret this keycode as =Cmd=
-(=⌘=), which conflicts with common keybindings (=⌘-c= or =⌘-v= for copy/paste,
-for instance).
-
-If we put our custom keybindings on the =GUI= keycode for GNU/Linux and Windows
-operating systems, and if we put similar keybindings on the =Alt= keycode for
-Macs, then it can be helpful to swap the locations of these two modifiers when
-switching between operating systems.  This way, similar keybinds retain the same
-location on our Ergodox EZ, Moonlander, and Model 01/100 keyboards.
-
-This is why the "shajra" keymap provides a function layer key to swap the =GUI=
-and =Left Alt= keycode locations.
-
 ** Media and Mouse layers
 
 This project doesn't provide diagrams of the Media or Mouse layers, but

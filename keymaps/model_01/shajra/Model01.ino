@@ -63,6 +63,16 @@ KEYMAPS
         , Key_End
         )
     , [MAC] = KEYMAP_STACKED
+        // DESIGN: 2024-02-03: I believe I have found a way to use both Linux
+        // and Mac systems to my liking that doesn't require toggling between
+        // layers.  I haven't ripped out the layer because I want to try my new
+        // base layer on both systems for a little while.  For now, this layer
+        // just changes the associated layer lighting, no more.
+        //
+        // DESIGN: I've removed the QuKey assignments for this layer below, but
+        // if resurrecting them for this layer, you need assignements in this
+        // layer, even if they appear redundant with the BASE layer.
+        //
         // left hand
         ( ___, ___, ___, ___, ___, ___, ___
         , ___, ___, ___, ___, ___, ___, ___
@@ -377,12 +387,6 @@ void setup()
         , kaleidoscope::plugin::Qukey(BASE, KeyAddr(1, 8), Key_RightShift)
         , kaleidoscope::plugin::Qukey(BASE, KeyAddr(2, 8), Key_RightControl)
         , kaleidoscope::plugin::Qukey(BASE, KeyAddr(3, 8), Key_RightGui)
-
-        , kaleidoscope::plugin::Qukey(MAC, KeyAddr(0, 7), Key_LeftAlt)
-        , kaleidoscope::plugin::Qukey(MAC, KeyAddr(3, 7), Key_LeftGui)
-
-        , kaleidoscope::plugin::Qukey(MAC, KeyAddr(0, 8), Key_RightGui)
-        , kaleidoscope::plugin::Qukey(MAC, KeyAddr(3, 8), Key_LeftAlt)
         )
 
     LEDActiveLayerColorEffect.setColormap(layerColormap);

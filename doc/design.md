@@ -16,8 +16,7 @@
   - [More on `Alt Gr` and `Compose`](#altgr_and_compose)
   - [Mapping more non-modifiers](#sec-5-7)
   - [Mapping the Function layer](#sec-5-8)
-  - [Swapping `GUI` and `Alt` mappings](#sec-5-9)
-  - [Media and Mouse layers](#sec-5-10)
+  - [Media and Mouse layers](#sec-5-9)
 
 
 # Designing a keyboard mapping<a id="sec-1"></a>
@@ -246,19 +245,7 @@ There are a few ways to lay out keycodes in the Function layer. Here are some re
 
 Regarding the last item in this table, some keys already exist from our Base layer with shifting, but it's nice to have all our symbols on one layer, so we don't have to toggle between switching between shifting the Base layer and toggling the Function layer (for example, this occurs with programming operators such as `<*>`, and `<$>`).
 
-## Swapping `GUI` and `Alt` mappings<a id="sec-5-9"></a>
-
-For different operating systems, we want to have a modifier to set user-specific custom key bindings. We might even want to have similar operations between various operating systems. For instance, we might have user-specific keybindings for window management to have a consistent experience between different operating systems. But we don't want these keybindings to overlap with useful default OS/application-level keybindings.
-
-On Macs, the `Option` (`⌥`) key is used less frequently for default OS/application keybindings than `Cmd` (`⌘`) or `Ctrl`. So the `Left Alt` keycode is good to use as a user/custom modifier, since it's interpreted as `Left Option` key by Macs.
-
-On GNU/Linux and Windows, the `Super` (`Windows`) key is used less frequently for default OS/application keybinding than `Ctrl` or `Alt`. So the `Left GUI` keycode is good to use as a user/custom modifier, since it's interpreted as a `Left Super` (`Left Windows`) key. However, Macs interpret this keycode as `Cmd` (`⌘`), which conflicts with common keybindings (`⌘-c` or `⌘-v` for copy/paste, for instance).
-
-If we put our custom keybindings on the `GUI` keycode for GNU/Linux and Windows operating systems, and if we put similar keybindings on the `Alt` keycode for Macs, then it can be helpful to swap the locations of these two modifiers when switching between operating systems. This way, similar keybinds retain the same location on our Ergodox EZ, Moonlander, and Model 01/100 keyboards.
-
-This is why the "shajra" keymap provides a function layer key to swap the `GUI` and `Left Alt` keycode locations.
-
-## Media and Mouse layers<a id="sec-5-10"></a>
+## Media and Mouse layers<a id="sec-5-9"></a>
 
 This project doesn't provide diagrams of the Media or Mouse layers, but hopefully you can follow the code for these layers in the respective code for the [Ergodox EZ](https://github.com/shajra/shajra-keyboards/blob/main/keymaps/ergodox_ez/shajra/keymap.c#L102-L142), [Moonlander](https://github.com/shajra/shajra-keyboards/blob/main/keymaps/moonlander/shajra/keymap.c#L55-L70), [Model 01](https://github.com/shajra/shajra-keyboards/blob/main/keymaps/model_01/shajra/Model01.ino#L113-L144), and [Model 100](https://github.com/shajra/shajra-keyboards/blob/main/keymaps/model_100/shajra/Model100.ino#L113-L144).
 

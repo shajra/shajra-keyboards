@@ -23,18 +23,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
     , LT(MEDIA, KC_TAB), KC_A, KC_S, KC_D, KC_F, KC_G, KC_PGDN, /**/ KC_MINS,  KC_H, KC_J, KC_K,    KC_L,   KC_SCLN, LT(MOUSE, KC_QUOT)
     , LSFT_T(KC_LBRC),   KC_Z, KC_X, KC_C, KC_V, KC_B,          /**/           KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, RSFT_T(KC_RBRC)
 
-    , KC_APP, OSM(MOD_RALT), LSFT(KC_RALT), LCTL_T(KC_LEFT), LGUI_T(KC_RIGHT), LT(NUMPAD, KC_DEL)
-    ,                                         KC_INS, LALT_T(KC_DOWN), RCTL_T(KC_UP), RSFT(KC_RALT), OSM(MOD_RALT), KC_APP
+    , KC_APP, OSM(MOD_RALT), LSFT(KC_RALT), LALT_T(KC_LEFT), LGUI_T(KC_RIGHT), LT(NUMPAD, KC_DEL)
+    ,                                         KC_INS, LALT_T(KC_DOWN), RGUI_T(KC_UP), RSFT(KC_RALT), OSM(MOD_RALT), KC_APP
 
-    , LSFT_T(KC_BSPC), LT(FUNCTION, KC_TAB), LALT_T(KC_ESC), /**/ RGUI_T(KC_GRV), LT(FUNCTION, KC_ENT), LSFT_T(KC_SPC)
+    , LSFT_T(KC_BSPC), LT(FUNCTION, KC_TAB), LCTL_T(KC_ESC), /**/ RCTL_T(KC_GRV), LT(FUNCTION, KC_ENT), RSFT_T(KC_SPC)
     )
 , [MAC] = LAYOUT_moonlander
+    // DESIGN: 2024-02-03: I believe I have found a way to use both Linux and
+    // Mac systems to my liking that doesn't require toggling between layers.  I
+    // haven't ripped out the layer because I want to try my new base layer on
+    // both systems for a little while.  For now, this layer just changes the
+    // associated layer lighting, no more.
     ( _______, _______, _______, _______, _______, _______, _______, /**/ _______, _______, _______, _______, _______, _______, _______
     , _______, _______, _______, _______, _______, _______, _______, /**/ _______, _______, _______, _______, _______, _______, _______
     , _______, _______, _______, _______, _______, _______, _______, /**/ _______, _______, _______, _______, _______, _______, _______
     , _______, _______, _______, _______, _______, _______,          /**/          _______, _______, _______, _______, _______, _______
-    , _______, _______, _______, _______, LALT_T(KC_RIGHT), _______, /**/ _______,  RGUI_T(KC_DOWN), _______, _______, _______, _______
-    ,                              _______, _______, LGUI_T(KC_ESC), /**/ LALT_T(KC_GRV), _______, _______
+    , _______, _______, _______, _______, _______,          _______, /**/ _______,          _______, _______, _______, _______, _______
+    ,                                     _______, _______, _______, /**/ _______, _______, _______
     )
 , [FUNCTION] = LAYOUT_moonlander
     ( RGB_VAI, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   RGB_TOG, /**/ TG(MAC),  KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10, _______
