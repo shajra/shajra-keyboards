@@ -389,6 +389,8 @@ void setup()
         , kaleidoscope::plugin::Qukey(BASE, KeyAddr(3, 8), Key_RightGui)
         )
 
+    OneShot.disableStickabilityForModifiers();
+
     LEDActiveLayerColorEffect.setColormap(layerColormap);
     LEDBreatheEffect.hue = solarizedHueYellow;
     LEDDigitalRainEffect.setDecayMs(8000);
