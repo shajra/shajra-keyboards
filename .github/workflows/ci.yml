@@ -6,10 +6,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: DeterminateSystems/nix-installer-action@main
     - uses: DeterminateSystems/magic-nix-cache-action@main
-    - uses: cachix/cachix-action@v12
+    - uses: cachix/cachix-action@v14
       with:
         name: shajra
         signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
