@@ -81,7 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
     ,          KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_COLN, KC_F12
     , KC_UNDS, KC_BSLS, KC_PIPE, KC_LT,   KC_GT,   KC_QUES, _______
     ,                   KC_DOWN, KC_UP,   _______, _______, QK_BOOT
-    , _______, _______
+    , _______, OSM(MOD_RGUI)
     , _______
     , KC_GRV,  KC_ENT,  KC_SPC
     )

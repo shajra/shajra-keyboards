@@ -46,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
     , RGB_VAD, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_QUOT, KC_HOME, /**/ KC_PLUS, _______, KC_AMPR, KC_ASTR, KC_TILD, KC_SLSH, KC_F11
     , RGB_HUI, KC_CIRC, KC_DLR,  KC_LPRN, KC_RPRN, KC_DQUO, KC_END,  /**/ KC_UNDS, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_COLN, KC_F12
     , RGB_HUD, KC_HASH, KC_PERC, KC_LBRC, KC_RBRC, KC_GRV,           /**/          KC_BSLS, KC_PIPE, KC_LT,   KC_GT,   KC_QUES, _______
-    , _______, _______, _______, KC_LEFT, KC_RGHT,          KC_DEL,  /**/ _______,          KC_DOWN, KC_UP,   _______, _______, QK_BOOT
+    , _______, _______, _______, KC_LEFT, KC_RGHT,          KC_DEL,  /**/ OSM(MOD_RGUI),    KC_DOWN, KC_UP,   _______, _______, QK_BOOT
     ,                                     KC_BSPC, KC_TAB,  KC_ESC,  /**/ KC_GRV,  KC_ENT,  KC_SPC
     )
 , [NUMPAD] = LAYOUT_moonlander

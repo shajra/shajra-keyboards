@@ -78,14 +78,14 @@ KEYMAPS
         , ___, ___, ___, ___, ___, ___, ___
         , ___, ___, ___, ___, ___, ___
         , ___, ___, ___, ___, ___, ___, ___
-        , Key_Delete, ___, ___, Key_Escape
+        , ___, ___, ___, ___   // BEFORE: , key_Delete, ___, ___, Key_Escape
         , ___
         // right hand
         , ___, ___, ___, ___, ___, ___, ___
         , ___, ___, ___, ___, ___, ___, ___
         ,      ___, ___, ___, ___, ___, ___
         , ___, ___, ___, ___, ___, ___, ___
-        , Key_Backtick, ___, ___, Key_Insert
+        , ___, ___, ___, ___   // BEFORE: , Key_Backtick, ___, ___, Key_Insert
         , ___
         )
     , [FUNCTION] = KEYMAP_STACKED
@@ -102,7 +102,7 @@ KEYMAPS
         ,                     Key_LeftArrow, Key_DownArrow,         Key_UpArrow,       Key_RightArrow,       LSHIFT(Key_Semicolon), LSHIFT(Key_RightAlt)
         , LSHIFT(Key_Minus),  Key_Backslash, LSHIFT(Key_Backslash), LSHIFT(Key_Comma), LSHIFT(Key_Period),   LSHIFT(Key_Slash),     OSM(RightAlt)
         , Key_Backtick, Key_Enter, Key_Spacebar, Key_Insert
-        , ShiftToLayer(NUMPAD)
+        , OSM(RightGui)
         )
     , [NUMPAD] =  KEYMAP_STACKED
         // left hand
@@ -388,6 +388,7 @@ void setup()
         , kaleidoscope::plugin::Qukey(BASE, KeyAddr(2, 8), Key_RightControl)
         , kaleidoscope::plugin::Qukey(BASE, KeyAddr(3, 8), Key_RightGui)
         )
+    Qukeys.setMaxIntervalForTapRepeat(0);
 
     OneShot.disableStickabilityForModifiers();
 
