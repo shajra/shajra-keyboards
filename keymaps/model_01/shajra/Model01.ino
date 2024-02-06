@@ -11,6 +11,7 @@
 #include "Kaleidoscope-LEDControl.h"
 #include "Kaleidoscope-LEDEffects.h"
 #include "Kaleidoscope-LED-ActiveLayerColor.h"
+#include "Kaleidoscope-LED-ActiveModColor.h"
 #include "Kaleidoscope-LEDEffect-Breathe.h"
 #include "Kaleidoscope-LEDEffect-Chase.h"
 #include "Kaleidoscope-LEDEffect-DigitalRain.h"
@@ -334,6 +335,7 @@ KALEIDOSCOPE_INIT_PLUGINS
     , WavepoolEffect
     , StalkerEffect
     , MiamiEffect
+    , ActiveModColorEffect
     , LocalLEDEffect
 
     , HostPowerManagement
@@ -393,6 +395,8 @@ void setup()
     OneShot.disableStickabilityForModifiers();
 
     LEDActiveLayerColorEffect.setColormap(layerColormap);
+    ActiveModColorEffect.highlightNormalModifiers(false);
+    ActiveModColorEffect.setOneShotColor(solarizedMagenta);
     LEDBreatheEffect.hue = solarizedHueYellow;
     LEDDigitalRainEffect.setDecayMs(8000);
     LEDDigitalRainEffect.setDropMs(180);
