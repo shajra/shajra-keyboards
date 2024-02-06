@@ -14,7 +14,7 @@
   - [Working around a problem with Mod-Tap and Qukeys](#sec-5-4)
   - [Mapping modifiers](#sec-5-5)
   - [More on `Alt Gr` and `Compose`](#altgr_and_compose)
-  - [A problem with `GUI` on Macs](#osm_right_gui)
+  - [A problem with `GUI + Enter` on Macs](#osm_right_gui)
   - [Mapping remaining non-modifiers](#sec-5-8)
   - [Mapping the Function layer](#sec-5-9)
   - [Media and Mouse layers](#sec-5-10)
@@ -208,7 +208,7 @@ Note that on GNU/Linux, `Shift+Right Alt` is often configured to be a [`Compose`
 
 Because they are similar in function, the `Alt Gr` and `Compose` keys are placed adjacent to one another in all “shajra” keymaps.
 
-## A problem with `GUI` on Macs<a id="osm_right_gui"></a>
+## A problem with `GUI + Enter` on Macs<a id="osm_right_gui"></a>
 
 On Linux systems, the `GUI` (`Windows` key) modifier isn't used by the operating system of applications, leaving it broadly available for user shortcuts. However, this isn't the case for Mac OS and various Mac applications, which assign shortcuts liberally to the `Command` key.
 
@@ -216,9 +216,15 @@ The `Option` key on the Mac isn't available for user shortcuts either because ap
 
 To avoid conflicts, we're forced to use the left `GUI` key for user shortcuts, which leaves the right `GUI` key for standard Mac shortcuts. Though we have a `GUI` key on both halves, they aren't the same in practice. Consequently, we lose some ergonomic benefits.
 
-This loss is apparent if we need both a `Left GUI + Enter` shortcut and a `Right GUI + Enter` shortcut. We can easily hit `Enter` with the `Left GUI` key depressed by the other hand. But `Right GUI` and `Enter` are both thumb-depressed keys on the right-hand split. We'd have to lift our hands from home position.
+This loss is apparent on the “shajra” keymap if we need both a `Left GUI + Enter` shortcut and a `Right GUI + Enter` shortcut. Perhaps some applications don't give us a choice. `Right GUI` and `Enter` are both thumb-depressed keys on the right-hand split. We'd have to lift our right hand from home position to use our fingers.
 
-We could shuffle shortcuts to avoid this particular conflict. But the “shajra” keymap offers a more general solution by providing a One-Shot Modifer (OSM) of the right `GUI` key on the function layer. It requires another keypress, but our hands don't need to leave home position.
+We could move some keys in our keymap to keep from lifting our fingers. But that would move the problem to another shortcut. Or we might have to sacrifice the ergonomics benefits of depressing modifiers with our thumbs. The “shajra” keymap offers a more general solution by providing a One-Shot Modifer (OSM) of the right `GUI` key on the function layer. It requires another keypress, but our hands don't need to leave home position.
+
+To hit the specific shortcut of `Right GUI + Enter`, you hold down the right `Function` modifier to tap the left `Function` key. That engages the OSM. You can then hit `Enter`. The OSM will stay engaged for a few seconds, and then the keyboard will return to its normal state.
+
+Hopefully, this is an agreeable solution for a specific scenario where you want both `Left GUI + Enter` and `Right GUI + Enter` shortcuts. This scenario is more likely on Macs, and even then, not for everyone.
+
+Another solution, not implemented, could be to put Mod-Tap modifiers on normal keys, but this can lead to subtle typos, especially when typing fast.
 
 ## Mapping remaining non-modifiers<a id="sec-5-8"></a>
 
