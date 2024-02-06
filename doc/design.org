@@ -347,7 +347,7 @@ nature and, therefore, not a traditional modifier.
 Because they are similar in function, the =Alt Gr= and =Compose= keys are placed
 adjacent to one another in all “shajra” keymaps.
 
-** A problem with =GUI= on Macs
+** A problem with =GUI + Enter= on Macs
 :PROPERTIES:
 :CUSTOM_ID: osm_right_gui
 :END:
@@ -366,16 +366,30 @@ which leaves the right =GUI= key for standard Mac shortcuts.  Though we have a
 =GUI= key on both halves, they aren't the same in practice. Consequently, we
 lose some ergonomic benefits.
 
-This loss is apparent if we need both a =Left GUI + Enter= shortcut and a =Right
-GUI + Enter= shortcut. We can easily hit =Enter= with the =Left GUI= key
-depressed by the other hand.  But =Right GUI= and =Enter= are both
-thumb-depressed keys on the right-hand split.  We'd have to lift our hands from
-home position.
+This loss is apparent on the “shajra” keymap if we need both a =Left GUI +
+Enter= shortcut and a =Right GUI + Enter= shortcut. Perhaps some applications
+don't give us a choice.  =Right GUI= and =Enter= are both thumb-depressed keys
+on the right-hand split. We'd have to lift our right hand from home position to
+use our fingers.
 
-We could shuffle shortcuts to avoid this particular conflict. But the “shajra”
+We could move some keys in our keymap to keep from lifting our fingers. But that
+would move the problem to another shortcut.  Or we might have to sacrifice the
+ergonomics benefits of depressing modifiers with our thumbs.  The “shajra”
 keymap offers a more general solution by providing a One-Shot Modifer (OSM) of
 the right =GUI= key on the function layer.  It requires another keypress, but
 our hands don't need to leave home position.
+
+To hit the specific shortcut of =Right GUI + Enter=, you hold down the right
+=Function= modifier to tap the left =Function= key. That engages the OSM. You
+can then hit =Enter=. The OSM will stay engaged for a few seconds, and then the
+keyboard will return to its normal state.
+
+Hopefully, this is an agreeable solution for a specific scenario where you want
+both =Left GUI + Enter= and =Right GUI + Enter= shortcuts.  This scenario is
+more likely on Macs, and even then, not for everyone.
+
+Another solution, not implemented, could be to put Mod-Tap modifiers on normal
+keys, but this can lead to subtle typos, especially when typing fast.
 
 ** Mapping remaining non-modifiers
 
