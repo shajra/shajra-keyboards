@@ -190,10 +190,12 @@ void set_color(int index, RGB rgb_color) {
     set_color(70, color); \
     set_color(71, color)
 
-#define RGB_MATRIX_SET_INNER_KEYS(color) \
+#define RGB_MATRIX_SET_LEFT_INNER_KEYS(color) \
     set_color(29, color); \
     set_color(30, color); \
-    set_color(31, color); \
+    set_color(31, color)
+
+#define RGB_MATRIX_SET_RIGHT_INNER_KEYS(color) \
     set_color(65, color); \
     set_color(66, color); \
     set_color(67, color)
@@ -223,6 +225,11 @@ bool is_caps_lock_on(void) {
     return led_state.caps_lock;
 }
 
+bool is_oneshot_on(void) {
+    uint8_t osm = get_oneshot_mods();
+    return osm & MOD_MASK_CSAG;
+}
+
 bool rgb_matrix_indicators_user(void) {
     rgblight_enable();
     if (! keyboard_config.rgb_matrix_enable) {
@@ -231,7 +238,8 @@ bool rgb_matrix_indicators_user(void) {
     if (   layer_state_cmp(layer_state, NUMPAD)
         || layer_state_cmp(layer_state, MEDIA)
         || layer_state_cmp(layer_state, MOUSE)
-        || is_caps_lock_on()) {
+        || is_caps_lock_on()
+        || is_oneshot_on()) {
         rgb_matrix_set_color_all(RGB_OFF);
     }
     if (layer_state_cmp(layer_state, MAC)) {
@@ -296,7 +304,10 @@ bool rgb_matrix_indicators_user(void) {
         set_color(69, color);
     }
     if (is_caps_lock_on()) {
-        RGB_MATRIX_SET_INNER_KEYS(dimmed(SOLARIZED_ORANGE));
+        RGB_MATRIX_SET_LEFT_INNER_KEYS(dimmed(SOLARIZED_ORANGE));
+    }
+    if (is_oneshot_on()) {
+        RGB_MATRIX_SET_RIGHT_INNER_KEYS(dimmed(SOLARIZED_ORANGE));
     }
     return true;
 }
