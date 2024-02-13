@@ -7,11 +7,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - uses: DeterminateSystems/nix-installer-action@main
-    - uses: DeterminateSystems/magic-nix-cache-action@main
+    - uses: cachix/install-nix-action@v25
     - uses: cachix/cachix-action@v14
       with:
         name: shajra
         signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
+    - uses: DeterminateSystems/magic-nix-cache-action@main
+    - run: cat /etc/nix/nix.conf
     - run: cat ~/.config/nix/nix.conf
     - run: nix --print-build-logs build --print-out-paths .#ci
