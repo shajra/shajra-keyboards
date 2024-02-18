@@ -23,10 +23,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
     , LT(MEDIA, KC_TAB), KC_A, KC_S, KC_D, KC_F, KC_G, KC_PGDN, /**/ KC_MINS,  KC_H, KC_J, KC_K,    KC_L,   KC_SCLN, LT(MOUSE, KC_QUOT)
     , LSFT_T(KC_LBRC),   KC_Z, KC_X, KC_C, KC_V, KC_B,          /**/           KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, RSFT_T(KC_RBRC)
 
-    , KC_APP, OSM(MOD_RALT), LSFT(KC_RALT), LALT_T(KC_LEFT), LGUI_T(KC_RIGHT), LT(NUMPAD, KC_DEL)
-    ,                                         KC_INS, LALT_T(KC_DOWN), RGUI_T(KC_UP), RSFT(KC_RALT), OSM(MOD_RALT), KC_APP
+    , KC_APP, OSM(MOD_RALT), LSFT(KC_RALT), LCTL_T(KC_LEFT), LGUI_T(KC_RIGHT),                LT(NUMPAD, KC_ESC)
+    ,                        RCTL_T(KC_GRV),                 LALT_T(KC_DOWN),  RCTL_T(KC_UP), RSFT(KC_RALT), OSM(MOD_RALT), KC_APP
 
-    , LSFT_T(KC_BSPC), LT(FUNCTION, KC_TAB), LCTL_T(KC_ESC), /**/ RCTL_T(KC_GRV), LT(FUNCTION, KC_ENT), RSFT_T(KC_SPC)
+    , LSFT_T(KC_BSPC), LT(FUNCTION, KC_TAB), LALT_T(KC_DEL), /**/ RGUI_T(KC_INS), LT(FUNCTION, KC_ENT), RSFT_T(KC_SPC)
     )
 , [MAC] = LAYOUT_moonlander
     // DESIGN: 2024-02-03: I believe I have found a way to use both Linux and
@@ -42,20 +42,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
     ,                                     _______, _______, _______, /**/ _______, _______, _______
     )
 , [FUNCTION] = LAYOUT_moonlander
-    ( RGB_VAI, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   RGB_TOG, /**/ TG(MAC),  KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10, _______
-    , RGB_VAD, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_QUOT, KC_HOME, /**/ KC_PLUS, _______, KC_AMPR, KC_ASTR, KC_TILD, KC_SLSH, KC_F11
+    ( RGB_VAI, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   RGB_TOG, /**/ TG(MAC), KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______
+    , RGB_VAD, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_QUOT, KC_HOME, /**/ KC_PLUS, KC_TILD, KC_AMPR, KC_ASTR, KC_SLSH, KC_BSLS, KC_F11
     , RGB_HUI, KC_CIRC, KC_DLR,  KC_LPRN, KC_RPRN, KC_DQUO, KC_END,  /**/ KC_UNDS, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_COLN, KC_F12
-    , RGB_HUD, KC_HASH, KC_PERC, KC_LBRC, KC_RBRC, KC_GRV,           /**/          KC_BSLS, KC_PIPE, KC_LT,   KC_GT,   KC_QUES, _______
-    , _______, _______, _______, KC_LEFT, KC_RGHT,          KC_DEL,  /**/ OSM(MOD_RGUI),    KC_DOWN, KC_UP,   _______, _______, QK_BOOT
-    ,                                     KC_BSPC, KC_TAB,  KC_ESC,  /**/ KC_GRV,  KC_ENT,  KC_SPC
+    , RGB_HUD, KC_HASH, KC_PERC, KC_LBRC, KC_RBRC, KC_GRV,           /**/          _______, KC_PIPE, KC_LT,   KC_GT,   KC_QUES, _______
+    , _______, _______, _______, KC_LEFT, KC_RGHT,    OSM(MOD_LGUI), /**/ KC_GRV,           KC_DOWN, KC_UP,   _______, _______, QK_BOOT
+    ,                                       KC_BSPC, KC_TAB, KC_DEL, /**/ OSM(MOD_RGUI), KC_ENT, KC_SPC
     )
 , [NUMPAD] = LAYOUT_moonlander
-    ( _______, _______, _______, _______, _______, _______, _______, /**/ _______, _______, _______, _______, _______, _______, _______
-    , _______, _______, _______, _______, _______, _______, _______, /**/ _______, _______, KC_7,    KC_8,    KC_9,    KC_MINS, _______
-    , _______, _______, _______, _______, _______, _______, _______, /**/ _______, KC_BSPC, KC_4,    KC_5,    KC_6,    KC_PLUS, _______
-    , _______, _______, _______, _______, _______, _______,          /**/          _______, KC_1,    KC_2,    KC_3,    KC_EQL,  _______
-    , VRSN,    _______, _______, _______, _______,          _______, /**/ _______,          KC_0,    KC_DOT,  KC_ASTR, KC_SLSH, _______
-    ,                                     _______, _______, _______, /**/ _______, _______, _______
+    ( _______, _______, _______, _______, _______, _______, _______, /**/ _______, _______, _______, KC_PAST, KC_PSLS, _______, _______
+    , _______, _______, _______, _______, _______, _______, _______, /**/ _______, KC_LPRN, KC_7,    KC_8,    KC_9,    KC_RPRN, _______
+    , _______, _______, _______, _______, _______, _______, _______, /**/ _______, KC_BSPC, KC_4,    KC_5,    KC_6,    KC_PPLS, _______
+    , _______, _______, _______, _______, _______, _______,          /**/          KC_0,    KC_1,    KC_2,    KC_3,    KC_PMNS, KC_PEQL
+    , VRSN,    _______, _______, _______, _______,          _______, /**/ _______,          KC_DOT,  _______, _______, _______, _______
+    ,                                     _______, _______, _______, /**/ KC_TAB,  _______, _______
     )
 , [MEDIA] = LAYOUT_moonlander
     ( _______, _______, _______, _______, _______, _______, _______, /**/ _______, _______, _______, _______, _______, _______, _______

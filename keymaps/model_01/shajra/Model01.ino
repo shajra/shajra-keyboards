@@ -53,14 +53,14 @@ KEYMAPS
         , Key_PcApplication, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_PageUp
         , Key_Tab,           Key_A, Key_S, Key_D, Key_F, Key_G
         , Key_LeftBracket,   Key_Z, Key_X, Key_C, Key_V, Key_B, Key_PageDown
-        , Key_Delete, Key_Backspace, Key_Tab, Key_Escape
+        , Key_Escape, Key_Backspace, Key_Tab, Key_Delete
         , Key_Home
         // right hand
         , Key_LEDEffectPrevious, Key_6, Key_7, Key_8,     Key_9,      Key_0,         LockLayer(NUMPAD)
         , Key_Equals,            Key_Y, Key_U, Key_I,     Key_O,      Key_P,         Key_Backslash
         ,                        Key_H, Key_J, Key_K,     Key_L,      Key_Semicolon, Key_Quote
         , Key_Minus,             Key_N, Key_M, Key_Comma, Key_Period, Key_Slash,     Key_RightBracket
-        , Key_Backtick, Key_Enter, Key_Spacebar, Key_Insert
+        , Key_Insert, Key_Enter, Key_Spacebar, Key_Backtick
         , Key_End
         )
     , [MAC] = KEYMAP_STACKED
@@ -95,15 +95,15 @@ KEYMAPS
         , M(MACRO_BRIGHT_DOWN), LSHIFT(Key_1), LSHIFT(Key_2), Key_LeftCurlyBracket, Key_RightCurlyBracket, Key_Quote,         Key_Home
         , LSHIFT(Key_RightAlt), LSHIFT(Key_6), LSHIFT(Key_4), Key_LeftParen,        Key_RightParen,        LSHIFT(Key_Quote)
         , OSM(RightAlt),        LSHIFT(Key_3), LSHIFT(Key_5), Key_LeftBracket,      Key_RightBracket,      Key_Backtick,      Key_End
-        , Key_Delete, Key_Backspace, Key_Tab, Key_Escape
+        , OSM(LeftGui), Key_Backspace, Key_Tab, Key_Delete
         , ShiftToLayer(NUMPAD)
         // right hand
-        , LockLayer(MAC),     Key_F6,        Key_F7,                Key_F8,            Key_F9,               Key_F10,               Key_F11
-        , LSHIFT(Key_Equals), ___,           LSHIFT(Key_7),         LSHIFT(Key_8),     LSHIFT(Key_Backtick), Key_Slash,             Key_F12
-        ,                     Key_LeftArrow, Key_DownArrow,         Key_UpArrow,       Key_RightArrow,       LSHIFT(Key_Semicolon), LSHIFT(Key_RightAlt)
-        , LSHIFT(Key_Minus),  Key_Backslash, LSHIFT(Key_Backslash), LSHIFT(Key_Comma), LSHIFT(Key_Period),   LSHIFT(Key_Slash),     OSM(RightAlt)
-        , Key_Backtick, Key_Enter, Key_Spacebar, Key_Insert
-        , OSM(RightGui)
+        , LockLayer(MAC),     Key_F6,               Key_F7,                Key_F8,            Key_F9,               Key_F10,               Key_F11
+        , LSHIFT(Key_Equals), LSHIFT(Key_Backtick), LSHIFT(Key_7),         LSHIFT(Key_8),     Key_Slash,            Key_Backslash,         Key_F12
+        ,                     Key_LeftArrow,        Key_DownArrow,         Key_UpArrow,       Key_RightArrow,       LSHIFT(Key_Semicolon), LSHIFT(Key_RightAlt)
+        , LSHIFT(Key_Minus),  ___,                  LSHIFT(Key_Backslash), LSHIFT(Key_Comma), LSHIFT(Key_Period),   LSHIFT(Key_Slash),     OSM(RightAlt)
+        , OSM(RightGui), Key_Enter, Key_Spacebar, Key_Backtick
+        , ___
         )
     , [NUMPAD] =  KEYMAP_STACKED
         // left hand
@@ -114,11 +114,11 @@ KEYMAPS
         , ___, ___, ___, ___
         , ___
         // right hand
-        , ___, ___,           Key_7, Key_8,      Key_9,              Key_KeypadSubtract, ___
-        , ___, Key_Backspace, Key_4, Key_5,      Key_6,              Key_KeypadAdd,      ___
-        ,      ___,           Key_1, Key_2,      Key_3,              Key_Equals,         ___
-        , ___, ___,           Key_0, Key_Period, Key_KeypadMultiply, Key_KeypadDivide,   ___
-        , ___, ___, ___, ___
+        , ___, ___,           ___,   Key_KeypadMultiply, Key_KeypadDivide, ___,                ___
+        , ___, Key_LeftParen, Key_7, Key_8,              Key_9,            Key_RightParen,     ___
+        ,      Key_Backspace, Key_4, Key_5,              Key_6,            Key_KeypadAdd,      ___
+        , ___, Key_0,         Key_1, Key_2,              Key_3,            Key_KeypadSubtract, Key_KeypadEquals
+        , Key_Tab, ___, ___, Key_Period
         , ___
         )
     , [MEDIA] = KEYMAP_STACKED

@@ -24,7 +24,7 @@
 
 This document discusses the rationale of the “shajra” keymap for the Ergodox EZ, Moonlander, and Model 01/100 keyboards.
 
-Having a nice ergonomic split keyboard seems a waste, only to program it with a keymap full of ergonomic setbacks. The number of possible mappings can be overwhelming. We could just choose something, good or bad, and iterate on it as we discover improvements. This process can be tedious because we have to train through the inconvenience of muscle memory to assess how well a mapping works. We get used to a key being in a poor place. So, we must be diligent not to confuse familiarity with ergonomic improvement.
+Having a nice ergonomic split keyboard seems a waste, only to program it with a keymap full of ergonomic setbacks. The number of possible mappings can be overwhelming. We could just choose something, good or bad, and iterate on it as we discover improvements. This process can be tedious because we have to train through the inconvenience of muscle memory to assess how well a mapping works. While we're getting used to an improved placement, there can be a lot of typos, masking the benefit of the improvement.
 
 To help deal with this problem, the “shajra” keymap is built upon a few guiding principles and constraints. Ideally, these principles and constraints would hone in on precisely one solution. Unfortunately, reality is not tidy, though the options narrow down some.
 
@@ -42,13 +42,15 @@ Here's a list of some guiding principles that have some cascading impact on how 
 -   All reasonable modifier combinations should be possible, most ergonomically.
 -   Paired keys should be adjacent or symmetrically laid out.
 -   Support convenient one-handed use where possible.
--   If no other factors apply, lean on familiarity with common layouts.
 -   The keymapping should support the entry of non-standard characters, but English will be the dominant language typed.
+-   If no other factors apply, lean on familiarity with common layouts.
 
-Additionally, there are a few physical assumptions that factor into some decisions:
+Additionally, there are a couple more personal factors:
 
--   The original author has larger hands, which means some keys are assumed reachable, which may not be the case for everyone.
--   For the Ergodox EZ, the original author has also modified the switches and keycaps to make more keys accessible by thumb keypresses.
+-   I have larger hands, which means some keys are assumed reachable, which may not be the case for everyone.
+-   For the Ergodox EZ, I have also modified the switches and keycaps to make more keys accessible by thumb keypresses.
+
+Lastly, I own all four keyboards supported by this project. I occaisionally swap keyboards, and don't want to think too hard about the transition. That's led to a numpad layout that doesn't take advantage of the lowest row of the Moonlander or Ergodox EZ keyboards. However, I don't believe I've compromised any ergonomic benefits for the convenience of swapping keyboards easily.
 
 # The keymaps<a id="sec-3"></a>
 
@@ -62,7 +64,7 @@ For reference, below are diagrams of the “shajra” keymaps for the Model 01/1
 
 ![img](./ergodox-ez-shajra-layout.png)
 
-Note the Moonlander keyboard is an almost identical layout to the EZ and not illustrated here. The Moonlander has only two fewer keys on the thumb cluster. This leads to not having either Home or End on the base layer for the Moonlander (they are still in a function layer). And the "application menu" keycodes are moved to the bottom-outer corners.
+Note the Moonlander keyboard is an almost identical layout to the Ergodox EZ and not illustrated here. The Moonlander has only two fewer keys on each thumb cluster. All four keys (`Home`, `End`, `Alt Gr`, and `Compose`) were redundant and can be und elsewhere on either the base layer or the function layer.
 
 ## Reading the keymap diagrams<a id="sec-3-3"></a>
 
@@ -76,7 +78,7 @@ Note the Moonlander keyboard is an almost identical layout to the EZ and not ill
 
 ### Modifiers<a id="sec-3-3-2"></a>
 
-Various platforms have diverged in the names and purpose of their modifier keys. A useful simplification, the USB HID tables, force these divergences to converge with modern USB-based keyboards:
+Various platforms have diverged in the names and purpose of their modifier keys. The USB HID tables force these divergences to converge with modern USB-based keyboards, resulting in a useful simplification:
 
 | USB HID key | Non-Mac key | Mac key     |
 |----------- |----------- |----------- |
@@ -85,7 +87,7 @@ Various platforms have diverged in the names and purpose of their modifier keys.
 | `Control`   | `^ Control` | `^ Control` |
 | `Shift`     | `⇧ Shift`   | `⇧ Shift`   |
 
-The keymaps use the USB HID terminology. On the images, the lower-right corner label on some keys shows the modifier accessed by holding it (other labels reference keycodes accessed by tapping).
+This document uses the USB HID terminology. On the images, the lower-right corner label on some keys shows the modifier accessed by holding it (other labels reference keycodes accessed by tapping).
 
 In addition to standard modifiers, there are a few extra supported by firmware:
 
@@ -131,7 +133,7 @@ If we want something like Colemak or Dvorak we could implement it later as a lay
 
 ## Using Mod-Tap and Qukeys<a id="sec-5-2"></a>
 
-With the Ergodox EZ, Moonlander, and Model 01/100, we get new keys that can get much more utility from our thumbs/palms, which are sturdier than any of our fingers. Our thumbs/palms get home keys of their own (the Model 01/100 even has physical homing bumps on its thumb keys). These keys are a central feature of both keyboards.
+With the Ergodox EZ, Moonlander, and Model 01/100, we get thumb clusters, a central feature of these split keyboards. Our thumbs/palms get home keys of their own (the Model 01/100 even has physical homing bumps on its thumb keys).
 
 In traditional keyboards, commonly pressed keys like `Enter` and `Shift` are pressed by pinky fingers (the hand's weakest) and are not close to home keys. These keys are great candidates to move towards the new thumb/palm home keys made available.
 
@@ -170,8 +172,8 @@ The modifiers below have been ordered from most frequently used to least:
 | `Shift`    | `⇧`                          |
 | `Function` | `Fn`                         |
 | `GUI`      | `Win` `Cmd` `❖` `⌘`          |
-| `Ctrl`     | `✲`                          |
 | `Alt`      | `Option` `⎇` `⌥`             |
+| `Ctrl`     | `✲`                          |
 | `Media`    |                              |
 | `Mouse`    |                              |
 | `Alt Gr`   |                              |
@@ -190,7 +192,7 @@ There are a few other chords not ergonomically supported. If we have two modifie
 
 In the “shajra” keymap, you'll notice that the modifiers line the bottom keys pressed by thumbs/keys and wrap around to some modifiers accessed by pinky fingers. The Mouse and Media layers are designed to be used while chording with a pinky modifier. Fortunately, we don't access these layers too often, so our pinky fingers shouldn't get too tired.
 
-Most of the modifiers are laid out symmetrically, with one exception. One half swaps the `Alt` and `GUI` locations of the other half. This swap keeps more modifier combinations closer to home positions.
+You'll notice that not all modifiers have been laid out with mirror symmetry. Some keys on the thumb cluster are an easier reach than other. The break in mirror symmetry helps distribute ergonomic reach to all modifiers.
 
 ## More on `Alt Gr` and `Compose`<a id="altgr_and_compose"></a>
 
@@ -210,7 +212,7 @@ Because they are similar in function, the `Alt Gr` and `Compose` keys are placed
 
 ## A problem with `GUI + Enter` on Macs<a id="osm_right_gui"></a>
 
-On Linux systems, the `GUI` (`Windows` key) modifier isn't used by the operating system or applications, leaving it broadly available for user shortcuts. However, this isn't the case for Mac OS and various Mac applications, which assign shortcuts liberally to the `Command` key.
+On Linux systems, the `GUI` (`Windows` key) modifier isn't used by the operating system or applications, leaving it broadly available for user shortcuts. However, this isn't the case for Mac OS and various Mac applications, which assign default shortcuts liberally to the `Command` key.
 
 The `Option` key on the Mac isn't available for user shortcuts either because applications use it as well, not to mention the complexity we already have with `Compose` and `Alt Gr` emulation.
 
@@ -220,9 +222,9 @@ This loss is apparent on the “shajra” keymap if we need both a `Left GUI + E
 
 We could move some keys in our keymap to keep from lifting our fingers. But that would move the problem to another shortcut. Or we might have to sacrifice the ergonomics benefits of depressing modifiers with our thumbs. The “shajra” keymap offers a more general solution by providing a One-Shot Modifer (OSM) of the right `GUI` key on the function layer. It requires another keypress, but our hands don't need to leave home position.
 
-To hit the specific shortcut of `Right GUI + Enter`, you hold down the right `Function` modifier to tap the left `Function` key. That engages the OSM. You can then hit `Enter`. The OSM will stay engaged for a few seconds, and then the keyboard will return to its normal state.
+The OSM modifiers on the function layer are over keys in the base layer that should not require repeating, specifically `Esc` and `Insert`. To hit the specific shortcut of `Right GUI + Enter`, you hold down the left `Function` modifier to tap `Insert` key. That engages the OSM. You can then hit `Enter`. The OSM will stay engaged for a few seconds, and then the keyboard will return to its normal state.
 
-Hopefully, this is an agreeable solution for a specific scenario where you want both `Left GUI + Enter` and `Right GUI + Enter` shortcuts. This scenario is more likely on Macs, and even then, not for everyone.
+Hopefully, this is an agreeable solution to deal with differentiating `Left GUI` shortcuts from `Right GUI` ones. This scenario is more likely on Macs, and even then, not for everyone.
 
 Another solution, not implemented, could be to put Mod-Tap modifiers on normal keys, but this can lead to subtle typos, especially when typing fast.
 
@@ -232,22 +234,22 @@ Because we've decided to support chording with Mod-Tap/Qukeys, we want our Base 
 
 The following non-modifier keycodes below have been ordered from the most frequently used to least:
 
-| Keycode                    | Commonly used icons | Notes on usage                                             |
-|-------------------------- |------------------- |---------------------------------------------------------- |
-| `Space`                    | `␣`                 | essential for all tasks                                    |
-| `Backspace`                | `⌫`                 | essential for all tasks (mistakes happen)                  |
-| `Enter`                    | `⏎`                 | essential for all tasks                                    |
-| `'`                        |                     | apostrophes common in text, but historically next to `;`   |
-| `Esc`                      | `⎋`                 | essential for Vim-style keybinds                           |
-| `Tab`                      | `↹`                 | useful for shell/programming tab-complete                  |
-| `-` `=`                    |                     | CLI switches, "zoom" keybindings, common in programming    |
-| `Left` `Right` `Down` `Up` | `⬅` `➡` `⬇` `⬆`     | useful in a variety of contexts                            |
-| `` ` ``                    |                     | common in "markdown" languages for verbatim text           |
-| `Page Down` `Page Up`      | `⇟` `⇞`             | useful when reading a large page                           |
-| `[` `]`                    |                     | occurs occasionally when programming                       |
-| `\`                        |                     | used for delimiting and more commonly shifted to get a `\` |
-| `Insert` `Delete`          | `⎀` `⌦`             | occasionally useful (`Shift-Insert` for pasting)           |
-| `Home` `End`               | `↖` `↘`             | useful for navigating text fields                          |
+| Keycode                    | Notes on usage                                             |
+|-------------------------- |---------------------------------------------------------- |
+| `Space`                    | essential for all tasks                                    |
+| `Backspace`                | essential for all tasks (mistakes happen)                  |
+| `Enter`                    | essential for all tasks                                    |
+| `'`                        | apostrophes common in text, but historically next to `;`   |
+| `Esc`                      | essential for Vim-style keybinds                           |
+| `Tab`                      | useful for shell/programming tab-complete                  |
+| `-` `=`                    | CLI switches, "zoom" keybindings, common in programming    |
+| `Left` `Right` `Down` `Up` | useful in a variety of contexts                            |
+| `` ` ``                    | common in "markdown" languages for verbatim text           |
+| `Page Down` `Page Up`      | useful when reading a large page                           |
+| `[` `]`                    | occurs occasionally when programming                       |
+| `\`                        | used for delimiting and more commonly shifted to get a `\` |
+| `Insert` `Delete`          | occasionally useful (`Shift-Insert` for pasting)           |
+| `Home` `End`               | useful for navigating text fields                          |
 
 This ordering is subjective to some degree and undoubtedly context-sensitive. However, `Space`, `Backspace`, and `Enter` are clearly used more than the rest.
 

@@ -11,8 +11,8 @@ keymap full of ergonomic setbacks. The number of possible mappings can be
 overwhelming. We could just choose something, good or bad, and iterate on it as
 we discover improvements. This process can be tedious because we have to train
 through the inconvenience of muscle memory to assess how well a mapping works.
-We get used to a key being in a poor place.  So, we must be diligent not to
-confuse familiarity with ergonomic improvement.
+While we're getting used to an improved placement, there can be a lot of typos,
+masking the benefit of the improvement.
 
 To help deal with this problem, the “shajra” keymap is built upon a few guiding
 principles and constraints. Ideally, these principles and constraints would hone
@@ -38,17 +38,22 @@ we can map keys.
 - All reasonable modifier combinations should be possible, most ergonomically.
 - Paired keys should be adjacent or symmetrically laid out.
 - Support convenient one-handed use where possible.
-- If no other factors apply, lean on familiarity with common layouts.
 - The keymapping should support the entry of non-standard characters, but
   English will be the dominant language typed.
+- If no other factors apply, lean on familiarity with common layouts.
 
-Additionally, there are a few physical assumptions that factor into some
-decisions:
+Additionally, there are a couple more personal factors:
 
-- The original author has larger hands, which means some keys are assumed
-  reachable, which may not be the case for everyone.
-- For the Ergodox EZ, the original author has also modified the switches and
-  keycaps to make more keys accessible by thumb keypresses.
+- I have larger hands, which means some keys are assumed reachable, which may
+  not be the case for everyone.
+- For the Ergodox EZ, I have also modified the switches and keycaps to make more
+  keys accessible by thumb keypresses.
+
+Lastly, I own all four keyboards supported by this project.  I occaisionally
+swap keyboards, and don't want to think too hard about the transition.  That's
+led to a numpad layout that doesn't take advantage of the lowest row of the
+Moonlander or Ergodox EZ keyboards.  However, I don't believe I've compromised
+any ergonomic benefits for the convenience of swapping keyboards easily.
 
 * The keymaps
 
@@ -63,11 +68,10 @@ and Ergodox EZ.
 
 [[file:./ergodox-ez-shajra-layout.png]]
 
-Note the Moonlander keyboard is an almost identical layout to the EZ and not
-illustrated here. The Moonlander has only two fewer keys on the thumb cluster.
-This leads to not having either Home or End on the base layer for the Moonlander
-(they are still in a function layer). And the "application menu" keycodes are
-moved to the bottom-outer corners.
+Note the Moonlander keyboard is an almost identical layout to the Ergodox EZ and
+not illustrated here. The Moonlander has only two fewer keys on each thumb
+cluster.  All four keys (=Home=, =End=, =Alt Gr=, and =Compose=) were redundant
+and can be und elsewhere on either the base layer or the function layer.
 
 ** Reading the keymap diagrams
 
@@ -82,8 +86,8 @@ moved to the bottom-outer corners.
 *** Modifiers
 
 Various platforms have diverged in the names and purpose of their modifier keys.
-A useful simplification, the USB HID tables, force these divergences to converge
-with modern USB-based keyboards:
+The USB HID tables force these divergences to converge with modern USB-based
+keyboards, resulting in a useful simplification:
 
 | USB HID key | Non-Mac key | Mac key     |
 |-------------+-------------+-------------|
@@ -92,9 +96,9 @@ with modern USB-based keyboards:
 | =Control=   | =^ Control= | =^ Control= |
 | =Shift=     | =⇧ Shift=   | =⇧ Shift=   |
 
-The keymaps use the USB HID terminology. On the images, the lower-right corner
-label on some keys shows the modifier accessed by holding it (other labels
-reference keycodes accessed by tapping).
+This document uses the USB HID terminology. On the images, the lower-right
+corner label on some keys shows the modifier accessed by holding it (other
+labels reference keycodes accessed by tapping).
 
 In addition to standard modifiers, there are a few extra supported by firmware:
 - The “Alt Gr” label represents a [[key-altgr][=Alt Graph= modifier]], which we emulate with
@@ -167,11 +171,9 @@ layer to toggle to/from. But QWERTY will be the base.
 
 ** Using Mod-Tap and Qukeys
 
-With the Ergodox EZ, Moonlander, and Model 01/100, we get new keys that can get
-much more utility from our thumbs/palms, which are sturdier than any of our
-fingers.  Our thumbs/palms get home keys of their own (the Model 01/100 even has
-physical homing bumps on its thumb keys). These keys are a central feature of
-both keyboards.
+With the Ergodox EZ, Moonlander, and Model 01/100, we get thumb clusters,
+a central feature of these split keyboards.  Our thumbs/palms get home keys of
+their own (the Model 01/100 even has physical homing bumps on its thumb keys).
 
 In traditional keyboards, commonly pressed keys like =Enter= and =Shift= are
 pressed by pinky fingers (the hand's weakest) and are not close to home keys.
@@ -255,8 +257,8 @@ The modifiers below have been ordered from most frequently used to least:
 | =Shift=    | =⇧=                          |
 | =Function= | =Fn=                         |
 | =GUI=      | =Win= =Cmd= =❖= =⌘=          |
-| =Ctrl=     | =✲=                          |
 | =Alt=      | =Option= =⎇= =⌥=             |
+| =Ctrl=     | =✲=                          |
 | =Media=    |                              |
 | =Mouse=    |                              |
 | =Alt Gr=   |                              |
@@ -285,7 +287,7 @@ available for a one-handed chord. The same is true for any of our fingers. When
 we use our thumbs for modifiers, more chords are ergonomically available for
 one-handed chording in a home position.
 
-Three-modifier chording is sometimes required.  For this reason, we have =Shift=
+Three-modifier chording is sometimes required. For this reason, we have =Shift=
 modifiers on both thumb keys as well as their traditional outer keys. Thumbs of
 each hand would press the other two modifiers, while one of the pinkies presses
 a =Shift=.
@@ -304,9 +306,9 @@ fingers. The Mouse and Media layers are designed to be used while chording with
 a pinky modifier. Fortunately, we don't access these layers too often, so our
 pinky fingers shouldn't get too tired.
 
-Most of the modifiers are laid out symmetrically, with one exception.  One half
-swaps the =Alt= and =GUI= locations of the other half. This swap keeps more
-modifier combinations closer to home positions.
+You'll notice that not all modifiers have been laid out with mirror symmetry.
+Some keys on the thumb cluster are an easier reach than other. The break in
+mirror symmetry helps distribute ergonomic reach to all modifiers.
 
 ** More on =Alt Gr= and =Compose=
 :PROPERTIES:
@@ -355,7 +357,7 @@ adjacent to one another in all “shajra” keymaps.
 On Linux systems, the =GUI= (=Windows= key) modifier isn't used by the operating
 system or applications, leaving it broadly available for user shortcuts.
 However, this isn't the case for Mac OS and various Mac applications, which
-assign shortcuts liberally to the =Command= key.
+assign default shortcuts liberally to the =Command= key.
 
 The =Option= key on the Mac isn't available for user shortcuts either because
 applications use it as well, not to mention the complexity we already have with
@@ -378,14 +380,16 @@ offers a more general solution by providing a One-Shot Modifer (OSM) of the
 right =GUI= key on the function layer. It requires another keypress, but our
 hands don't need to leave home position.
 
-To hit the specific shortcut of =Right GUI + Enter=, you hold down the right
-=Function= modifier to tap the left =Function= key. That engages the OSM. You
-can then hit =Enter=. The OSM will stay engaged for a few seconds, and then the
-keyboard will return to its normal state.
+The OSM modifiers on the function layer are over keys in the base layer that
+should not require repeating, specifically =Esc= and =Insert=.  To hit the
+specific shortcut of =Right GUI + Enter=, you hold down the left =Function=
+modifier to tap =Insert= key. That engages the OSM. You can then hit =Enter=.
+The OSM will stay engaged for a few seconds, and then the keyboard will return
+to its normal state.
 
-Hopefully, this is an agreeable solution for a specific scenario where you want
-both =Left GUI + Enter= and =Right GUI + Enter= shortcuts. This scenario is more
-likely on Macs, and even then, not for everyone.
+Hopefully, this is an agreeable solution to deal with differentiating =Left GUI=
+shortcuts from =Right GUI= ones.  This scenario is more likely on Macs, and even
+then, not for everyone.
 
 Another solution, not implemented, could be to put Mod-Tap modifiers on normal
 keys, but this can lead to subtle typos, especially when typing fast.
@@ -402,22 +406,22 @@ should have the rest on our base layer.
 The following non-modifier keycodes below have been ordered from the most
 frequently used to least:
 
-| Keycode                    | Commonly used icons | Notes on usage                                             |
-|----------------------------+---------------------+------------------------------------------------------------|
-| =Space=                    | =␣=                 | essential for all tasks                                    |
-| =Backspace=                | =⌫=                 | essential for all tasks (mistakes happen)                  |
-| =Enter=                    | =⏎=                 | essential for all tasks                                    |
-| ='=                        |                     | apostrophes common in text, but historically next to =;=   |
-| =Esc=                      | =⎋=                 | essential for Vim-style keybinds                           |
-| =Tab=                      | =↹=                 | useful for shell/programming tab-complete                  |
-| =-= ===                    |                     | CLI switches, "zoom" keybindings, common in programming    |
-| =Left= =Right= =Down= =Up= | =⬅= =➡= =⬇= =⬆=     | useful in a variety of contexts                       |
-| =`=                        |                     | common in "markdown" languages for verbatim text           |
-| =Page Down= =Page Up=      | =⇟= =⇞=             | useful when reading a large page                           |
-| =[= =]=                    |                     | occurs occasionally when programming                       |
-| =\=                        |                     | used for delimiting and more commonly shifted to get a =\= |
-| =Insert= =Delete=          | =⎀= =⌦=             | occasionally useful (=Shift-Insert= for pasting)           |
-| =Home= =End=               | =↖= =↘=             | useful for navigating text fields                          |
+| Keycode                    | Notes on usage                                             |
+|----------------------------+------------------------------------------------------------|
+| =Space=                    | essential for all tasks                                    |
+| =Backspace=                | essential for all tasks (mistakes happen)                  |
+| =Enter=                    | essential for all tasks                                    |
+| ='=                        | apostrophes common in text, but historically next to =;=   |
+| =Esc=                      | essential for Vim-style keybinds                           |
+| =Tab=                      | useful for shell/programming tab-complete                  |
+| =-= ===                    | CLI switches, "zoom" keybindings, common in programming    |
+| =Left= =Right= =Down= =Up= | useful in a variety of contexts                            |
+| =`=                        | common in "markdown" languages for verbatim text           |
+| =Page Down= =Page Up=      | useful when reading a large page                           |
+| =[= =]=                    | occurs occasionally when programming                       |
+| =\=                        | used for delimiting and more commonly shifted to get a =\= |
+| =Insert= =Delete=          | occasionally useful (=Shift-Insert= for pasting)           |
+| =Home= =End=               | useful for navigating text fields                          |
 
 This ordering is subjective to some degree and undoubtedly context-sensitive.
 However, =Space=, =Backspace=, and =Enter= are clearly used more than the rest.

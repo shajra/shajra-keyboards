@@ -25,19 +25,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
     , KC_GRV,            KC_Q,          KC_W,          KC_E,            KC_R,                  KC_T, KC_PGUP
     , LT(MEDIA, KC_TAB), KC_A,          KC_S,          KC_D,            KC_F,                  KC_G
     , LSFT_T(KC_LBRC),   KC_Z,          KC_X,          KC_C,            KC_V,                  KC_B, KC_PGDN
-    , _______,           OSM(MOD_RALT), LSFT(KC_RALT), LALT_T(KC_LEFT), LGUI_T(KC_RIGHT)
-    ,                                                                            LT(NUMPAD, KC_DEL), KC_HOME
-    ,                                                                                                KC_APP
-    ,                                                         LSFT_T(KC_BSPC), LT(FUNCTION, KC_TAB), LCTL_T(KC_ESC)
+    , KC_APP,            OSM(MOD_RALT), LSFT(KC_RALT), LCTL_T(KC_LEFT), LGUI_T(KC_RIGHT)
+    ,                                                                            LT(NUMPAD, KC_ESC), KC_HOME
+    ,                                                                                                LSFT(KC_RALT)
+    ,                                                         LSFT_T(KC_BSPC), LT(FUNCTION, KC_TAB), LALT_T(KC_DEL)
     // right hand
     , _______, KC_6, KC_7,            KC_8,          KC_9,          KC_0,          TG(NUMPAD)
     , KC_EQL,  KC_Y, KC_U,            KC_I,          KC_O,          KC_P,          KC_BSLS
     ,          KC_H, KC_J,            KC_K,          KC_L,          KC_SCLN,       LT(MOUSE, KC_QUOT)
     , KC_MINS, KC_N, KC_M,            KC_COMM,       KC_DOT,        KC_SLSH,       RSFT_T(KC_RBRC)
-    ,                LALT_T(KC_DOWN), RGUI_T(KC_UP), RSFT(KC_RALT), OSM(MOD_RALT), _______
-    , KC_END, KC_INS
-    , KC_APP
-    , RCTL_T(KC_GRV), LT(FUNCTION, KC_ENT), RSFT_T(KC_SPC)
+    ,                LALT_T(KC_DOWN), RGUI_T(KC_UP), RSFT(KC_RALT), OSM(MOD_RALT), KC_APP
+    , KC_END, RCTL_T(KC_GRV)
+    , OSM(MOD_RALT)
+    , RGUI_T(KC_GRV), LT(FUNCTION, KC_ENT), RSFT_T(KC_SPC)
     )
 , [MAC] = LAYOUT_ergodox
     // DESIGN: 2024-02-03: I believe I have found a way to use both Linux and
@@ -72,18 +72,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
     , _______, KC_CIRC, KC_DLR,  KC_LPRN, KC_RPRN, KC_DQUO
     , _______, KC_HASH, KC_PERC, KC_LBRC, KC_RBRC, KC_GRV,  KC_END
     , _______, _______, _______, KC_LEFT, KC_RGHT
-    ,                                              KC_DEL,  _______
+    ,                                        OSM(MOD_LGUI), _______
     ,                                                       _______
-    ,                                     KC_BSPC, KC_TAB,  KC_ESC
+    ,                                      KC_BSPC, KC_TAB, KC_DEL
     // right hand
     , TG(MAC), KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______
-    , KC_PLUS, _______, KC_AMPR, KC_ASTR, KC_TILD, KC_SLSH, KC_F11
+    , KC_PLUS, KC_TILD, KC_AMPR, KC_ASTR, KC_SLSH, KC_BSLS, KC_F11
     ,          KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_COLN, KC_F12
-    , KC_UNDS, KC_BSLS, KC_PIPE, KC_LT,   KC_GT,   KC_QUES, _______
+    , KC_UNDS, _______, KC_PIPE, KC_LT,   KC_GT,   KC_QUES, _______
     ,                   KC_DOWN, KC_UP,   _______, _______, QK_BOOT
-    , _______, OSM(MOD_RGUI)
+    , _______, KC_GRV
     , _______
-    , KC_GRV,  KC_ENT,  KC_SPC
+    , OSM(MOD_RGUI),  KC_ENT,  KC_SPC
     )
 , [NUMPAD] = LAYOUT_ergodox
     // left hand
@@ -96,14 +96,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
     ,                                                       _______
     ,                                     _______, _______, _______
     // right hand
-    , _______,    _______, _______, _______, _______, _______, _______
-    , _______, _______, KC_7,    KC_8,    KC_9,    KC_MINS, _______
-    ,          KC_BSPC, KC_4,    KC_5,    KC_6,    KC_PLUS, _______
-    , _______, _______, KC_1,    KC_2,    KC_3,    KC_EQL,  _______
-    ,                   KC_0,    KC_DOT,  KC_ASTR, KC_SLSH, _______
+    , _______, _______, _______, KC_PAST, KC_PSLS, _______, _______
+    , _______, KC_LPRN, KC_7,    KC_8,    KC_9,    KC_RPRN, _______
+    ,          KC_BSPC, KC_4,    KC_5,    KC_6,    KC_PPLS, _______
+    , _______, KC_0,    KC_1,    KC_2,    KC_3,    KC_PMNS, KC_PEQL
+    ,                   KC_DOT,  _______, _______, _______, _______
     , _______, _______
     , _______
-    , _______, _______, _______
+    , KC_TAB, _______, _______
     )
 , [MEDIA] = LAYOUT_ergodox
     // left hand
