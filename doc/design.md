@@ -50,7 +50,7 @@ Additionally, there are a couple more personal factors:
 -   I have larger hands, which means some keys are assumed reachable, which may not be the case for everyone.
 -   For the Ergodox EZ, I have also modified the switches and keycaps to make more keys accessible by thumb keypresses.
 
-Lastly, I own all four keyboards supported by this project. I occasionally swap keyboards, and don't want to think too hard about the transition. That's led decisions like a numpad layout that takes less advantage of the lowest row of the Moonlander or Ergodox EZ keyboards. This deviates slightly from conventional layouts. However, I don't believe I've compromised any ergonomic benefits for the convenience of swapping keyboards easily.
+Lastly, I own all four keyboards supported by this project. I occasionally swap keyboards, and don't want to think too hard about the transition. That's led to decisions like a numpad layout that takes less advantage of the lowest row of the Moonlander or Ergodox EZ keyboards. This deviates slightly from conventional layouts. However, I don't believe I've compromised any ergonomic benefits for the convenience of swapping keyboards easily.
 
 # The keymaps<a id="sec-3"></a>
 
