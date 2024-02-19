@@ -270,7 +270,7 @@ There are a few ways to lay out keycodes in the Function layer. Here are some re
 | `(` `)` `[` `]` `{` `}`    | balanced enclosing marks are adjacent                           |
 | `` ` `` `'` `"`            | all these quotes are adjacent                                   |
 | `Left` `Down` `Up` `Right` | placed above `h`, `j`, `k`, and `l` for Vim-style navigation    |
-| `~` `/`                    | adjacent because home directories are prefixed “~/”             |
+| `/` `\`                    | adjacent because both are slashes                               |
 | `+` `_` `<` `>` `?` `:`    | placed such that `Function` is the same as `Shift`              |
 
 Regarding the last item in this table, some keys already exist from our Base layer with shifting, but it's nice to have all our symbols on one layer, so we don't have to toggle between switching between shifting the Base layer and toggling the Function layer (for example, this occurs with programming operators such as `<*>`, and `<$>`).

@@ -453,7 +453,7 @@ keymap:
 | =(= =)= =[= =]= ={= =}=    | balanced enclosing marks are adjacent                           |
 | =`= ='= ="=                | all these quotes are adjacent                                   |
 | =Left= =Down= =Up= =Right= | placed above =h=, =j=, =k=, and =l= for Vim-style navigation    |
-| =~= =/=                    | adjacent because home directories are prefixed “~/”             |
+| =/= =\=                    | adjacent because both are slashes                               |
 | =+= =_= =<= =>= =?= =:=    | placed such that =Function= is the same as =Shift=              |
 
 Regarding the last item in this table, some keys already exist from our Base
