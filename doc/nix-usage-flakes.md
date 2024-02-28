@@ -105,7 +105,7 @@ We can use `nix flake show` to see the outputs provided by any flake, local or r
 nix flake show .
 ```
 
-    git+file:///home/tnks/src/shajra/shajra-keyboards
+    git+file:///home/shajra/src/shajra-keyboards
     ├───apps
     │   └───x86_64-linux
     │       ├───default: app
@@ -423,8 +423,8 @@ nix profile list
 
     Index:              0
     Flake attribute:    packages.x86_64-linux.licenses-thirdparty
-    Original flake URL: git+file:///home/tnks/src/shajra/shajra-keyboards
-    Locked flake URL:   git+file:///home/tnks/src/shajra/shajra-keyboards
+    Original flake URL: git+file:///home/shajra/src/shajra-keyboards
+    Locked flake URL:   git+file:///home/shajra/src/shajra-keyboards
     Store paths:        /nix/store/h379ahlb7r2k57n1488zr2nfql4hcy1w-shajra-keyboards-licenses
 
 If we want to uninstall a program from our profile, we do so by the index from this list:
