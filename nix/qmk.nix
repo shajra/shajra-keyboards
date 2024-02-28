@@ -7,7 +7,7 @@
 }:
 
 { buildKeyboardName
-, targetNameInfix
+, targetNamePrefix
 , firmwareExtension
 , keyboardId
 , keyboardDesc
@@ -61,7 +61,7 @@ let
                 make ${buildKeyboardName}:${keymapName}
         '';
         installPhase = ''
-            cp ${buildKeyboardName}${targetNameInfix}_${keymapName}.${firmwareExtension} "$out"
+            cp ${targetNamePrefix}_${keymapName}.${firmwareExtension} "$out"
         '';
     };
 

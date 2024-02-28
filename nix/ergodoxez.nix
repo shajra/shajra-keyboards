@@ -4,7 +4,7 @@
 
 shajra-keyboards-qmk {
     buildKeyboardName = "ergodox_ez";
-    targetNameInfix = "_base";
+    targetNamePrefix = "ergodox_ez_base";
     firmwareExtension = "hex";
     keyboardId = "ergodoxez";
     keyboardDesc = "Ergodox EZ";

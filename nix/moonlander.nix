@@ -3,8 +3,8 @@
 }:
 
 shajra-keyboards-qmk {
-    buildKeyboardName = "moonlander";
-    targetNameInfix = "";
+    buildKeyboardName = "zsa/moonlander";
+    targetNamePrefix = "zsa_moonlander";
     firmwareExtension = "bin";
     keyboardId = "moonlander";
     keyboardDesc = "Moonlander";

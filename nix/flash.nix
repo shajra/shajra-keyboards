@@ -53,7 +53,7 @@ KEYMAPS_DIR="${builtinKeymaps}"
 NIX_EXE="$(command -v nix || true)"
 
 
-. "${nix-project-lib.scriptCommon}/share/nix-project/common.bash"
+. "${nix-project-lib.scriptCommon}/share/nix-project/common.sh"
 
 print_usage()
 {
