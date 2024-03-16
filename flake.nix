@@ -49,7 +49,7 @@
             flake = false;
         };
         arduino-monitor-serial = {
-            url = file+https://downloads.arduino.cc/monitor/serial-monitor/serial-monitor_v0.13.0_Linux_64bit.tar.gz;
+            url = file+https://downloads.arduino.cc/monitor/serial-monitor/serial-monitor_v0.14.1_Linux_64bit.tar.gz;
             flake = false;
         };
         arduino-xpack-arm = {

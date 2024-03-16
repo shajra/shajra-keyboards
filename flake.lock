@@ -63,13 +63,13 @@
     "arduino-monitor-serial": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-8Oe1y7lsglzr/QabvNBn8xux3At71iYF0q/TE9SIsjg=",
+        "narHash": "sha256-4FTk3zDxjicBHkdSQhvfJywoZkbeHg65p5UgIgzWHjk=",
         "type": "file",
-        "url": "https://downloads.arduino.cc/monitor/serial-monitor/serial-monitor_v0.13.0_Linux_64bit.tar.gz"
+        "url": "https://downloads.arduino.cc/monitor/serial-monitor/serial-monitor_v0.14.1_Linux_64bit.tar.gz"
       },
       "original": {
         "type": "file",
-        "url": "https://downloads.arduino.cc/monitor/serial-monitor/serial-monitor_v0.13.0_Linux_64bit.tar.gz"
+        "url": "https://downloads.arduino.cc/monitor/serial-monitor/serial-monitor_v0.14.1_Linux_64bit.tar.gz"
       }
     },
     "arduino-tools-avr-gcc": {
