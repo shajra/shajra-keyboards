@@ -467,11 +467,11 @@
     "qmk-factory": {
       "flake": false,
       "locked": {
-        "lastModified": 1712393000,
-        "narHash": "sha256-eGFpcN+P+1fnzUOxqkaFlMPZ43vJ+njasBR1uOOl+2g=",
+        "lastModified": 1712444232,
+        "narHash": "sha256-0KK+iQD1SzhEbLs3cxrNc9MGvSmjwxX2ekgVsTYslhs=",
         "ref": "refs/heads/master",
-        "rev": "36ae585468d4ee781a31303185c71662e2e27d0e",
-        "revCount": 26997,
+        "rev": "b0e948c380a073833a38881e998963db4da456e0",
+        "revCount": 26998,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/qmk/qmk_firmware"
