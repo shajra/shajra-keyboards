@@ -178,8 +178,8 @@ nix run github:shajra/shajra-keyboards#flash-ergodoxez
     Flashing ZSA Technology Lab's Ergodox EZ (custom "shajra" keymap)
     =================================================================
     
-    FLASH SOURCE: /nix/store/6xkc1y2rmxc0rrs6k23q870iqw83qsby-qmk-builtin-shajra-src
-    FLASH BINARY: /nix/store/j825vrn8jsa0ssbcnsaivsw59zsqimbx-ergodoxez-builtin-shajra.hex
+    FLASH SOURCE: /nix/store/6z72fw22n203axzdl6f7fgsdrx3xmv9b-qmk-builtin-shajra-src
+    FLASH BINARY: /nix/store/0ixf6x2gy32xxirc67062iwip5sdi0gz-ergodoxez-builtin-shajra.hex
     
     ⠋ Press the reset button of your keyboard
 
@@ -240,28 +240,28 @@ If you want to check that everything builds before flashing your keyboard, you c
 tree $(nix build --no-link --print-out-paths) 2>/dev/null
 ```
 
-    /nix/store/8gklry1w8aqi978f7c24xfmig5gxpgjh-shajra-keyboards-ci
-    ├── build-ergodoxez-builtin-shajra-flash -> /nix/store/zknvd1finyb7xnlkkbbzk1s6jsi0089j-ergodoxez-builtin-shajra-flash
-    ├── build-ergodoxez-builtin-shajra-hex -> /nix/store/j825vrn8jsa0ssbcnsaivsw59zsqimbx-ergodoxez-builtin-shajra.hex
-    ├── build-ergodoxez-factory-flash -> /nix/store/07isg4h2amca1ay3d8n6hxsxh3jc8bhg-ergodoxez-factory-flash
-    ├── build-ergodoxez-factory-hex -> /nix/store/gdgxwckaah9yml7rih8yq4jbidgxsyr1-ergodoxez-factory.hex
-    ├── build-model01-builtin-shajra-flash -> /nix/store/8ixkq6ijs05sk88a7g50324ffgrpq5f5-model01-builtin-shajra-flash
-    ├── build-model01-builtin-shajra-hex -> /nix/store/w3n0xdgf12lvq6n5gspjgvxmyzzndmzs-model01-builtin-shajra-hex
-    ├── build-model01-factory-flash -> /nix/store/ip0ibygwrlvf855h7g72p0fniyvps549-model01-factory-flash
-    ├── build-model01-factory-hex -> /nix/store/ww8374v56q65rnbsyzfah2gmg1srjkj9-model01-factory-hex
-    ├── build-model100-builtin-shajra-flash -> /nix/store/fpf1ni1l1wdcpr5kiy0xl2mwd93r6i7m-model100-builtin-shajra-flash
-    ├── build-model100-builtin-shajra-hex -> /nix/store/sfaxa7ingh1n4vr61bcdm02sfzb4mpm1-model100-builtin-shajra-hex
-    ├── build-model100-factory-flash -> /nix/store/kxb7jwsh2q9984mz419flyss8lxqlfsi-model100-factory-flash
-    ├── build-model100-factory-hex -> /nix/store/x4a8jq3v0ickvzbpa08j1vrpni3afjim-model100-factory-hex
-    ├── build-moonlander-builtin-shajra-flash -> /nix/store/yxvxsgdcwdx5zbaqpaimf7wlncm0ij9l-moonlander-builtin-shajra-flash
-    ├── build-moonlander-builtin-shajra-hex -> /nix/store/fz876kyycdcj769lpxn5h4xw1nqzggg1-moonlander-builtin-shajra.bin
-    ├── build-moonlander-factory-flash -> /nix/store/7hrc4k5vnvf1c5izspzbj4ispx0n2xf7-moonlander-factory-flash
-    ├── build-moonlander-factory-hex -> /nix/store/1q0v81499ijh33cqpskq7fv923vs6ggn-moonlander-factory.bin
-    ├── flash-ergodoxez -> /nix/store/ljpvh9ndkvqc8f78a3qbcqmj7gzhhkbn-flash-ergodoxez
-    ├── flash-model01 -> /nix/store/69vrsyhdd2gzbvmpyw4xnr9y3k2sni6l-flash-model01
-    ├── flash-model100 -> /nix/store/q9q8lqdb723d9vvqvqdk7p5r6nqd8861-flash-model100
-    ├── flash-moonlander -> /nix/store/g61iqk3a76c40pnjli63iqgqbp704nly-flash-moonlander
-    └── licenses -> /nix/store/7vvyib9i1dd7n2lxvd8mbxgd680d6d9l-shajra-keyboards-licenses
+    /nix/store/wchbyp897ncjfkh269qpf9610pxlzc6h-shajra-keyboards-ci
+    ├── build-ergodoxez-builtin-shajra-flash -> /nix/store/2r6s1lzlaqwdnaqis9lg9fihr23fvcm8-ergodoxez-builtin-shajra-flash
+    ├── build-ergodoxez-builtin-shajra-hex -> /nix/store/0ixf6x2gy32xxirc67062iwip5sdi0gz-ergodoxez-builtin-shajra.hex
+    ├── build-ergodoxez-factory-flash -> /nix/store/2vhkr6dpyhdi2c0i0vmjjigpal7p9j61-ergodoxez-factory-flash
+    ├── build-ergodoxez-factory-hex -> /nix/store/bck1agrsq0d5iwcaka4n4dlkbv8xz80f-ergodoxez-factory.hex
+    ├── build-model01-builtin-shajra-flash -> /nix/store/c8h6f7h6bwil5irlja8ar2yvfd66wgr9-model01-builtin-shajra-flash
+    ├── build-model01-builtin-shajra-hex -> /nix/store/1r99jri5yhmx8xk6k6a6g07xwzd425wl-model01-builtin-shajra-hex
+    ├── build-model01-factory-flash -> /nix/store/0aq1fv3na7xczf44vqvlck15fpkgl5zs-model01-factory-flash
+    ├── build-model01-factory-hex -> /nix/store/qkmd817192sgsmalirlpg3bxncrz52z0-model01-factory-hex
+    ├── build-model100-builtin-shajra-flash -> /nix/store/n3vfbmkkxjdcqpi6nz76n4j3s0i3vw4d-model100-builtin-shajra-flash
+    ├── build-model100-builtin-shajra-hex -> /nix/store/rwnlh5rv6ymq17yzmqzk6ks35y2521k7-model100-builtin-shajra-hex
+    ├── build-model100-factory-flash -> /nix/store/464h1fs4lwb2czy32knhcf4jmn8i02yb-model100-factory-flash
+    ├── build-model100-factory-hex -> /nix/store/2n6ccvybhmzappc3hfgkz91wdq51zf29-model100-factory-hex
+    ├── build-moonlander-builtin-shajra-flash -> /nix/store/1g8m7qcdf0v5l3z5j9mz4m7n673prg01-moonlander-builtin-shajra-flash
+    ├── build-moonlander-builtin-shajra-hex -> /nix/store/64rlbjpf5a7xdabijlhhyxpngk91srrj-moonlander-builtin-shajra.bin
+    ├── build-moonlander-factory-flash -> /nix/store/y4dmc272byzs08cjjf1l4brljnb0ndj1-moonlander-factory-flash
+    ├── build-moonlander-factory-hex -> /nix/store/hb8dc6n5myrdcag83b36bi726s7rqsbx-moonlander-factory.bin
+    ├── flash-ergodoxez -> /nix/store/cpw5mmysb40lxmd2lkmkc2yhgxir27wk-flash-ergodoxez
+    ├── flash-model01 -> /nix/store/21phfn7y7iaymwmrkq4jlcxc8d8nj5jf-flash-model01
+    ├── flash-model100 -> /nix/store/0gs9w2k678h8i24za1vyzf4a53vwlizn-flash-model100
+    ├── flash-moonlander -> /nix/store/in9crdrvsgaql2swaw7gkxyiwvz03hxx-flash-moonlander
+    └── licenses -> /nix/store/35v7dk3i6drqp2q5y30q9xxf1wg1zybp-shajra-keyboards-licenses
     
     18 directories, 4 files
 
