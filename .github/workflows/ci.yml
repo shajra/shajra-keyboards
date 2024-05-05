@@ -7,13 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - uses: cachix/install-nix-action@v26
+    - uses: cachix/install-nix-action@v27
       with:
         # REVISIT: Pinning because Nix hashes in flake.lock are inconsistent
         # between 2.18.1 (current version in the latest stable release of NixOS)
         # and 2.21.
         install_url: https://releases.nixos.org/nix/nix-2.18.1/install
-    - uses: cachix/cachix-action@v14
+    - uses: cachix/cachix-action@v15
       with:
         name: shajra
         signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
