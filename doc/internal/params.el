@@ -10,6 +10,6 @@
  ;; run-type must be "executable"
  (run-target-short     . "shajra-keyboards-licenses")
  ;; run-target-long will always prefix "bin/"
- (nix-latest           . "2.21")
- (nixos-latest         . "23.11")
+ (nix-latest           . "2.22")
+ (nixos-latest         . "24.05")
  (platforms            . "Linux on x86-64 machines"))
