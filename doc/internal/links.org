@@ -2,7 +2,7 @@
 #+link: docstring https://en.wikipedia.org/wiki/Docstring
 #+link: ergodox-ez https://ergodox-ez.com
 #+link: fhs https://www.pathname.com/fhs/
-#+link: github-actions https://github.com/shajra/nix-project/actions
+#+link: garnix https://garnix.io
 #+link: kaleidoscope https://github.com/keyboardio/Kaleidoscope
 #+link: kaleidoscope-oneshot https://kaleidoscope.readthedocs.io/en/latest/plugins/OneShot.html
 #+link: kaleidoscope-qukey https://kaleidoscope.readthedocs.io/en/latest/plugins/Qukeys.html
@@ -11,15 +11,17 @@
 #+link: keyboardio https://shop.keyboard.io
 #+link: key-compose https://en.wikipedia.org/wiki/Compose_key
 #+link: moonlander https://www.zsa.io/moonlander/
+#+link: mousemedia-ergodoxez https://github.com/shajra/shajra-keyboards/blob/main/keymaps/ergodox_ez/shajra/keymap.c#L102-L142
+#+link: mousemedia-model01 https://github.com/shajra/shajra-keyboards/blob/main/keymaps/model_01/shajra/Model01.ino#L113-L144
+#+link: mousemedia-model100 https://github.com/shajra/shajra-keyboards/blob/main/keymaps/model_100/shajra/Model100.ino#L113-L144
+#+link: mousemedia-moonlander https://github.com/shajra/shajra-keyboards/blob/main/keymaps/moonlander/shajra/keymap.c#L55-L70
 #+link: nix https://nixos.org/nix
-#+link: nix-flake-compat https://github.com/edolstra/flake-compat
 #+link: nix-install-manual https://nixos.org/manual/nix/stable/installation/installation.html
-#+link: nix-install-quick https://nixos.org/download.html#download-nix
 #+link: nix-language-manual https://nixos.org/manual/nix/stable/language/index.html
 #+link: nix-language-tutorial https://nixos.org/guides/nix-language.html
 #+link: nix-learn https://nixos.org/learn.html
 #+link: nixos https://nixos.org
-#+link: nixos-search https://search.nixos.org/packages
+#+link: nixos-releases https://nixos.org/manual/nixos/stable/release-notes.html
 #+link: nixpkgs https://github.com/NixOS/nixpkgs
 #+link: nixpkgs-manual https://nixos.org/nixpkgs/manual
 #+link: nix-uninstall https://nixos.org/manual/nix/stable/installation/installing-binary.html#uninstalling
@@ -33,7 +35,3 @@
 #+link: vim https://www.vim.org
 #+link: wally-udev https://github.com/zsa/wally/blob/master/dist/linux64/50-wally.rules
 #+link: zilent https://zealpc.net/products/zilents
-#+link: mousemedia-ergodoxez https://github.com/shajra/shajra-keyboards/blob/main/keymaps/ergodox_ez/shajra/keymap.c#L102-L142
-#+link: mousemedia-moonlander https://github.com/shajra/shajra-keyboards/blob/main/keymaps/moonlander/shajra/keymap.c#L55-L70
-#+link: mousemedia-model01 https://github.com/shajra/shajra-keyboards/blob/main/keymaps/model_01/shajra/Model01.ino#L113-L144
-#+link: mousemedia-model100 https://github.com/shajra/shajra-keyboards/blob/main/keymaps/model_100/shajra/Model100.ino#L113-L144
