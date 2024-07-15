@@ -262,7 +262,7 @@ After a successful call of `nix build`, you'll see one or more symlinks for each
 readlink result*
 ```
 
-    /nix/store/c6qjx6pgyj8adbzh6vfk8v0spdp79q9g-shajra-keyboards-licenses
+    /nix/store/w8qmd8pj3ia7d1w7rw5rybpzz0sc73py-shajra-keyboards-licenses
 
 Following these symlinks, we can see the files the project provides:
 
@@ -284,7 +284,7 @@ It's common to configure these “result” symlinks as ignored in source contro
 nix path-info .#licenses-thirdparty
 ```
 
-    /nix/store/c6qjx6pgyj8adbzh6vfk8v0spdp79q9g-shajra-keyboards-licenses
+    /nix/store/w8qmd8pj3ia7d1w7rw5rybpzz0sc73py-shajra-keyboards-licenses
 
 ## Running commands in a shell<a id="sec-4-6"></a>
 
@@ -397,7 +397,7 @@ nix shell --ignore-environment \
     --command which shajra-keyboards-licenses
 ```
 
-    /nix/store/c6qjx6pgyj8adbzh6vfk8v0spdp79q9g-shajra-keyboards-licenses/bin/shajra-keyboards-licenses
+    /nix/store/w8qmd8pj3ia7d1w7rw5rybpzz0sc73py-shajra-keyboards-licenses/bin/shajra-keyboards-licenses
 
 What we do with local flake references can work just as well with remote flake references.
 
@@ -425,7 +425,7 @@ nix profile list
     Flake attribute:    packages.x86_64-linux.licenses-thirdparty
     Original flake URL: git+file:///home/shajra/src/shajra-keyboards
     Locked flake URL:   git+file:///home/shajra/src/shajra-keyboards
-    Store paths:        /nix/store/c6qjx6pgyj8adbzh6vfk8v0spdp79q9g-shajra-keyboards-licenses
+    Store paths:        /nix/store/w8qmd8pj3ia7d1w7rw5rybpzz0sc73py-shajra-keyboards-licenses
 
 If we want to uninstall a program from our profile, we do so by the index from this list:
 
