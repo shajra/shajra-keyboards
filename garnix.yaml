@@ -1,0 +1,4 @@
+builds:
+  include:
+  - 'packages.*.*'
+  - 'checks.*.*'

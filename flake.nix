@@ -99,8 +99,9 @@
                         build.shajra-keyboards-flash-scripts.moonlander;
                     packages.licenses-thirdparty =
                         build.shajra-keyboards-licenses;
-                    legacyPackages.nixpkgs = build;
+                    checks.ci = build.shajra-keyboards-ci;
                     legacyPackages.ci = build.shajra-keyboards-ci;
+                    legacyPackages.nixpkgs = build;
                     apps = rec {
                         default = licenses-thirdparty;
                         licenses-thirdparty = {
