@@ -18,4 +18,4 @@ jobs:
     - uses: DeterminateSystems/magic-nix-cache-action@main
     - run: cat /etc/nix/nix.conf
     - run: cat ~/.config/nix/nix.conf
-    - run: nix --print-build-logs build --print-out-paths .#ci
+    - run: nix --print-build-logs flake check --verbose

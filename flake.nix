@@ -100,7 +100,6 @@
                     packages.licenses-thirdparty =
                         build.shajra-keyboards-licenses;
                     checks.ci = build.shajra-keyboards-ci;
-                    legacyPackages.ci = build.shajra-keyboards-ci;
                     legacyPackages.nixpkgs = build;
                     apps = rec {
                         default = licenses-thirdparty;
