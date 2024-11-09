@@ -16,7 +16,7 @@ nix shell \
     .#nixpkgs.gnutar \
     .#nixpkgs.gzip \
     .#nixpkgs.jq \
-    .#nixpkgs.nixfmt \
+    .#nixpkgs.nixfmt-rfc-style \
     .#nixpkgs.tree \
     --command \
     org2gfm \
