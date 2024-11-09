@@ -335,11 +335,11 @@
         "ox-gfm": "ox-gfm"
       },
       "locked": {
-        "lastModified": 1731014811,
-        "narHash": "sha256-VLNWmOQPJmhKx1/joSxVAss9NTz/65Q3rTtvtgSUaes=",
+        "lastModified": 1731165527,
+        "narHash": "sha256-ZGmRwcAfj4cb+SQ2CYrhWocyKG9Bhl3tQTd8N5ml8sE=",
         "owner": "shajra",
         "repo": "nix-project",
-        "rev": "00a841d0f3d2b7f36a9842b4944a06317c4c4b07",
+        "rev": "f36d0f8e8438139054afd10a15eb43597ef2f464",
         "type": "github"
       },
       "original": {
@@ -374,11 +374,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1731014060,
-        "narHash": "sha256-tZuFUzL54iah1IIdgDInc7yE5J8u9TKBE+aqpdC9Wuk=",
+        "lastModified": 1731164800,
+        "narHash": "sha256-ge5br6L2oubRPEqAuaaVWsXazjhbsi2oaY3+tZx7erc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "5c687a95f1aa178be3f679d359074aa9dcaf3b2d",
+        "rev": "d2d4c4f350b98e3940bd733768948149426f022f",
         "type": "github"
       },
       "original": {
@@ -406,11 +406,11 @@
     },
     "nixpkgs-stable-linux": {
       "locked": {
-        "lastModified": 1730883749,
-        "narHash": "sha256-mwrFF0vElHJP8X3pFCByJR365Q2463ATp2qGIrDUdlE=",
+        "lastModified": 1730963269,
+        "narHash": "sha256-rz30HrFYCHiWEBCKHMffHbMdWJ35hEkcRVU0h7ms3x0=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "dba414932936fde69f0606b4f1d87c5bc0003ede",
+        "rev": "83fb6c028368e465cd19bb127b86f971a5e41ebc",
         "type": "github"
       },
       "original": {
@@ -455,11 +455,11 @@
     "qmk-factory": {
       "flake": false,
       "locked": {
-        "lastModified": 1730879177,
-        "narHash": "sha256-pH8baYDemzozRuR5zONcBQbMeF2oj02D7IXLH1C5864=",
+        "lastModified": 1731126240,
+        "narHash": "sha256-9k/+DkFFcVSAMXF1K11LO1uqrQCicT9sLjgpGvLJuUk=",
         "ref": "refs/heads/master",
-        "rev": "f4e6af2dbe8c2b0d24dfa14e58d3be02bd6b2b7d",
-        "revCount": 27996,
+        "rev": "f156e57f8ef6bb825695123ab7cf2eca8d75dace",
+        "revCount": 28004,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/qmk/qmk_firmware"
