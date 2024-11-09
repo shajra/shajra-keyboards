@@ -4,7 +4,7 @@ final: prev:
 let
 
     config = import ../config.nix;
-    system = prev.stdenv.hostPlatform.system;
+    inherit (prev.stdenv.hostPlatform) system;
 
 in withSystem system ({ inputs', ... }: {
 
@@ -28,7 +28,7 @@ in withSystem system ({ inputs', ... }: {
         qmk-factory;
 
     nix-project-lib = inputs'.nix-project.legacyPackages.lib.scripts;
-    org2gfm = inputs'.nix-project.packages.org2gfm;
+    inherit (inputs'.nix-project.packages) org2gfm;
 
     shajra-keyboards-keymaps = {
         builtin = {
