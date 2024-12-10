@@ -171,7 +171,7 @@ For commands accepting installables as an argument, if none are provided, then `
 We can use the `nix search` command to see what package derivations a flake contains. For example, from the root directory of this project, we can execute:
 
 ```sh
-nix search .
+nix search . ^
 ```
 
     * packages.x86_64-linux.default
@@ -185,7 +185,7 @@ nix search .
     * packages.x86_64-linux.flash-model100
     …
 
-If a flake has a lot of packages, you can pass regexes to prune down the search. Returned values will match all the regexes provided.
+We're required to pass regexes as final arguments to prune down the search. Above we've passed `^` to match everything and return all results.
 
 We can also search a remote repository for packages to install. For example, Nixpkgs is a central repository for Nix, providing several thousand packages. We can search the “nixpkgs-unstable” branch of [Nixpkgs' GitHub repository](https://github.com/NixOS/nixpkgs) for packages that match both “gpu|opengl|accel” and “terminal” as follows:
 
@@ -222,7 +222,7 @@ nix search nixpkgs 'gpu|opengl|accel' terminal | ansifilter
 If we're curious about what version of WezTerm is available in NixOS's latest release, we can specialize the installable we're searching as follows:
 
 ```sh
-nix search nixpkgs/nixos-24.11#wezterm
+nix search nixpkgs/nixos-24.11#wezterm ^
 ```
 
     * legacyPackages.x86_64-linux.wezterm (20240203-110809-5046fc22)
@@ -363,7 +363,7 @@ nix run .#licenses-thirdparty  -- --help
 We can see some of the metadata of this package with the `--json` switch of `nix search`:
 
 ```sh
-nix search --json .#licenses-thirdparty | jq .
+nix search --json .#licenses-thirdparty ^ | jq .
 ```
 
     {
@@ -424,22 +424,16 @@ We can see this installation by querying what's been installed:
 nix profile list
 ```
 
-    Index:              0
+    Name:               licenses-thirdparty
     Flake attribute:    packages.x86_64-linux.licenses-thirdparty
     Original flake URL: git+file:///home/shajra/src/shajra-keyboards
     Locked flake URL:   git+file:///home/shajra/src/shajra-keyboards
     Store paths:        /nix/store/cbb8gmijyrrcp89r8c4z9z3a041aq183-shajra-keyboards-licenses
 
-If we want to uninstall a program from our profile, we do so by the index from this list:
+If we want to uninstall a program from our profile, we can reference it by name:
 
 ```sh
-nix profile remove 0
-```
-
-We can also provide a regex matching the full attribute path of the flake:
-
-```sh
-nix profile remove '.*licenses-thirdparty'
+nix profile remove licenses-thirdparty
 ```
 
 Also, if you look at the symlink-resolved location for your profile, you'll see that Nix retains the symlink trees of previous generations of your profile. You can even roll back to an earlier profile with the `nix profile rollback` subcommand. You can delete old generations of your profile with the `nix profile wipe-history` subcommand.

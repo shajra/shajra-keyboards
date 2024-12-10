@@ -105,10 +105,8 @@ nix eval --expr 'let a = 1; a = 2; in a' 2>&1 || true
 ```
 
     error: attribute 'a' already defined at «string»:1:5
-    
            at «string»:1:12:
-    
-                1| let a = 1; a = 2;
+                1| let a = 1; a = 2; in a
                  |            ^
 
 Note that semicolons are mandatory in all Nix forms that have them, including let-expressions. Because of Nix's strict parsing, you can neither elide semicolons nor put extra ones.
@@ -138,14 +136,12 @@ nix eval --expr '
 
     error:
            … while evaluating a path segment
-    
              at «string»:3:9:
-    
                 2|     let a_number = 42;
                 3|     in "${a_number} is a terrible number"
                  |         ^
     
-           error: cannot coerce an integer to a string
+           error: cannot coerce an integer to a string: 42
 
 We can use a builtin `toString` function to coerce types to strings:
 
@@ -176,9 +172,7 @@ nix eval --expr "''In $FROM_SHELL expansion still happens.''" 2>&1 || true
 ```
 
     error: undefined variable 'EXPANDED_BY_NIX'
-    
            at «string»:1:8:
-    
                 1| ''In ${EXPANDED_BY_NIX} expansion still happens.''
                  |        ^
 
@@ -271,9 +265,7 @@ nix eval --expr '{ a = b; b = 2; }.a' 2>&1 || true
 ```
 
     error: undefined variable 'b'
-    
            at «string»:1:7:
-    
                 1| { a = b; b = 2; }.a
                  |       ^
 
@@ -293,16 +285,12 @@ nix eval --expr '({ a }: a + 2 ) { a = 3; b = 4; }' 2>&1 || true
 
     error:
            … from call site
-    
              at «string»:1:1:
-    
                 1| ({ a }: a + 2 ) { a = 3; b = 4; }
                  | ^
     
            error: function 'anonymous lambda' called with unexpected argument 'b'
-    
            at «string»:1:2:
-    
                 1| ({ a }: a + 2 ) { a = 3; b = 4; }
                  |  ^
            Did you mean a?
