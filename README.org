@@ -308,7 +308,7 @@ tree $(nix build --no-link --print-out-paths) 2>/dev/null
 
 #+results: nix-build
 #+begin_example
-/nix/store/91n7z91fsrjbsgm52jchh8vr2wwz7h5v-shajra-keyboards-ci
+/nix/store/7hncj20iwf8fgdy57wlady46sqfbjhxn-shajra-keyboards-ci
 ├── build-ergodoxez-builtin-shajra-flash -> /nix/store/8x9i0m1l7z07c6678q8rvm19nw8bbxwf-ergodoxez-builtin-shajra-flash
 ├── build-ergodoxez-builtin-shajra-hex -> /nix/store/vjmjznb6gsyphab4www0jhxpzrfs4snd-ergodoxez-builtin-shajra.hex
 ├── build-ergodoxez-factory-flash -> /nix/store/ys1cp0g3d62h8vxn8w8dkz9lq4y363n7-ergodoxez-factory-flash
@@ -325,10 +325,10 @@ tree $(nix build --no-link --print-out-paths) 2>/dev/null
 ├── build-moonlander-builtin-shajra-hex -> /nix/store/qfmhip746bq93p6maf1iwlxmickk6hbh-moonlander-builtin-shajra.bin
 ├── build-moonlander-factory-flash -> /nix/store/zp73y9j1hq95l5681idcaqzpgj3hdbm9-moonlander-factory-flash
 ├── build-moonlander-factory-hex -> /nix/store/kd751b9rasy879rdkf4dhrbgw4y5q55s-moonlander-factory.bin
-├── flash-ergodoxez -> /nix/store/9bx5rqycbr4v7ahl2p1inh9xs3a88vw7-flash-ergodoxez
-├── flash-model01 -> /nix/store/jabrn59mdcfy5gy3ikaabj744ads5dp1-flash-model01
-├── flash-model100 -> /nix/store/02d1fpbfiv9qlvysk1ls0z1m4zkzxs0m-flash-model100
-├── flash-moonlander -> /nix/store/y7b3gkm4a07lc2glj65b2zx2a806yigh-flash-moonlander
+├── flash-ergodoxez -> /nix/store/q1wzl1rylqphni6p30vpwl86j5bahqvf-flash-ergodoxez
+├── flash-model01 -> /nix/store/qiva80nvhliqvqid2shnmf0vrw0qyqv3-flash-model01
+├── flash-model100 -> /nix/store/98kggkny08an32lxgzzrk9mxyzihbaph-flash-model100
+├── flash-moonlander -> /nix/store/k5nqj1i1v5lgxv9sv01k3z105mmbc1bl-flash-moonlander
 └── licenses -> /nix/store/0j21pcb18j263lp16n2rabi6yxpix56x-shajra-keyboards-licenses
 
 18 directories, 4 files
