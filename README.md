@@ -242,7 +242,7 @@ If you want to check that everything builds before flashing your keyboard, you c
 tree $(nix build --no-link --print-out-paths) 2>/dev/null
 ```
 
-    /nix/store/is6p492w9jx5g3vnfnav5r4l7cbixs87-shajra-keyboards-ci
+    /nix/store/zzj56g03ynqcim6niy1lvs0q90sbynl8-shajra-keyboards-ci
     ├── build-ergodoxez-builtin-shajra-flash -> /nix/store/ivnp3f1qbx5zv8qr23a24w99wjddmsk3-ergodoxez-builtin-shajra-flash
     ├── build-ergodoxez-builtin-shajra-hex -> /nix/store/cs9ziwzchrcwzwz7nvwv25ik50v44n48-ergodoxez-builtin-shajra.hex
     ├── build-ergodoxez-factory-flash -> /nix/store/pbkiw24jhldwa2rizlww5scl906m623a-ergodoxez-factory-flash
@@ -259,10 +259,10 @@ tree $(nix build --no-link --print-out-paths) 2>/dev/null
     ├── build-moonlander-builtin-shajra-hex -> /nix/store/m5cl2x0y4i8vgh55iy2wffvgy0rrzl4v-moonlander-builtin-shajra.bin
     ├── build-moonlander-factory-flash -> /nix/store/xymnz7f3m2chsbc17n54dn3v0bdyfq41-moonlander-factory-flash
     ├── build-moonlander-factory-hex -> /nix/store/wm254ik49bbxja43258qlfggljcnrlwg-moonlander-factory.bin
-    ├── flash-ergodoxez -> /nix/store/394hws5m30rvkgm3l7ss6kghsfhffhlx-flash-ergodoxez
-    ├── flash-model01 -> /nix/store/wdfb6hbkmdkrqqj4qglcpcsn45licip1-flash-model01
-    ├── flash-model100 -> /nix/store/vmp5k8z6wh6dp4q4x8p4j61w9bsh9dmh-flash-model100
-    ├── flash-moonlander -> /nix/store/9yv58my1w1d36cq01dw55jinslhdd8ry-flash-moonlander
+    ├── flash-ergodoxez -> /nix/store/msynnjyvyzjbyzha9h67cg2b9i2rqia8-flash-ergodoxez
+    ├── flash-model01 -> /nix/store/fqcwb3i9rz2rch3cyy39s3dri33jpl9h-flash-model01
+    ├── flash-model100 -> /nix/store/k9palmvkbdc5laqa3zkwk2yz5ckin2nd-flash-model100
+    ├── flash-moonlander -> /nix/store/x1ryl9p2j9npp43df8vlc73c7n3xf6ca-flash-moonlander
     └── licenses -> /nix/store/byrsn78pcm86a8xaz57fvly91xp1nsnx-shajra-keyboards-licenses
     
     18 directories, 4 files
