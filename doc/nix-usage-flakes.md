@@ -225,7 +225,7 @@ If we're curious about what version of WezTerm is available in NixOS's latest re
 nix search nixpkgs/nixos-24.11#wezterm ^
 ```
 
-    * legacyPackages.x86_64-linux.wezterm (20240203-110809-5046fc22)
+    * legacyPackages.x86_64-linux.wezterm (0-unstable-2025-01-03)
       GPU-accelerated cross-platform terminal emulator and multiplexer written by @wez and implemented in Rust
 
 Here `/nixos-24.11` overrides the default `nixpkgs-unstable` branch of the registry entry, and the `#wezterm` suffix searches not just the flake, but a specific package named `wezterm`, which will either be found or not (there's no need for regexes to filter further).
@@ -265,7 +265,7 @@ After a successful call of `nix build`, you'll see one or more symlinks for each
 readlink result*
 ```
 
-    /nix/store/0j21pcb18j263lp16n2rabi6yxpix56x-shajra-keyboards-licenses
+    /nix/store/byrsn78pcm86a8xaz57fvly91xp1nsnx-shajra-keyboards-licenses
 
 Following these symlinks, we can see the files the project provides:
 
@@ -287,7 +287,7 @@ It's common to configure these “result” symlinks as ignored in source contro
 nix path-info .#licenses-thirdparty
 ```
 
-    /nix/store/0j21pcb18j263lp16n2rabi6yxpix56x-shajra-keyboards-licenses
+    /nix/store/byrsn78pcm86a8xaz57fvly91xp1nsnx-shajra-keyboards-licenses
 
 ## Running commands in a shell<a id="sec-4-6"></a>
 
@@ -400,7 +400,7 @@ nix shell --ignore-environment \
     --command which shajra-keyboards-licenses
 ```
 
-    /nix/store/0j21pcb18j263lp16n2rabi6yxpix56x-shajra-keyboards-licenses/bin/shajra-keyboards-licenses
+    /nix/store/byrsn78pcm86a8xaz57fvly91xp1nsnx-shajra-keyboards-licenses/bin/shajra-keyboards-licenses
 
 What we do with local flake references can work just as well with remote flake references.
 
@@ -428,7 +428,7 @@ nix profile list
     Flake attribute:    packages.x86_64-linux.licenses-thirdparty
     Original flake URL: git+file:///home/shajra/src/shajra-keyboards
     Locked flake URL:   git+file:///home/shajra/src/shajra-keyboards
-    Store paths:        /nix/store/0j21pcb18j263lp16n2rabi6yxpix56x-shajra-keyboards-licenses
+    Store paths:        /nix/store/byrsn78pcm86a8xaz57fvly91xp1nsnx-shajra-keyboards-licenses
 
 If we want to uninstall a program from our profile, we can reference it by name:
 
