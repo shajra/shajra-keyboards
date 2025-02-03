@@ -333,11 +333,11 @@
         "ox-gfm": "ox-gfm"
       },
       "locked": {
-        "lastModified": 1738554261,
-        "narHash": "sha256-NT5IntRbLH5T54/q52BOqsw9CHaWVNgHTbZy2sgy1qM=",
+        "lastModified": 1738598298,
+        "narHash": "sha256-vawQ1uXk2gGvavi+kfXO8MlReQWfavI7a/YwhopW2ys=",
         "owner": "shajra",
         "repo": "nix-project",
-        "rev": "7ef670321c22262421be7f7b7af439cc55835fc9",
+        "rev": "8248f0dde25b5d7cea51039409b62eff88b75085",
         "type": "github"
       },
       "original": {
