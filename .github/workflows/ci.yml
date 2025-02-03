@@ -18,4 +18,8 @@ jobs:
     - uses: DeterminateSystems/flakehub-cache-action@main
     - run: cat /etc/nix/nix.conf
     - run: cat ~/.config/nix/nix.conf
+    # DESIGN: Kaleidoscope started using `bwrap` in a way requiring privileges
+    # https://github.com/DevToys-app/DevToys/issues/1198#issuecomment-2599819266
+    - run: sudo sysctl -w kernel.apparmor_restrict_unprivileged_unconfined=0
+    - run: sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
     - run: nix --print-build-logs flake check --verbose
