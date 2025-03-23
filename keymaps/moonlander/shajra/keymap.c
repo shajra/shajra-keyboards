@@ -231,8 +231,7 @@ bool is_oneshot_on(void) {
 }
 
 bool rgb_matrix_indicators_user(void) {
-    rgblight_enable();
-    if (! keyboard_config.rgb_matrix_enable) {
+    if (! rgb_matrix_is_enabled()) {
         return false;  // false indicates QMK to not process further
     }
     if (   layer_state_cmp(layer_state, NUMPAD)
