@@ -11,7 +11,6 @@ enum layers {
     MOUSE
 };
 
-
 enum custom_keycodes {
     VRSN = SAFE_RANGE,
 };
@@ -130,16 +129,10 @@ void matrix_init_user(void)
 // toggle layer-based lighting with TOGGLE_LAYER_COLOR.  This toggles between
 // the following modes:
 //
-//     - lighting the bottom and outer rows of both halves a solid color
-//       indicating the highest enabled layer
+//     - lighting of a visible row of keys when the capslock is enabled
 //
 //     - lighting the blocks of keys when available for the NUMPAD, MEDIA, and
 //       MOUSE layers.
-//
-// Technically, this means that the RGB lighting can never be 100% disabled, but
-// when toggling off both RGB_TOG and TOGGLE_LAYER_COLOR, the only remaining
-// lighting is from NUMPAD, MEDIA, and MOUSE usage, which is generally not that
-// common.
 //
 // Also, note that the hue and brightness controls don't affect the hue or
 // brightness of the overlays, which are hardcoded at a medium brightness.
@@ -230,6 +223,17 @@ bool is_oneshot_on(void) {
     return osm & MOD_MASK_CSAG;
 }
 
+bool rgb_dirty = false;
+
+void rgb_cleanup(void) {
+    if (rgb_matrix_is_enabled()) {
+        if (rgb_dirty) {
+            rgb_matrix_set_color_all(RGB_OFF);
+            rgb_dirty = false;
+        }
+    }
+}
+
 bool rgb_matrix_indicators_user(void) {
     if (! rgb_matrix_is_enabled()) {
         return false;  // false indicates QMK to not process further
@@ -240,12 +244,10 @@ bool rgb_matrix_indicators_user(void) {
         || is_caps_lock_on()
         || is_oneshot_on()) {
         rgb_matrix_set_color_all(RGB_OFF);
-    }
-    if (layer_state_cmp(layer_state, MAC)) {
-        RGB_MATRIX_SET_THUMBS(dimmed(SOLARIZED_CYAN));
-    }
-    else {
-        RGB_MATRIX_SET_THUMBS(dimmed(SOLARIZED_YELLOW));
+        rgb_dirty = true;
+    } else {
+        rgb_cleanup();
+        return true;
     }
     if (layer_state_cmp(layer_state, NUMPAD)) {
         RGB color = dimmed(SOLARIZED_RED);
