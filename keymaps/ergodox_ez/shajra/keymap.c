@@ -80,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
     , KC_PLUS, KC_TILD, KC_AMPR, KC_ASTR, KC_SLSH, KC_BSLS, KC_F11
     ,          KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_COLN, KC_F12
     , KC_UNDS, _______, KC_PIPE, KC_LT,   KC_GT,   KC_QUES, _______
-    ,                   KC_DOWN, KC_UP,   _______, _______, QK_BOOT
+    ,                   KC_DOWN, KC_UP,   _______, _______, _______
     , _______, KC_GRV
     , _______
     , OSM(MOD_RGUI),  KC_ENT,  KC_SPC
@@ -90,8 +90,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
     ( _______, _______, _______, _______, _______, _______, _______
     , _______, _______, _______, _______, _______, _______, _______
     , _______, _______, _______, _______, _______, _______
-    , _______, _______, _______, _______, _______, _______, _______
-    , VRSN,    _______, _______, _______, _______
+    , VRSN,    _______, _______, _______, _______, _______, _______
+    , QK_BOOT, _______, _______, _______, _______
     ,                                              _______, _______
     ,                                                       _______
     ,                                     _______, _______, _______

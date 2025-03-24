@@ -46,15 +46,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
     , RGB_VAD, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_QUOT, KC_HOME, /**/ KC_PLUS, KC_TILD, KC_AMPR, KC_ASTR, KC_SLSH, KC_BSLS, KC_F11
     , RGB_HUI, KC_CIRC, KC_DLR,  KC_LPRN, KC_RPRN, KC_DQUO, KC_END,  /**/ KC_UNDS, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_COLN, KC_F12
     , RGB_HUD, KC_HASH, KC_PERC, KC_LBRC, KC_RBRC, KC_GRV,           /**/          _______, KC_PIPE, KC_LT,   KC_GT,   KC_QUES, _______
-    , _______, _______, _______, KC_LEFT, KC_RGHT,    OSM(MOD_LGUI), /**/ KC_GRV,           KC_DOWN, KC_UP,   _______, _______, QK_BOOT
+    , _______, _______, _______, KC_LEFT, KC_RGHT,    OSM(MOD_LGUI), /**/ KC_GRV,           KC_DOWN, KC_UP,   _______, _______, _______
     ,                                       KC_BSPC, KC_TAB, KC_DEL, /**/ OSM(MOD_RGUI), KC_ENT, KC_SPC
     )
 , [NUMPAD] = LAYOUT_moonlander
     ( _______, _______, _______, _______, _______, _______, _______, /**/ _______, _______, _______, KC_PAST, KC_PSLS, _______, _______
     , _______, _______, _______, _______, _______, _______, _______, /**/ _______, KC_LPRN, KC_7,    KC_8,    KC_9,    KC_RPRN, _______
     , _______, _______, _______, _______, _______, _______, _______, /**/ _______, KC_BSPC, KC_4,    KC_5,    KC_6,    KC_PPLS, _______
-    , _______, _______, _______, _______, _______, _______,          /**/          KC_0,    KC_1,    KC_2,    KC_3,    KC_PMNS, KC_PEQL
-    , VRSN,    _______, _______, _______, _______,          _______, /**/ _______,          KC_DOT,  _______, _______, _______, _______
+    , VRSN,    _______, _______, _______, _______, _______,          /**/          KC_0,    KC_1,    KC_2,    KC_3,    KC_PMNS, KC_PEQL
+    , QK_BOOT, _______, _______, _______, _______,          _______, /**/ _______,          KC_DOT,  _______, _______, _______, _______
     ,                                     _______, _______, _______, /**/ KC_TAB,  _______, _______
     )
 , [MEDIA] = LAYOUT_moonlander
