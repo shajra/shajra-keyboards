@@ -60,6 +60,30 @@
         "url": "https://downloads.arduino.cc/discovery/serial-discovery/serial-discovery_v1.4.1_Linux_64bit.tar.gz"
       }
     },
+    "arduino-lib-json": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-DAjI3OmTpYxzM/9KChZRL43QdyxcTs5meiXo2QvKVgc=",
+        "type": "file",
+        "url": "http://downloads.arduino.cc/libraries/library_index.json"
+      },
+      "original": {
+        "type": "file",
+        "url": "http://downloads.arduino.cc/libraries/library_index.json"
+      }
+    },
+    "arduino-lib-sig": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-b41nn8y3ocLJkcmEUTxGHuzlZzeMjh5QmJ2nLj3dvVo=",
+        "type": "file",
+        "url": "http://downloads.arduino.cc/libraries/library_index.json.sig"
+      },
+      "original": {
+        "type": "file",
+        "url": "http://downloads.arduino.cc/libraries/library_index.json.sig"
+      }
+    },
     "arduino-monitor-serial": {
       "flake": false,
       "locked": {
@@ -70,6 +94,30 @@
       "original": {
         "type": "file",
         "url": "https://downloads.arduino.cc/monitor/serial-monitor/serial-monitor_v0.15.0_Linux_64bit.tar.gz"
+      }
+    },
+    "arduino-pkgs-json": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-EAobI5RRV920D/E/XgkyLrnAZ4qebI7TlhrPY+85djE=",
+        "type": "file",
+        "url": "http://downloads.arduino.cc/packages/package_index.json"
+      },
+      "original": {
+        "type": "file",
+        "url": "http://downloads.arduino.cc/packages/package_index.json"
+      }
+    },
+    "arduino-pkgs-sig": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-Bve0I2n089XMi0JK49SEmLGFx/0lSU6T6EYpN11TOnM=",
+        "type": "file",
+        "url": "http://downloads.arduino.cc/packages/package_index.json.sig"
+      },
+      "original": {
+        "type": "file",
+        "url": "http://downloads.arduino.cc/packages/package_index.json.sig"
       }
     },
     "arduino-tools-avr-gcc": {
@@ -175,11 +223,11 @@
         "nixpkgs-lib": "nixpkgs-lib"
       },
       "locked": {
-        "lastModified": 1741352980,
-        "narHash": "sha256-+u2UunDA4Cl5Fci3m7S643HzKmIDAe+fiXrLqYsR2fs=",
+        "lastModified": 1743550720,
+        "narHash": "sha256-hIshGgKZCgWh6AYJpJmRgFdR3WUbkY04o82X05xqQiY=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "f4330d22f1c5d2ba72d3d22df5597d123fdb60a9",
+        "rev": "c621e8422220273271f52058f618c94e405bb0f5",
         "type": "github"
       },
       "original": {
@@ -193,11 +241,11 @@
         "nixpkgs-lib": "nixpkgs-lib_2"
       },
       "locked": {
-        "lastModified": 1741352980,
-        "narHash": "sha256-+u2UunDA4Cl5Fci3m7S643HzKmIDAe+fiXrLqYsR2fs=",
+        "lastModified": 1743550720,
+        "narHash": "sha256-hIshGgKZCgWh6AYJpJmRgFdR3WUbkY04o82X05xqQiY=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "f4330d22f1c5d2ba72d3d22df5597d123fdb60a9",
+        "rev": "c621e8422220273271f52058f618c94e405bb0f5",
         "type": "github"
       },
       "original": {
@@ -224,6 +272,18 @@
         "url": "https://github.com/keyboardio/ArduinoCore-GD32-Keyboardio"
       }
     },
+    "keyboardio-boardsmanager": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-66Fgn46N9fb0g2u9jIm5V6Fc8W9l9lAGx9TpjX681sA=",
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/keyboardio/boardsmanager/master/devel/package_kaleidoscope_devel_index.json"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/keyboardio/boardsmanager/master/devel/package_kaleidoscope_devel_index.json"
+      }
+    },
     "keyboardio-kaleidoscope-bundle": {
       "flake": false,
       "locked": {
@@ -245,11 +305,11 @@
     "keyboardio-kaleidoscope-factory": {
       "flake": false,
       "locked": {
-        "lastModified": 1741712581,
-        "narHash": "sha256-iaNjLJyQ/kE1AHy8BzKlLT4ObPh/IYLvNr8af8dTSrE=",
+        "lastModified": 1742864751,
+        "narHash": "sha256-GW1QSGQGPLNjMg8aUFmKoheIbNjGNpJzi1uT89+uGUM=",
         "ref": "refs/heads/master",
-        "rev": "4445c079f6b3c7c069c050eeec09f16302c7fe3d",
-        "revCount": 6457,
+        "rev": "1221ac08226d314b0aea622b64ad7211b60d6184",
+        "revCount": 6502,
         "type": "git",
         "url": "https://github.com/keyboardio/Kaleidoscope"
       },
@@ -333,11 +393,11 @@
         "ox-gfm": "ox-gfm"
       },
       "locked": {
-        "lastModified": 1742749286,
-        "narHash": "sha256-/TSpgd7AEc8BXZRWbG+I4ZFUoCk09jfYbpr1VbFdUSM=",
+        "lastModified": 1743789184,
+        "narHash": "sha256-8GAnP7DmkOPOHpmNAQg4W/IqLqjRakFKkJ5luSsbE8I=",
         "owner": "shajra",
         "repo": "nix-project",
-        "rev": "d5f7c9cb5f29319ee75f1a6788d7616a7e1f2c5b",
+        "rev": "3eb6bf01b91e85ab3a509ff29a617a355facb96e",
         "type": "github"
       },
       "original": {
@@ -348,11 +408,11 @@
     },
     "nixpkgs-lib": {
       "locked": {
-        "lastModified": 1740877520,
-        "narHash": "sha256-oiwv/ZK/2FhGxrCkQkB83i7GnWXPPLzoqFHpDD3uYpk=",
+        "lastModified": 1743296961,
+        "narHash": "sha256-b1EdN3cULCqtorQ4QeWgLMrd5ZGOjLSLemfa00heasc=",
         "owner": "nix-community",
         "repo": "nixpkgs.lib",
-        "rev": "147dee35aab2193b174e4c0868bd80ead5ce755c",
+        "rev": "e4822aea2a6d1cdd36653c134cacfd64c97ff4fa",
         "type": "github"
       },
       "original": {
@@ -363,11 +423,11 @@
     },
     "nixpkgs-lib_2": {
       "locked": {
-        "lastModified": 1740877520,
-        "narHash": "sha256-oiwv/ZK/2FhGxrCkQkB83i7GnWXPPLzoqFHpDD3uYpk=",
+        "lastModified": 1743296961,
+        "narHash": "sha256-b1EdN3cULCqtorQ4QeWgLMrd5ZGOjLSLemfa00heasc=",
         "owner": "nix-community",
         "repo": "nixpkgs.lib",
-        "rev": "147dee35aab2193b174e4c0868bd80ead5ce755c",
+        "rev": "e4822aea2a6d1cdd36653c134cacfd64c97ff4fa",
         "type": "github"
       },
       "original": {
@@ -378,11 +438,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1742747271,
-        "narHash": "sha256-5318ZrLWsK9NuO+yEnDPbyWnHmLMMN4QkjZz5xQp700=",
+        "lastModified": 1743787144,
+        "narHash": "sha256-OwOctdXipCLOUZfwXc+JMHDW8uVXgC0u0K0VtwVuEVE=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "aa0a93a0edf7dc59449e5cbc8d5c632280652dee",
+        "rev": "b6f910a2f73fdbdcb71371dbbecd2c697a8e7c95",
         "type": "github"
       },
       "original": {
@@ -394,11 +454,11 @@
     },
     "nixpkgs-stable-darwin": {
       "locked": {
-        "lastModified": 1742544539,
-        "narHash": "sha256-JRmkJpczfxSXyAgwsHw2PJdNdm+8dvna0kVgFCshjBY=",
+        "lastModified": 1743638030,
+        "narHash": "sha256-0MRCsNOF7vqAtVfP9LZlG2MOIp7EiFcK1LO1rQXbfiw=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "73ebc380fcbdb76047a13e96dbfd7c826c547c75",
+        "rev": "5051ae6744b993fcfab221e8bd38f8bc26f88393",
         "type": "github"
       },
       "original": {
@@ -410,11 +470,11 @@
     },
     "nixpkgs-stable-linux": {
       "locked": {
-        "lastModified": 1742512142,
-        "narHash": "sha256-8XfURTDxOm6+33swQJu/hx6xw1Tznl8vJJN5HwVqckg=",
+        "lastModified": 1743703532,
+        "narHash": "sha256-s1KLDALEeqy+ttrvqV3jx9mBZEvmthQErTVOAzbjHZs=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "7105ae3957700a9646cc4b766f5815b23ed0c682",
+        "rev": "bdb91860de2f719b57eef819b5617762f7120c70",
         "type": "github"
       },
       "original": {
@@ -426,11 +486,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1742606399,
-        "narHash": "sha256-NAxwF5cjgh8o5aylhePXWNQETCWYaTpNvdO2bMfINpQ=",
+        "lastModified": 1743689281,
+        "narHash": "sha256-y7Hg5lwWhEOgflEHRfzSH96BOt26LaYfrYWzZ+VoVdg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "0740f6f238767d4caf9afe774d3e88105766dfc6",
+        "rev": "2bfc080955153be0be56724be6fa5477b4eefabb",
         "type": "github"
       },
       "original": {
@@ -459,11 +519,11 @@
     "qmk-factory": {
       "flake": false,
       "locked": {
-        "lastModified": 1742707025,
-        "narHash": "sha256-cnDwIxaZm0XkiR+h/A4nGFZRh/upJyV8/JEvbUmf8JQ=",
+        "lastModified": 1743293858,
+        "narHash": "sha256-o9Zqy9MXqU34/SBRwMkSG0byKkW15i+TpT9FV5Iyvuo=",
         "ref": "refs/heads/master",
-        "rev": "ce2f7d86be171f7273299720ba739b8c85d4c267",
-        "revCount": 28513,
+        "rev": "bc42a7ea8980c1d135ac6f2d2ec194e3e7355bfe",
+        "revCount": 28524,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/qmk/qmk_firmware"
@@ -481,7 +541,11 @@
         "arduino-discovery-dfu": "arduino-discovery-dfu",
         "arduino-discovery-mdns": "arduino-discovery-mdns",
         "arduino-discovery-serial": "arduino-discovery-serial",
+        "arduino-lib-json": "arduino-lib-json",
+        "arduino-lib-sig": "arduino-lib-sig",
         "arduino-monitor-serial": "arduino-monitor-serial",
+        "arduino-pkgs-json": "arduino-pkgs-json",
+        "arduino-pkgs-sig": "arduino-pkgs-sig",
         "arduino-tools-avr-gcc": "arduino-tools-avr-gcc",
         "arduino-tools-avrdude": "arduino-tools-avrdude",
         "arduino-tools-ctags": "arduino-tools-ctags",
@@ -491,6 +555,7 @@
         "arduino-xpack-openocd": "arduino-xpack-openocd",
         "flake-parts": "flake-parts",
         "keyboardio-arduinocore": "keyboardio-arduinocore",
+        "keyboardio-boardsmanager": "keyboardio-boardsmanager",
         "keyboardio-kaleidoscope-bundle": "keyboardio-kaleidoscope-bundle",
         "keyboardio-kaleidoscope-factory": "keyboardio-kaleidoscope-factory",
         "keymaps-ergodoxez": "keymaps-ergodoxez",

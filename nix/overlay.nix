@@ -9,6 +9,10 @@ let
 in withSystem system ({ inputs', ... }: {
 
     inherit (inputs)
+        arduino-lib-json
+        arduino-lib-sig
+        arduino-pkgs-json
+        arduino-pkgs-sig
         arduino-boardsmanager-empty
         arduino-cores-avr
         arduino-tools-avr-gcc
@@ -23,6 +27,7 @@ in withSystem system ({ inputs', ... }: {
         arduino-xpack-arm
         arduino-xpack-openocd
         keyboardio-arduinocore
+        keyboardio-boardsmanager
         keyboardio-kaleidoscope-bundle
         keyboardio-kaleidoscope-factory
         qmk-factory;

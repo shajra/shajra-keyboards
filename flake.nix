@@ -8,6 +8,22 @@
         keymaps-model01    = { url = "github:shajra/empty"; flake = false; };
         keymaps-model100   = { url = "github:shajra/empty"; flake = false; };
         keymaps-moonlander = { url = "github:shajra/empty"; flake = false; };
+        arduino-lib-json = {
+            url = "file+http://downloads.arduino.cc/libraries/library_index.json";
+            flake = false;
+        };
+        arduino-lib-sig = {
+            url = "file+http://downloads.arduino.cc/libraries/library_index.json.sig";
+            flake = false;
+        };
+        arduino-pkgs-json = {
+            url = "file+http://downloads.arduino.cc/packages/package_index.json";
+            flake = false;
+        };
+        arduino-pkgs-sig = {
+            url = "file+http://downloads.arduino.cc/packages/package_index.json.sig";
+            flake = false;
+        };
         arduino-boardsmanager-empty = {
             url = "file+https://github.com/keyboardio/boardsmanager/raw/main/devel/empty.tbz";
             flake = false;
@@ -62,6 +78,11 @@
         };
         keyboardio-arduinocore = {
           url = "git+https://github.com/keyboardio/ArduinoCore-GD32-Keyboardio?submodules=1";
+          flake = false;
+        };
+        keyboardio-boardsmanager = {
+          url =
+          "file+https://raw.githubusercontent.com/keyboardio/boardsmanager/master/devel/package_kaleidoscope_devel_index.json";
           flake = false;
         };
         keyboardio-kaleidoscope-bundle = {
