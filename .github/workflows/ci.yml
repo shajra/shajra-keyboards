@@ -10,7 +10,7 @@ jobs:
     - uses: cachix/install-nix-action@v31
       with:
         # DESIGN: matching current in NixOS 24.11
-        install_url: https://releases.nixos.org/nix/nix-2.24.13/install
+        install_url: https://releases.nixos.org/nix/nix-2.24.14/install
     - uses: cachix/cachix-action@v16
       with:
         name: shajra
