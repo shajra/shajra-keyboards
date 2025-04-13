@@ -72,18 +72,6 @@
         "url": "http://downloads.arduino.cc/libraries/library_index.json"
       }
     },
-    "arduino-lib-sig": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-lDZ6xDAJDwUOv0I7AIx1aDigfeljU9QVeksDrMn0jJ4=",
-        "type": "file",
-        "url": "http://downloads.arduino.cc/libraries/library_index.json.sig"
-      },
-      "original": {
-        "type": "file",
-        "url": "http://downloads.arduino.cc/libraries/library_index.json.sig"
-      }
-    },
     "arduino-monitor-serial": {
       "flake": false,
       "locked": {
@@ -106,18 +94,6 @@
       "original": {
         "type": "file",
         "url": "http://downloads.arduino.cc/packages/package_index.json"
-      }
-    },
-    "arduino-pkgs-sig": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-eGDJKlCKZDgn1MreIFfPMT6ir644cbkUy5Sjzu4OMlQ=",
-        "type": "file",
-        "url": "http://downloads.arduino.cc/packages/package_index.json.sig"
-      },
-      "original": {
-        "type": "file",
-        "url": "http://downloads.arduino.cc/packages/package_index.json.sig"
       }
     },
     "arduino-tools-avr-gcc": {
@@ -393,11 +369,11 @@
         "ox-gfm": "ox-gfm"
       },
       "locked": {
-        "lastModified": 1744493731,
-        "narHash": "sha256-mqUsyBqlKz2hmxm93wni81c3pm40wado1VFrIazUtv4=",
+        "lastModified": 1744555627,
+        "narHash": "sha256-Dimzr2RNvvm5YDI3QPTiuC9wcA1RionhbdvUm5Y3W2I=",
         "owner": "shajra",
         "repo": "nix-project",
-        "rev": "f489d0a6a522b3d4690495ee619cb37124a33ebc",
+        "rev": "02596a983ddc0f721b1f1a42ae0feb234d6b6902",
         "type": "github"
       },
       "original": {
@@ -438,11 +414,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1744491518,
-        "narHash": "sha256-8MZSYJk+RUBsb0P7swLNPGBo0boinZJkWrP0eMQhXME=",
+        "lastModified": 1744555076,
+        "narHash": "sha256-BHTJUdYRLGSzpkszpzCeKPsN6veOjKYFP0IU2XbDcXE=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "78863b295ae8f041bd1777af18de1d0e43840ec0",
+        "rev": "b66efe158edfc013d4036503ca4e0ac868968435",
         "type": "github"
       },
       "original": {
@@ -454,11 +430,11 @@
     },
     "nixpkgs-stable-darwin": {
       "locked": {
-        "lastModified": 1744404076,
-        "narHash": "sha256-vRUFEm+zTa/kW/5IhGdpGyt6uAshpm5B+idx8C53GMM=",
+        "lastModified": 1744492897,
+        "narHash": "sha256-qqKO4FOo/vPmNIaRPcLqwfudUlQ29iNdI1IbCZfjmxs=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ae37201d49daa166e72b09b334cd9453877fa95a",
+        "rev": "86484f6076aac9141df2bfcddbf7dcfce5e0c6bb",
         "type": "github"
       },
       "original": {
@@ -470,11 +446,11 @@
     },
     "nixpkgs-stable-linux": {
       "locked": {
-        "lastModified": 1744309437,
-        "narHash": "sha256-QZnNHM823am8apCqKSPdtnzPGTy2ZB4zIXOVoBp5+W0=",
+        "lastModified": 1744440957,
+        "narHash": "sha256-FHlSkNqFmPxPJvy+6fNLaNeWnF1lZSgqVCl/eWaJRc4=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "f9ebe33a928b5d529c895202263a5ce46bdf12f7",
+        "rev": "26d499fc9f1d567283d5d56fcf367edd815dba1d",
         "type": "github"
       },
       "original": {
@@ -486,11 +462,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1744442362,
-        "narHash": "sha256-i47t4DRIZgwBZw2Osbrp1OJhhO1k/n+QzRx+TrmfE9Y=",
+        "lastModified": 1744536153,
+        "narHash": "sha256-awS2zRgF4uTwrOKwwiJcByDzDOdo3Q1rPZbiHQg/N38=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "2349f9de17183971db12ae9e0123dab132023bd7",
+        "rev": "18dd725c29603f582cf1900e0d25f9f1063dbf11",
         "type": "github"
       },
       "original": {
@@ -519,11 +495,11 @@
     "qmk-factory": {
       "flake": false,
       "locked": {
-        "lastModified": 1744388773,
-        "narHash": "sha256-4pa9+dTvQ5xYy8hkHVsNjwrBi24McE0ZIUfWFiQ8YZ4=",
+        "lastModified": 1744561242,
+        "narHash": "sha256-MxW2zduFp3PMPprdKnfXseRyWdunDNXbFjBzRnExBug=",
         "ref": "refs/heads/master",
-        "rev": "daf696894773d0884bb6d0c542966d6db0f1af4d",
-        "revCount": 28536,
+        "rev": "1388daa0cc2f9e3e171de8ed5388ee94c8a9103a",
+        "revCount": 28539,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/qmk/qmk_firmware"
@@ -542,10 +518,8 @@
         "arduino-discovery-mdns": "arduino-discovery-mdns",
         "arduino-discovery-serial": "arduino-discovery-serial",
         "arduino-lib-json": "arduino-lib-json",
-        "arduino-lib-sig": "arduino-lib-sig",
         "arduino-monitor-serial": "arduino-monitor-serial",
         "arduino-pkgs-json": "arduino-pkgs-json",
-        "arduino-pkgs-sig": "arduino-pkgs-sig",
         "arduino-tools-avr-gcc": "arduino-tools-avr-gcc",
         "arduino-tools-avrdude": "arduino-tools-avrdude",
         "arduino-tools-ctags": "arduino-tools-ctags",

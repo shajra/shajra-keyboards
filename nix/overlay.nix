@@ -10,9 +10,7 @@ in withSystem system ({ inputs', ... }: {
 
     inherit (inputs)
         arduino-lib-json
-        arduino-lib-sig
         arduino-pkgs-json
-        arduino-pkgs-sig
         arduino-boardsmanager-empty
         arduino-cores-avr
         arduino-tools-avr-gcc

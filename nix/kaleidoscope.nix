@@ -1,7 +1,5 @@
 { arduino-lib-json
-, arduino-lib-sig
 , arduino-pkgs-json
-, arduino-pkgs-sig
 , arduino-cli
 , arduino-boardsmanager-empty
 , arduino-cores-avr
@@ -106,11 +104,11 @@ let
 
             cp "${arduino-lib-json}" \
                 "$ARDUINO_DIRECTORIES_DATA/library_index.json"
-            cp "${arduino-lib-sig}" \
+            cp "${arduino/library_index.json.sig}" \
                 "$ARDUINO_DIRECTORIES_DATA/library_index.json.sig"
             cp "${arduino-pkgs-json}" \
                 "$ARDUINO_DIRECTORIES_DATA/package_index.json"
-            cp "${arduino-pkgs-sig}" \
+            cp "${arduino/package_index.json.sig}" \
                 "$ARDUINO_DIRECTORIES_DATA/package_index.json.sig"
             cp "${keyboardio-boardsmanager}" \
                 "$ARDUINO_DIRECTORIES_DATA/package_kaleidoscope_devel_index.json"

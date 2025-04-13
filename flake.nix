@@ -12,16 +12,8 @@
             url = "file+http://downloads.arduino.cc/libraries/library_index.json";
             flake = false;
         };
-        arduino-lib-sig = {
-            url = "file+http://downloads.arduino.cc/libraries/library_index.json.sig";
-            flake = false;
-        };
         arduino-pkgs-json = {
             url = "file+http://downloads.arduino.cc/packages/package_index.json";
-            flake = false;
-        };
-        arduino-pkgs-sig = {
-            url = "file+http://downloads.arduino.cc/packages/package_index.json.sig";
             flake = false;
         };
         arduino-boardsmanager-empty = {

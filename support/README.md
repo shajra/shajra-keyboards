@@ -8,7 +8,7 @@ There are three scripts in this directory.
 
 They are designed to be called with no arguments, and can be called from any working directory, though some modify the source code in place.
 
-`arduino-upgrade` updates the indices in [`../nix/arduino`](../nix/arduino).
+`arduino-upgrade` updates the binary signatures in [`../nix/arduino`](../nix/arduino). Annoyingly, these signatures change rapidly upstream for what appears to be an embedded timestamp. That creates too much hash-changing churn in trying to pull them in as flake inputs.
 
 `kaleidoscope-deps` sets up Kaleidoscope as per the official documentation, so we can see what inputs we need to update/pin in [`../flake.nix`](../flake.nix). This build happens in `/tmp`
 
