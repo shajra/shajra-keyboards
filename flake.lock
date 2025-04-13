@@ -63,7 +63,7 @@
     "arduino-lib-json": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-B2DYCzPNUp4YzDwd3q3wuv4vaLdGX0Qs1/tBP3fjT5w=",
+        "narHash": "sha256-xKf5gNenw29AIfbZdR3a7giIQ8zvAR9HsHvMATZDQFo=",
         "type": "file",
         "url": "http://downloads.arduino.cc/libraries/library_index.json"
       },
@@ -75,7 +75,7 @@
     "arduino-lib-sig": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-oaQUzZcpCFMj6MEiOu84bJzwjkUwOCGSeu+5L03Z2t8=",
+        "narHash": "sha256-lDZ6xDAJDwUOv0I7AIx1aDigfeljU9QVeksDrMn0jJ4=",
         "type": "file",
         "url": "http://downloads.arduino.cc/libraries/library_index.json.sig"
       },
