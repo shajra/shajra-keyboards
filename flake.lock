@@ -63,7 +63,7 @@
     "arduino-lib-json": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-SPcVVpgh+OQYxLUwOXO8ib1Ao4YBj0DKnCY7ptzMz8c=",
+        "narHash": "sha256-WWvyQRe1gJZvyIJ3sjff51DPzafwGEOA6yXfPwP8N/s=",
         "type": "file",
         "url": "http://downloads.arduino.cc/libraries/library_index.json"
       },
@@ -87,7 +87,7 @@
     "arduino-pkgs-json": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-EAobI5RRV920D/E/XgkyLrnAZ4qebI7TlhrPY+85djE=",
+        "narHash": "sha256-Yey9qXyawqWhKbx1ScYsQPXXAIeiFcn4dxou53NcJ14=",
         "type": "file",
         "url": "http://downloads.arduino.cc/packages/package_index.json"
       },
@@ -281,11 +281,11 @@
     "keyboardio-kaleidoscope-factory": {
       "flake": false,
       "locked": {
-        "lastModified": 1746481752,
-        "narHash": "sha256-riG9R+VAqJhAykcy1zULysRegHy8+IsE1HfS9QnZbTI=",
+        "lastModified": 1747256183,
+        "narHash": "sha256-3QnHTpET5hArl/B7Zk/bOdCPyMzwwt1BR8A741eo+48=",
         "ref": "refs/heads/master",
-        "rev": "b6622a3edccb324331031431b3a1e2cfca56f1fe",
-        "revCount": 6531,
+        "rev": "e6d040baae0530f6bbd23d408c9e231476cb02cb",
+        "revCount": 6536,
         "type": "git",
         "url": "https://github.com/keyboardio/Kaleidoscope"
       },
@@ -369,11 +369,11 @@
         "ox-gfm": "ox-gfm"
       },
       "locked": {
-        "lastModified": 1746933778,
-        "narHash": "sha256-cn8h4bVq6gdblO4JWyxUeUguOeUY1p1fV8q7dhWiU4g=",
+        "lastModified": 1747535494,
+        "narHash": "sha256-AOPl6JnzNAeeXtsDbc0libUsM236s0hgeRhGjycyYCA=",
         "owner": "shajra",
         "repo": "nix-project",
-        "rev": "4c8b31ada2ff5d9de18a52078a55e5d3ce52b1e9",
+        "rev": "d98904aa498305fdfcb263996228dede85cecdd4",
         "type": "github"
       },
       "original": {
@@ -414,11 +414,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1746930345,
-        "narHash": "sha256-u5O2p1vQWr4Ud0nUgkc0bdl67Bz6z5Em1xPoL1HhiKw=",
+        "lastModified": 1747534552,
+        "narHash": "sha256-Hn2Yefq1m8hxjF/5A7jvUTwRDA1BFTKc0imyqnxK0dY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "677bab0a617334187b10d9382566abba9a175ef1",
+        "rev": "c1f34e3614281deb0d31cae17afba188abc74b15",
         "type": "github"
       },
       "original": {
@@ -430,11 +430,11 @@
     },
     "nixpkgs-stable-darwin": {
       "locked": {
-        "lastModified": 1746690571,
-        "narHash": "sha256-uu/aarBPzJVJoWfdWe6YkIeRAP25uappdzN+tWTQiME=",
+        "lastModified": 1747443454,
+        "narHash": "sha256-i7TuHf2pqISDmsyZMiFMz3blxdcrARAfTZWAxQerjT0=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "97f265593a4888d1f4df1d924cf82dceb9fe561a",
+        "rev": "6b051131813a84c88cf5651c5ecb8c54f03ab6d6",
         "type": "github"
       },
       "original": {
@@ -446,11 +446,11 @@
     },
     "nixpkgs-stable-linux": {
       "locked": {
-        "lastModified": 1746810718,
-        "narHash": "sha256-VljtYzyttmvkWUKTVJVW93qAsJsrBbgAzy7DdnJaQfI=",
+        "lastModified": 1747335874,
+        "narHash": "sha256-IKKIXTSYJMmUtE+Kav5Rob8SgLPnfnq4Qu8LyT4gdqQ=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "0c0bf9c057382d5f6f63d54fd61f1abd5e1c2f63",
+        "rev": "ba8b70ee098bc5654c459d6a95dfc498b91ff858",
         "type": "github"
       },
       "original": {
@@ -462,11 +462,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1746576598,
-        "narHash": "sha256-FshoQvr6Aor5SnORVvh/ZdJ1Sa2U4ZrIMwKBX5k2wu0=",
+        "lastModified": 1747426788,
+        "narHash": "sha256-N4cp0asTsJCnRMFZ/k19V9akkxb7J/opG+K+jU57JGc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "b3582c75c7f21ce0b429898980eddbbf05c68e55",
+        "rev": "12a55407652e04dcf2309436eb06fef0d3713ef3",
         "type": "github"
       },
       "original": {
@@ -495,11 +495,11 @@
     "qmk-factory": {
       "flake": false,
       "locked": {
-        "lastModified": 1746943060,
-        "narHash": "sha256-3YPjhPRkvt9fW+OdRIFlD+kf46BlpCCInvKhzg1XC+w=",
+        "lastModified": 1747411731,
+        "narHash": "sha256-KqLOrqLjZOTETrk19Vlqz/uIrOttVkn+hQhRz19C6bI=",
         "ref": "refs/heads/master",
-        "rev": "6b1a376aee93c74a0445d918e49c9118c59616fd",
-        "revCount": 28578,
+        "rev": "40d0de39b7ac28ee929729b17e938b98e73db444",
+        "revCount": 28582,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/qmk/qmk_firmware"
