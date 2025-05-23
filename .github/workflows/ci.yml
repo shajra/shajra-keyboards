@@ -9,8 +9,8 @@ jobs:
     - uses: actions/checkout@v4
     - uses: cachix/install-nix-action@v31
       with:
-        # DESIGN: matching current in NixOS 24.11
-        install_url: https://releases.nixos.org/nix/nix-2.24.14/install
+        # DESIGN: matching current in NixOS 25.05
+        install_url: https://releases.nixos.org/nix/nix-2.28.3/install
     - uses: cachix/cachix-action@v16
       with:
         name: shajra
