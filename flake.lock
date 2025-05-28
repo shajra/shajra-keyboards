@@ -63,7 +63,7 @@
     "arduino-lib-json": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-M+6ghY48gcGMdnwfk5cR1+OAPtrdbC9hjlqGG2rgCBI=",
+        "narHash": "sha256-3E14Ysw2jA6U+fon4q6qhf0BJ0B308cf6VVaeQtLzV4=",
         "type": "file",
         "url": "http://downloads.arduino.cc/libraries/library_index.json"
       },
@@ -369,11 +369,11 @@
         "ox-gfm": "ox-gfm"
       },
       "locked": {
-        "lastModified": 1748038316,
-        "narHash": "sha256-E8s9wx/3INTkLrXvKxrRGT76v4JD0eNupkhthaPhAlo=",
+        "lastModified": 1748471746,
+        "narHash": "sha256-Cj4l3mNnFonLcaJ1zzzWEYm4ncGrVQJxlyjh+YZdqrE=",
         "owner": "shajra",
         "repo": "nix-project",
-        "rev": "551b466ea3a0baa62ab2231def77e0ca229b125a",
+        "rev": "bd07dbfbae08bf036679a1a7b93ba7c4ded7b782",
         "type": "github"
       },
       "original": {
@@ -414,11 +414,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1748038015,
-        "narHash": "sha256-ehOfQrrvTf6d3ITXHjceceN2CyKFEV7ZDhyRJ11mzwc=",
+        "lastModified": 1748467797,
+        "narHash": "sha256-kCB7Wdisrw1EUtRnyOmsR3OatcKYW26wEPkrEC2WNCY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ddda49affbe5ed28bd747a5cbac6d96ef7ddf938",
+        "rev": "5abb39e7268cc4b24180987d1e7f1b8bf7d6fba1",
         "type": "github"
       },
       "original": {
@@ -430,11 +430,11 @@
     },
     "nixpkgs-stable-darwin": {
       "locked": {
-        "lastModified": 1747953325,
-        "narHash": "sha256-y2ZtlIlNTuVJUZCqzZAhIw5rrKP4DOSklev6c8PyCkQ=",
+        "lastModified": 1748433079,
+        "narHash": "sha256-yDx+0Gzk0zjVQ4Z4ePm7npklRD7crT4VLHUL2Qgqryg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "55d1f923c480dadce40f5231feb472e81b0bab48",
+        "rev": "36a4400f935fd6259690841e274502c5216249c0",
         "type": "github"
       },
       "original": {
@@ -446,11 +446,11 @@
     },
     "nixpkgs-stable-linux": {
       "locked": {
-        "lastModified": 1747953325,
-        "narHash": "sha256-y2ZtlIlNTuVJUZCqzZAhIw5rrKP4DOSklev6c8PyCkQ=",
+        "lastModified": 1748302896,
+        "narHash": "sha256-ixMT0a8mM091vSswlTORZj93WQAJsRNmEvqLL+qwTFM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "55d1f923c480dadce40f5231feb472e81b0bab48",
+        "rev": "7848cd8c982f7740edf76ddb3b43d234cb80fc4d",
         "type": "github"
       },
       "original": {
@@ -462,11 +462,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1747958103,
-        "narHash": "sha256-qmmFCrfBwSHoWw7cVK4Aj+fns+c54EBP8cGqp/yK410=",
+        "lastModified": 1748344075,
+        "narHash": "sha256-PsZAY3H0e/PBoDVn4fLwGEmeSwESj7SZPZ6CMfgbWFU=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "fe51d34885f7b5e3e7b59572796e1bcb427eccb1",
+        "rev": "e0042dedfbc9134ef973f64e5c7f56a38cc5cc97",
         "type": "github"
       },
       "original": {
@@ -495,11 +495,11 @@
     "qmk-factory": {
       "flake": false,
       "locked": {
-        "lastModified": 1747687982,
-        "narHash": "sha256-xUz/zsW5BOFVMzeNCcYXSUFZEv01yQmjzs6SjL00uFk=",
+        "lastModified": 1748412344,
+        "narHash": "sha256-E+J37D/4lSk8a3y94gB6TeLhu7GeWsVz2n7q4C6UMOU=",
         "ref": "refs/heads/master",
-        "rev": "28720c4d343a9c5e9f5a62dbd583dbf536a2e61e",
-        "revCount": 28586,
+        "rev": "faf77f1651f7660c55f7a8f2a7b653808a29e0e3",
+        "revCount": 28786,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/qmk/qmk_firmware"
