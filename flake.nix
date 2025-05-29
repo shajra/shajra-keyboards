@@ -95,11 +95,9 @@
         flake-parts.lib.mkFlake { inherit inputs; } ({withSystem, config, ... }: {
             imports = [ nix-project.flakeModules.nixpkgs ];
             systems = [ "x86_64-linux" ];
-            perSystem = { system, nixpkgs, ... }:
-                let build = import nixpkgs.stable.path {
-                        inherit system;
-                        overlays = [ config.flake.overlays.default ];
-                    };
+            perSystem = { nixpkgs, ... }:
+                let build = nixpkgs.stable.extend
+                        config.flake.overlays.default;
                 in {
                     packages = {
                         default             = build.shajra-keyboards-ci;
@@ -109,36 +107,49 @@
                         flash-moonlander    = build.shajra-keyboards-flash-scripts.moonlander;
                         licenses-thirdparty = build.shajra-keyboards-licenses;
                     };
-                    checks.ci = build.shajra-keyboards-ci;
-                    legacyPackages.nixpkgs = build;
                     apps = rec {
                         default = licenses-thirdparty;
                         licenses-thirdparty = {
                             type = "app";
                             program =
                                 "${build.shajra-keyboards-licenses}/bin/shajra-keyboards-licenses";
+                            inherit (build.shajra-keyboards-licenses) meta;
                         };
                         flash-ergodoxez = {
                             type = "app";
                             program =
                                 "${build.shajra-keyboards-flash-scripts.ergodoxez}/bin/flash-ergodoxez";
+                            inherit
+                                (build.shajra-keyboards-flash-scripts.ergodoxez)
+                                meta;
                         };
                         flash-model01 = {
                             type = "app";
                             program =
                                 "${build.shajra-keyboards-flash-scripts.model01}/bin/flash-model01";
+                            inherit
+                                (build.shajra-keyboards-flash-scripts.model01)
+                                meta;
                         };
                         flash-model100 = {
                             type = "app";
                             program =
                                 "${build.shajra-keyboards-flash-scripts.model100}/bin/flash-model100";
+                            inherit
+                                (build.shajra-keyboards-flash-scripts.model100)
+                                meta;
                         };
                         flash-moonlander = {
                             type = "app";
                             program =
                                 "${build.shajra-keyboards-flash-scripts.moonlander}/bin/flash-moonlander";
+                            inherit
+                                (build.shajra-keyboards-flash-scripts.moonlander)
+                                meta;
                         };
                     };
+                    checks.ci = build.shajra-keyboards-ci;
+                    legacyPackages.nixpkgs = build;
                 };
             flake.overlays.default =
                 import nix/overlay.nix inputs withSystem;
