@@ -63,7 +63,7 @@
     "arduino-lib-json": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-3E14Ysw2jA6U+fon4q6qhf0BJ0B308cf6VVaeQtLzV4=",
+        "narHash": "sha256-DilhnEwzs3A4grZorcRpXg81RdZbJgScHOPn+zM7sg8=",
         "type": "file",
         "url": "http://downloads.arduino.cc/libraries/library_index.json"
       },
@@ -369,11 +369,11 @@
         "ox-gfm": "ox-gfm"
       },
       "locked": {
-        "lastModified": 1748471746,
-        "narHash": "sha256-Cj4l3mNnFonLcaJ1zzzWEYm4ncGrVQJxlyjh+YZdqrE=",
+        "lastModified": 1748518542,
+        "narHash": "sha256-3XIk4Oz6QqNT/9pGXsAPGkb+pgeIb4dH9o/ZAQ6gFeg=",
         "owner": "shajra",
         "repo": "nix-project",
-        "rev": "bd07dbfbae08bf036679a1a7b93ba7c4ded7b782",
+        "rev": "21a2501f3dc3380316f5b817a724736ee3736891",
         "type": "github"
       },
       "original": {
