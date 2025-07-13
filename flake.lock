@@ -63,7 +63,7 @@
     "arduino-lib-json": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-Gtxf+AckUzjlHXfx1aPfL6xoHcBXRA3mdpSWO1FhBlI=",
+        "narHash": "sha256-rUJvZNKwpEDgCPs6sBi/HA+PI1M4wByizcZNuYZdGyA=",
         "type": "file",
         "url": "http://downloads.arduino.cc/libraries/library_index.json"
       },
@@ -390,11 +390,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1752415094,
-        "narHash": "sha256-J+PqAUAJSqOS5+5Up/il8Zqt2tBTiZM7kbt4Tj6i2Eg=",
+        "lastModified": 1752426804,
+        "narHash": "sha256-tyvpgGMxRmor8MZxcvVjqv4Ff5xqiOhmlv9Hm0Rs7Q4=",
         "owner": "shajra",
         "repo": "nix-project",
-        "rev": "968a819b98b5e1b35fcea1febbd3a12326746d7a",
+        "rev": "c23b27711af05154061a47974251bee0f80a0b2f",
         "type": "github"
       },
       "original": {
@@ -451,11 +451,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1752413591,
-        "narHash": "sha256-r44+7+X/CjCGD43TFiU4uLqZieZVl/0vxEY38WfHWzY=",
+        "lastModified": 1752426041,
+        "narHash": "sha256-+UrQ5b8zMYc55MukObKk+UEXq9FC10dEQr4sofUaqEc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "f0066ee3e4d21144393a5a64ffc3dadee76549ec",
+        "rev": "9c82345f9623aeb5fdbaa4018f4349dc7075d826",
         "type": "github"
       },
       "original": {
@@ -467,11 +467,11 @@
     },
     "nixpkgs-stable-darwin": {
       "locked": {
-        "lastModified": 1752123194,
-        "narHash": "sha256-Q9R+jARwzFRgxaGHwfc+xMK4Js/p+oiB2kMVd/+AoQk=",
+        "lastModified": 1752341689,
+        "narHash": "sha256-XC+rqtxc9j0J8IEyXOXRMRUSkUQfVtURmE8eL0NqgWo=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "d0e951f200f08501ae72f94d0ad715feff8a1d93",
+        "rev": "e40e235767b5b5bb5f9fd254c1aa42dd561fe21b",
         "type": "github"
       },
       "original": {
@@ -483,11 +483,11 @@
     },
     "nixpkgs-stable-linux": {
       "locked": {
-        "lastModified": 1752162966,
-        "narHash": "sha256-3MxxkU8ZXMHXcbFz7UE4M6qnIPTYGcE/7EMqlZNnVDE=",
+        "lastModified": 1752308619,
+        "narHash": "sha256-pzrVLKRQNPrii06Rm09Q0i0dq3wt2t2pciT/GNq5EZQ=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "10e687235226880ed5e9f33f1ffa71fe60f2638a",
+        "rev": "650e572363c091045cdbc5b36b0f4c1f614d3058",
         "type": "github"
       },
       "original": {
