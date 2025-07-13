@@ -109,11 +109,11 @@ nix flake show .
     ├───apps
     │   └───x86_64-linux
     …
-    │       ├───flash-ergodoxez: app: no description
-    │       ├───flash-model01: app: no description
-    │       ├───flash-model100: app: no description
-    │       ├───flash-moonlander: app: no description
-    │       └───licenses-thirdparty: app: no description
+    │       ├───flash-ergodoxez: app: Flash ZSA Technology Lab's Ergodox EZ Keyboard
+    │       ├───flash-model01: app: Flash Keyboardio's Model 01 Keyboard
+    │       ├───flash-model100: app: Flash Keyboardio's Model 100 Keyboard
+    │       ├───flash-moonlander: app: Flash ZSA Technology Lab's Moonlander Keyboard
+    │       └───licenses-thirdparty: app: License information for shajra-keyboards project
     ├───checks
     │   └───x86_64-linux
     │       └───ci: derivation 'shajra-keyboards-ci'
@@ -225,7 +225,7 @@ If we're curious about what version of WezTerm is available in NixOS's latest re
 nix search nixpkgs/nixos-25.05#wezterm ^
 ```
 
-    * legacyPackages.x86_64-linux.wezterm (0-unstable-2025-02-23)
+    * legacyPackages.x86_64-linux.wezterm (0-unstable-2025-05-18)
       GPU-accelerated cross-platform terminal emulator and multiplexer written by @wez and implemented in Rust
 
 Here `/nixos-25.05` overrides the default `nixpkgs-unstable` branch of the registry entry, and the `#wezterm` suffix searches not just the flake, but a specific package named `wezterm`, which will either be found or not (there's no need for regexes to filter further).
@@ -265,7 +265,7 @@ After a successful call of `nix build`, you'll see one or more symlinks for each
 readlink result*
 ```
 
-    /nix/store/7gax957hz7fggxkh8j4sy0bd8h4ld7xc-shajra-keyboards-licenses
+    /nix/store/rx1k863g373y3p5p2lpji5hhaqvmhgia-shajra-keyboards-licenses
 
 Following these symlinks, we can see the files the project provides:
 
@@ -287,7 +287,7 @@ It's common to configure these “result” symlinks as ignored in source contro
 nix path-info .#licenses-thirdparty
 ```
 
-    /nix/store/7gax957hz7fggxkh8j4sy0bd8h4ld7xc-shajra-keyboards-licenses
+    /nix/store/rx1k863g373y3p5p2lpji5hhaqvmhgia-shajra-keyboards-licenses
 
 ## Running commands in a shell<a id="sec-4-6"></a>
 
@@ -400,7 +400,7 @@ nix shell --ignore-environment \
     --command which shajra-keyboards-licenses
 ```
 
-    /nix/store/7gax957hz7fggxkh8j4sy0bd8h4ld7xc-shajra-keyboards-licenses/bin/shajra-keyboards-licenses
+    /nix/store/rx1k863g373y3p5p2lpji5hhaqvmhgia-shajra-keyboards-licenses/bin/shajra-keyboards-licenses
 
 What we do with local flake references can work just as well with remote flake references.
 
@@ -428,7 +428,7 @@ nix profile list
     Flake attribute:    packages.x86_64-linux.licenses-thirdparty
     Original flake URL: git+file:///home/shajra/src/shajra-keyboards
     Locked flake URL:   git+file:///home/shajra/src/shajra-keyboards
-    Store paths:        /nix/store/7gax957hz7fggxkh8j4sy0bd8h4ld7xc-shajra-keyboards-licenses
+    Store paths:        /nix/store/rx1k863g373y3p5p2lpji5hhaqvmhgia-shajra-keyboards-licenses
 
 If we want to uninstall a program from our profile, we can reference it by name:
 
