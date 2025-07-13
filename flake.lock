@@ -63,7 +63,7 @@
     "arduino-lib-json": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-VUhMv8VKCYACTqUxgw5xA8HX0R5tpjb4MQDlhfuK0ug=",
+        "narHash": "sha256-Gtxf+AckUzjlHXfx1aPfL6xoHcBXRA3mdpSWO1FhBlI=",
         "type": "file",
         "url": "http://downloads.arduino.cc/libraries/library_index.json"
       },
@@ -390,11 +390,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1752374952,
-        "narHash": "sha256-Y6B8Uh+r7uA1lJtxWFiGO881U2n+szfuwi2I3gNTAes=",
+        "lastModified": 1752415094,
+        "narHash": "sha256-J+PqAUAJSqOS5+5Up/il8Zqt2tBTiZM7kbt4Tj6i2Eg=",
         "owner": "shajra",
         "repo": "nix-project",
-        "rev": "df9843100c9c7ed43e937928c56f8d60ee74f999",
+        "rev": "968a819b98b5e1b35fcea1febbd3a12326746d7a",
         "type": "github"
       },
       "original": {
@@ -451,11 +451,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1752362343,
-        "narHash": "sha256-EroiTmtCVBV3JvPtDxKyRlWc/75s0F7h84lE12vzKrA=",
+        "lastModified": 1752413591,
+        "narHash": "sha256-r44+7+X/CjCGD43TFiU4uLqZieZVl/0vxEY38WfHWzY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "85bd68110824c068dc08ca541c1f3838d71c8ef6",
+        "rev": "f0066ee3e4d21144393a5a64ffc3dadee76549ec",
         "type": "github"
       },
       "original": {
