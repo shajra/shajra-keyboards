@@ -9,11 +9,11 @@
         keymaps-model100   = { url = "github:shajra/empty"; flake = false; };
         keymaps-moonlander = { url = "github:shajra/empty"; flake = false; };
         arduino-lib-json = {
-            url = "file+http://downloads.arduino.cc/libraries/library_index.json";
+            url = "file+https://downloads.arduino.cc/libraries/library_index.json";
             flake = false;
         };
         arduino-pkgs-json = {
-            url = "file+http://downloads.arduino.cc/packages/package_index.json";
+            url = "file+https://downloads.arduino.cc/packages/package_index.json";
             flake = false;
         };
         arduino-boardsmanager-empty = {
