@@ -63,13 +63,13 @@
     "arduino-lib-json": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-E91cW5S12zp1xnrSB2UjmeS3qXe3NRm19LFfqQRVqOk=",
+        "narHash": "sha256-ilnbaqNHtv8/aCHrKYcC/GT4xMsvaLpglZ5T0JaEM+Y=",
         "type": "file",
-        "url": "http://downloads.arduino.cc/libraries/library_index.json"
+        "url": "https://downloads.arduino.cc/libraries/library_index.json"
       },
       "original": {
         "type": "file",
-        "url": "http://downloads.arduino.cc/libraries/library_index.json"
+        "url": "https://downloads.arduino.cc/libraries/library_index.json"
       }
     },
     "arduino-monitor-serial": {
@@ -89,11 +89,11 @@
       "locked": {
         "narHash": "sha256-6zJLWaDLHTaJ14QYVZKjoX7sB/kuGwAWUrrsnBK1xL0=",
         "type": "file",
-        "url": "http://downloads.arduino.cc/packages/package_index.json"
+        "url": "https://downloads.arduino.cc/packages/package_index.json"
       },
       "original": {
         "type": "file",
-        "url": "http://downloads.arduino.cc/packages/package_index.json"
+        "url": "https://downloads.arduino.cc/packages/package_index.json"
       }
     },
     "arduino-tools-avr-gcc": {
