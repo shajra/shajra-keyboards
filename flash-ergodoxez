@@ -3,10 +3,4 @@
 cd "$(dirname "$0")"
 
 nix --extra-experimental-features "nix-command flakes" \
-    shell \
-    --ignore-environment \
-    .#flash-ergodoxez \
-    --command \
-    flash-ergodoxez \
-    --nix "$(command -v nix)" \
-    "$@"
+    run .#flash-ergodoxez -- "$@"

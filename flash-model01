@@ -2,11 +2,5 @@
 
 cd "$(dirname "$0")"
 
-nix shell \
-    --ignore-environment \
-    --keep HOME \
-    .#flash-model01 \
-    --command \
-    flash-model01 \
-    --nix "$(command -v nix)" \
-    "$@"
+nix --extra-experimental-features "nix-command flakes" \
+    run .#flash-model01 -- "$@"

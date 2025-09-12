@@ -3,9 +3,4 @@
 cd "$(dirname "$0")"
 
 nix --extra-experimental-features "nix-command flakes" \
-    shell \
-    --ignore-environment \
-    --file . \
-    packages.x86_64-linux.licenses-thirdparty \
-    --command \
-    shajra-keyboards-licenses
+    run .#licenses-thirdparty

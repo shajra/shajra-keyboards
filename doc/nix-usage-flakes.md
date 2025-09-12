@@ -40,7 +40,7 @@ Otherwise, see the provided [Nix installation and configuration guide](nix-insta
 To continue following this usage guide, you will need Nix's experimental flakes feature. You can enable this globally or use an alias such as the following:
 
 ```sh
-alias nix-flakes = nix --extra-experimental-features 'nix-command flakes'
+alias nix-flakes='nix --extra-experimental-features "nix-command flakes"'
 ```
 
 # Working with Nix<a id="sec-4"></a>
@@ -109,26 +109,26 @@ nix flake show .
     ├───apps
     │   └───x86_64-linux
     …
-    │       ├───flash-ergodoxez: app: Flash ZSA Technology Lab's Ergodox EZ Keyboard
-    │       ├───flash-model01: app: Flash Keyboardio's Model 01 Keyboard
-    │       ├───flash-model100: app: Flash Keyboardio's Model 100 Keyboard
-    │       ├───flash-moonlander: app: Flash ZSA Technology Lab's Moonlander Keyboard
-    │       └───licenses-thirdparty: app: License information for shajra-keyboards project
-    ├───checks
     │   └───x86_64-linux
-    │       └───ci: derivation 'shajra-keyboards-ci'
+    │       ├───build: derivation 'shajra-keyboards-checks'
+    │       └───treefmt: derivation 'treefmt-check'
+    ├───devShells
+    │   └───x86_64-linux
+    │       └───default: development environment 'devshell'
+    ├───formatter
+    │   └───x86_64-linux: package 'treefmt'
     ├───legacyPackages
     │   └───x86_64-linux omitted (use '--legacy' to show)
     ├───overlays
     │   └───default: Nixpkgs overlay
     └───packages
         └───x86_64-linux
-            ├───default: package 'shajra-keyboards-ci'
-            ├───flash-ergodoxez: package 'flash-ergodoxez'
-            ├───flash-model01: package 'flash-model01'
-            ├───flash-model100: package 'flash-model100'
-            ├───flash-moonlander: package 'flash-moonlander'
-            └───licenses-thirdparty: package 'shajra-keyboards-licenses'
+            ├───default: package 'shajra-keyboards-checks'
+            ├───flash-ergodoxez: package 'flash-ergodoxez-env'
+            ├───flash-model01: package 'flash-model01-env'
+            ├───flash-model100: package 'flash-model100-env'
+            ├───flash-moonlander: package 'flash-moonlander-env'
+            └───licenses-thirdparty: package 'shajra-keyboards-licenses-env'
 
 Flake outputs are organized in a tree of *attributes*. References to paths of attributes are dot-delimited. There is a standard schema for the output attribute tree of a flake. Nix permits outputs outside this schema.
 
@@ -197,27 +197,28 @@ As discussed in a previous section, we can use the flakes registry identifier of
 
 ```sh
 nix search nixpkgs 'gpu|opengl|accel' terminal
-+end_src
-
-#+name: nix-search-remote-concise
-#+begin_src sh :dir .. :results output :exports results
-nix search nixpkgs 'gpu|opengl|accel' terminal | ansifilter
 ```
 
-    * legacyPackages.x86_64-linux.alacritty (0.13.1)
-      A cross-platform, GPU-accelerated terminal emulator
+    * legacyPackages.x86_64-linux.alacritty (0.15.1)
+      Cross-platform, GPU-accelerated terminal emulator
+    
+    * legacyPackages.x86_64-linux.alacritty-graphics (0.15.1-graphics)
+      Cross-platform, GPU-accelerated terminal emulator
     
     * legacyPackages.x86_64-linux.darktile (0.0.11)
-      A GPU rendered terminal emulator designed for tiling window managers
+      GPU rendered terminal emulator designed for tiling window managers
     
-    * legacyPackages.x86_64-linux.kitty (0.32.0)
-      A modern, hackable, featureful, OpenGL based terminal emulator
+    * legacyPackages.x86_64-linux.kitty (0.42.2)
+      Fast, feature-rich, GPU based terminal emulator
     
-    * legacyPackages.x86_64-linux.rio (0.0.34)
-      A hardware-accelerated GPU terminal emulator powered by WebGPU
+    * legacyPackages.x86_64-linux.rio (0.2.29)
+      Hardware-accelerated GPU terminal emulator powered by WebGPU
     
-    * legacyPackages.x86_64-linux.wezterm (20230712-072601-f4abf8fd)
+    * legacyPackages.x86_64-linux.wezterm (0-unstable-2025-07-30)
       GPU-accelerated cross-platform terminal emulator and multiplexer written by @wez and implemented in Rust
+    
+    * legacyPackages.x86_64-linux.zutty (0.16-unstable-2024-08-18)
+      X terminal emulator rendering through OpenGL ES Compute Shaders
 
 If we're curious about what version of WezTerm is available in NixOS's latest release, we can specialize the installable we're searching as follows:
 
@@ -265,7 +266,7 @@ After a successful call of `nix build`, you'll see one or more symlinks for each
 readlink result*
 ```
 
-    /nix/store/6kr257yldfbhz7ijhx7p4gc1s7ixgwra-shajra-keyboards-licenses
+    /nix/store/0bx2w3ymblxrfw7zxsdnxn0dnr39cca5-shajra-keyboards-licenses-env
 
 Following these symlinks, we can see the files the project provides:
 
@@ -281,13 +282,13 @@ tree -l result*
 
 It's common to configure these “result” symlinks as ignored in source control tools (for instance, for Git within a `.gitignore` file).
 
-`nix build` has a `--no-link` switch in case you want to build packages without creating “result” symlinks. To get the paths where your packages are located, you can use `nix path-info` after a successful build:
+`nix build` has a `--no-link` option in case you want to build packages without creating “result” symlinks. To get the paths where your packages are located, you can use `nix path-info` after a successful build:
 
 ```sh
 nix path-info .#licenses-thirdparty
 ```
 
-    /nix/store/6kr257yldfbhz7ijhx7p4gc1s7ixgwra-shajra-keyboards-licenses
+    /nix/store/0bx2w3ymblxrfw7zxsdnxn0dnr39cca5-shajra-keyboards-licenses-env
 
 ## Running commands in a shell<a id="sec-4-6"></a>
 
@@ -312,9 +313,9 @@ nix shell \
 
 Similarly to `nix build`, `nix shell` accepts installables as positional arguments to select packages to put on the `PATH`.
 
-The command to run within the shell is specified after the `--command` switch. `nix shell` runs the command in a shell set up with a `PATH` environment variable that includes all the `bin` directories provided by the selected packages.
+The command to run within the shell is specified after the `--command` option. `nix shell` runs the command in a shell set up with a `PATH` environment variable that includes all the `bin` directories provided by the selected packages.
 
-If you only want to enter an interactive shell with the configured `PATH`, you can drop the `--command` switch and following arguments.
+If you only want to enter an interactive shell with the configured `PATH`, you can drop the `--command` option and following arguments.
 
 `nix shell` also supports an `--ignore-environment` flag that restricts `PATH` to only packages selected, rather than extending the `PATH` of the caller's environment. With `--ignore-environment`, the invocation is more sandboxed.
 
@@ -326,7 +327,7 @@ As with `nix build`, `nix shell` will select default packages for any installabl
 
 ## Running installables<a id="sec-4-7"></a>
 
-The `nix run` command allows us to run executables from packages with a more concise syntax than `nix shell` with a `--command` switch.
+The `nix run` command allows us to run executables from packages with a more concise syntax than `nix shell` with a `--command` option.
 
 The main difference from `nix shell` is that `nix run` detects which executable to run from a package. If we want something other than what can be detected, we must continue using `nix shell` with `--command`.
 
@@ -360,7 +361,7 @@ nix run .#licenses-thirdparty  -- --help
     party source codes, modify them as per their respective
     …
 
-We can see some of the metadata of this package with the `--json` switch of `nix search`:
+We can see some of the metadata of this package with the `--json` option of `nix search`:
 
 ```sh
 nix search --json .#licenses-thirdparty ^ | jq .
@@ -369,7 +370,7 @@ nix search --json .#licenses-thirdparty ^ | jq .
     {
       "packages.x86_64-linux.licenses-thirdparty": {
         "description": "License information for shajra-keyboards project",
-        "pname": "shajra-keyboards-licenses",
+        "pname": "shajra-keyboards-licenses-env",
         "version": ""
     …
 
@@ -400,15 +401,15 @@ nix shell --ignore-environment \
     --command which shajra-keyboards-licenses
 ```
 
-    /nix/store/6kr257yldfbhz7ijhx7p4gc1s7ixgwra-shajra-keyboards-licenses/bin/shajra-keyboards-licenses
+    /nix/store/0bx2w3ymblxrfw7zxsdnxn0dnr39cca5-shajra-keyboards-licenses-env/bin/shajra-keyboards-licenses
 
 What we do with local flake references can work just as well with remote flake references.
 
 ## Installing and uninstalling programs<a id="sec-4-9"></a>
 
-We've seen that we can build programs with `nix build` and execute them using the “result” symlink (`result/bin/*`). Additionally, we've seen that you can run programs with `nix shell` and `nix run`. But these additional steps and switches/arguments can feel extraneous. It would be nice to have the programs on our `PATH`. This is what `nix profile` is for.
+We've seen that we can build programs with `nix build` and execute them using the “result” symlink (`result/bin/*`). Additionally, we've seen that you can run programs with `nix shell` and `nix run`. But these additional steps and options/arguments can feel extraneous. It would be nice to have the programs on our `PATH`. This is what `nix profile` is for.
 
-`nix profile` maintains a symlink tree of installed programs called a *profile*. The default profile is at `~/.nix-profile`. For non-root users, if this doesn't exist, `nix profile` will create it as a symlink pointing to `/nix/var/nix/profiles/per-user/$USER/profile`. But you can point `nix profile` to another profile at any writable location with the `--profile` switch.
+`nix profile` maintains a symlink tree of installed programs called a *profile*. The default profile is at `~/.nix-profile`. For non-root users, if this doesn't exist, `nix profile` will create it as a symlink pointing to `/nix/var/nix/profiles/per-user/$USER/profile`. But you can point `nix profile` to another profile at any writable location with the `--profile` option.
 
 This way, you can just put `~/.nix-profile/bin` on your `PATH`, and any programs installed in your default profile will be available for interactive use or scripts.
 
@@ -428,7 +429,7 @@ nix profile list
     Flake attribute:    packages.x86_64-linux.licenses-thirdparty
     Original flake URL: git+file:///home/shajra/src/shajra-keyboards
     Locked flake URL:   git+file:///home/shajra/src/shajra-keyboards
-    Store paths:        /nix/store/6kr257yldfbhz7ijhx7p4gc1s7ixgwra-shajra-keyboards-licenses
+    Store paths:        /nix/store/0bx2w3ymblxrfw7zxsdnxn0dnr39cca5-shajra-keyboards-licenses-env
 
 If we want to uninstall a program from our profile, we can reference it by name:
 
@@ -466,7 +467,7 @@ An obvious place to start learning more about Nix is [the official documentation
 
 Bundled with this project is [a small tutorial on the Nix language](nix-language.md).
 
-All the commands we've covered have more switches and options. See the respective man pages for more.
+All the commands we've covered have more options and options. See the respective man pages for more.
 
 We didn't cover much of [Nixpkgs](https://github.com/NixOS/nixpkgs), the gigantic repository of community-curated Nix expressions.
 
