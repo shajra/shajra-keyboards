@@ -11,6 +11,6 @@
  (run-target-short     . "shajra-keyboards-licenses")
  ;; run-target-long will always prefix "bin/"
  (nix-latest           . "2.31.1")
- (nix-stable           . "2.28.4")
+ (nix-stable           . "2.28.5")
  (nixos-latest         . "25.05")
  (platforms            . "Linux on x86-64 machines"))

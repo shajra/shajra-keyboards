@@ -337,7 +337,7 @@ nix eval --expr '/some/filepath'
 ```
 
     "path"
-    «unknown»/some/filepath
+    /some/filepath
 
 # Mutable (dangerous) path references<a id="sec-11"></a>
 
