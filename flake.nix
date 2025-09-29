@@ -2,10 +2,10 @@
   description = "Personal Keyboard Configuration via Nix";
 
   inputs = {
-    devshell.url = "github:numtide/devshell";
-    flake-parts.url = "github:hercules-ci/flake-parts";
     nix-project.url = "github:shajra/nix-project";
-    treefmt-nix.url = "github:numtide/treefmt-nix";
+    devshell.follows = "nix-project/devshell";
+    flake-parts.follows = "nix-project/flake-parts";
+    treefmt-nix.follows = "nix-project/treefmt-nix";
     keymaps-ergodoxez = {
       url = "github:shajra/empty";
       flake = false;
