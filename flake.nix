@@ -175,34 +175,40 @@
             devshells.default = {
               commands = [
                 {
-                  name = "project-update";
-                  help = "update project dependencies";
-                  command = ''nix flake update --commit-lock-file "$@"'';
-                }
-                {
-                  name = "project-check";
-                  help = "run all checks/tests/linters";
-                  command = "nix --print-build-logs flake check --show-trace";
-                }
-                {
+                  category = "[general commands]";
                   name = "project-format";
                   help = "format all files in one command";
                   command = ''treefmt "$@"'';
                 }
                 {
-                  name = "project-doc-gen";
-                  help = "generate GitHub Markdown from Org files";
-                  command = ''org2gfm "$@"'';
+                  category = "[release]";
+                  name = "project-kaleidoscope-deps";
+                  help = "1) generate Kaleidoscope dependencies";
+                  command = "kaleidoscope-deps";
                 }
                 {
+                  category = "[release]";
                   name = "project-arduino-upgrade";
-                  help = "upgrade arduino JSON signatures";
+                  help = "2) upgrade arduino JSON signatures";
                   command = "arduino-upgrade";
                 }
                 {
-                  name = "project-kaleidoscope-deps";
-                  help = "generate Kaleidoscope dependencies";
-                  command = "kaleidoscope-deps";
+                  category = "[release]";
+                  name = "project-update";
+                  help = "3) update project dependencies";
+                  command = ''nix flake update --commit-lock-file "$@"'';
+                }
+                {
+                  category = "[release]";
+                  name = "project-check";
+                  help = "4) run all checks/tests/linters";
+                  command = "nix --print-build-logs flake check --show-trace";
+                }
+                {
+                  category = "[release]";
+                  name = "project-doc-gen";
+                  help = "5) generate GitHub Markdown from Org files";
+                  command = ''org2gfm "$@"'';
                 }
               ];
               packages = [
