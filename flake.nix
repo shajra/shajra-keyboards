@@ -23,11 +23,11 @@
       flake = false;
     };
     arduino-lib-json = {
-      url = "file+http://downloads.arduino.cc/libraries/library_index.json";
+      url = "file+https://downloads.arduino.cc/libraries/library_index.json";
       flake = false;
     };
     arduino-pkgs-json = {
-      url = "file+http://downloads.arduino.cc/packages/package_index.json";
+      url = "file+https://downloads.arduino.cc/packages/package_index.json";
       flake = false;
     };
     arduino-boardsmanager-empty = {
@@ -35,15 +35,15 @@
       flake = false;
     };
     arduino-cores-avr = {
-      url = "file+http://downloads.arduino.cc/cores/staging/avr-1.8.6.tar.bz2";
+      url = "file+https://downloads.arduino.cc/cores/staging/avr-1.8.6.tar.bz2";
       flake = false;
     };
     arduino-tools-avr-gcc = {
-      url = "file+http://downloads.arduino.cc/tools/avr-gcc-7.3.0-atmel3.6.1-arduino7-x86_64-pc-linux-gnu.tar.bz2";
+      url = "file+https://downloads.arduino.cc/tools/avr-gcc-7.3.0-atmel3.6.1-arduino7-x86_64-pc-linux-gnu.tar.bz2";
       flake = false;
     };
     arduino-tools-avrdude = {
-      url = "file+http://downloads.arduino.cc/tools/avrdude-6.3.0-arduino17-x86_64-pc-linux-gnu.tar.bz2";
+      url = "file+https://downloads.arduino.cc/tools/avrdude-6.3.0-arduino17-x86_64-pc-linux-gnu.tar.bz2";
       flake = false;
     };
     arduino-tools-ctags = {
@@ -55,7 +55,7 @@
       flake = false;
     };
     arduino-tools-ota = {
-      url = "file+http://downloads.arduino.cc/tools/arduinoOTA-1.3.0-linux_amd64.tar.bz2";
+      url = "file+https://downloads.arduino.cc/tools/arduinoOTA-1.3.0-linux_amd64.tar.bz2";
       flake = false;
     };
     arduino-discovery-dfu = {

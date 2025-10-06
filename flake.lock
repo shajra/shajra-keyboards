@@ -17,11 +17,11 @@
       "locked": {
         "narHash": "sha256-cSp3OAYHiOyXAhCrB4g76JsvBogo0JZzN6/QlFJyIZg=",
         "type": "file",
-        "url": "http://downloads.arduino.cc/cores/staging/avr-1.8.6.tar.bz2"
+        "url": "https://downloads.arduino.cc/cores/staging/avr-1.8.6.tar.bz2"
       },
       "original": {
         "type": "file",
-        "url": "http://downloads.arduino.cc/cores/staging/avr-1.8.6.tar.bz2"
+        "url": "https://downloads.arduino.cc/cores/staging/avr-1.8.6.tar.bz2"
       }
     },
     "arduino-discovery-dfu": {
@@ -65,11 +65,11 @@
       "locked": {
         "narHash": "sha256-h/jczz6PEl76hQnc49do8yudSiA62DHrdP7qgMNNtPA=",
         "type": "file",
-        "url": "http://downloads.arduino.cc/libraries/library_index.json"
+        "url": "https://downloads.arduino.cc/libraries/library_index.json"
       },
       "original": {
         "type": "file",
-        "url": "http://downloads.arduino.cc/libraries/library_index.json"
+        "url": "https://downloads.arduino.cc/libraries/library_index.json"
       }
     },
     "arduino-monitor-serial": {
@@ -89,11 +89,11 @@
       "locked": {
         "narHash": "sha256-IlQiVn1nKOAbOmre2Xr/VgpiYn01nXufVbZkNcaYnEc=",
         "type": "file",
-        "url": "http://downloads.arduino.cc/packages/package_index.json"
+        "url": "https://downloads.arduino.cc/packages/package_index.json"
       },
       "original": {
         "type": "file",
-        "url": "http://downloads.arduino.cc/packages/package_index.json"
+        "url": "https://downloads.arduino.cc/packages/package_index.json"
       }
     },
     "arduino-tools-avr-gcc": {
@@ -101,11 +101,11 @@
       "locked": {
         "narHash": "sha256-UIG580IoBXQ+JN5TfKhujJcJca2pnrsm//dodV1GOkM=",
         "type": "file",
-        "url": "http://downloads.arduino.cc/tools/avr-gcc-7.3.0-atmel3.6.1-arduino7-x86_64-pc-linux-gnu.tar.bz2"
+        "url": "https://downloads.arduino.cc/tools/avr-gcc-7.3.0-atmel3.6.1-arduino7-x86_64-pc-linux-gnu.tar.bz2"
       },
       "original": {
         "type": "file",
-        "url": "http://downloads.arduino.cc/tools/avr-gcc-7.3.0-atmel3.6.1-arduino7-x86_64-pc-linux-gnu.tar.bz2"
+        "url": "https://downloads.arduino.cc/tools/avr-gcc-7.3.0-atmel3.6.1-arduino7-x86_64-pc-linux-gnu.tar.bz2"
       }
     },
     "arduino-tools-avrdude": {
@@ -113,11 +113,11 @@
       "locked": {
         "narHash": "sha256-+LAWQeUDEYlJ5+T2T8gv7WE7EFFcCdlKN6+ezi5o0kU=",
         "type": "file",
-        "url": "http://downloads.arduino.cc/tools/avrdude-6.3.0-arduino17-x86_64-pc-linux-gnu.tar.bz2"
+        "url": "https://downloads.arduino.cc/tools/avrdude-6.3.0-arduino17-x86_64-pc-linux-gnu.tar.bz2"
       },
       "original": {
         "type": "file",
-        "url": "http://downloads.arduino.cc/tools/avrdude-6.3.0-arduino17-x86_64-pc-linux-gnu.tar.bz2"
+        "url": "https://downloads.arduino.cc/tools/avrdude-6.3.0-arduino17-x86_64-pc-linux-gnu.tar.bz2"
       }
     },
     "arduino-tools-ctags": {
@@ -149,11 +149,11 @@
       "locked": {
         "narHash": "sha256-OY0mYW6M9NjxpI5jwf38w4CoC9lmP7GGpCd4v5xzLhM=",
         "type": "file",
-        "url": "http://downloads.arduino.cc/tools/arduinoOTA-1.3.0-linux_amd64.tar.bz2"
+        "url": "https://downloads.arduino.cc/tools/arduinoOTA-1.3.0-linux_amd64.tar.bz2"
       },
       "original": {
         "type": "file",
-        "url": "http://downloads.arduino.cc/tools/arduinoOTA-1.3.0-linux_amd64.tar.bz2"
+        "url": "https://downloads.arduino.cc/tools/arduinoOTA-1.3.0-linux_amd64.tar.bz2"
       }
     },
     "arduino-xpack-arm": {
