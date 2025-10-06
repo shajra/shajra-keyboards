@@ -63,7 +63,7 @@
     "arduino-lib-json": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-4X0bLYwb39zAKeL3VC3W0JCMYfh73x/V+d4C9ufpsKo=",
+        "narHash": "sha256-ALwBpaAOz2B524vdx6CEh++LuAUPccGmjzD72NoUMgI=",
         "type": "file",
         "url": "https://downloads.arduino.cc/libraries/library_index.json"
       },
