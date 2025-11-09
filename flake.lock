@@ -39,25 +39,25 @@
     "arduino-discovery-mdns": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-r1N+VdzpGjwkWUN7sAbWQJGQ79k3S4ymPLBVvhvQA0c=",
+        "narHash": "sha256-zyjnma4jduwgwe1VWbBUPbvBZzjTU1K4k2YbTnJmaoY=",
         "type": "file",
-        "url": "https://downloads.arduino.cc/discovery/mdns-discovery/mdns-discovery_v1.0.9_Linux_64bit.tar.gz"
+        "url": "https://downloads.arduino.cc/discovery/mdns-discovery/mdns-discovery_v1.0.12_Linux_64bit.tar.gz"
       },
       "original": {
         "type": "file",
-        "url": "https://downloads.arduino.cc/discovery/mdns-discovery/mdns-discovery_v1.0.9_Linux_64bit.tar.gz"
+        "url": "https://downloads.arduino.cc/discovery/mdns-discovery/mdns-discovery_v1.0.12_Linux_64bit.tar.gz"
       }
     },
     "arduino-discovery-serial": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-m7uwXKaTsgnb2j1e6TzDteN11M/PxcMnNPmGa18RupY=",
+        "narHash": "sha256-+1mUX2KSofnCHwa9Q4FKWKWrKc8/yn+f4uGPcrMInmw=",
         "type": "file",
-        "url": "https://downloads.arduino.cc/discovery/serial-discovery/serial-discovery_v1.4.1_Linux_64bit.tar.gz"
+        "url": "https://downloads.arduino.cc/discovery/serial-discovery/serial-discovery_v1.4.3_Linux_64bit.tar.gz"
       },
       "original": {
         "type": "file",
-        "url": "https://downloads.arduino.cc/discovery/serial-discovery/serial-discovery_v1.4.1_Linux_64bit.tar.gz"
+        "url": "https://downloads.arduino.cc/discovery/serial-discovery/serial-discovery_v1.4.3_Linux_64bit.tar.gz"
       }
     },
     "arduino-lib-json": {

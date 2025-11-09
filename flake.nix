@@ -63,11 +63,11 @@
       flake = false;
     };
     arduino-discovery-mdns = {
-      url = "file+https://downloads.arduino.cc/discovery/mdns-discovery/mdns-discovery_v1.0.9_Linux_64bit.tar.gz";
+      url = "file+https://downloads.arduino.cc/discovery/mdns-discovery/mdns-discovery_v1.0.12_Linux_64bit.tar.gz";
       flake = false;
     };
     arduino-discovery-serial = {
-      url = "file+https://downloads.arduino.cc/discovery/serial-discovery/serial-discovery_v1.4.1_Linux_64bit.tar.gz";
+      url = "file+https://downloads.arduino.cc/discovery/serial-discovery/serial-discovery_v1.4.3_Linux_64bit.tar.gz";
       flake = false;
     };
     arduino-monitor-serial = {
