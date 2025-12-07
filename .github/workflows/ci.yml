@@ -6,11 +6,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v6
     - uses: cachix/install-nix-action@v31
       with:
-        # DESIGN: matching current in NixOS 25.05
-        install_url: https://releases.nixos.org/nix/nix-2.28.5/install
+        # DESIGN: matching current in NixOS 25.11
+        install_url: https://releases.nixos.org/nix/nix-2.31.2/install
     - uses: cachix/cachix-action@v16
       with:
         name: shajra
