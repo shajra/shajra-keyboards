@@ -13,7 +13,7 @@ let
   prefixNames =
     prefix: set:
     lib.listToAttrs (
-      builtins.map (name: {
+      map (name: {
         name = prefix + name;
         value = set.${name};
       }) (lib.attrNames set)

@@ -68,7 +68,7 @@ let
 
   lockNodes = (builtins.fromJSON (builtins.readFile ../flake.lock)).nodes;
 
-  depName = name: builtins.baseNameOf lockNodes."${name}".original.url;
+  depName = name: baseNameOf lockNodes."${name}".original.url;
 
   setup = stdenv.mkDerivation {
     name = "kaleidoscope-setup";
