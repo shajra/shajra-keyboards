@@ -63,7 +63,7 @@
     "arduino-lib-json": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-NjdrYqN3QVvc9QCJ4SAqUUcybFfWuiNRVC72m2n437I=",
+        "narHash": "sha256-FK4SLr+T90C88GEYXISt59aoI+uElVIMw/UB9b5jlOY=",
         "type": "file",
         "url": "https://downloads.arduino.cc/libraries/library_index.json"
       },
@@ -531,11 +531,11 @@
     "qmk-factory": {
       "flake": false,
       "locked": {
-        "lastModified": 1767988223,
-        "narHash": "sha256-v7xgdvXf7Yk6bf0uGq0ZPUpfOLe2h344yvCDnkmQFQ4=",
+        "lastModified": 1768155314,
+        "narHash": "sha256-SN2xVcsBtHdwpiI4j7LMmITqll5DubymhHbFuHXBi4o=",
         "ref": "refs/heads/master",
-        "rev": "e31384babf7cb77fb6b076541ba3373f3f709b46",
-        "revCount": 29254,
+        "rev": "e391793f7317ca406989cea30dcd43ebbdb1f0e8",
+        "revCount": 29257,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/qmk/qmk_firmware"
