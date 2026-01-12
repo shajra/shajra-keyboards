@@ -355,7 +355,7 @@ nix search nixpkgs 'gpu|opengl|accel' terminal | ansifilter
 ,* legacyPackages.x86_64-linux.rio (0.2.37)
   Hardware-accelerated GPU terminal emulator powered by WebGPU
 
-,* legacyPackages.x86_64-linux.wezterm (0-unstable-2025-10-14)
+,* legacyPackages.x86_64-linux.wezterm (0-unstable-2026-01-08)
   GPU-accelerated cross-platform terminal emulator and multiplexer written by @wez and implemented in Rust
 
 ,* legacyPackages.x86_64-linux.zutty (0.16-unstable-2024-08-18)
