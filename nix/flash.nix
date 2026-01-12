@@ -3,6 +3,7 @@
   gnused,
   gnutar,
   gzip,
+  git,
   lib,
   nix-project-lib,
   shajra-keyboards-keymaps,
@@ -45,6 +46,7 @@ nix-project-lib.writeShellCheckedExe name
       gnused
       gnutar
       gzip
+      git
     ];
   }
   ''
