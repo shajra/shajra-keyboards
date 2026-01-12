@@ -242,7 +242,7 @@ The following non-modifier keycodes below have been ordered from the most freque
 | `'`                        | apostrophes common in text, but historically next to `;`   |
 | `Esc`                      | essential for Vim-style keybinds                           |
 | `Tab`                      | useful for shell/programming tab-complete                  |
-| `-` `=`                    | CLI switches, "zoom" keybindings, common in programming    |
+| `-` `=`                    | CLI options, "zoom" keybindings, common in programming     |
 | `Left` `Right` `Down` `Up` | useful in a variety of contexts                            |
 | `` ` ``                    | common in "markdown" languages for verbatim text           |
 | `Page Down` `Page Up`      | useful when reading a large page                           |
