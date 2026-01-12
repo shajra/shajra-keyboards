@@ -70,9 +70,11 @@ withSystem system (
       moonlander = final.callPackage ./moonlander.nix { };
     };
 
-    shajra-keyboards-build = final.recurseIntoAttrs (final.callPackage ./build.nix { });
+    shajra-keyboards-build = final.lib.recurseIntoAttrs (final.callPackage ./build.nix { });
 
-    shajra-keyboards-flash-scripts = final.recurseIntoAttrs (final.callPackage ./flash-scripts.nix { });
+    shajra-keyboards-flash-scripts = final.lib.recurseIntoAttrs (
+      final.callPackage ./flash-scripts.nix { }
+    );
 
     shajra-keyboards-licenses = final.callPackage ./licenses.nix { };
 
