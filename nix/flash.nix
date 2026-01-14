@@ -1,5 +1,6 @@
 {
   coreutils,
+  git,
   gnused,
   gnutar,
   gzip,
@@ -42,6 +43,7 @@ nix-project-lib.writeShellCheckedExe name
     pathKeep = [ "nix" ];
     pathPackages = [
       coreutils
+      git
       gnused
       gnutar
       gzip
