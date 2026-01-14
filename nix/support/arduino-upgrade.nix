@@ -1,16 +1,13 @@
 {
   coreutils,
   curl,
+  jq,
   nix-project-lib,
 }:
 let
 
   name = "arduino-upgrade";
   meta.description = "Upgrade arduino JSON signatures";
-
-  # DESIGN: Annoyingly, these signatures change rapidly upstream for what
-  # appears to be an embedded timestamp.  That creates too much hash-changing
-  # churn in trying to pull them in as flake inputs.
 
 in
 nix-project-lib.writeShellCheckedExe name
@@ -20,6 +17,7 @@ nix-project-lib.writeShellCheckedExe name
     pathPackages = [
       coreutils
       curl
+      jq
     ];
   }
 
@@ -35,17 +33,14 @@ nix-project-lib.writeShellCheckedExe name
     get()
     (
         url="$1"
-        dest="''${url##*/}"
-        echo
-        echo "GETTING LATEST: $url"
-        curl \
-            "$url" \
-            > "$PRJ_ROOT/nix/arduino/$dest"
+        echo >&2
+        echo "GETTING LATEST: $url" >&2
+        curl -s "$url"
     )
 
-    for url in \
-        https://downloads.arduino.cc/libraries/library_index.json.sig \
-        https://downloads.arduino.cc/packages/package_index.json.sig
-    do get "$url"
-    done
+    dest="package_index.json"
+    final_file="$PRJ_ROOT/nix/arduino/$dest"
+    get "https://downloads.arduino.cc/packages/package_index.json" \
+        | jq -f "${./arduino-lib-prune.jq}" > "$final_file"
+    echo "WROTE: $final_file"
   ''

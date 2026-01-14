@@ -22,14 +22,6 @@
       url = "github:shajra/empty";
       flake = false;
     };
-    arduino-lib-json = {
-      url = "file+https://downloads.arduino.cc/libraries/library_index.json";
-      flake = false;
-    };
-    arduino-pkgs-json = {
-      url = "file+https://downloads.arduino.cc/packages/package_index.json";
-      flake = false;
-    };
     arduino-boardsmanager-empty = {
       url = "file+https://github.com/keyboardio/boardsmanager/raw/main/devel/empty.tbz";
       flake = false;
@@ -189,7 +181,7 @@
                 {
                   category = "[release]";
                   name = "project-arduino-upgrade";
-                  help = "2) upgrade arduino JSON signatures";
+                  help = "2) upgrade arduino JSON index";
                   command = "arduino-upgrade";
                 }
                 {

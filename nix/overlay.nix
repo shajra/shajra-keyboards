@@ -11,8 +11,6 @@ withSystem system (
   {
 
     inherit (inputs)
-      arduino-lib-json
-      arduino-pkgs-json
       arduino-boardsmanager-empty
       arduino-cores-avr
       arduino-tools-avr-gcc

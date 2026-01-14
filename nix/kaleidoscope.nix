@@ -1,6 +1,4 @@
 {
-  arduino-lib-json,
-  arduino-pkgs-json,
   arduino-cli,
   arduino-boardsmanager-empty,
   arduino-cores-avr,
@@ -104,14 +102,10 @@ let
       mkdir --parents "$ARDUINO_DIRECTORIES_DOWNLOADS/packages"
       mkdir --parents "$ARDUINO_DIRECTORIES_USER/hardware"
 
-      cp "${arduino-lib-json}" \
+      cp "${arduino/library_index.json}" \
           "$ARDUINO_DIRECTORIES_DATA/library_index.json"
-      cp "${arduino/library_index.json.sig}" \
-          "$ARDUINO_DIRECTORIES_DATA/library_index.json.sig"
-      cp "${arduino-pkgs-json}" \
+      cp "${arduino/package_index.json}" \
           "$ARDUINO_DIRECTORIES_DATA/package_index.json"
-      cp "${arduino/package_index.json.sig}" \
-          "$ARDUINO_DIRECTORIES_DATA/package_index.json.sig"
       cp "${keyboardio-boardsmanager}" \
           "$ARDUINO_DIRECTORIES_DATA/package_kaleidoscope_devel_index.json"
 

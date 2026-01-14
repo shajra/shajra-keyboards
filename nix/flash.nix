@@ -26,8 +26,8 @@ let
     lib.sourceFilesBySuffices p [
       ".lock"
       ".nix"
+      ".jq"
       ".json"
-      ".json.sig"
       ".h"
       ".c"
       ".ino"

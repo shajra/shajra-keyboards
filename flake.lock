@@ -60,18 +60,6 @@
         "url": "https://downloads.arduino.cc/discovery/serial-discovery/serial-discovery_v1.4.3_Linux_64bit.tar.gz"
       }
     },
-    "arduino-lib-json": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-qhkQAXdkmPrQj3F1rngCS+gfUs1DoqBedguu2fEyc5g=",
-        "type": "file",
-        "url": "https://downloads.arduino.cc/libraries/library_index.json"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://downloads.arduino.cc/libraries/library_index.json"
-      }
-    },
     "arduino-monitor-serial": {
       "flake": false,
       "locked": {
@@ -82,18 +70,6 @@
       "original": {
         "type": "file",
         "url": "https://downloads.arduino.cc/monitor/serial-monitor/serial-monitor_v0.15.0_Linux_64bit.tar.gz"
-      }
-    },
-    "arduino-pkgs-json": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-nfaEKK99CrtSlrZkCsiQ+ZduFeFneGnMrKl/v0pUvTw=",
-        "type": "file",
-        "url": "https://downloads.arduino.cc/packages/package_index.json"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://downloads.arduino.cc/packages/package_index.json"
       }
     },
     "arduino-tools-avr-gcc": {
@@ -553,9 +529,7 @@
         "arduino-discovery-dfu": "arduino-discovery-dfu",
         "arduino-discovery-mdns": "arduino-discovery-mdns",
         "arduino-discovery-serial": "arduino-discovery-serial",
-        "arduino-lib-json": "arduino-lib-json",
         "arduino-monitor-serial": "arduino-monitor-serial",
-        "arduino-pkgs-json": "arduino-pkgs-json",
         "arduino-tools-avr-gcc": "arduino-tools-avr-gcc",
         "arduino-tools-avrdude": "arduino-tools-avrdude",
         "arduino-tools-ctags": "arduino-tools-ctags",
