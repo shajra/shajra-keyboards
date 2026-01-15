@@ -1,5 +1,5 @@
 #+title: Keymap Image Management
-#+setupfile: ../doc/internal/links.org
+#+setupfile: ../../doc/internal/links.org
 
 I made my keyboard layout images with [[http://www.keyboard-layout-editor.com][a service]] that has been
 un/under-maintained for some years, but keeps on functioning. The image-export
