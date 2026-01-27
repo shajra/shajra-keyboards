@@ -6,10 +6,10 @@
         {
           "name": "Arduino AVR Boards",
           "architecture": "avr",
-          "version": "1.8.6",
-          "url": "https://downloads.arduino.cc/cores/staging/avr-1.8.6.tar.bz2",
-          "archiveFileName": "avr-1.8.6.tar.bz2",
-          "checksum": "SHA-256:ff1d17274b5a952f172074bd36c3924336baefded0232e10982f8999c2f7c3b6",
+          "version": "1.8.7",
+          "url": "https://downloads.arduino.cc/cores/staging/avr-1.8.7.tar.bz2",
+          "archiveFileName": "avr-1.8.7.tar.bz2",
+          "checksum": "SHA-256:6ae7000b1b6c004c4a208d6d924a8046b417580e4a10cfd3f88930b6660a51db",
           "toolsDependencies": [
             {
               "packager": "arduino",
@@ -24,7 +24,7 @@
             {
               "packager": "arduino",
               "name": "avrdude",
-              "version": "6.3.0-arduino17"
+              "version": "8.0.0-arduino1"
             }
           ]
         }
@@ -171,6 +171,18 @@
               "url": "https://downloads.arduino.cc/tools/avr-gcc-4.8.1-arduino2-x86_64-pc-linux-gnu.tar.bz2",
               "archiveFileName": "avr-gcc-4.8.1-arduino2-x86_64-pc-linux-gnu.tar.bz2",
               "checksum": "SHA-256:24a931877bee5f36dc00a88877219a6d2f6a1fb7abb989fd04556b8432d2e14e"
+            }
+          ]
+        },
+        {
+          "name": "avrdude",
+          "version": "8.0.0-arduino1",
+          "systems": [
+            {
+              "host": "x86_64-linux-gnu",
+              "url": "https://downloads.arduino.cc/tools/avrdude_8.0-arduino.1_Linux_64bit.tar.gz",
+              "archiveFileName": "avrdude_8.0-arduino.1_Linux_64bit.tar.gz",
+              "checksum": "SHA-256:1d2edadb07e070fcd016e8c802e961e30bfa606c2db63625c930526e7044aaa6"
             }
           ]
         },

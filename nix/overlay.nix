@@ -14,7 +14,8 @@ withSystem system (
       arduino-boardsmanager-empty
       arduino-cores-avr
       arduino-tools-avr-gcc
-      arduino-tools-avrdude
+      arduino-tools-avrdude-6
+      arduino-tools-avrdude-8
       arduino-tools-ctags
       arduino-tools-dfu-util
       arduino-tools-ota

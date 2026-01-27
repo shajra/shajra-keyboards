@@ -27,15 +27,19 @@
       flake = false;
     };
     arduino-cores-avr = {
-      url = "file+https://downloads.arduino.cc/cores/staging/avr-1.8.6.tar.bz2";
+      url = "file+https://downloads.arduino.cc/cores/staging/avr-1.8.7.tar.bz2";
       flake = false;
     };
     arduino-tools-avr-gcc = {
       url = "file+https://downloads.arduino.cc/tools/avr-gcc-7.3.0-atmel3.6.1-arduino7-x86_64-pc-linux-gnu.tar.bz2";
       flake = false;
     };
-    arduino-tools-avrdude = {
+    arduino-tools-avrdude-6 = {
       url = "file+https://downloads.arduino.cc/tools/avrdude-6.3.0-arduino17-x86_64-pc-linux-gnu.tar.bz2";
+      flake = false;
+    };
+    arduino-tools-avrdude-8 = {
+      url = "file+https://downloads.arduino.cc/tools/avrdude_8.0-arduino.1_Linux_64bit.tar.gz";
       flake = false;
     };
     arduino-tools-ctags = {

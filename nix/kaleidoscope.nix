@@ -3,7 +3,8 @@
   arduino-boardsmanager-empty,
   arduino-cores-avr,
   arduino-tools-avr-gcc,
-  arduino-tools-avrdude,
+  arduino-tools-avrdude-6,
+  arduino-tools-avrdude-8,
   arduino-tools-ctags,
   arduino-tools-dfu-util,
   arduino-tools-ota,
@@ -115,8 +116,10 @@ let
           "$ARDUINO_DIRECTORIES_DOWNLOADS/packages/${depName "arduino-cores-avr"}"
       cp "${arduino-tools-avr-gcc}" \
           "$ARDUINO_DIRECTORIES_DOWNLOADS/packages/${depName "arduino-tools-avr-gcc"}"
-      cp "${arduino-tools-avrdude}" \
-          "$ARDUINO_DIRECTORIES_DOWNLOADS/packages/${depName "arduino-tools-avrdude"}"
+      cp "${arduino-tools-avrdude-6}" \
+          "$ARDUINO_DIRECTORIES_DOWNLOADS/packages/${depName "arduino-tools-avrdude-6"}"
+      cp "${arduino-tools-avrdude-8}" \
+          "$ARDUINO_DIRECTORIES_DOWNLOADS/packages/${depName "arduino-tools-avrdude-8"}"
       cp "${arduino-tools-ctags}" \
           "$ARDUINO_DIRECTORIES_DOWNLOADS/packages/${depName "arduino-tools-ctags"}"
       cp "${arduino-tools-dfu-util}" \

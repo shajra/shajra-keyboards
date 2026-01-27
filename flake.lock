@@ -15,13 +15,13 @@
     "arduino-cores-avr": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-cSp3OAYHiOyXAhCrB4g76JsvBogo0JZzN6/QlFJyIZg=",
+        "narHash": "sha256-tqwaAy+z72rcbBhGW+C3mosKek1EMgog+QreqgVp97w=",
         "type": "file",
-        "url": "https://downloads.arduino.cc/cores/staging/avr-1.8.6.tar.bz2"
+        "url": "https://downloads.arduino.cc/cores/staging/avr-1.8.7.tar.bz2"
       },
       "original": {
         "type": "file",
-        "url": "https://downloads.arduino.cc/cores/staging/avr-1.8.6.tar.bz2"
+        "url": "https://downloads.arduino.cc/cores/staging/avr-1.8.7.tar.bz2"
       }
     },
     "arduino-discovery-dfu": {
@@ -84,7 +84,7 @@
         "url": "https://downloads.arduino.cc/tools/avr-gcc-7.3.0-atmel3.6.1-arduino7-x86_64-pc-linux-gnu.tar.bz2"
       }
     },
-    "arduino-tools-avrdude": {
+    "arduino-tools-avrdude-6": {
       "flake": false,
       "locked": {
         "narHash": "sha256-+LAWQeUDEYlJ5+T2T8gv7WE7EFFcCdlKN6+ezi5o0kU=",
@@ -94,6 +94,18 @@
       "original": {
         "type": "file",
         "url": "https://downloads.arduino.cc/tools/avrdude-6.3.0-arduino17-x86_64-pc-linux-gnu.tar.bz2"
+      }
+    },
+    "arduino-tools-avrdude-8": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-vwAfKd2qhpL5Z0DiEpSTrgg418qKVC3RKXWrPIvOCFg=",
+        "type": "file",
+        "url": "https://downloads.arduino.cc/tools/avrdude_8.0-arduino.1_Linux_64bit.tar.gz"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://downloads.arduino.cc/tools/avrdude_8.0-arduino.1_Linux_64bit.tar.gz"
       }
     },
     "arduino-tools-ctags": {
@@ -531,7 +543,8 @@
         "arduino-discovery-serial": "arduino-discovery-serial",
         "arduino-monitor-serial": "arduino-monitor-serial",
         "arduino-tools-avr-gcc": "arduino-tools-avr-gcc",
-        "arduino-tools-avrdude": "arduino-tools-avrdude",
+        "arduino-tools-avrdude-6": "arduino-tools-avrdude-6",
+        "arduino-tools-avrdude-8": "arduino-tools-avrdude-8",
         "arduino-tools-ctags": "arduino-tools-ctags",
         "arduino-tools-dfu-util": "arduino-tools-dfu-util",
         "arduino-tools-ota": "arduino-tools-ota",
