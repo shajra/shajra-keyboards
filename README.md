@@ -242,7 +242,7 @@ If you want to check that everything builds before flashing your keyboard, you c
 tree $(nix build --no-link --print-out-paths) 2>/dev/null
 ```
 
-    /nix/store/hlbrxw8vx245lirw8p8p0s675nay1fm7-shajra-keyboards-checks
+    /nix/store/56gyv0n22n9wr86vny6xip0zgmbmhrip-shajra-keyboards-checks
     ├── build-ergodoxez-builtin-shajra-flash -> /nix/store/7a5kd6xizxm5x09mxshf1qfpa1py19zi-ergodoxez-builtin-shajra-flash-env
     ├── build-ergodoxez-builtin-shajra-hex -> /nix/store/5lszgjc7g6i2fikir6dh2nzdqb2diq3j-ergodoxez-builtin-shajra.hex
     ├── build-ergodoxez-factory-flash -> /nix/store/d8wshcfxjl8ybl7pm1cwyz831s8f3c3z-ergodoxez-factory-flash-env
@@ -259,10 +259,10 @@ tree $(nix build --no-link --print-out-paths) 2>/dev/null
     ├── build-moonlander-builtin-shajra-hex -> /nix/store/if1fv7wd55dzpqky58fvjjwkljk4c6xd-moonlander-builtin-shajra.bin
     ├── build-moonlander-factory-flash -> /nix/store/iyk1qz59d3cxabjkp6dwaiwf0mqaaj9h-moonlander-factory-flash-env
     ├── build-moonlander-factory-hex -> /nix/store/4wn4zz0cv0hifcpckbcsk1g0hfhdqj46-moonlander-factory.bin
-    ├── flash-ergodoxez -> /nix/store/f6xlfwx1ch836a3h8afv3hicadh811v8-flash-ergodoxez-env
-    ├── flash-model01 -> /nix/store/43x1x3zv91z34fkdacqlh8rcv1nqrwd8-flash-model01-env
-    ├── flash-model100 -> /nix/store/ivq4w018y9as717w03vni77b3lipfyz3-flash-model100-env
-    ├── flash-moonlander -> /nix/store/h487bz3h4m2f83fvfdbhz7c1622v5kr7-flash-moonlander-env
+    ├── flash-ergodoxez -> /nix/store/wvw0zfj58q31ccy2wr53nzzqbxz8nv42-flash-ergodoxez-env
+    ├── flash-model01 -> /nix/store/c9078b0ixasrqji825yb8k8b34by91dl-flash-model01-env
+    ├── flash-model100 -> /nix/store/gxwpcrlaf0widq0w5qf8fxpxhvij54ki-flash-model100-env
+    ├── flash-moonlander -> /nix/store/cyw9l5dlbya686nn7kq8qd0ngpi7nncf-flash-moonlander-env
     ├── licenses -> /nix/store/13yrsvyhnfjv8m6b62bsahjic6bp3cb4-shajra-keyboards-licenses-env
     ├── support-arduino-upgrade -> /nix/store/pbgwjq9wnm303j5sxfg8j1vqbbpl3da0-arduino-upgrade-env
     └── support-kaleidoscope-deps -> /nix/store/djnk6qp6j0k9dljzji8017msfwpfg7sh-kaleidoscope-deps-env
