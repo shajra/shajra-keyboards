@@ -326,6 +326,18 @@
         },
         {
           "name": "mdns-discovery",
+          "version": "1.1.0",
+          "systems": [
+            {
+              "host": "x86_64-pc-linux-gnu",
+              "url": "https://downloads.arduino.cc/discovery/mdns-discovery/mdns-discovery_v1.1.0_Linux_64bit.tar.gz",
+              "archiveFileName": "mdns-discovery_v1.1.0_Linux_64bit.tar.gz",
+              "checksum": "SHA-256:6966f406e5b6e80d82a388706d6d9d8a63d46035d19d1e6b4fb1ebeaf7fea056"
+            }
+          ]
+        },
+        {
+          "name": "mdns-discovery",
           "version": "1.0.12",
           "systems": [
             {
@@ -369,6 +381,42 @@
               "url": "https://downloads.arduino.cc/discovery/mdns-discovery/mdns-discovery_v1.0.8_Linux_64bit.tar.gz",
               "archiveFileName": "mdns-discovery_v1.0.8_Linux_64bit.tar.gz",
               "checksum": "SHA-256:4c12164afac6c9ea0f611fd63fccacd5465084e9d0b5ea741be6ccda415c033b"
+            }
+          ]
+        },
+        {
+          "name": "serial-discovery",
+          "version": "1.5.2",
+          "systems": [
+            {
+              "host": "x86_64-pc-linux-gnu",
+              "url": "https://downloads.arduino.cc/discovery/serial-discovery/serial-discovery_v1.5.2_Linux_64bit.tar.gz",
+              "archiveFileName": "serial-discovery_v1.5.2_Linux_64bit.tar.gz",
+              "checksum": "SHA-256:7a95d7386c66c0846fe4aa96b601e72783ae64f541eb2f5edb4fc9e69a04b6d3"
+            }
+          ]
+        },
+        {
+          "name": "serial-discovery",
+          "version": "1.5.1",
+          "systems": [
+            {
+              "host": "x86_64-pc-linux-gnu",
+              "url": "https://downloads.arduino.cc/discovery/serial-discovery/serial-discovery_v1.5.1_Linux_64bit.tar.gz",
+              "archiveFileName": "serial-discovery_v1.5.1_Linux_64bit.tar.gz",
+              "checksum": "SHA-256:9e7b1ab1124ce41f371b9f96312b19af0d1f737c190411e9cbbac89e70e3ec22"
+            }
+          ]
+        },
+        {
+          "name": "serial-discovery",
+          "version": "1.5.0",
+          "systems": [
+            {
+              "host": "x86_64-pc-linux-gnu",
+              "url": "https://downloads.arduino.cc/discovery/serial-discovery/serial-discovery_v1.5.0_Linux_64bit.tar.gz",
+              "archiveFileName": "serial-discovery_v1.5.0_Linux_64bit.tar.gz",
+              "checksum": "SHA-256:ca259546a7432496ca5c7dde117e8adfb07c48bd1b0a837ef7719a306ef2d0c3"
             }
           ]
         },
