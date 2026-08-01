@@ -2,7 +2,6 @@
 #+link: docstring https://en.wikipedia.org/wiki/Docstring
 #+link: ergodox-ez https://ergodox-ez.com
 #+link: fhs https://www.pathname.com/fhs/
-#+link: garnix https://garnix.io
 #+link: kaleidoscope https://github.com/keyboardio/Kaleidoscope
 #+link: kaleidoscope-oneshot https://kaleidoscope.readthedocs.io/en/latest/plugins/OneShot.html
 #+link: kaleidoscope-qukey https://kaleidoscope.readthedocs.io/en/latest/plugins/Qukeys.html
