@@ -226,7 +226,7 @@ nix search nixpkgs 'gpu|opengl|accel' terminal
     * legacyPackages.x86_64-linux.rio (0.5.28)
       Hardware-accelerated GPU terminal emulator powered by WebGPU
     
-    * legacyPackages.x86_64-linux.wezterm (0-unstable-2026-10-10)
+    * legacyPackages.x86_64-linux.wezterm (0-unstable-2026-10-26)
       GPU-accelerated cross-platform terminal emulator and multiplexer written by @wez and implemented in Rust
     
     * legacyPackages.x86_64-linux.zutty (0.16-unstable-2024-08-18)
@@ -278,7 +278,7 @@ After a successful call of `nix build`, you'll see one or more symlinks for each
 readlink result*
 ```
 
-    /nix/store/yrhlc8pssaxj5vbaxivbnwf64bqclhrc-shajra-keyboards-licenses-env
+    /nix/store/30s125ykbjwmrj7jz3yirkcngsgsn6cc-shajra-keyboards-licenses-env
 
 Following these symlinks, we can see the files the project provides:
 
@@ -300,7 +300,7 @@ It's common to configure these “result” symlinks as ignored in source contro
 nix path-info .#licenses-thirdparty
 ```
 
-    /nix/store/yrhlc8pssaxj5vbaxivbnwf64bqclhrc-shajra-keyboards-licenses-env
+    /nix/store/30s125ykbjwmrj7jz3yirkcngsgsn6cc-shajra-keyboards-licenses-env
 
 ## Running commands in a shell<a id="sec-4-6"></a>
 
@@ -413,7 +413,7 @@ nix shell --ignore-environment \
     --command which shajra-keyboards-licenses
 ```
 
-    /nix/store/yrhlc8pssaxj5vbaxivbnwf64bqclhrc-shajra-keyboards-licenses-env/bin/shajra-keyboards-licenses
+    /nix/store/30s125ykbjwmrj7jz3yirkcngsgsn6cc-shajra-keyboards-licenses-env/bin/shajra-keyboards-licenses
 
 What we do with local flake references can work just as well with remote flake references.
 
@@ -441,7 +441,7 @@ nix profile list
     Flake attribute:    packages.x86_64-linux.licenses-thirdparty
     Original flake URL: git+file:///home/shajra/src/shajra-keyboards
     Locked flake URL:   git+file:///home/shajra/src/shajra-keyboards
-    Store paths:        /nix/store/yrhlc8pssaxj5vbaxivbnwf64bqclhrc-shajra-keyboards-licenses-env
+    Store paths:        /nix/store/30s125ykbjwmrj7jz3yirkcngsgsn6cc-shajra-keyboards-licenses-env
 
 If we want to uninstall a program from our profile, we can reference it by name:
 
